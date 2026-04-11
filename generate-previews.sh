@@ -6,7 +6,9 @@ find . -name "*.html" -type f | while read -r htmlfile; do
   dir=$(dirname "$htmlfile")
   filename=$(basename "$htmlfile")
   relpath="${htmlfile#./}"
-  preview_url="https://htmlpreview.github.io/?https://raw.githubusercontent.com/${REPO}/${BRANCH}/${relpath}"
+  # URL encode spaces and special chars
+  encoded_path=$(echo "$relpath" | sed 's/ /%20/g')
+  preview_url="https://htmlpreview.github.io/?https://raw.githubusercontent.com/${REPO}/${BRANCH}/${encoded_path}"
   
   cat > "${dir}/PREVIEW.md" << PREVIEW
 # Email Preview
@@ -16,5 +18,7 @@ find . -name "*.html" -type f | while read -r htmlfile; do
 Clean HTML file is right next to this one for easy copy-paste into your email tool.
 PREVIEW
 
-  echo "Created: ${dir}/PREVIEW.md"
+  echo "Updated: ${dir}/PREVIEW.md"
 done
+
+echo "All PREVIEW.md files regenerated with proper URL encoding."

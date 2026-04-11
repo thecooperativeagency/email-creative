@@ -1,5 +1,5 @@
 # Email Preview
 
-**[👁️ Open Live Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/thecooperativeagency/email-creative/refs/heads/main/Harris Porsche/Service/harris-porsche-birthday-email.html)**
+**[👁️ Open Live Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/thecooperativeagency/email-creative/refs/heads/main/Harris%20Porsche/Service/harris-porsche-birthday-email.html)**
 
 Clean HTML file is right next to this one for easy copy-paste into your email tool.
