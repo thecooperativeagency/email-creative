@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technoference Is Ruining the Next Generation</title>
+  <meta name="description" content="A shareable, research-backed explanation of how parent phone distraction affects children’s emotions, behavior, language, and attachment." />
+  <meta property="og:title" content="Technoference Is Ruining the Next Generation" />
+  <meta property="og:description" content="When a child has to constantly compete with a parent’s phone, it is bad for them on several levels — not just annoying." />
+  <meta property="og:type" content="article" />
+  <meta name="theme-color" content="#111827" />
+  <style>
+    :root {
+      --ink: #101418;
+      --muted: #5d6875;
+      --soft: #f5efe7;
+      --paper: #fffaf3;
+      --card: #ffffff;
+      --line: rgba(16, 20, 24, .14);
+      --accent: #c24b35;
+      --accent-dark: #8f2f22;
+      --blue: #223a5e;
+      --green: #4b6b52;
+      --shadow: 0 28px 80px rgba(20, 24, 30, .12);
+      --radius: 28px;
+      --max: 1060px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(194, 75, 53, .16), transparent 34rem),
+        linear-gradient(180deg, #fff8ed 0%, #f7efe4 44%, #f3eee7 100%);
+      line-height: 1.62;
+    }
+
+    a { color: var(--accent-dark); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    a:hover { color: var(--accent); }
+
+    .shell { width: min(var(--max), calc(100% - 36px)); margin: 0 auto; }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 64px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .75fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .55);
+      color: var(--accent-dark);
+      font-weight: 750;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(194,75,53,.12); }
+
+    h1 {
+      margin: 26px 0 20px;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 98px);
+      line-height: .91;
+      letter-spacing: -.06em;
+      max-width: 820px;
+      text-wrap: balance;
+    }
+
+    .dek {
+      font-size: clamp(20px, 2.5vw, 30px);
+      line-height: 1.26;
+      color: #2b333b;
+      max-width: 760px;
+      margin: 0 0 30px;
+      text-wrap: pretty;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--ink);
+      color: white;
+      font-weight: 760;
+      text-decoration: none;
+      box-shadow: 0 16px 34px rgba(16,20,24,.18);
+    }
+    .button.secondary { background: rgba(255,255,255,.7); color: var(--ink); box-shadow: none; }
+
+    .phone-card {
+      border-radius: 38px;
+      background: linear-gradient(145deg, #161a20, #2a3039);
+      padding: 15px;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+      max-width: 360px;
+      justify-self: end;
+      position: relative;
+    }
+    .phone-card::before {
+      content: "";
+      position: absolute;
+      inset: -24px;
+      border-radius: 50px;
+      border: 1px solid rgba(194,75,53,.22);
+      transform: rotate(-5deg);
+      z-index: -1;
+    }
+    .screen {
+      border-radius: 27px;
+      min-height: 560px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), transparent),
+        #0a0d11;
+      color: white;
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .notification {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.09);
+      border-radius: 18px;
+      padding: 15px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(8px);
+    }
+    .notification small { color: rgba(255,255,255,.56); display: block; margin-bottom: 5px; }
+    .child-note {
+      border-radius: 22px;
+      background: #fff3d7;
+      color: #312318;
+      padding: 18px;
+      transform: rotate(-3deg);
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      font-family: ui-serif, Georgia, serif;
+      font-size: 23px;
+      line-height: 1.15;
+    }
+
+    main { padding: 20px 0 80px; }
+    .article {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 54px;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.58);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+    }
+    .toc strong { display: block; margin-bottom: 10px; }
+    .toc a { display: block; color: var(--muted); text-decoration: none; padding: 6px 0; }
+    .toc a:hover { color: var(--accent-dark); }
+
+    .content {
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    section { padding: clamp(28px, 5vw, 58px); border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: none; }
+    h2 {
+      margin: 0 0 18px;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+    p { font-size: 19px; margin: 0 0 18px; color: #222a32; }
+    .lead { font-size: 23px; line-height: 1.38; color: #15191d; }
+    .scenario {
+      background: #fff4df;
+      border: 1px solid rgba(194,75,53,.22);
+      border-radius: 22px;
+      padding: 24px;
+      margin: 22px 0;
+      font-size: 21px;
+    }
+    .callout {
+      margin: 30px 0 0;
+      padding: 24px;
+      border-radius: 22px;
+      background: var(--ink);
+      color: white;
+    }
+    .callout p { color: rgba(255,255,255,.9); margin: 0; font-size: 22px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 26px 0 4px;
+    }
+    .mini {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.64);
+      border-radius: 20px;
+      padding: 18px;
+    }
+    .mini strong { display: block; font-size: 17px; margin-bottom: 8px; color: var(--blue); }
+    .mini span { display: block; color: var(--muted); font-size: 15px; line-height: 1.45; }
+
+    .bottom-line {
+      background: linear-gradient(145deg, #19202a, #101418);
+      color: white;
+    }
+    .bottom-line h2, .bottom-line p { color: white; }
+    .bottom-line p { color: rgba(255,255,255,.86); }
+    .quote {
+      font-family: ui-serif, Georgia, serif;
+      font-size: clamp(30px, 5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+      color: white;
+      margin-top: 28px;
+      text-wrap: balance;
+    }
+
+    .sources { background: #fffdf8; }
+    .sources ol { padding-left: 22px; margin: 22px 0 0; }
+    .sources li { margin-bottom: 14px; color: #2c333a; font-size: 16px; }
+    .sources p { font-size: 17px; color: var(--muted); }
+
+    .share-strip {
+      margin: 28px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .copy-link {
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: white;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    footer { padding: 36px 0 70px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding-top: 42px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .phone-card { justify-self: start; max-width: min(360px, 100%); transform: rotate(0); }
+      .screen { min-height: 430px; }
+      .article { grid-template-columns: 1fr; gap: 20px; }
+      .toc { position: static; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 24px, var(--max)); }
+      section { padding: 28px 20px; }
+      p { font-size: 17px; }
+      .lead, .scenario { font-size: 19px; }
+      .hero-actions { align-items: stretch; }
+      .button { width: 100%; }
+      h1 { font-size: clamp(44px, 15vw, 70px); }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero shell">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Parent attention matters</div>
+        <h1>Technoference is ruining the next generation.</h1>
+        <p class="dek">We are breaking our children by teaching them, day after day, that our phones matter more than they do.</p>
+        <p class="lead">When a child has to constantly compete with a parent’s phone, it is bad for them on several levels — not just “annoying.”</p>
+        <div class="hero-actions">
+          <a class="button" href="#bottom-line">Read the bottom line</a>
+          <a class="button secondary" href="#sources">View sources</a>
+        </div>
+      </div>
+      <aside class="phone-card" aria-label="Illustration of phone distraction">
+        <div class="screen">
+          <div>
+            <div class="notification"><small>Now</small>New message</div>
+            <div class="notification"><small>2 min ago</small>Someone liked your post</div>
+            <div class="notification"><small>5 min ago</small>Breaking update</div>
+          </div>
+          <div class="child-note">Mom, look!<br><br>I made this for you.</div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="article">
+      <nav class="toc" aria-label="Page sections">
+        <strong>On this page</strong>
+        <a href="#feels-like">What it feels like</a>
+        <a href="#behavior">Behavior and emotions</a>
+        <a href="#development">What it steals</a>
+        <a href="#bottom-line">The bottom line</a>
+        <a href="#sources">Sources</a>
+      </nav>
+
+      <article class="content">
+        <section id="feels-like">
+          <h2>What it feels like for the kid</h2>
+          <div class="scenario">Imagine you’re five, holding up a drawing you’re proud of. You say, “Mom, look!” three times. She doesn’t look up. Her face only lights up for the screen. After a while, you stop showing her things and start believing they don’t matter.</div>
+          <p>Kids show more anger, sadness, whining, frustration and outbursts when parents are on their phones during interactions.</p>
+          <p>Some kids get louder and wilder, because that’s the only way to beat the phone for your attention. Others eventually go quiet and give up trying to get noticed — and that “giving up” is tied to lower well-being and life satisfaction.</p>
+          <p>Children notice that the phone “wins,” and they start to feel less important and less secure in the relationship.</p>
+        </section>
+
+        <section id="behavior">
+          <h2>What it does to behavior and emotions</h2>
+          <p>Higher technoference is consistently linked to more behavior problems: tantrums, hyperactivity, sulking, whining, self-harm and general “acting out.”</p>
+          <p>Kids in these situations show more negative emotion, less positive emotion, and can be harder to soothe after a phone interruption.</p>
+          <p>Over time, repeated fragmented, unpredictable attention from parents is thought to shape stress and emotion circuits in ways that increase risk for anxiety, mood problems, and lower resilience.</p>
+          <div class="grid">
+            <div class="mini"><strong>More dysregulation</strong><span>Children may become louder, more reactive, or harder to calm.</span></div>
+            <div class="mini"><strong>Less felt security</strong><span>The child learns attention is uncertain and must be competed for.</span></div>
+            <div class="mini"><strong>More acting out</strong><span>Behavior often becomes the tool for winning back a distracted parent.</span></div>
+          </div>
+        </section>
+
+        <section id="development">
+          <h2>What it steals from their development</h2>
+          <p>This isn’t just about the moment when a child wants a parent and gets a screen instead. It’s about everything that never happens in all those tiny, throwaway moments that actually build a brain.</p>
+          <p>When parents are on phones, they talk less, respond more slowly, miss cues, and sometimes react harshly because they are half in the phone and half with the child.</p>
+          <p>That means fewer chances for the child to practice language, read faces, learn social rules, and get steady emotional feedback.</p>
+          <p>Researchers are seeing this in real homes: even short bursts of phone use cut the amount parents talk to their babies and toddlers, which means fewer words heard, fewer little back-and-forth “conversations,” and slower vocabulary growth over time.</p>
+          <p>Studies show that when play with parents is interrupted by phones, kids explore less, engage less with toys, and stay focused on “getting the parent back” even after the phone is put away.</p>
+          <p>Over years, this kind of chopped-up, low-talk attention is linked to poorer language scores, more speech delays, weaker emotional regulation, and less secure attachment between parent and child.</p>
+          <div class="callout"><p>In plain terms: too much parent-phone time doesn’t just hurt kids’ feelings; it quietly robs them of the daily practice they need to learn to speak well, understand others, and feel solid in themselves.</p></div>
+        </section>
+
+        <section id="bottom-line" class="bottom-line">
+          <h2>The bottom line</h2>
+          <p>When a parent’s attention is mostly on their phone, the child isn’t just mildly annoyed; they’re living in a world where love and attention are fragmented, unpredictable, and constantly competing with a device that almost always wins.</p>
+          <p>That pattern is linked to more misbehavior, more emotional pain, weaker connection, and fewer of the rich interactions that build language, social skills, and a solid, secure sense of “I matter to my parent.”</p>
+          <p>Put simply: if your child is in the room, your phone should be the guest, not the priority. Try “no-phone windows” — meals, school pick-up, bedtime routine — where your attention is all theirs.</p>
+          <div class="quote">Kids don’t need perfect parents. They need parents who are fully there often enough that their whole body learns: “When I reach for you, you really come.”</div>
+          <p style="margin-top:26px;">Your phone can wait. Your child’s wiring — and their voice — can’t.</p>
+        </section>
+
+        <section id="sources" class="sources">
+          <h2>Sources for “How Bad It Is”</h2>
+          <p>Selected research and institutional resources on parent phone distraction, technoference, child behavior, emotional development, language exposure, and parent-child interaction quality.</p>
+          <ol>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5681450/" target="_blank" rel="noopener">McDaniel, B. T., &amp; Radesky, J. S. — Technoference: Parent distraction with technology and associations with child behavior problems</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/28493400/" target="_blank" rel="noopener">PubMed abstract — Technoference and child behavior problems</a></li>
+            <li><a href="https://www.frontiersin.org/journals/child-and-adolescent-psychiatry/articles/10.3389/frcha.2024.1330331/full" target="_blank" rel="noopener">Effects of digital and non-digital parental distraction on parent-child interaction and communication</a></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11764600/" target="_blank" rel="noopener">Free full text — parental distraction and parent-child interaction quality</a></li>
+            <li><a href="https://centreforearlychildhood.org/news-insights/guest-essays/technoference-and-young-childrens-social-and-emotional-development/" target="_blank" rel="noopener">Centre for Early Childhood — Technoference and young children’s social and emotional development</a></li>
+            <li><a href="https://centreforearlychildhood.org/our-work/research/technoference/" target="_blank" rel="noopener">Centre for Early Childhood — Technoference research overview</a></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6300543/" target="_blank" rel="noopener">Research on parent smartphone use, children’s emotions, behavior, and life satisfaction</a></li>
+            <li><a href="https://jamanetwork.com/journals/jamapediatrics/fullarticle/2833506" target="_blank" rel="noopener">JAMA Pediatrics — Parental smartphone use and children’s mental outcomes: systematic review</a></li>
+            <li><a href="https://www.canr.msu.edu/news/the_dangers_of_distracted_parenting" target="_blank" rel="noopener">Michigan State University Extension — The dangers of distracted parenting</a></li>
+          </ol>
+          <div class="share-strip">
+            <button class="copy-link" type="button" onclick="copyPageLink()">Copy page link</button>
+            <span id="copyStatus">Share this with a parent, grandparent, teacher, or anyone who needs the reminder.</span>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="shell">A shareable public-health style note on technoference and child development.</footer>
+
+  <script>
+    async function copyPageLink() {
+      const status = document.getElementById('copyStatus');
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        status.textContent = 'Copied. Send it to whoever needs it.';
+      } catch (error) {
+        status.textContent = 'Copy this URL from your browser bar.';
+      }
+    }
+  </script>
+</body>
+</html>
