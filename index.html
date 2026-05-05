@@ -5,74 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Email Creative — The Cooperative Agency</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 20px; background: #f9f9f9; color: #111; }
-    h1 { font-size: 1.5rem; border-bottom: 2px solid #1c69d4; padding-bottom: 10px; }
-    h2 { font-size: 1.05rem; color: #1c69d4; margin: 0 0 10px; }
-    .store { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
-    .links { list-style: none; padding: 0; margin: 0; }
-    .links li { margin: 7px 0; display: flex; align-items: center; gap: 8px; }
-    .links a { color: #1c69d4; text-decoration: none; font-size: 14px; }
-    .links a:hover { text-decoration: underline; }
-    .badge { font-size: 11px; background: #e8f0fe; color: #1c69d4; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
-    .tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 10px; white-space: nowrap; color: white; }
-    .tag-sales { background: #1c69d4; }
-    .tag-service { background: #28a745; }
-    .raw { font-size: 11px; color: #999; margin-left: 4px; }
-    .raw a { color: #999; }
+    :root { --blue:#1c69d4; --green:#28a745; --ink:#111; --muted:#666; --line:#ddd; --bg:#f7f8fa; --card:#fff; }
+    * { box-sizing:border-box; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width:1120px; margin:36px auto; padding:0 20px 60px; background:var(--bg); color:var(--ink); }
+    header { margin-bottom:24px; }
+    h1 { font-size:clamp(1.5rem,2.4vw,2.2rem); margin:0 0 8px; letter-spacing:-0.03em; }
+    .sub { color:var(--muted); font-size:14px; line-height:1.55; max-width:860px; margin:0; }
+    .note { margin-top:14px; padding:12px 14px; background:#fff8e1; border:1px solid #f0d27a; border-radius:10px; color:#5f4700; font-size:13px; line-height:1.45; }
+    .toolbar { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 28px; }
+    .filter { border:1px solid var(--line); background:#fff; color:#333; padding:8px 12px; border-radius:999px; font-size:13px; cursor:pointer; }
+    .filter.active { background:var(--blue); border-color:var(--blue); color:#fff; }
+    .month { margin:28px 0 16px; display:flex; align-items:baseline; gap:10px; border-bottom:2px solid var(--blue); padding-bottom:9px; }
+    .month h2 { margin:0; font-size:1.12rem; color:var(--blue); }
+    .month span { color:#777; font-size:12px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .email-card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; display:flex; flex-direction:column; gap:12px; }
+    .email-top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .title { font-size:15px; font-weight:700; margin:0; line-height:1.3; }
+    .meta { color:#666; font-size:12px; margin-top:5px; line-height:1.35; }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+    .tag { display:inline-flex; align-items:center; font-size:10px; padding:3px 8px; border-radius:999px; white-space:nowrap; font-weight:700; letter-spacing:.02em; color:white; }
+    .tag-sales { background:var(--blue); }
+    .tag-service { background:var(--green); }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:8px 11px; border-radius:8px; font-size:12px; font-weight:700; text-decoration:none; border:1px solid var(--line); }
+    .btn-preview { background:var(--blue); color:#fff; border-color:var(--blue); }
+    .btn-raw { background:#fff; color:#555; }
+    .hidden { display:none !important; }
+    @media (max-width:760px) { .grid { grid-template-columns:1fr; } .email-top { flex-direction:column; } .tags { justify-content:flex-start; } }
   </style>
 </head>
 <body>
-  <h1>📧 Email Creative — The Cooperative Agency</h1>
-  <p style="color:#666;font-size:14px;">Email previews — click to preview, then copy raw HTML for VinSolutions paste.</p>
+  <header>
+    <h1>Email Creative — The Cooperative Agency</h1>
+    <p class="sub">Preview finished dealership email HTML, then use the Raw HTML link to copy/paste into the CRM/email platform for customer delivery. Preserve the approved formatting and layout quality when creating monthly updates.</p>
+    <div class="note"><strong>Preview</strong> shows the rendered email. <strong>Raw HTML</strong> shows the source code to copy into VinSolutions/CRM/email tools.</div>
+  </header>
 
-  <div class="store">
-    <h2>Audi Baton Rouge <span class="badge">Baton Rouge, LA</span></h2>
-    <ul class="links">
-      <li>
-        <a href="Audi Baton Rouge/Sales/abr-april-2026-sales-email.html">ABR April 2026 Sales Email</a> 
-        <span class="tag tag-sales">Sales</span>
-        <span class="raw">(<a href="Audi Baton Rouge/Sales/abr-april-2026-sales-email.html">raw</a>)</span>
-      </li>
-      <li>
-        <a href="Audi Baton Rouge/Service/audi-br-service-specials-stripo.html">ABR Service Specials</a> 
-        <span class="tag tag-service">Service</span>
-        <span class="raw">(<a href="Audi Baton Rouge/Service/audi-br-service-specials-stripo.html">raw</a>)</span>
-      </li>
-    </ul>
+  <div class="toolbar" aria-label="Filters">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="audi-baton-rouge">Audi Baton Rouge</button>
+    <button class="filter" data-filter="brian-harris-bmw">Brian Harris BMW</button>
+    <button class="filter" data-filter="bmw-of-jackson">BMW of Jackson</button>
+    <button class="filter" data-filter="harris-porsche">Harris Porsche</button>
+    <button class="filter" data-filter="sales">Sales</button>
+    <button class="filter" data-filter="service">Service</button>
+    <button class="filter" data-filter="april-2026">April 2026</button>
   </div>
 
-  <div class="store">
-    <h2>BMW of Jackson <span class="badge">Jackson, MS</span></h2>
-    <ul class="links">
-      <li>
-        <a href="BMW of Jackson/Sales/bmw-jackson-april-2026-email.html">BMW of Jackson April 2026 Sales Email</a> 
-        <span class="tag tag-sales">Sales</span>
-        <span class="raw">(<a href="BMW of Jackson/Sales/bmw-jackson-april-2026-email.html">raw</a>)</span>
-      </li>
-    </ul>
+  <section class="month"><h2>April 2026 Sales Emails</h2><span>monthly sales creative</span></section>
+  <div class="grid">
+    <article class="email-card" data-store="audi-baton-rouge" data-type="sales" data-month="april-2026">
+      <div class="email-top"><div><p class="title">ABR April 2026 Sales Email</p><p class="meta">Audi Baton Rouge · Sales</p></div><div class="tags"><span class="tag tag-sales">Sales</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Audi Baton Rouge/Sales/abr-april-2026-sales-email.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Audi%20Baton%20Rouge/Sales/abr-april-2026-sales-email.html">Raw HTML</a></div>
+    </article>
+    <article class="email-card" data-store="brian-harris-bmw" data-type="sales" data-month="april-2026">
+      <div class="email-top"><div><p class="title">Brian Harris BMW April 2026 Sales Email</p><p class="meta">Brian Harris BMW · Sales</p></div><div class="tags"><span class="tag tag-sales">Sales</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Brian Harris BMW/Sales/bh-bmw-april-2026-email.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Brian%20Harris%20BMW/Sales/bh-bmw-april-2026-email.html">Raw HTML</a></div>
+    </article>
+    <article class="email-card" data-store="bmw-of-jackson" data-type="sales" data-month="april-2026">
+      <div class="email-top"><div><p class="title">BMW of Jackson April 2026 Sales Email</p><p class="meta">BMW of Jackson · Sales</p></div><div class="tags"><span class="tag tag-sales">Sales</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="BMW of Jackson/Sales/bmw-jackson-april-2026-email.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/BMW%20of%20Jackson/Sales/bmw-jackson-april-2026-email.html">Raw HTML</a></div>
+    </article>
+    <article class="email-card" data-store="harris-porsche" data-type="sales" data-month="april-2026">
+      <div class="email-top"><div><p class="title">Harris Porsche April 2026 Sales Email</p><p class="meta">Harris Porsche · Sales</p></div><div class="tags"><span class="tag tag-sales">Sales</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Harris Porsche/Sales/harris-porsche-april-2026-email.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Harris%20Porsche/Sales/harris-porsche-april-2026-email.html">Raw HTML</a></div>
+    </article>
   </div>
 
-  <div class="store">
-    <h2>Brian Harris BMW <span class="badge">Baton Rouge, LA</span></h2>
-    <ul class="links">
-      <li>
-        <a href="Brian Harris BMW/Sales/bh-bmw-april-2026-email.html">BH BMW April 2026 Sales Email</a> 
-        <span class="tag tag-sales">Sales</span>
-        <span class="raw">(<a href="Brian Harris BMW/Sales/bh-bmw-april-2026-email.html">raw</a>)</span>
-      </li>
-    </ul>
+  <section class="month"><h2>Service Emails</h2><span>service creative and specials</span></section>
+  <div class="grid">
+    <article class="email-card" data-store="audi-baton-rouge" data-type="service" data-month="evergreen">
+      <div class="email-top"><div><p class="title">Audi Baton Rouge Service Specials</p><p class="meta">Audi Baton Rouge · Service</p></div><div class="tags"><span class="tag tag-service">Service</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Audi Baton Rouge/Service/audi-br-service-specials-stripo.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Audi%20Baton%20Rouge/Service/audi-br-service-specials-stripo.html">Raw HTML</a></div>
+    </article>
+    <article class="email-card" data-store="brian-harris-bmw" data-type="service" data-month="evergreen">
+      <div class="email-top"><div><p class="title">Brian Harris BMW Service Specials</p><p class="meta">Brian Harris BMW · Service</p></div><div class="tags"><span class="tag tag-service">Service</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Brian Harris BMW/Service/bh-bmw-service-specials-2026.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Brian%20Harris%20BMW/Service/bh-bmw-service-specials-2026.html">Raw HTML</a></div>
+    </article>
+    <article class="email-card" data-store="harris-porsche" data-type="service" data-month="evergreen">
+      <div class="email-top"><div><p class="title">Harris Porsche Birthday Email</p><p class="meta">Harris Porsche · Service/retention</p></div><div class="tags"><span class="tag tag-service">Service</span></div></div>
+      <div class="actions"><a class="btn btn-preview" href="Harris Porsche/Service/harris-porsche-birthday-email.html">Preview</a><a class="btn btn-raw" href="https://raw.githubusercontent.com/thecooperativeagency/email-creative/main/Harris%20Porsche/Service/harris-porsche-birthday-email.html">Raw HTML</a></div>
+    </article>
   </div>
 
-  <div class="store">
-    <h2>Harris Porsche <span class="badge">Baton Rouge, LA</span></h2>
-    <ul class="links">
-      <li>
-        <a href="Harris Porsche/Sales/harris-porsche-april-2026-email.html">Harris Porsche April 2026 Sales Email</a> 
-        <span class="tag tag-sales">Sales</span>
-        <span class="raw">(<a href="Harris Porsche/Sales/harris-porsche-april-2026-email.html">raw</a>)</span>
-      </li>
-    </ul>
-  </div>
-
+  <script>
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.email-card');
+    filters.forEach(btn => btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        const match = f === 'all' || card.dataset.store === f || card.dataset.type === f || card.dataset.month === f;
+        card.classList.toggle('hidden', !match);
+      });
+    }));
+  </script>
 </body>
 </html>
