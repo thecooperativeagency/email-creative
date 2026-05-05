@@ -36,6 +36,7 @@
         radial-gradient(circle at top left, rgba(194, 75, 53, .16), transparent 34rem),
         linear-gradient(180deg, #fff8ed 0%, #f7efe4 44%, #f3eee7 100%);
       line-height: 1.62;
+      overflow-x: hidden;
     }
 
     a { color: var(--accent-dark); text-decoration-thickness: .08em; text-underline-offset: .18em; }
@@ -291,12 +292,37 @@
 
     @media (max-width: 560px) {
       .shell { width: min(100% - 24px, var(--max)); }
+      .hero { padding-top: 30px; }
+      .eyebrow { font-size: 11px; padding: 7px 11px; }
+      h1 {
+        font-size: clamp(40px, 11.4vw, 54px);
+        line-height: .96;
+        letter-spacing: -.045em;
+        max-width: 100%;
+      }
+      .dek { font-size: 20px; margin-bottom: 18px; }
       section { padding: 28px 20px; }
+      h2 { line-height: 1.02; letter-spacing: -.035em; }
       p { font-size: 17px; }
       .lead, .scenario { font-size: 19px; }
-      .hero-actions { align-items: stretch; }
+      .hero-actions { align-items: stretch; margin-top: 22px; margin-bottom: 10px; }
       .button { width: 100%; }
-      h1 { font-size: clamp(44px, 15vw, 70px); }
+      .phone-card {
+        max-width: min(300px, calc(100% - 44px));
+        justify-self: center;
+        padding: 12px;
+        border-radius: 32px;
+      }
+      .phone-card::before { inset: -11px; border-radius: 39px; transform: rotate(-3deg); }
+      .screen { min-height: 360px; border-radius: 23px; padding: 22px 18px; }
+      .child-note { font-size: 20px; }
+      .toc { padding: 16px; }
+      .toc a { padding: 9px 0; font-size: 15px; }
+      .quote { font-size: clamp(27px, 8.4vw, 39px); line-height: 1.06; }
+      .sources ol { padding-left: 18px; }
+      .sources li { font-size: 15px; line-height: 1.45; margin-bottom: 18px; }
+      .sources a { text-decoration-thickness: 1px; }
+      footer { padding-bottom: 42px; }
     }
   </style>
 </head>
@@ -379,7 +405,7 @@
         </section>
 
         <section id="sources" class="sources">
-          <h2>Sources for “How Bad It Is”</h2>
+          <h2>Sources for this page</h2>
           <p>Selected research and institutional resources on parent phone distraction, technoference, child behavior, emotional development, language exposure, and parent-child interaction quality.</p>
           <ol>
             <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5681450/" target="_blank" rel="noopener">McDaniel, B. T., &amp; Radesky, J. S. — Technoference: Parent distraction with technology and associations with child behavior problems</a></li>
