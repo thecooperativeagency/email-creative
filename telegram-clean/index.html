@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clean Telegram Protocols for Ada + Luc</title>
+  <meta name="description" content="A short tutorial mini-site for Lance on how to use Telegram cleanly with Ada/Hermes and Luc/OpenClaw without cross-talk or loops." />
+  <meta property="og:title" content="Clean Telegram Protocols for Ada + Luc" />
+  <meta property="og:description" content="Who to message, how to phrase requests, and how to keep agent work clean in Telegram." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --ink: #0f172a;
+      --muted: #5b667a;
+      --line: rgba(15, 23, 42, 0.12);
+      --card: rgba(255,255,255,0.82);
+      --card-strong: #ffffff;
+      --accent: #2563eb;
+      --accent-2: #14b8a6;
+      --danger: #b42318;
+      --shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+      --radius: 28px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.14), transparent 28rem),
+        radial-gradient(circle at top right, rgba(20,184,166,.14), transparent 24rem),
+        linear-gradient(180deg, #f8fbff 0%, #eef4fb 52%, #f4f7fb 100%);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    a:hover { color: #1d4ed8; }
+    .shell { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .hero {
+      padding: 64px 0 28px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .75fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .panel,
+    .callout,
+    .example,
+    .step,
+    .pill-card,
+    .copy-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .hero-copy {
+      padding: clamp(24px, 4vw, 44px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,99,235,.16);
+      background: rgba(255,255,255,.74);
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(37,99,235,.12);
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: .94;
+      letter-spacing: -.06em;
+      text-wrap: balance;
+      max-width: 11ch;
+    }
+
+    .dek {
+      margin: 0 0 24px;
+      font-size: clamp(19px, 2.45vw, 28px);
+      line-height: 1.28;
+      color: #243145;
+      max-width: 28ch;
+      text-wrap: pretty;
+    }
+
+    .hero-actions,
+    .button-row,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button,
+    button.copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 999px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      background: var(--ink);
+      color: white;
+      text-decoration: none;
+      font-weight: 760;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(15,23,42,.18);
+    }
+
+    .button.secondary,
+    button.copy-btn.secondary {
+      background: rgba(255,255,255,.84);
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .hero-side {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .phone-ui {
+      border-radius: 26px;
+      background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
+      color: white;
+      padding: 18px;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-ui::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -24% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,184,166,.24), transparent 68%);
+      pointer-events: none;
+    }
+
+    .phone-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+      color: rgba(255,255,255,.7);
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .bubble {
+      border-radius: 20px;
+      padding: 14px 15px;
+      margin-bottom: 12px;
+      max-width: 92%;
+      position: relative;
+      z-index: 1;
+      font-size: 16px;
+      line-height: 1.42;
+    }
+
+    .bubble.user {
+      background: rgba(37,99,235,.9);
+      margin-left: auto;
+      border-bottom-right-radius: 8px;
+    }
+
+    .bubble.agent {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      border-bottom-left-radius: 8px;
+    }
+
+    .bubble small {
+      display: block;
+      opacity: .72;
+      margin-bottom: 5px;
+      font-size: 11px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    main { padding: 8px 0 84px; }
+    .stack { display: grid; gap: 18px; }
+
+    .panel {
+      padding: clamp(22px, 3.6vw, 36px);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: .98;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    p.lead {
+      margin: 0 0 20px;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.36;
+      color: #293548;
+      max-width: 48rem;
+    }
+
+    p,
+    li {
+      font-size: 17px;
+      color: #283243;
+    }
+
+    .card-grid,
+    .example-grid,
+    .step-grid,
+    .pill-grid,
+    .protocol-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .example-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .step-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .pill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .protocol-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .pill-card,
+    .example,
+    .step,
+    .callout {
+      padding: 18px;
+      background: var(--card-strong);
+    }
+
+    .pill-card h3,
+    .example h3,
+    .step h3,
+    .callout h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .pill-card p,
+    .example p,
+    .step p,
+    .callout p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.52;
+      color: var(--muted);
+    }
+
+    .accent { color: var(--accent); }
+    .teal { color: var(--accent-2); }
+    .danger { color: var(--danger); }
+
+    .copy-box {
+      padding: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .copy-box code,
+    .example code,
+    .step code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      display: block;
+      color: #10203a;
+      background: #edf4ff;
+      border: 1px solid rgba(37,99,235,.14);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 12px;
+      line-height: 1.45;
+      max-width: 100%;
+    }
+
+    .copy-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .micro {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    ul.clean li {
+      padding-left: 18px;
+      position: relative;
+      margin: 0;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 26px 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .card-grid,
+      .example-grid,
+      .step-grid,
+      .pill-grid,
+      .protocol-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side { order: -1; }
+      h1 { max-width: 12ch; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(var(--max), calc(100% - 20px)); }
+      .hero { padding-top: 26px; }
+      .hero-copy, .hero-side, .panel, .copy-box { padding: 20px; }
+      .bubble { max-width: 100%; }
+      h1 {
+        font-size: clamp(38px, 12vw, 58px);
+        line-height: .94;
+        max-width: 12ch;
+      }
+      .dek {
+        font-size: clamp(18px, 5.5vw, 24px);
+        max-width: none;
+      }
+      p, li { font-size: 16px; }
+      .copy-box code, .example code, .step code { font-size: 13px; padding: 14px; }
+      .button, button.copy-btn { width: 100%; }
+      .button-row { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-wrap">
+      <section class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Telegram playbook for Lance</div>
+        <h1>Keep Ada and Luc clean, fast, and out of each other’s way.</h1>
+        <p class="dek">This is the short version: pick one owner, give a clear ask, define done, and only involve both agents on purpose.</p>
+        <div class="hero-actions">
+          <a class="button" href="#template">Copy the default prompt</a>
+          <a class="button secondary" href="#routing">See who should own what</a>
+        </div>
+      </section>
+
+      <aside class="hero-side">
+        <div class="phone-ui" aria-label="Telegram example conversation">
+          <div class="phone-top">
+            <span>Clean request</span>
+            <span>Telegram</span>
+          </div>
+          <div class="bubble user">
+            <small>Lance → Ada</small>
+            Ada: own this. Context: client wants the short answer on what changed. Done looks like: a draft reply plus your recommendation. Draft only.
+          </div>
+          <div class="bubble agent">
+            <small>Ada</small>
+            Got it. I’ll own it, use Luc only if there’s a technical piece, and come back with the draft + recommendation.
+          </div>
+          <div class="bubble user">
+            <small>Lance → Luc</small>
+            Luc: check the repo and confirm the preview workflow. Investigate only. Don’t message anyone externally.
+          </div>
+          <div class="bubble agent">
+            <small>Luc</small>
+            On it. I’ll verify the repo path, preview process, and any blockers, then report back.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell stack">
+      <section class="panel" id="routing">
+        <h2>Who should own the task?</h2>
+        <p class="lead">Use Ada when the job needs judgment, triage, or coordination. Use Luc when the job is clearly operational or technical. Use both only when you mean it.</p>
+        <div class="card-grid">
+          <article class="pill-card">
+            <h3 class="accent">Start with Ada</h3>
+            <p>Priorities, decision prep, triage, client reply drafts, “what should happen next?”, mixed business/technical situations, or anything messy.</p>
+          </article>
+          <article class="pill-card">
+            <h3 class="teal">Start with Luc</h3>
+            <p>Repo checks, page edits, debugging, system inspection, implementation, environment issues, or “go do the thing and report back.”</p>
+          </article>
+          <article class="pill-card">
+            <h3>Use both on purpose</h3>
+            <p>Say it explicitly: “Ada coordinate this, Luc do the technical check.” Don’t send the same request to both agents independently and hope it sorts itself out.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="template">
+        <h2>The default prompt format</h2>
+        <p class="lead">If you use this shape, things stay clean almost automatically.</p>
+        <div class="copy-box">
+          <div class="copy-meta">
+            <div>
+              <strong>Best all-purpose format</strong>
+              <div class="micro">One owner. One task. One definition of done.</div>
+            </div>
+            <button class="copy-btn" data-copy-target="default-template">Copy template</button>
+          </div>
+          <code id="default-template">[Ada or Luc]: [task].
+Context: [1–2 lines that matter].
+Done looks like: [what you want back].
+Constraints: [if any].</code>
+        </div>
+        <ul class="clean">
+          <li>Add “investigate only” when you want diagnosis without changes.</li>
+          <li>Add “fix it” when action is allowed.</li>
+          <li>Add “draft only” when you want prep but no send.</li>
+          <li>Add “send it” only when you really mean external delivery is approved.</li>
+          <li>Add “if blocked, ask once” when you want less back-and-forth.</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Good asks vs messy asks</h2>
+        <p class="lead">Most chaos starts with vague wording. Tighten the ask and the agents stay sharp.</p>
+        <div class="example-grid">
+          <article class="example">
+            <h3 class="teal">Good</h3>
+            <p>Specific owner, clear outcome, clear permission level.</p>
+            <code>Ada: summarize today’s priorities and tell me what needs my decision.
+
+Luc: update the SEO page in the repo and send me the preview link.
+
+Ada: draft a reply to this client and flag anything risky. Draft only.
+
+Luc: check what’s broken vs working in the app. Investigate only.</code>
+          </article>
+          <article class="example">
+            <h3 class="danger">Messy</h3>
+            <p>Vague asks make ownership fuzzy and invite loops.</p>
+            <code>Handle this.
+
+Look into it.
+
+Clean this up.
+
+Can y’all both check this?
+
+Ok.</code>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>The one-owner rule</h2>
+        <p class="lead">Pick one owner per task. That alone will prevent most cross-talk.</p>
+        <div class="protocol-grid">
+          <article class="callout">
+            <h3>Do this</h3>
+            <p>“Ada: own this. Use Luc if needed.”</p>
+          </article>
+          <article class="callout">
+            <h3>Or this</h3>
+            <p>“Luc: check this directly and report back.”</p>
+          </article>
+          <article class="callout">
+            <h3>Not this</h3>
+            <p>Sending the same task to both agents separately and waiting for overlap, drift, or duplicate work.</p>
+          </article>
+        </div>
+        <ul class="clean">
+          <li>If you switch topics, start a fresh message.</li>
+          <li>If you’re replying to a prior task, reply to that message directly.</li>
+          <li>Don’t assume both agents saw the same context unless you routed it that way.</li>
+          <li>Don’t assume a vague “ok” means the task is now being tracked forever.</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Simple workflow that works</h2>
+        <p class="lead">This is the easiest way to keep Telegram productive without babysitting it.</p>
+        <div class="step-grid">
+          <article class="step">
+            <h3>1. Pick the owner</h3>
+            <p>Start with Ada for messy coordination. Start with Luc for execution.</p>
+          </article>
+          <article class="step">
+            <h3>2. State the ask</h3>
+            <p>Use the owner/task/context/done/constraints format.</p>
+          </article>
+          <article class="step">
+            <h3>3. Set permission</h3>
+            <p>Say whether it’s investigate only, draft only, fix it, or send it.</p>
+          </article>
+          <article class="step">
+            <h3>4. Expect one of three returns</h3>
+            <p>Result, blocker, or next recommendation. That’s the clean loop.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Three patterns worth memorizing</h2>
+        <p class="lead">If you remember nothing else, remember these.</p>
+        <div class="pill-grid">
+          <article class="pill-card">
+            <h3>Pattern A — coordination first</h3>
+            <p>“Ada: here’s the issue. Triage it, use Luc if needed, and come back with the answer.”</p>
+          </article>
+          <article class="pill-card">
+            <h3>Pattern B — direct execution</h3>
+            <p>“Luc: check this app/repo/system and tell me what’s broken, what’s working, and your first fix.”</p>
+          </article>
+          <article class="pill-card">
+            <h3>Pattern C — draft then act</h3>
+            <p>“Ada: draft the response. Luc: only step in if there’s a technical change needed.”</p>
+          </article>
+          <article class="pill-card">
+            <h3>Pattern D — parallel on purpose</h3>
+            <p>“Ada summarize; Luc investigate root cause.” Two roles, same problem, no ambiguity.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Useful phrases that save time</h2>
+        <p class="lead">These tiny switches make the request much clearer.</p>
+        <div class="example-grid">
+          <article class="example">
+            <h3>Permission / scope</h3>
+            <code>Investigate only.
+Fix it if it’s safe.
+Draft, don’t send.
+Send after review.
+Don’t message anyone externally.
+Use AgentOps for the handoff.</code>
+          </article>
+          <article class="example">
+            <h3>Output style</h3>
+            <code>Give me the short version.
+Give me options with a recommendation.
+Tell me what needs my decision.
+If blocked, ask once.
+Tell me the first fix you’d make.</code>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Bottom line</h2>
+        <p class="lead">The clean operating rule is simple enough to memorize.</p>
+        <div class="copy-box">
+          <div class="copy-meta">
+            <div>
+              <strong>One-line rule</strong>
+              <div class="micro">This is the whole system in one sentence.</div>
+            </div>
+            <button class="copy-btn secondary" data-copy-target="one-line-rule">Copy rule</button>
+          </div>
+          <code id="one-line-rule">One owner, one clear ask, one definition of done.</code>
+        </div>
+        <p class="footer-note">Built from Ada’s workflow plus Luc’s cheat-sheet handoff so you can use both without creating loops.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-copy-target]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const id = button.getAttribute('data-copy-target');
+        const el = document.getElementById(id);
+        if (!el) return;
+        const text = el.textContent.trim();
+        const original = button.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = 'Copied';
+          setTimeout(() => button.textContent = original, 1400);
+        } catch (err) {
+          button.textContent = 'Copy failed';
+          setTimeout(() => button.textContent = original, 1400);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
