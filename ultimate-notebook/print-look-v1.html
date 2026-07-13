@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ultimate Notebook — Print Look v1</title>
+<style>
+  /* =========================================================
+     PRINT-FIRST sales desk book board
+     Physical book mock · Letter · B&W · handwriting-first
+     ========================================================= */
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  :root {
+    --ink: #111;
+    --ink-soft: #333;
+    --muted: #666;
+    --rule: #1a1a1a;
+    --rule-light: #bbb;
+    --field: #fafafa;
+    --paper: #fff;
+    --band: #111;
+    --accent-fill: #f0f0f0;
+    --page-w: 8.5in;
+    --page-h: 11in;
+    --margin: 0.55in;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #e8e6e1;
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Screen board chrome */
+  .board-rail {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    background: #1a1a1a;
+    color: #f5f5f5;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .board-rail strong { font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .board-rail span { color: #aaa; }
+  .board-rail code {
+    background: #333;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .board {
+    padding: 28px 18px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  /* Physical page */
+  .page {
+    width: var(--page-w);
+    height: var(--page-h);
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.18), 0 1px 0 rgba(0,0,0,0.04);
+    padding: var(--margin);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* Header block used on most pages */
+  .page-head {
+    border-bottom: 2.5px solid var(--ink);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: end;
+  }
+  .brand-line {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .page-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  .page-sub {
+    margin: 3px 0 0;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  .page-meta {
+    text-align: right;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .page-meta b {
+    display: block;
+    color: var(--ink);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+  }
+
+  .footer-line {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer-line em {
+    font-style: normal;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-size: 10.5px;
+  }
+
+  /* Form primitives */
+  .section {
+    margin-bottom: 12px;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0 0 7px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule-light);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px 12px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px 10px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px 8px; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .field label {
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .field .line {
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    height: 22px;
+    background: transparent;
+  }
+  .field .line.tall { height: 28px; }
+  .field .box {
+    border: 1px solid var(--rule);
+    min-height: 54px;
+    background: transparent;
+  }
+  .field .box.notes {
+    min-height: 78px;
+  }
+  .field .box.dense {
+    min-height: 110px;
+  }
+
+  .checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    align-items: center;
+  }
+  .check {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .check i {
+    width: 12px;
+    height: 12px;
+    border: 1.4px solid var(--ink);
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .status-rail {
+    border: 1.5px solid var(--ink);
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background: var(--accent-fill);
+  }
+  .status-rail .rail-title {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.65fr 0.85fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .prompt-bar {
+    border-left: 3px solid var(--ink);
+    padding: 7px 10px;
+    background: var(--accent-fill);
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    margin: 8px 0 0;
+  }
+  .prompt-bar strong {
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* Tables */
+  table.log {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+  }
+  table.log th {
+    text-align: left;
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ink);
+    padding: 4px 3px;
+    color: var(--ink);
+  }
+  table.log td {
+    border-bottom: 1px solid #ccc;
+    height: 26px;
+    padding: 0 3px;
+  }
+  table.log tr:nth-child(even) td { background: #fafafa; }
+
+  /* COVER */
+  .page.cover {
+    background: #111;
+    color: #f3f3f3;
+    justify-content: space-between;
+  }
+  .cover-top {
+    border-bottom: 1px solid #444;
+    padding-bottom: 14px;
+  }
+  .cover-kicker {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    margin: 0 0 18px;
+  }
+  .cover-title {
+    font-size: 54px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0;
+    font-weight: 750;
+  }
+  .cover-title span {
+    display: block;
+    font-weight: 450;
+    color: #ddd;
+  }
+  .cover-sub {
+    margin: 18px 0 0;
+    max-width: 4.8in;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #c8c8c8;
+  }
+  .cover-mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    padding: 30px 0;
+  }
+  .cover-pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .cover-pillars div {
+    border: 1px solid #444;
+    padding: 12px 10px;
+    min-height: 78px;
+  }
+  .cover-pillars strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cover-pillars span {
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.35;
+  }
+  .cover-bottom {
+    border-top: 1px solid #444;
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-size: 11px;
+    color: #9a9a9a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cover-bottom b {
+    display: block;
+    color: #eee;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    text-transform: none;
+  }
+
+  /* Four-panel block layout for Needs */
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+  .panel {
+    border: 1.5px solid var(--ink);
+    padding: 10px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-height: 0;
+  }
+  .panel h3 {
+    margin: 0 0 2px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 750;
+    border-bottom: 1px solid var(--rule-light);
+    padding-bottom: 5px;
+  }
+
+  /* Quote page */
+  .page.quote {
+    justify-content: center;
+  }
+  .quote-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.4in 0.25in;
+  }
+  .quote-kicker {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+  .quote-text {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 18px;
+    font-weight: 500;
+    max-width: 6.6in;
+  }
+  .quote-attr {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 36px;
+  }
+  .reflect-block {
+    border-top: 2px solid var(--ink);
+    padding-top: 14px;
+  }
+  .reflect-block h3 {
+    margin: 0 0 10px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .ruled {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ruled i {
+    display: block;
+    height: 28px;
+    border-bottom: 1px solid #bbb;
+  }
+
+  /* Screen-only note strip under each page */
+  .page-note {
+    width: var(--page-w);
+    margin: -16px 0 8px;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.02em;
+  }
+  .page-note b { color: #111; }
+
+  @media print {
+    html, body { background: #fff; }
+    .board-rail, .page-note { display: none !important; }
+    .board { padding: 0; gap: 0; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      page-break-after: always;
+      break-after: page;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="board-rail">
+  <div>
+    <strong>Ultimate Notebook</strong>
+    <span> · Print Look v1 · Letter · B&W · handwriting-first</span>
+  </div>
+  <div>
+    <code>File → Print</code>
+    <span> for physical page proof</span>
+  </div>
+</div>
+
+<div class="board">
+
+  <!-- ===================== COVER ===================== -->
+  <section class="page cover" aria-label="Cover concept">
+    <div class="cover-top">
+      <p class="cover-kicker">Automotive Sales Desk Book</p>
+      <h1 class="cover-title">ULTIMATE<span>NOTEBOOK</span></h1>
+      <p class="cover-sub">A desk-ready operating book for tracking customers, moving deals, and running a disciplined month on the floor.</p>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-pillars">
+        <div>
+          <strong>01 Capture</strong>
+          <span>Lead / up intake with source, contact, and first-read notes.</span>
+        </div>
+        <div>
+          <strong>02 Diagnose</strong>
+          <span>Needs, timeline, money path, and real objections.</span>
+        </div>
+        <div>
+          <strong>03 Match</strong>
+          <span>Vehicles shown, demo reaction, trade status.</span>
+        </div>
+        <div>
+          <strong>04 Commit</strong>
+          <span>Next step, next date, follow-up until sold or clean dead.</span>
+        </div>
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div>
+        For dealership professionals
+        <b>Floor · Closer · BDC · Trainer</b>
+      </div>
+      <div style="text-align:right">
+        Print proof · not Kindle
+        <b>Physical desk tool</b>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Cover.</b> Dark, serious, no car gimmicks. Print spines later once page count locks.</p>
+
+
+  <!-- ===================== OWNERSHIP ===================== -->
+  <section class="page" aria-label="Ownership page">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Ultimate Notebook</p>
+          <h1 class="page-title">Ownership</h1>
+          <p class="page-sub">Mark the book. Make it yours. Use it every day.</p>
+        </div>
+        <div class="page-meta">Front matter<br><b>Page 02</b></div>
+      </header>
+
+      <div class="section">
+        <p class="section-label">Identity</p>
+        <div class="grid-2">
+          <div class="field"><label>Name</label><div class="line tall"></div></div>
+          <div class="field"><label>Dealership</label><div class="line tall"></div></div>
+          <div class="field"><label>Role</label><div class="line"></div></div>
+          <div class="field"><label>Phone</label><div class="line"></div></div>
+          <div class="field"><label>Email</label><div class="line"></div></div>
+          <div class="field"><label>Month / Year</label><div class="line"></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">Commitment</p>
+        <div class="grid-2">
+          <div class="field"><label>Started using this book on</label><div class="line"></div></div>
+          <div class="field"><label>Unit goal this month</label><div class="line"></div></div>
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label>Why this month matters</label>
+          <div class="box notes"></div>
+        </div>
+      </div>
+
+      <div class="section" style="flex:1; display:flex; flex-direction:column;">
+        <p class="section-label">Standards I'll hold</p>
+        <div class="field" style="flex:1">
+          <div class="box dense" style="height:100%; min-height:160px"></div>
+        </div>
+      </div>
+
+      <p class="prompt-bar"><strong>Rule:</strong> Built for daily discipline, clean notes, and better follow-up.</p>
+
+      <div class="footer-line">
+        <span>Ultimate Notebook</span>
+        <em>Useful before beautiful.</em>
+        <span>02</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Ownership.</b> Simple identity + standards block. No decoration.</p>
+
+
+  <!-- ===================== LEAD / UP INTAKE ===================== -->
+  <section class="page" aria-label="Lead Up Intake">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Customer Workflow · Set A</p>
+          <h1 class="page-title">Lead / Up Intake</h1>
+          <p class="page-sub">Capture first-contact facts fast. Source, name, best path.</p>
+        </div>
+        <div class="page-meta">Core system<br><b>Page A</b></div>
+      </header>
+
+      <div class="section">
+        <p class="section-label">Contact stamp</p>
+        <div class="grid-5">
+          <div class="field"><label>Date</label><div class="line"></div></div>
+          <div class="field"><label>Time</label><div class="line"></div></div>
+          <div class="field"><label>Salesperson</label><div class="line"></div></div>
+          <div class="field" style="grid-column: span 2"><label>Source</label><div class="line"></div></div>
+        </div>
+        <div class="checks" style="margin-top:8px">
+          <span class="check"><i></i> Walk-In</span>
+          <span class="check"><i></i> Phone</span>
+          <span class="check"><i></i> Internet</span>
+          <span class="check"><i></i> Referral</span>
+          <span class="check"><i></i> Repeat</span>
+          <span class="check"><i></i> Service Drive</span>
+        </div>
+      </div>
+
+      <div class="split" style="flex:1">
+        <div>
+          <div class="section">
+            <p class="section-label">Customer</p>
+            <div class="grid-2">
+              <div class="field"><label>Customer Name</label><div class="line tall"></div></div>
+              <div class="field"><label>Co-Buyer / Spouse</label><div class="line tall"></div></div>
+              <div class="field"><label>Phone</label><div class="line"></div></div>
+              <div class="field"><label>Email</label><div class="line"></div></div>
+              <div class="field"><label>City</label><div class="line"></div></div>
+              <div class="field"><label>Preferred Contact</label><div class="line"></div></div>
+            </div>
+          </div>
+
+          <div class="section">
+            <p class="section-label">First read</p>
+            <div class="field"><label>First Impression</label><div class="box notes"></div></div>
+            <div class="field" style="margin-top:8px"><label>Personality / Communication Style</label><div class="box notes"></div></div>
+            <div class="field" style="margin-top:8px"><label>Immediate Opportunity Notes</label><div class="box notes"></div></div>
+          </div>
+        </div>
+
+        <div class="status-rail">
+          <div class="rail-title">Status rail</div>
+          <span class="check"><i></i> Appointment Set</span>
+          <span class="check"><i></i> Appointment Shown</span>
+          <span class="check"><i></i> CRM Entered</span>
+          <span class="check"><i></i> Needs Started</span>
+          <span class="check"><i></i> Demo Started</span>
+          <div style="height:1px; background:#ccc; margin:4px 0"></div>
+          <div class="field">
+            <label>Appt date / time</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>Best call back</label>
+            <div class="line"></div>
+          </div>
+          <div class="field" style="flex:1">
+            <label>Next hard step</label>
+            <div class="box" style="min-height:90px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>Customer Workflow · A of 4</span>
+        <em>Facts first. Stories later.</em>
+        <span>A</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Intake.</b> Stamp + identity left, status rail right — this is the workhorse page.</p>
+
+
+  <!-- ===================== NEEDS ANALYSIS ===================== -->
+  <section class="page" aria-label="Customer Needs Analysis">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Customer Workflow · Set B</p>
+          <h1 class="page-title">Customer Needs Analysis</h1>
+          <p class="page-sub">Understand the real deal — not just the vehicle.</p>
+        </div>
+        <div class="page-meta">Core system<br><b>Page B</b></div>
+      </header>
+
+      <div class="panel-grid">
+        <div class="panel">
+          <h3>01 Context</h3>
+          <div class="field"><label>Current Vehicle</label><div class="line"></div></div>
+          <div class="checks">
+            <span class="check"><i></i> Replacing</span>
+            <span class="check"><i></i> Adding</span>
+            <span class="check"><i></i> First vehicle</span>
+          </div>
+          <div class="field"><label>Who is this vehicle for?</label><div class="line"></div></div>
+          <div class="field"><label>Primary use</label><div class="line"></div></div>
+          <div class="field"><label>Timeline to buy</label><div class="line"></div></div>
+        </div>
+
+        <div class="panel">
+          <h3>02 Vehicle Fit</h3>
+          <div class="field"><label>Must-have features</label><div class="box" style="min-height:40px"></div></div>
+          <div class="field"><label>Nice-to-have</label><div class="line"></div></div>
+          <div class="field"><label>Preferred body style</label><div class="line"></div></div>
+          <div class="checks">
+            <span class="check"><i></i> New</span>
+            <span class="check"><i></i> Used</span>
+            <span class="check"><i></i> Either</span>
+          </div>
+          <div class="field"><label>Safety / Tech / Space priorities</label><div class="line"></div></div>
+        </div>
+
+        <div class="panel">
+          <h3>03 Money Path</h3>
+          <div class="field"><label>Budget range</label><div class="line"></div></div>
+          <div class="field"><label>Monthly payment comfort</label><div class="line"></div></div>
+          <div class="checks">
+            <span class="check"><i></i> Cash</span>
+            <span class="check"><i></i> Finance</span>
+            <span class="check"><i></i> Lease</span>
+          </div>
+          <div class="field"><label>Est. down payment</label><div class="line"></div></div>
+          <div class="checks">
+            <span class="check"><i></i> Trade yes</span>
+            <span class="check"><i></i> Trade no</span>
+          </div>
+          <div class="checks">
+            <span class="check"><i></i> Credit unknown</span>
+            <span class="check"><i></i> Challenged</span>
+            <span class="check"><i></i> Stable</span>
+            <span class="check"><i></i> Strong</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>04 Friction / Motivation</h3>
+          <div class="field"><label>Main concern</label><div class="line"></div></div>
+          <div class="field"><label>Main objection</label><div class="line"></div></div>
+          <div class="field"><label>Emotional driver</label><div class="line"></div></div>
+          <div class="field"><label>What would make them move today?</label><div class="box" style="min-height:48px"></div></div>
+        </div>
+      </div>
+
+      <p class="prompt-bar"><strong>Ask yourself:</strong> What matters most to this customer, really?</p>
+
+      <div class="footer-line">
+        <span>Customer Workflow · B of 4</span>
+        <em>Diagnose before you pitch.</em>
+        <span>B</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Needs.</b> Four equal rooms — context / fit / money / friction. No wasted gutters.</p>
+
+
+  <!-- ===================== VEHICLE + DEMO + TRADE ===================== -->
+  <section class="page" aria-label="Vehicle Demo Trade">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Customer Workflow · Set C</p>
+          <h1 class="page-title">Vehicle + Demo + Trade</h1>
+          <p class="page-sub">What was shown. How it landed. Where the trade sits.</p>
+        </div>
+        <div class="page-meta">Core system<br><b>Page C</b></div>
+      </header>
+
+      <div class="section">
+        <p class="section-label">Vehicle shown</p>
+        <div class="grid-3">
+          <div class="field"><label>Stock #</label><div class="line"></div></div>
+          <div class="field" style="grid-column: span 2"><label>Year / Make / Model / Trim</label><div class="line"></div></div>
+          <div class="field"><label>VIN (Last 8)</label><div class="line"></div></div>
+          <div class="field"><label>Mileage</label><div class="line"></div></div>
+          <div class="field"><label>Exterior</label><div class="line"></div></div>
+          <div class="field"><label>Interior</label><div class="line"></div></div>
+          <div class="field"><label>First unit shown</label><div class="line"></div></div>
+          <div class="field"><label>Alternate unit</label><div class="line"></div></div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="flex:1; align-items:stretch">
+        <div class="section" style="display:flex; flex-direction:column; margin:0">
+          <p class="section-label">Demo</p>
+          <div class="checks" style="margin-bottom:8px">
+            <span class="check"><i></i> Demo completed yes</span>
+            <span class="check"><i></i> No</span>
+          </div>
+          <div class="field"><label>Features highlighted</label><div class="box notes"></div></div>
+          <div class="field" style="margin-top:8px"><label>What they liked</label><div class="box" style="min-height:48px"></div></div>
+          <div class="field" style="margin-top:8px"><label>What they questioned</label><div class="box" style="min-height:48px"></div></div>
+          <div class="field" style="margin-top:8px"><label>What changed during the demo</label><div class="box" style="min-height:48px"></div></div>
+        </div>
+
+        <div class="section" style="display:flex; flex-direction:column; margin:0">
+          <p class="section-label">Trade</p>
+          <div class="field"><label>Trade Year / Make / Model</label><div class="line"></div></div>
+          <div class="field" style="margin-top:8px"><label>Trade mileage</label><div class="line"></div></div>
+          <div class="field" style="margin-top:8px"><label>Payoff / equity notes</label><div class="line"></div></div>
+          <div class="field" style="margin-top:8px"><label>Condition — tires / body / interior / glass</label><div class="box notes"></div></div>
+          <div class="checks" style="margin-top:8px">
+            <span class="check"><i></i> Appraisal started</span>
+            <span class="check"><i></i> Pending</span>
+            <span class="check"><i></i> Complete</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="prompt-bar"><strong>Close the page with:</strong> What vehicle felt closest to a yes?</p>
+
+      <div class="footer-line">
+        <span>Customer Workflow · C of 4</span>
+        <em>Reaction beats description.</em>
+        <span>C</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Vehicle / demo / trade.</b> Upper stamp, lower split. Write room over decoration.</p>
+
+
+  <!-- ===================== FOLLOW-UP ===================== -->
+  <section class="page" aria-label="Follow Up Next Steps">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Customer Workflow · Set D</p>
+          <h1 class="page-title">Follow-Up + Next Steps</h1>
+          <p class="page-sub">If there is no next date, there is no real plan.</p>
+        </div>
+        <div class="page-meta">Core system<br><b>Page D</b></div>
+      </header>
+
+      <div class="section">
+        <p class="section-label">Action board</p>
+        <div class="grid-4">
+          <div class="field"><label>Last contact</label><div class="line"></div></div>
+          <div class="field"><label>Next contact</label><div class="line"></div></div>
+          <div class="field"><label>Next action</label><div class="line"></div></div>
+          <div class="field"><label>Preferred method</label><div class="line"></div></div>
+        </div>
+        <div class="checks" style="margin-top:8px">
+          <span class="check"><i></i> Manager involved</span>
+          <span class="check"><i></i> Numbers sent</span>
+          <span class="check"><i></i> Trade pending</span>
+          <span class="check"><i></i> Vehicle still available</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-label">Resolve</p>
+        <div class="grid-2">
+          <div class="field"><label>Main objection to resolve</label><div class="line"></div></div>
+          <div class="field"><label>Promise made to customer</label><div class="line"></div></div>
+          <div class="field" style="grid-column: span 2"><label>Exact next step</label><div class="line tall"></div></div>
+        </div>
+        <div class="checks" style="margin-top:8px">
+          <span class="check"><i></i> Active</span>
+          <span class="check"><i></i> Pending</span>
+          <span class="check"><i></i> Sold</span>
+          <span class="check"><i></i> Lost</span>
+          <span class="check"><i></i> Dead</span>
+        </div>
+      </div>
+
+      <div class="section" style="flex:1; display:flex; flex-direction:column">
+        <p class="section-label">Running log</p>
+        <table class="log" style="flex:1">
+          <thead>
+            <tr>
+              <th style="width:12%">Date</th>
+              <th style="width:28%">Action</th>
+              <th style="width:30%">Result</th>
+              <th style="width:30%">Next move</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer-line">
+        <span>Customer Workflow · D of 4</span>
+        <em>Own the next contact.</em>
+        <span>D</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Follow-up.</b> Next date is the hero. Log keeps honesty over memory.</p>
+
+
+  <!-- ===================== DAILY SALES LOG ===================== -->
+  <section class="page" aria-label="Daily Sales Log">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Daily Operating</p>
+          <h1 class="page-title">Daily Sales Log</h1>
+          <p class="page-sub">Fast scan of the day. Mark the work. Don't invent later.</p>
+        </div>
+        <div class="page-meta">
+          Log sheet<br><b>Day ____</b>
+        </div>
+      </header>
+
+      <div class="section" style="margin-bottom:8px">
+        <div class="grid-4">
+          <div class="field"><label>Date</label><div class="line"></div></div>
+          <div class="field"><label>Day of week</label><div class="line"></div></div>
+          <div class="field"><label>Floor / BDC shift</label><div class="line"></div></div>
+          <div class="field"><label>Daily unit aim</label><div class="line"></div></div>
+        </div>
+        <div class="checks" style="margin-top:8px; font-size:10.5px">
+          <span style="color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; font-size:9px; margin-right:4px">Key</span>
+          <span class="check"><i></i> A Appointment</span>
+          <span class="check"><i></i> D Demo</span>
+          <span class="check"><i></i> W Write-up</span>
+          <span class="check"><i></i> S Sold</span>
+        </div>
+      </div>
+
+      <table class="log" style="flex:1">
+        <thead>
+          <tr>
+            <th style="width:7%">#</th>
+            <th style="width:16%">Customer</th>
+            <th style="width:10%">Source</th>
+            <th style="width:16%">Vehicle</th>
+            <th style="width:5%">A</th>
+            <th style="width:5%">D</th>
+            <th style="width:5%">W</th>
+            <th style="width:5%">S</th>
+            <th style="width:10%">Delivery</th>
+            <th style="width:10%">Est. $</th>
+            <th style="width:11%">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="section" style="margin-top:10px; margin-bottom:0">
+        <div class="grid-3">
+          <div class="field"><label>Day total ups</label><div class="line"></div></div>
+          <div class="field"><label>Write-ups</label><div class="line"></div></div>
+          <div class="field"><label>Sold</label><div class="line"></div></div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>Daily Operating</span>
+        <em>Mark it the day it happens.</em>
+        <span>LOG</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Daily log.</b> Dense table, check columns, room for 14 rows. Print scan-friendly.</p>
+
+
+  <!-- ===================== QUOTE / REFLECTION ===================== -->
+  <section class="page quote" aria-label="Quote Reflection">
+    <div class="page-inner">
+      <header class="page-head">
+        <div>
+          <p class="brand-line">Discipline Series</p>
+          <h1 class="page-title">Standards</h1>
+          <p class="page-sub">Hold the line when the day gets long.</p>
+        </div>
+        <div class="page-meta">Reflection<br><b>Q-01</b></div>
+      </header>
+
+      <div class="quote-wrap">
+        <p class="quote-kicker">Field note</p>
+        <p class="quote-text">“A written next step is better than a remembered next step.”</p>
+        <p class="quote-attr">Ultimate Notebook · Operating Rule</p>
+
+        <div class="reflect-block">
+          <h3>Where I will apply this this week</h3>
+          <div class="ruled">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="reflect-block" style="margin-top:22px; border-top:1px solid #bbb">
+          <h3>What broke my discipline last week</h3>
+          <div class="ruled">
+            <i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>Quote / Reflection</span>
+        <em>Sharp, not soft.</em>
+        <span>Q-01</span>
+      </div>
+    </div>
+  </section>
+  <p class="page-note"><b>Quote page.</b> One rule, room to write. No self-help chrome.</p>
+
+</div>
+</body>
+</html>
