@@ -29,6 +29,10 @@ h1 { font-size:26px; margin-top:4px; letter-spacing:-.02em; }
 .kpi-range { font-size:12px; color:var(--muted); margin-top:4px; min-height:34px; }
 .kpi-value { font-size:30px; font-weight:800; margin-top:8px; letter-spacing:-.03em; }
 .kpi-sub { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.4; }
+.kpi-why { font-size:12px; color:#334; margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,.08); line-height:1.45; }
+.kpi-why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:3px; }
+.explain { font-size:13px; color:#333; background:#f7f8fa; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:10px 0 12px; line-height:1.45; }
+.explain strong { color:#111; }
 .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
 .card.quiet { background:#fafbfc; }
 .card-title { font-size:16px; font-weight:800; }
@@ -67,7 +71,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:54 PM · This page is for Brian Harris BMW only</div>
+    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:55 PM · This page is for Brian Harris BMW only</div>
     <div class="verdict">
       <div class="verdict-label">This week at a glance</div>
       <div class="verdict-text">Lead handling is mixed this week — 14 salespeople are below standard on response or contact.</div>
@@ -80,24 +84,35 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
             <div class="kpi-range">Sales leads · Jul 14–20, 2026</div>
             <div class="kpi-value">38.4%</div>
             <div class="kpi-sub"><span class="down">↓ 15.4 pts vs prior week</span><br/>Prior week (Jul 7–13, 2026): 53.8%</div>
+            <div class="kpi-why"><strong>What this means</strong>
+              Share of new sales leads your team marked as contacted.
+              Higher is better. Green is about 90%+.</div>
           </div>
           <div class="kpi good">
             <div class="kpi-label">Median response time</div>
             <div class="kpi-range">Contacted sales leads · Jul 14–20, 2026</div>
             <div class="kpi-value">5 min</div>
             <div class="kpi-sub"><span class="up">faster by 4 min vs prior week</span><br/>Prior week (Jul 7–13, 2026): 10 min</div>
+            <div class="kpi-why"><strong>What this means</strong>
+              Typical time from lead arrival to first touch.
+              “Median” = the middle value (half faster, half slower).
+              Lower is better. Green is about 30 minutes or less.</div>
           </div>
           <div class="kpi warn">
             <div class="kpi-label">Untouched leads (over 24h)</div>
             <div class="kpi-range">No contact yet · as of Jul 21, 2026</div>
             <div class="kpi-value">3</div>
             <div class="kpi-sub">Sales leads this week (Jul 14–20, 2026): 268<br/>Prior week (Jul 7–13, 2026): 292 (<span class="down">↓ 8%</span>)</div>
+            <div class="kpi-why"><strong>What this means</strong>
+              Sales leads still sitting with zero contact after a full day.
+              This is the fire alarm. Ideal is 0.</div>
           </div>
         </div>
     
         <div class="card">
           <div class="card-title">Needs attention</div>
           <div class="range">Based on sales leads from Jul 14–20, 2026</div>
+          <div class="explain"><strong>What this means:</strong> People or situations to handle in today’s sales meeting — slow follow-up, ignored leads, or weak contact coverage.</div>
           <ul class='flags'><li>Darrell Buggage contact rate is 0% on 7 sales leads.</li><li>Josh Kinsley contact rate is 12% on 17 sales leads.</li><li>Kerry Beary contact rate is 26% on 27 sales leads.</li><li>Payton Lusk contact rate is 29% on 14 sales leads.</li><li>Brandi Hutchinson contact rate is 32% on 38 sales leads.</li></ul>
             <div class="subcard">
               <div class="subcard-h">Oldest untouched examples · as of Jul 21, 2026</div>
@@ -108,6 +123,11 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div class="card">
           <div class="card-title">Sales team scoreboard</div>
           <div class="range">Sales leads received Jul 14–20, 2026 · worst contact rate first</div>
+          <div class="explain"><strong>How to read this table:</strong> Top rows need the most coaching.
+          <em>Contacted</em> = % of their leads they touched.
+          <em>Median response</em> = typical speed to first touch.
+          <em>Untouched &gt;24h</em> = leads still ignored after a day.
+          <em>Multi-channel</em> = used more than one way to reach the customer (email + phone/text).</div>
           <table>
             <thead><tr>
               <th>Salesperson</th><th>Team</th><th class="num">Leads</th><th class="num">Contacted</th>
@@ -125,6 +145,9 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div class="card">
           <div class="card-title">Lead flow by source</div>
           <div class="range">This week Jul 14–20, 2026 vs prior week Jul 7–13, 2026</div>
+          <div class="explain"><strong>What this means:</strong> Where this week’s sales leads came from, compared with last week.
+          “Dealer website” = your store site (including Motive forms/chat).
+          Big drops can mean a form, ad, or 3rd-party feed broke.</div>
           <table>
             <thead><tr><th>Source group</th><th class="num">This week</th><th class="num">Prior week</th><th class="num">Change</th><th>Note</th></tr></thead>
             <tbody><tr><td>Other</td><td class='num'>96</td><td class='num'>125</td><td class='num'>-23%</td><td>Big swing vs prior week</td></tr><tr><td>Dealer website</td><td class='num'>51</td><td class='num'>76</td><td class='num'>-33%</td><td>Big swing vs prior week</td></tr><tr><td>Current Owner In Market</td><td class='num'>40</td><td class='num'>0</td><td class='num'>+100%</td><td>Big swing vs prior week</td></tr><tr><td>TrueCar</td><td class='num'>24</td><td class='num'>21</td><td class='num'>+14%</td><td>Normal</td></tr><tr><td>Carfax</td><td class='num'>19</td><td class='num'>29</td><td class='num'>-34%</td><td>Big swing vs prior week</td></tr><tr><td>FS Leads</td><td class='num'>19</td><td class='num'>19</td><td class='num'>+0%</td><td>Normal</td></tr><tr><td>Cargurus</td><td class='num'>6</td><td class='num'>4</td><td class='num'>+50%</td><td>Big swing vs prior week</td></tr><tr><td>BMW Military Program</td><td class='num'>5</td><td class='num'>5</td><td class='num'>+0%</td><td>Normal</td></tr><tr><td>BMWUSA.COM</td><td class='num'>4</td><td class='num'>7</td><td class='num'>-43%</td><td>Normal</td></tr><tr><td>Autotrader</td><td class='num'>4</td><td class='num'>6</td><td class='num'>-33%</td><td>Normal</td></tr></tbody>
@@ -134,13 +157,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div class="card quiet">
           <div class="card-title">Last 30 days context</div>
           <div class="range">Jun 21 – Jul 20, 2026</div>
+          <div class="explain"><strong>What this means:</strong> Same lead-handling picture, but for a full month instead of one week — useful to see if this week was normal or a blip.</div>
           <div class="mini-grid">
             <div><div class="mini-label">Sales leads</div><div class="mini-value">1,111</div></div>
             <div><div class="mini-label">Contact rate</div><div class="mini-value">50.0%</div></div>
             <div><div class="mini-label">Median response</div><div class="mini-value">8 min</div></div>
             <div><div class="mini-label">Customer contact</div><div class="mini-value">50.1%</div></div>
           </div>
-          <p class="meta">Dealer website traffic (last 30 days in GA4 cache dated 2026-07-15): 26,184 sessions · 21,957 users.</p>
+          <p class="meta">Dealer website traffic (last 30 days, Google Analytics cache dated 2026-07-15): 26,184 sessions (visits) · 21,957 users (people). A session is one visit to the site; users are unique people.</p>
         </div>
         <div class="footnotes">
           <strong>Date ranges used on this page</strong><br/>
@@ -149,7 +173,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
           <strong>Last 30 days:</strong> Jun 21 – Jul 20, 2026.<br/>
           Sales leads only (Internet / Phone / Walk-in). Service/parts excluded.
           Lead data from VinSolutions for <strong>Brian Harris BMW</strong> only.
-          Generated Jul 21, 2026 12:54 PM.
+          Generated Jul 21, 2026 12:55 PM.
         </div>
   </div>
   <footer>Brian Harris BMW · GM Weekly Performance Brief · The Cooperative Agency</footer>
