@@ -35,6 +35,11 @@
   .m-when { font-size:12px; color:var(--muted); margin-top:3px; }
   .m-value { font-size:34px; font-weight:850; margin-top:8px; letter-spacing:-.03em; }
   .m-delta { font-size:12px; color:var(--muted); margin-top:6px; line-height:1.4; }
+  .buckets { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+  .buckets .b { background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; gap:8px; }
+  .buckets .b b { color:#111; }
+  .buckets .b span { color:var(--muted); white-space:nowrap; }
+  @media (max-width:720px) { .buckets { grid-template-columns:1fr; } }
   .badge { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; padding:5px 8px; border-radius:999px; background:#eef1f5; color:#445; }
   .metric.good .badge { background:#d8f3e3; color:var(--good); }
   .metric.warn .badge { background:#ffe9b8; color:var(--warn); }
@@ -72,7 +77,7 @@
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 1:01 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 1:08 PM</div>
     <div class="verdict">
       <div class="lbl">This week at a glance</div>
       <div class="txt">Lead handling is mixed — 7 salespeople are below standard on speed or contact this week.</div>
@@ -106,17 +111,28 @@
           <div class="metric good">
             <div class="metric-top">
               <div>
-                <div class="m-label">2) Median first-response time</div>
-                <div class="m-when">Contacted sales leads · Jul 14–20, 2026</div>
+                <div class="m-label">2) Internet response time (median)</div>
+                <div class="m-when">Internet leads only · CRM adjusted response time · Jul 14–20, 2026</div>
               </div>
               <div class="badge">Good</div>
             </div>
-            <div class="m-value">5 min</div>
-            <div class="m-delta"><span class="neutral">same as prior week</span> · Prior week (Jul 7–13, 2026): 5 min</div>
+            <div class="m-value">18 min</div>
+            <div class="m-delta"><span class="up">faster by 4 min vs prior week</span> · Prior week (Jul 7–13, 2026): 22 min<br/>
+              Based on 74 internet leads with a timed response
+              (of 74 internet leads this week)</div>
+            <div class="buckets">
+              <div class="b"><b>≤15 min</b><span>34 (45.9%)</span></div>
+              <div class="b"><b>16–30 min</b><span>11 (14.9%)</span></div>
+              <div class="b"><b>Over 30 min (missed goal)</b><span>29 (39.2%)</span></div>
+              <div class="b"><b>No timed response yet</b><span>0</span></div>
+            </div>
             <div class="why"><strong>What this means</strong>
-              How fast the team usually makes first contact after a lead comes in.
-              <em>Median</em> means the middle result (half the leads were faster, half slower) — not thrown off by one extreme delay.
-              Lower is better. About <strong>30 minutes or less</strong> is good. Over <strong>2 hours</strong> is a problem.</div>
+              This is <em>only internet leads</em>, using the CRM’s own <strong>adjusted response time</strong>
+              (same idea as the VinSolutions “Internet Response Times” chart).
+              Phone-ups and walk-ins are <strong>not</strong> mixed in — those often show as 0 minutes and make the store look faster than it is.
+              <em>Median</em> = middle result (half faster, half slower).
+              Lower is better. Goal bands: ≤15 min strong · ≤30 min acceptable · over 30 min missed goal.
+              Phone/walk-in leads still count in contact rate and the scoreboard volume, just not in this speed grade.</div>
           </div>
 
           <div class="metric warn">
@@ -169,7 +185,7 @@
                   <th class="num">Untouched &gt;24h</th>
                   <th class="num">Multi-channel</th>
                 </tr></thead>
-                <tbody><tr class="red"><td><strong>Randon Kimery</strong></td><td class='num'>11</td><td class='num'>27.3%</td><td class='num'>14h 12m</td><td class='num'>0</td><td class='num'>63.6%</td></tr><tr class="red"><td><strong>Jak Langston</strong></td><td class='num'>26</td><td class='num'>34.6%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>26.9%</td></tr><tr class="red"><td><strong>Ryan Kinsley</strong></td><td class='num'>6</td><td class='num'>66.7%</td><td class='num'>1h 46m</td><td class='num'>0</td><td class='num'>66.7%</td></tr><tr class="red"><td><strong>David Marcantel</strong></td><td class='num'>4</td><td class='num'>75.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>25.0%</td></tr><tr class="dim"><td>Sebastian Melancon</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
+                <tbody><tr class="red"><td><strong>Randon Kimery</strong></td><td class='num'>11</td><td class='num'>27.3%</td><td class='num'>1h</td><td class='num'>0</td><td class='num'>63.6%</td></tr><tr class="red"><td><strong>Jak Langston</strong></td><td class='num'>26</td><td class='num'>34.6%</td><td class='num'>38 min</td><td class='num'>0</td><td class='num'>26.9%</td></tr><tr class="red"><td><strong>Ryan Kinsley</strong></td><td class='num'>6</td><td class='num'>66.7%</td><td class='num'>2h 09m</td><td class='num'>0</td><td class='num'>66.7%</td></tr><tr class="red"><td><strong>David Marcantel</strong></td><td class='num'>4</td><td class='num'>75.0%</td><td class='num'>1h 17m</td><td class='num'>0</td><td class='num'>25.0%</td></tr><tr class="dim"><td>Sebastian Melancon</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
               </table>
             </div>
             <div class="sub group-block">
@@ -183,7 +199,7 @@
                   <th class="num">Untouched &gt;24h</th>
                   <th class="num">Multi-channel</th>
                 </tr></thead>
-                <tbody><tr class="red"><td><strong>Will Picard</strong></td><td class='num'>22</td><td class='num'>22.7%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>13.6%</td></tr><tr class="red"><td><strong>Shane Ducote</strong></td><td class='num'>31</td><td class='num'>74.2%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>41.9%</td></tr><tr class="red"><td><strong>Michael Craig</strong></td><td class='num'>12</td><td class='num'>75.0%</td><td class='num'>39 min</td><td class='num'><strong>1</strong></td><td class='num'>66.7%</td></tr><tr><td>Mike Cyprian</td><td class='num'>17</td><td class='num'>82.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>76.5%</td></tr></tbody>
+                <tbody><tr class="red"><td><strong>Will Picard</strong></td><td class='num'>22</td><td class='num'>22.7%</td><td class='num'>22 min</td><td class='num'>0</td><td class='num'>13.6%</td></tr><tr class="red"><td><strong>Shane Ducote</strong></td><td class='num'>31</td><td class='num'>74.2%</td><td class='num'>7 min</td><td class='num'>0</td><td class='num'>41.9%</td></tr><tr class="red"><td><strong>Michael Craig</strong></td><td class='num'>12</td><td class='num'>75.0%</td><td class='num'>39 min</td><td class='num'><strong>1</strong></td><td class='num'>66.7%</td></tr><tr><td>Mike Cyprian</td><td class='num'>17</td><td class='num'>82.4%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>76.5%</td></tr></tbody>
               </table>
             </div>
             <div class="sub group-block">
@@ -203,7 +219,7 @@
           <div class="col-help">
             <div><strong>Leads received</strong> — how many new sales leads were assigned to them this week.</div>
             <div><strong>Contact rate</strong> — % of those leads they touched. Higher better (~90%+ good).</div>
-            <div><strong>Median response</strong> — typical time to first touch. Lower better (~30 min or less good).</div>
+            <div><strong>Median response</strong> — typical <em>internet</em> adjusted response time for that person. Lower better. Blank/— means not enough timed internet leads.</div>
             <div><strong>Untouched &gt;24h</strong> — leads still ignored after a day. Ideal is 0.</div>
             <div><strong>Multi-channel</strong> — % of leads where they used more than one contact method (for example email + phone). Higher usually means more real follow-up effort.</div>
           </div>
@@ -288,9 +304,9 @@
           <strong>Date ranges on this page</strong><br/>
           <strong>This week:</strong> Jul 14–20, 2026.<br/>
           <strong>Prior week:</strong> Jul 7–13, 2026.<br/>
-          Only Internet / Phone / Walk-in sales leads count. Service and parts leads are excluded.
+          Sales volume includes Internet / Phone / Walk-in. Service and parts are excluded. Response-time grades use <strong>Internet leads only</strong> and the CRM adjusted response time field (not phone/walk-in zeros).
           Lead data from VinSolutions for <strong>Audi Baton Rouge</strong> only.
-          Generated Jul 21, 2026 1:01 PM.<br/>Brief build: v2-claude-groups · calendar dates only (never “L30”).
+          Generated Jul 21, 2026 1:08 PM.<br/>Brief build: v2-claude-groups · calendar dates only (never “L30”).
         </section>
   </div>
   <footer>Audi Baton Rouge · GM Weekly Performance Brief · The Cooperative Agency</footer>
