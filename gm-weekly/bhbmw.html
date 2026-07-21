@@ -5,231 +5,153 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GM Weekly Performance Brief — Brian Harris BMW</title>
 <style>
-  :root { --accent:#1c69d4; --bg:#0b0c0f; --card:#14161c; --line:#242833; --text:#e8eaef; --muted:#8b93a7; --up:#22c55e; --down:#ef4444; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
-  a { color:var(--accent); text-decoration:none; }
-  .top { border-bottom:2px solid var(--accent); background:#101218; padding:20px 28px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
-  .brand { font-size:12px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
-  h1 { font-size:22px; margin-top:4px; }
-  .sub { color:var(--muted); font-size:13px; margin-top:4px; }
-  .badge { background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:700; }
-  .wrap { max-width:1280px; margin:0 auto; padding:28px 20px 60px; }
-  .section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 18px 14px; margin-bottom:18px; }
-  .section.warn { border-color:#854d0e; background:#1a1408; }
-  .section-h { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-bottom:14px; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em; }
-  .pill { font-size:11px; color:var(--muted); font-weight:600; text-transform:none; letter-spacing:0; text-align:right; }
-  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-  .metric { background:#0f1117; border:1px solid var(--line); border-radius:10px; padding:14px; }
-  .metric-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
-  .metric-value { font-size:24px; font-weight:800; margin-top:6px; }
-  .metric-sub { font-size:12px; color:var(--muted); margin-top:6px; min-height:18px; }
-  .two { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-  .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  table { width:100%; border-collapse:collapse; font-size:13px; }
-  table.tight { font-size:12px; min-width:1100px; }
-  th { text-align:left; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; padding:8px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
-  td { padding:8px 6px; border-bottom:1px solid #1a1d26; vertical-align:top; }
-  tr.dim td { opacity:.55; }
-  .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .up { color:var(--up); font-weight:700; }
-  .down { color:var(--down); font-weight:700; }
-  .neutral { color:var(--muted); }
-  .note { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
-  .nav { margin-bottom:18px; font-size:13px; color:var(--muted); }
-  footer { color:#555; font-size:12px; text-align:center; padding:20px; }
-  @media (max-width:900px) { .grid,.two { grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px) { .grid,.two { grid-template-columns:1fr; } }
+:root { --accent: #1c69d4; --ink:#111; --muted:#5b6472; --line:#e6e8ee; --bg:#f4f5f7; --card:#fff;
+  --good:#0f7b3a; --good-bg:#e8f7ee; --warn:#9a6700; --warn-bg:#fff6e0; --bad:#b42318; --bad-bg:#fdeceb; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+.top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 20px; }
+.wrap { max-width:880px; margin:0 auto; padding:18px 16px 48px; }
+.brand { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+h1 { font-size:26px; margin-top:4px; letter-spacing:-.02em; }
+.sub { color:var(--muted); font-size:14px; margin-top:4px; }
+.meta-line { font-size:13px; color:var(--muted); margin:0 0 16px; }
+.verdict { background:#111; color:#fff; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+.verdict-label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
+.verdict-text { font-size:18px; font-weight:700; margin-top:6px; line-height:1.35; }
+.verdict-range { font-size:13px; opacity:.75; margin-top:8px; }
+.kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:4px solid #c5c9d3; }
+.kpi.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--good-bg)); }
+.kpi.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warn-bg)); }
+.kpi.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--bad-bg)); }
+.kpi.neutral { border-top-color:#c5c9d3; }
+.kpi-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.kpi-range { font-size:12px; color:var(--muted); margin-top:4px; min-height:34px; }
+.kpi-value { font-size:30px; font-weight:800; margin-top:8px; letter-spacing:-.03em; }
+.kpi-sub { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.4; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
+.card.quiet { background:#fafbfc; }
+.card-title { font-size:16px; font-weight:800; }
+.range { font-size:13px; color:var(--muted); margin-top:3px; margin-bottom:12px; }
+.body { font-size:14px; }
+.good-text { color:var(--good); font-weight:600; }
+.flags { margin:0 0 0 18px; }
+.flags li { margin:6px 0; font-size:14px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
+td { padding:9px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+tr.redrow td { background:#fff5f5; }
+tr.dim td { opacity:.45; }
+.meta { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
+.subcard { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+.subcard-h { font-size:13px; font-weight:700; margin-bottom:8px; }
+.mini-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.mini-label { font-size:11px; color:var(--muted); text-transform:uppercase; }
+.mini-value { font-size:20px; font-weight:800; margin-top:4px; }
+.up { color:var(--good); font-weight:700; }
+.down { color:var(--bad); font-weight:700; }
+.neutral { color:var(--muted); }
+.footnotes { font-size:12px; color:var(--muted); line-height:1.55; padding:8px 4px 0; }
+footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
+@media (max-width:720px) { .kpis,.mini-grid { grid-template-columns:1fr; } h1 { font-size:22px; } }
+@media print { body { background:#fff; } .card,.kpi,.verdict { break-inside:avoid; } }
 </style>
 </head>
 <body>
   <div class="top">
-    <div>
+    <div class="wrap" style="padding-top:0;padding-bottom:0;">
       <div class="brand">GM Weekly Performance Brief · Prepared by The Cooperative Agency</div>
       <h1>Brian Harris BMW</h1>
-      <div class="sub">VinSolutions lead data · week of 2026-07-14</div>
+      <div class="sub">Sales lead handling · VinSolutions · This week: Jul 14–20, 2026</div>
     </div>
-    <div class="badge">Week of 2026-07-14 → 2026-07-20</div>
   </div>
   <div class="wrap">
-    <div class="nav"><a href="index.html">← All stores</a> · As of 2026-07-21 · Generated 2026-07-21 12:48</div>
-    <div class="section">
-      <div class="section-h"><span>Website Traffic (GA4)</span><span class="pill">Same live standard as public GA4 dashboards</span></div>
-      <div class="grid">
-    <div class="metric">
-      <div class="metric-label">Sessions (L30)</div>
-      <div class="metric-value">26,184</div>
-      <div class="metric-sub">Last 30 Days</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Users (L30)</div>
-      <div class="metric-value">21,957</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">New Users (L30)</div>
-      <div class="metric-value">16,220</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Pages / Session</div>
-      <div class="metric-value">3.5</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Bounce Rate</div>
-      <div class="metric-value">52.9%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Engagement Rate</div>
-      <div class="metric-value">47.1%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Mobile %</div>
-      <div class="metric-value">60.7%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">GA4 cache</div>
-      <div class="metric-value">2026-07-15</div>
-      <div class="metric-sub">from ga4-data.json</div>
-    </div></div>
-    </div>
-    <div class="section">
-      <div class="section-h"><span>GA4 Session Sources (top)</span></div>
-      <table><thead><tr><th>Source / Medium</th><th class="num">Sessions</th></tr></thead>
-      <tbody><tr><td>google/cpc</td><td class='num'>25,879</td></tr><tr><td>(direct)/(none)</td><td class='num'>21,783</td></tr><tr><td>google/organic</td><td class='num'>15,697</td></tr><tr><td>facebook/cpc</td><td class='num'>2,120</td></tr><tr><td>amp/text</td><td class='num'>1,771</td></tr><tr><td>bing/organic</td><td class='num'>1,718</td></tr><tr><td>vinurl.com/referral</td><td class='num'>828</td></tr><tr><td>bmwusa.com/referral</td><td class='num'>779</td></tr><tr><td>app.podium.com/referral</td><td class='num'>763</td></tr><tr><td>yahoo/organic</td><td class='num'>580</td></tr><tr><td>autotrader.com/referral</td><td class='num'>461</td></tr><tr><td>duckduckgo/organic</td><td class='num'>327</td></tr></tbody></table>
+    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:54 PM · This page is for Brian Harris BMW only</div>
+    <div class="verdict">
+      <div class="verdict-label">This week at a glance</div>
+      <div class="verdict-text">Lead handling is mixed this week — 14 salespeople are below standard on response or contact.</div>
+      <div class="verdict-range">Date range for this summary: Jul 14–20, 2026</div>
     </div>
     
-        <div class="section">
-          <div class="section-h">
-            <span>How leads were handled</span>
-            <span class="pill">Internet / phone / walk-in sales leads</span>
+        <div class="kpis">
+          <div class="kpi bad">
+            <div class="kpi-label">Contact rate</div>
+            <div class="kpi-range">Sales leads · Jul 14–20, 2026</div>
+            <div class="kpi-value">38.4%</div>
+            <div class="kpi-sub"><span class="down">↓ 15.4 pts vs prior week</span><br/>Prior week (Jul 7–13, 2026): 53.8%</div>
           </div>
-          <div class="grid">
-    <div class="metric">
-      <div class="metric-label">Sales leads (7d)</div>
-      <div class="metric-value">268</div>
-      <div class="metric-sub">prior 7d 292 · <span class="down">↓ 8.2%</span></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Median speed-to-touch</div>
-      <div class="metric-value">10m</div>
-      <div class="metric-sub">prior 13m · lower is better</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Touched ≤15 min</div>
-      <div class="metric-value">1242.9%</div>
-      <div class="metric-sub">≤60 min 1714.3%</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Customer contacted</div>
-      <div class="metric-value">38.8%</div>
-      <div class="metric-sub">CRM contacted flag 38.4%</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Multi-channel work</div>
-      <div class="metric-value">38.8%</div>
-      <div class="metric-sub">2+ of email / phone / text attempts</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Trade on lead</div>
-      <div class="metric-value">41.0%</div>
-      <div class="metric-sub">110 of 268 sales leads</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">VOI present</div>
-      <div class="metric-value">88.1%</div>
-      <div class="metric-sub">MTD sales leads 732</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Sold (clean 7d)</div>
-      <div class="metric-value">18 · 11.0%</div>
-      <div class="metric-sub">outcome only — care metrics above are primary</div>
-    </div></div>
-          <div class="note">
-            Windows: last 7d 2026-07-14 → 2026-07-20
-            · prior 7d 2026-07-07 → 2026-07-13
-            · month-to-date from 2026-07-01.
-            Response time uses VinSolutions adjusted response when available, otherwise first attempt minus lead date.
+          <div class="kpi good">
+            <div class="kpi-label">Median response time</div>
+            <div class="kpi-range">Contacted sales leads · Jul 14–20, 2026</div>
+            <div class="kpi-value">5 min</div>
+            <div class="kpi-sub"><span class="up">faster by 4 min vs prior week</span><br/>Prior week (Jul 7–13, 2026): 10 min</div>
+          </div>
+          <div class="kpi warn">
+            <div class="kpi-label">Untouched leads (over 24h)</div>
+            <div class="kpi-range">No contact yet · as of Jul 21, 2026</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-sub">Sales leads this week (Jul 14–20, 2026): 268<br/>Prior week (Jul 7–13, 2026): 292 (<span class="down">↓ 8%</span>)</div>
           </div>
         </div>
-
-        <div class="section">
-          <div class="section-h"><span>Lead sources · handling by source (last 30 days)</span></div>
-          <div class="scroll">
+    
+        <div class="card">
+          <div class="card-title">Needs attention</div>
+          <div class="range">Based on sales leads from Jul 14–20, 2026</div>
+          <ul class='flags'><li>Darrell Buggage contact rate is 0% on 7 sales leads.</li><li>Josh Kinsley contact rate is 12% on 17 sales leads.</li><li>Kerry Beary contact rate is 26% on 27 sales leads.</li><li>Payton Lusk contact rate is 29% on 14 sales leads.</li><li>Brandi Hutchinson contact rate is 32% on 38 sales leads.</li></ul>
+            <div class="subcard">
+              <div class="subcard-h">Oldest untouched examples · as of Jul 21, 2026</div>
+              <table><thead><tr><th>Salesperson</th><th>Source</th><th>Lead arrived</th><th class="num">Age</th></tr></thead>
+              <tbody><tr><td>Jason Arceneaux</td><td>AMP - Refinance Opportunity</td><td>Jul 17 12:04 PM</td><td class='num'>108h</td></tr><tr><td>Jason Arceneaux</td><td>Dealer website</td><td>Jul 17 7:23 PM</td><td class='num'>101h</td></tr><tr><td>Milla Augustine</td><td>Autotrader.Com - Call Start Phone Lead</td><td>Jul 20 1:12 PM</td><td class='num'>34.8h</td></tr></tbody></table>
+            </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Sales team scoreboard</div>
+          <div class="range">Sales leads received Jul 14–20, 2026 · worst contact rate first</div>
           <table>
             <thead><tr>
-              <th>Lead Source</th><th class="num">Leads</th><th class="num">Med Speed</th>
-              <th class="num">Contacted</th><th class="num">Customer Contact</th>
-              <th class="num">Trade %</th><th class="num">Sold</th>
+              <th>Salesperson</th><th>Team</th><th class="num">Leads</th><th class="num">Contacted</th>
+              <th class="num">Median response</th><th class="num">Untouched &gt;24h</th><th class="num">Multi-channel</th>
             </tr></thead>
-            <tbody><tr><td>Dealer website</td><td class='num'>255</td><td class='num'>12m</td><td class='num'>55.7%</td><td class='num'>56.1%</td><td class='num'>13.3%</td><td class='num'>31</td></tr><tr><td>WALK  IN  DRIVE BY</td><td class='num'>89</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>20.2%</td><td class='num'>29</td></tr><tr><td>Carfax, Inc</td><td class='num'>82</td><td class='num'>12m</td><td class='num'>45.1%</td><td class='num'>45.1%</td><td class='num'>7.3%</td><td class='num'>1</td></tr><tr><td>Trade In</td><td class='num'>70</td><td class='num'>16m</td><td class='num'>40.0%</td><td class='num'>40.0%</td><td class='num'>100.0%</td><td class='num'>3</td></tr><tr><td>Repeat Customer</td><td class='num'>46</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>41.3%</td><td class='num'>13</td></tr><tr><td>Current Owner In Markt</td><td class='num'>40</td><td class='num'>—</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td class='num'>0</td></tr><tr><td>Podium</td><td class='num'>39</td><td class='num'>36m</td><td class='num'>28.2%</td><td class='num'>30.8%</td><td class='num'>5.1%</td><td class='num'>1</td></tr><tr><td>FS LEASE LEAD 270</td><td class='num'>38</td><td class='num'>—</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td class='num'>0</td></tr><tr><td>Truecar/Truecar</td><td class='num'>37</td><td class='num'>16m</td><td class='num'>37.8%</td><td class='num'>37.8%</td><td class='num'>13.5%</td><td class='num'>1</td></tr><tr><td>Phone Up</td><td class='num'>29</td><td class='num'>7m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>20.7%</td><td class='num'>8</td></tr><tr><td>Referral</td><td class='num'>22</td><td class='num'>40m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>45.5%</td><td class='num'>12</td></tr><tr><td>Autotrader.Com - Wallet Lead</td><td class='num'>21</td><td class='num'>3m</td><td class='num'>47.6%</td><td class='num'>47.6%</td><td class='num'>9.5%</td><td class='num'>2</td></tr><tr><td>Fs Active Lead Service</td><td class='num'>20</td><td class='num'>—</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td class='num'>0</td></tr><tr><td>Cargurus</td><td class='num'>19</td><td class='num'>10m</td><td class='num'>15.8%</td><td class='num'>15.8%</td><td class='num'>10.5%</td><td class='num'>0</td></tr><tr><td>Domestic Military Program Validated Customer</td><td class='num'>19</td><td class='num'>36m</td><td class='num'>31.6%</td><td class='num'>31.6%</td><td class='num'>0.0%</td><td class='num'>1</td></tr></tbody>
+            <tbody><tr class="redrow"><td><strong>Darrell Buggage</strong></td><td>Service</td><td class='num'>7</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class="redrow"><td><strong>Josh Kinsley</strong></td><td>New Sales</td><td class='num'>17</td><td class='num'>11.8%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>5.9%</td></tr><tr class="redrow"><td><strong>Kerry Beary</strong></td><td>New Sales</td><td class='num'>27</td><td class='num'>25.9%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>29.6%</td></tr><tr class="redrow"><td><strong>Payton Lusk</strong></td><td>New Sales</td><td class='num'>14</td><td class='num'>28.6%</td><td class='num'>46 min</td><td class='num'>0</td><td class='num'>50.0%</td></tr><tr class="redrow"><td><strong>Brandi Hutchinson</strong></td><td>Used Sales</td><td class='num'>38</td><td class='num'>31.6%</td><td class='num'>2 min</td><td class='num'>0</td><td class='num'>39.5%</td></tr><tr class="redrow"><td><strong>Jason Arceneaux</strong></td><td>Used Sales</td><td class='num'>21</td><td class='num'>38.1%</td><td class='num'>12 min</td><td class='num'>2</td><td class='num'>38.1%</td></tr><tr class="redrow"><td><strong>Tommy Ngo</strong></td><td>New Sales</td><td class='num'>22</td><td class='num'>40.9%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>27.3%</td></tr><tr class="redrow"><td><strong>David Spikes</strong></td><td>New Sales</td><td class='num'>19</td><td class='num'>42.1%</td><td class='num'>1h 04m</td><td class='num'>0</td><td class='num'>42.1%</td></tr><tr class="redrow"><td><strong>Yasoob Zia</strong></td><td>Used Sales</td><td class='num'>27</td><td class='num'>44.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>63.0%</td></tr><tr class="redrow"><td><strong>Blaysen Toney</strong></td><td>New Sales</td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>45.5%</td></tr><tr class="redrow"><td><strong>Kyle Adibyazdi</strong></td><td>New Sales</td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>54.5%</td></tr><tr class="redrow"><td><strong>Milla Augustine</strong></td><td>New Sales</td><td class='num'>17</td><td class='num'>52.9%</td><td class='num'>2 min</td><td class='num'>1</td><td class='num'>23.5%</td></tr><tr class="redrow"><td><strong>Tasha Stubbs</strong></td><td>Used Sales</td><td class='num'>27</td><td class='num'>55.6%</td><td class='num'>5 min</td><td class='num'>0</td><td class='num'>44.4%</td></tr><tr class="redrow"><td><strong>Reginald Day</strong></td><td>Used Sales</td><td class='num'>8</td><td class='num'>62.5%</td><td class='num'>8 min</td><td class='num'>0</td><td class='num'>87.5%</td></tr><tr class="dim"><td><strong>Charles Tortorich</strong></td><td>Manager</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class="dim"><td><strong>Neil Coll</strong></td><td>New Sales</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
           </table>
-          </div>
+          <p class="meta">
+            All columns cover sales leads from <strong>Jul 14–20, 2026</strong> only.
+            Untouched &gt;24h uses report date <strong>Jul 21, 2026</strong>.
+            Multi-channel = email plus phone and/or text on the same lead.
+            Rows with fewer than 3 leads are faded.
+          </p>
         </div>
-
-        <div class="two">
-          <div class="section">
-            <div class="section-h"><span>Source Groups (L30)</span></div>
-            <table><thead><tr><th>Group</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
-            <tbody><tr><td>Other</td><td class='num'>464</td><td class='num'>41.8%</td></tr><tr><td>Dealer website</td><td class='num'>255</td><td class='num'>23.0%</td></tr><tr><td>TrueCar</td><td class='num'>107</td><td class='num'>9.6%</td></tr><tr><td>FS Leads</td><td class='num'>88</td><td class='num'>7.9%</td></tr><tr><td>Carfax</td><td class='num'>82</td><td class='num'>7.4%</td></tr><tr><td>Current Owner In Market</td><td class='num'>40</td><td class='num'>3.6%</td></tr><tr><td>Cargurus</td><td class='num'>20</td><td class='num'>1.8%</td></tr><tr><td>BMW Military Program</td><td class='num'>19</td><td class='num'>1.7%</td></tr><tr><td>BMWUSA.COM</td><td class='num'>18</td><td class='num'>1.6%</td></tr><tr><td>Autotrader</td><td class='num'>18</td><td class='num'>1.6%</td></tr></tbody></table>
-          </div>
-          <div class="section">
-            <div class="section-h"><span>New / Used / CPO interest (L30)</span></div>
-            <table><thead><tr><th>Inventory Type</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
-            <tbody><tr><td>New</td><td class='num'>471</td><td class='num'>42.4%</td></tr><tr><td>Used</td><td class='num'>357</td><td class='num'>32.1%</td></tr><tr><td>Certified</td><td class='num'>190</td><td class='num'>17.1%</td></tr><tr><td>Unknown</td><td class='num'>93</td><td class='num'>8.4%</td></tr></tbody></table>
-          </div>
-        </div>
-
-        <div class="two">
-          <div class="section">
-            <div class="section-h"><span>Vehicles of Interest (L30)</span></div>
-            <table><thead><tr><th>Year Make Model</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
-            <tbody><tr><td>2026 BMW Full Line</td><td class='num'>111</td><td class='num'>11.6%</td></tr><tr><td>2026 BMW X3</td><td class='num'>55</td><td class='num'>5.7%</td></tr><tr><td>2026 BMW X5</td><td class='num'>55</td><td class='num'>5.7%</td></tr><tr><td>2024 BMW X5</td><td class='num'>38</td><td class='num'>4.0%</td></tr><tr><td>BMW Full Line</td><td class='num'>25</td><td class='num'>2.6%</td></tr><tr><td>2024 BMW X4</td><td class='num'>24</td><td class='num'>2.5%</td></tr><tr><td>2024 BMW X3</td><td class='num'>22</td><td class='num'>2.3%</td></tr><tr><td>2023 BMW X3</td><td class='num'>21</td><td class='num'>2.2%</td></tr><tr><td>2027 BMW X6</td><td class='num'>18</td><td class='num'>1.9%</td></tr><tr><td>2019 Mercedes-Benz C-Class</td><td class='num'>16</td><td class='num'>1.7%</td></tr><tr><td>2026 BMW X1</td><td class='num'>16</td><td class='num'>1.7%</td></tr><tr><td>2024 Hyundai Sonata</td><td class='num'>14</td><td class='num'>1.5%</td></tr></tbody></table>
-          </div>
-          <div class="section">
-            <div class="section-h"><span>Trade-Ins Mentioned (L30)</span></div>
-            <table><thead><tr><th>Trade Year Make Model</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
-            <tbody><tr><td>2022 BMW X5</td><td class='num'>11</td><td class='num'>3.3%</td></tr><tr><td>2024 BMW X3 sDrive30i</td><td class='num'>11</td><td class='num'>3.3%</td></tr><tr><td>2022 BMW X3</td><td class='num'>8</td><td class='num'>2.4%</td></tr><tr><td>2024 BMW X4</td><td class='num'>7</td><td class='num'>2.1%</td></tr><tr><td>2024 BMW X3</td><td class='num'>6</td><td class='num'>1.8%</td></tr><tr><td>2024 BMW X3 sDrive30i SA</td><td class='num'>6</td><td class='num'>1.8%</td></tr><tr><td>2024 BMW X5 sDrive40i</td><td class='num'>6</td><td class='num'>1.8%</td></tr><tr><td>2020 Nissan Maxima</td><td class='num'>5</td><td class='num'>1.5%</td></tr><tr><td>2024 BMW 330i Sedan</td><td class='num'>5</td><td class='num'>1.5%</td></tr><tr><td>2022 BMW X7</td><td class='num'>4</td><td class='num'>1.2%</td></tr></tbody></table>
-            <div class="note">Trade present on 29.9% of L30 sales leads (332).</div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-h">
-            <span>Sales team · lead handling (last 30 days)</span>
-            <span class="pill">Sorted by customer contact rate, then response speed</span>
-          </div>
-          <div class="scroll">
-          <table class="tight">
-            <thead><tr>
-              <th>Sales Rep</th><th>Group</th><th class="num">Leads</th>
-              <th class="num">Med Speed</th><th class="num">≤15m</th>
-              <th class="num">Cust Contact</th>
-              <th class="num">Phone</th><th class="num">Email</th><th class="num">Text</th>
-              <th class="num">Multi</th><th class="num">Trade %</th>
-              <th>Top Source</th><th>Top VOI</th><th>Top Trade</th>
-              <th class="num">Sold</th>
-            </tr></thead>
-            <tbody><tr><td>Neil Coll</td><td>New Sales</td><td class='num'>2</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td>Service Dept</td><td>2026 BMW X5</td><td>2020 BMW X3</td><td class='num'>0</td></tr><tr><td>Charles Tortorich</td><td>Manager</td><td class='num'>1</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td>Repeat Customer</td><td>2024 Volvo S60</td><td>2026 Chevrolet Trax</td><td class='num'>0</td></tr><tr><td>Triston Sittig</td><td>Ungrouped</td><td class='num'>1</td><td class='num'>—</td><td class='num'>—</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td>WALK  IN  DRIVE BY</td><td>2022 BMW X3</td><td>—</td><td class='num'>0</td></tr><tr><td>Reginald Day</td><td>Used Sales</td><td class='num'>30</td><td class='num'>14m</td><td class='num'>52.2%</td><td class='num'>70.0%</td><td class='num'>83.3%</td><td class='num'>60.0%</td><td class='num'>66.7%</td><td class='num'>76.7%</td><td class='num'>3.3%</td><td>Dealer website</td><td>2024 BMW X4</td><td>2015 Jeep Wrangler Unlimited</td><td class='num'>0</td></tr><tr><td>Milla Augustine</td><td>New Sales</td><td class='num'>77</td><td class='num'>4m</td><td class='num'>65.2%</td><td class='num'>67.5%</td><td class='num'>44.2%</td><td class='num'>45.5%</td><td class='num'>1.3%</td><td class='num'>27.3%</td><td class='num'>35.1%</td><td>WALK  IN  DRIVE BY</td><td>2026 BMW Full Line</td><td>2021 BMW X3</td><td class='num'>13</td></tr><tr><td>Tasha Stubbs</td><td>Used Sales</td><td class='num'>148</td><td class='num'>10m</td><td class='num'>60.2%</td><td class='num'>63.5%</td><td class='num'>61.5%</td><td class='num'>68.2%</td><td class='num'>4.7%</td><td class='num'>53.4%</td><td class='num'>14.9%</td><td>Dealer website</td><td>2024 Volvo S60</td><td>2022 Honda Accord</td><td class='num'>5</td></tr><tr><td>Kyle Adibyazdi</td><td>New Sales</td><td class='num'>75</td><td class='num'>36m</td><td class='num'>47.9%</td><td class='num'>57.3%</td><td class='num'>72.0%</td><td class='num'>56.0%</td><td class='num'>54.7%</td><td class='num'>68.0%</td><td class='num'>29.3%</td><td>Dealer website</td><td>2026 BMW Full Line</td><td>2025 Mercedes-Benz GLC Coupe</td><td class='num'>12</td></tr><tr><td>David Spikes</td><td>New Sales</td><td class='num'>84</td><td class='num'>15m</td><td class='num'>52.1%</td><td class='num'>57.1%</td><td class='num'>63.1%</td><td class='num'>48.8%</td><td class='num'>1.2%</td><td class='num'>45.2%</td><td class='num'>40.5%</td><td>Dealer website</td><td>2026 BMW X5</td><td>2022 BMW X3</td><td class='num'>17</td></tr><tr><td>Tommy Ngo</td><td>New Sales</td><td class='num'>75</td><td class='num'>1m</td><td class='num'>65.2%</td><td class='num'>56.0%</td><td class='num'>53.3%</td><td class='num'>46.7%</td><td class='num'>13.3%</td><td class='num'>34.7%</td><td class='num'>29.3%</td><td>WALK  IN  DRIVE BY</td><td>2026 BMW X5</td><td>2025 BMW X5</td><td class='num'>13</td></tr><tr><td>Yasoob Zia</td><td>Used Sales</td><td class='num'>160</td><td class='num'>11m</td><td class='num'>58.2%</td><td class='num'>50.6%</td><td class='num'>55.6%</td><td class='num'>64.4%</td><td class='num'>60.6%</td><td class='num'>61.9%</td><td class='num'>18.1%</td><td>Dealer website</td><td>2026 BMW Full Line</td><td>2020 Nissan Maxima</td><td class='num'>10</td></tr><tr><td>Jason Arceneaux</td><td>Used Sales</td><td class='num'>79</td><td class='num'>14m</td><td class='num'>55.6%</td><td class='num'>46.8%</td><td class='num'>62.0%</td><td class='num'>53.2%</td><td class='num'>12.7%</td><td class='num'>46.8%</td><td class='num'>30.4%</td><td>Dealer website</td><td>2024 BMW X5</td><td>2019 Jeep Grand Cherokee</td><td class='num'>9</td></tr><tr><td>Payton Lusk</td><td>New Sales</td><td class='num'>55</td><td class='num'>52m</td><td class='num'>30.0%</td><td class='num'>41.8%</td><td class='num'>61.8%</td><td class='num'>54.5%</td><td class='num'>43.6%</td><td class='num'>58.2%</td><td class='num'>40.0%</td><td>Phone Up</td><td>2026 BMW X5</td><td>2024 BMW X3 sDrive30i</td><td class='num'>4</td></tr><tr><td>Kerry Beary</td><td>New Sales</td><td class='num'>85</td><td class='num'>8m</td><td class='num'>59.5%</td><td class='num'>38.8%</td><td class='num'>51.8%</td><td class='num'>52.9%</td><td class='num'>16.5%</td><td class='num'>48.2%</td><td class='num'>40.0%</td><td>Dealer website</td><td>2026 BMW Full Line</td><td>2022 BMW X5</td><td class='num'>9</td></tr><tr><td>Brandi Hutchinson</td><td>Used Sales</td><td class='num'>144</td><td class='num'>7m</td><td class='num'>64.0%</td><td class='num'>36.8%</td><td class='num'>49.3%</td><td class='num'>61.8%</td><td class='num'>13.9%</td><td class='num'>41.7%</td><td class='num'>22.9%</td><td>Dealer website</td><td>2026 BMW Full Line</td><td>2022 BMW X5 sDrive40i</td><td class='num'>7</td></tr><tr><td>Josh Kinsley</td><td>New Sales</td><td class='num'>60</td><td class='num'>3m</td><td class='num'>61.9%</td><td class='num'>31.7%</td><td class='num'>40.0%</td><td class='num'>33.3%</td><td class='num'>6.7%</td><td class='num'>30.0%</td><td class='num'>56.7%</td><td>Current Owner In Markt</td><td>2026 BMW Full Line</td><td>2024 BMW X3 sDrive30i SA</td><td class='num'>9</td></tr><tr><td>Blaysen Toney</td><td>New Sales</td><td class='num'>16</td><td class='num'>14m</td><td class='num'>60.0%</td><td class='num'>31.2%</td><td class='num'>50.0%</td><td class='num'>56.2%</td><td class='num'>25.0%</td><td class='num'>50.0%</td><td class='num'>50.0%</td><td>Trade In</td><td>2026 BMW Full Line</td><td>2022 Ford Bronco Sport</td><td class='num'>0</td></tr><tr><td>Darrell Buggage</td><td>Service</td><td class='num'>17</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>5.9%</td><td class='num'>5.9%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>94.1%</td><td>Current Owner In Markt</td><td>2026 BMW Full Line</td><td>2020 BMW X5 sDrive 40i</td><td class='num'>0</td></tr><tr><td>Jason Breaux</td><td>Admin</td><td class='num'>1</td><td class='num'>—</td><td class='num'>—</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td>Fs Warranty Exp</td><td>BMW Full Line</td><td>2023 BMW 330i Sedan</td><td class='num'>0</td></tr><tr class='dim'><td>Your Service Dept at Brian Harris BMW</td><td>Orphan</td><td class='num'>1</td><td class='num'>0m</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td class='num'>0.0%</td><td>Phone Up</td><td>—</td><td>—</td><td class='num'>0</td></tr></tbody>
+        <div class="card">
+          <div class="card-title">Lead flow by source</div>
+          <div class="range">This week Jul 14–20, 2026 vs prior week Jul 7–13, 2026</div>
+          <table>
+            <thead><tr><th>Source group</th><th class="num">This week</th><th class="num">Prior week</th><th class="num">Change</th><th>Note</th></tr></thead>
+            <tbody><tr><td>Other</td><td class='num'>96</td><td class='num'>125</td><td class='num'>-23%</td><td>Big swing vs prior week</td></tr><tr><td>Dealer website</td><td class='num'>51</td><td class='num'>76</td><td class='num'>-33%</td><td>Big swing vs prior week</td></tr><tr><td>Current Owner In Market</td><td class='num'>40</td><td class='num'>0</td><td class='num'>+100%</td><td>Big swing vs prior week</td></tr><tr><td>TrueCar</td><td class='num'>24</td><td class='num'>21</td><td class='num'>+14%</td><td>Normal</td></tr><tr><td>Carfax</td><td class='num'>19</td><td class='num'>29</td><td class='num'>-34%</td><td>Big swing vs prior week</td></tr><tr><td>FS Leads</td><td class='num'>19</td><td class='num'>19</td><td class='num'>+0%</td><td>Normal</td></tr><tr><td>Cargurus</td><td class='num'>6</td><td class='num'>4</td><td class='num'>+50%</td><td>Big swing vs prior week</td></tr><tr><td>BMW Military Program</td><td class='num'>5</td><td class='num'>5</td><td class='num'>+0%</td><td>Normal</td></tr><tr><td>BMWUSA.COM</td><td class='num'>4</td><td class='num'>7</td><td class='num'>-43%</td><td>Normal</td></tr><tr><td>Autotrader</td><td class='num'>4</td><td class='num'>6</td><td class='num'>-33%</td><td>Normal</td></tr></tbody>
           </table>
-          </div>
-          <div class="note">
-            Focus: how well each person works the leads they get — response speed, customer contact, and multi-channel follow-up.
-            Unassigned / system rows are faded. Sold is shown only as context.
-          </div>
+          <p class="meta">Dealer website includes Motive and dealer-site forms/chat. Groups under 3 leads this week are hidden.</p>
         </div>
-
-        <div class="section">
-          <div class="section-h"><span>All CRM lead types (L30)</span><span class="pill">Includes Service — context only</span></div>
-          <table><thead><tr><th>Lead Type</th><th class="num">Count</th><th class="num">Share</th></tr></thead>
-          <tbody><tr><td>Internet</td><td class='num'>826</td><td class='num'>44.1%</td></tr><tr><td>Service</td><td class='num'>762</td><td class='num'>40.6%</td></tr><tr><td>Walk-in</td><td class='num'>153</td><td class='num'>8.2%</td></tr><tr><td>Phone</td><td class='num'>131</td><td class='num'>7.0%</td></tr><tr><td>PartsOrder</td><td class='num'>2</td><td class='num'>0.1%</td></tr><tr><td>WebsiteChat</td><td class='num'>1</td><td class='num'>0.1%</td></tr></tbody></table>
+        <div class="card quiet">
+          <div class="card-title">Last 30 days context</div>
+          <div class="range">Jun 21 – Jul 20, 2026</div>
+          <div class="mini-grid">
+            <div><div class="mini-label">Sales leads</div><div class="mini-value">1,111</div></div>
+            <div><div class="mini-label">Contact rate</div><div class="mini-value">50.0%</div></div>
+            <div><div class="mini-label">Median response</div><div class="mini-value">8 min</div></div>
+            <div><div class="mini-label">Customer contact</div><div class="mini-value">50.1%</div></div>
+          </div>
+          <p class="meta">Dealer website traffic (last 30 days in GA4 cache dated 2026-07-15): 26,184 sessions · 21,957 users.</p>
         </div>
-        
+        <div class="footnotes">
+          <strong>Date ranges used on this page</strong><br/>
+          <strong>This week:</strong> Jul 14–20, 2026.<br/>
+          <strong>Prior week:</strong> Jul 7–13, 2026.<br/>
+          <strong>Last 30 days:</strong> Jun 21 – Jul 20, 2026.<br/>
+          Sales leads only (Internet / Phone / Walk-in). Service/parts excluded.
+          Lead data from VinSolutions for <strong>Brian Harris BMW</strong> only.
+          Generated Jul 21, 2026 12:54 PM.
+        </div>
   </div>
-  <footer>GM Weekly Performance Brief · Brian Harris BMW · Prepared by The Cooperative Agency</footer>
+  <footer>Brian Harris BMW · GM Weekly Performance Brief · The Cooperative Agency</footer>
 </body>
 </html>

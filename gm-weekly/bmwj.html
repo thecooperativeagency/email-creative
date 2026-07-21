@@ -5,110 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GM Weekly Performance Brief — BMW of Jackson</title>
 <style>
-  :root { --accent:#1c69d4; --bg:#0b0c0f; --card:#14161c; --line:#242833; --text:#e8eaef; --muted:#8b93a7; --up:#22c55e; --down:#ef4444; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
-  a { color:var(--accent); text-decoration:none; }
-  .top { border-bottom:2px solid var(--accent); background:#101218; padding:20px 28px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center; }
-  .brand { font-size:12px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
-  h1 { font-size:22px; margin-top:4px; }
-  .sub { color:var(--muted); font-size:13px; margin-top:4px; }
-  .badge { background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; font-size:12px; font-weight:700; }
-  .wrap { max-width:1280px; margin:0 auto; padding:28px 20px 60px; }
-  .section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 18px 14px; margin-bottom:18px; }
-  .section.warn { border-color:#854d0e; background:#1a1408; }
-  .section-h { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-bottom:14px; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em; }
-  .pill { font-size:11px; color:var(--muted); font-weight:600; text-transform:none; letter-spacing:0; text-align:right; }
-  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-  .metric { background:#0f1117; border:1px solid var(--line); border-radius:10px; padding:14px; }
-  .metric-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
-  .metric-value { font-size:24px; font-weight:800; margin-top:6px; }
-  .metric-sub { font-size:12px; color:var(--muted); margin-top:6px; min-height:18px; }
-  .two { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-  .scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  table { width:100%; border-collapse:collapse; font-size:13px; }
-  table.tight { font-size:12px; min-width:1100px; }
-  th { text-align:left; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; padding:8px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
-  td { padding:8px 6px; border-bottom:1px solid #1a1d26; vertical-align:top; }
-  tr.dim td { opacity:.55; }
-  .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .up { color:var(--up); font-weight:700; }
-  .down { color:var(--down); font-weight:700; }
-  .neutral { color:var(--muted); }
-  .note { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
-  .nav { margin-bottom:18px; font-size:13px; color:var(--muted); }
-  footer { color:#555; font-size:12px; text-align:center; padding:20px; }
-  @media (max-width:900px) { .grid,.two { grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px) { .grid,.two { grid-template-columns:1fr; } }
+:root { --accent: #1c69d4; --ink:#111; --muted:#5b6472; --line:#e6e8ee; --bg:#f4f5f7; --card:#fff;
+  --good:#0f7b3a; --good-bg:#e8f7ee; --warn:#9a6700; --warn-bg:#fff6e0; --bad:#b42318; --bad-bg:#fdeceb; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+.top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 20px; }
+.wrap { max-width:880px; margin:0 auto; padding:18px 16px 48px; }
+.brand { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+h1 { font-size:26px; margin-top:4px; letter-spacing:-.02em; }
+.sub { color:var(--muted); font-size:14px; margin-top:4px; }
+.meta-line { font-size:13px; color:var(--muted); margin:0 0 16px; }
+.verdict { background:#111; color:#fff; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+.verdict-label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
+.verdict-text { font-size:18px; font-weight:700; margin-top:6px; line-height:1.35; }
+.verdict-range { font-size:13px; opacity:.75; margin-top:8px; }
+.kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+.kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:4px solid #c5c9d3; }
+.kpi.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--good-bg)); }
+.kpi.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warn-bg)); }
+.kpi.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--bad-bg)); }
+.kpi.neutral { border-top-color:#c5c9d3; }
+.kpi-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+.kpi-range { font-size:12px; color:var(--muted); margin-top:4px; min-height:34px; }
+.kpi-value { font-size:30px; font-weight:800; margin-top:8px; letter-spacing:-.03em; }
+.kpi-sub { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.4; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
+.card.quiet { background:#fafbfc; }
+.card-title { font-size:16px; font-weight:800; }
+.range { font-size:13px; color:var(--muted); margin-top:3px; margin-bottom:12px; }
+.body { font-size:14px; }
+.good-text { color:var(--good); font-weight:600; }
+.flags { margin:0 0 0 18px; }
+.flags li { margin:6px 0; font-size:14px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
+td { padding:9px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
+.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+tr.redrow td { background:#fff5f5; }
+tr.dim td { opacity:.45; }
+.meta { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
+.subcard { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+.subcard-h { font-size:13px; font-weight:700; margin-bottom:8px; }
+.mini-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.mini-label { font-size:11px; color:var(--muted); text-transform:uppercase; }
+.mini-value { font-size:20px; font-weight:800; margin-top:4px; }
+.up { color:var(--good); font-weight:700; }
+.down { color:var(--bad); font-weight:700; }
+.neutral { color:var(--muted); }
+.footnotes { font-size:12px; color:var(--muted); line-height:1.55; padding:8px 4px 0; }
+footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
+@media (max-width:720px) { .kpis,.mini-grid { grid-template-columns:1fr; } h1 { font-size:22px; } }
+@media print { body { background:#fff; } .card,.kpi,.verdict { break-inside:avoid; } }
 </style>
 </head>
 <body>
   <div class="top">
-    <div>
+    <div class="wrap" style="padding-top:0;padding-bottom:0;">
       <div class="brand">GM Weekly Performance Brief · Prepared by The Cooperative Agency</div>
       <h1>BMW of Jackson</h1>
-      <div class="sub">Website traffic live · Focus lead data coming soon</div>
+      <div class="sub">Sales lead handling · Focus · This week: Jul 14–20, 2026</div>
     </div>
-    <div class="badge">Week of 2026-07-14 → 2026-07-20</div>
   </div>
   <div class="wrap">
-    <div class="nav"><a href="index.html">← All stores</a> · As of 2026-07-21 · Generated 2026-07-21 12:48</div>
-    <div class="section">
-      <div class="section-h"><span>Website Traffic (GA4)</span><span class="pill">Same live standard as public GA4 dashboards</span></div>
-      <div class="grid">
-    <div class="metric">
-      <div class="metric-label">Sessions (L30)</div>
-      <div class="metric-value">28,161</div>
-      <div class="metric-sub">Last 30 Days</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Users (L30)</div>
-      <div class="metric-value">24,887</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">New Users (L30)</div>
-      <div class="metric-value">17,654</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Pages / Session</div>
-      <div class="metric-value">2.1</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Bounce Rate</div>
-      <div class="metric-value">61.1%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Engagement Rate</div>
-      <div class="metric-value">38.9%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Mobile %</div>
-      <div class="metric-value">69.6%</div>
-      <div class="metric-sub"></div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">GA4 cache</div>
-      <div class="metric-value">2026-07-15</div>
-      <div class="metric-sub">from ga4-data.json</div>
-    </div></div>
-    </div>
-    <div class="section">
-      <div class="section-h"><span>GA4 Session Sources (top)</span></div>
-      <table><thead><tr><th>Source / Medium</th><th class="num">Sessions</th></tr></thead>
-      <tbody><tr><td>google/cpc</td><td class='num'>46,161</td></tr><tr><td>(direct)/(none)</td><td class='num'>14,509</td></tr><tr><td>google/organic</td><td class='num'>9,597</td></tr><tr><td>facebook/cpc</td><td class='num'>5,123</td></tr><tr><td>(not set)/(not set)</td><td class='num'>1,464</td></tr><tr><td>bing/organic</td><td class='num'>960</td></tr><tr><td>(data not available)/(data not available)</td><td class='num'>432</td></tr><tr><td>facebook.com/referral</td><td class='num'>350</td></tr><tr><td>yahoo/organic</td><td class='num'>310</td></tr><tr><td>autotrader.com/referral</td><td class='num'>247</td></tr><tr><td>m.facebook.com/referral</td><td class='num'>247</td></tr><tr><td>bmwusa.com/referral</td><td class='num'>215</td></tr></tbody></table>
+    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:54 PM · This page is for BMW of Jackson only</div>
+    <div class="verdict">
+      <div class="verdict-label">This week at a glance</div>
+      <div class="verdict-text">BMW of Jackson — website traffic only until lead reporting is connected.</div>
+      <div class="verdict-range">Date range for this summary: Jul 14–20, 2026</div>
     </div>
     
-        <div class="section warn">
-          <div class="section-h"><span>Sales lead activity</span><span class="pill">Coming soon</span></div>
-          <p><strong>BMW of Jackson</strong> sales lead detail is not connected yet.</p>
-          <p>Website traffic below is live. Lead handling and salesman boards will appear once Focus reporting is set up for this store.</p>
+    
+        <div class="card">
+          <div class="card-title">Sales lead handling</div>
+          <div class="range">No sales-lead file connected for this store yet</div>
+          <p class="body">Dealer website traffic is available. Sales lead handling and the salesperson board will appear once Focus reporting is connected for this store only.</p>
+          <p class="meta">Dealer website traffic (last 30 days in GA4 cache dated 2026-07-15): 28,161 sessions · 24,887 users.</p>
         </div>
   </div>
-  <footer>GM Weekly Performance Brief · BMW of Jackson · Prepared by The Cooperative Agency</footer>
+  <footer>BMW of Jackson · GM Weekly Performance Brief · The Cooperative Agency</footer>
 </body>
 </html>
