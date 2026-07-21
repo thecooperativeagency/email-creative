@@ -52,6 +52,8 @@
   .col-help { margin-top:12px; display:grid; gap:8px; }
   .col-help div { font-size:12px; color:#334; background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
   .sub { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+  .group-block { margin-top:16px; }
+  .group-block h3 { font-size:15px; font-weight:800; margin:0 0 8px; padding:8px 10px; background:#f3f4f6; border-radius:8px; border-left:4px solid var(--accent); }
   .webline { margin-top:14px; font-size:13px; color:var(--muted); line-height:1.5; }
   .foot { font-size:12px; color:var(--muted); line-height:1.55; padding:6px 2px 0; }
   .up { color:var(--good); font-weight:700; }
@@ -70,7 +72,7 @@
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:59 PM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 1:00 PM</div>
     <div class="verdict">
       <div class="lbl">This week at a glance</div>
       <div class="txt">Lead handling is mixed — 14 salespeople are below standard on speed or contact this week.</div>
@@ -151,20 +153,67 @@
           <h2>Sales team scoreboard</h2>
           <div class="when">Sales leads received <strong>Jul 14–20, 2026</strong> · worst contact rate first</div>
           <div class="why"><strong>How to read this</strong>
-            Top of the list = people who need coaching first.
+            Split by sales team group from VinSolutions (for example New Sales vs Used Sales).
+            Inside each group, worst contact rate is listed first.
             Red rows = below standard. Green rows = hitting the mark.
             Gray rows = fewer than 3 leads (not enough to judge) or system/unassigned.</div>
-          <table>
-            <thead><tr>
-              <th>Salesperson</th>
-              <th class="num">Leads received</th>
-              <th class="num">Contact rate</th>
-              <th class="num">Median response</th>
-              <th class="num">Untouched &gt;24h</th>
-              <th class="num">Multi-channel</th>
-            </tr></thead>
-            <tbody><tr class="red"><td><strong>Darrell Buggage</strong></td><td class='num'>7</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class="red"><td><strong>Josh Kinsley</strong></td><td class='num'>17</td><td class='num'>11.8%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>5.9%</td></tr><tr class="red"><td><strong>Kerry Beary</strong></td><td class='num'>27</td><td class='num'>25.9%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>29.6%</td></tr><tr class="red"><td><strong>Payton Lusk</strong></td><td class='num'>14</td><td class='num'>28.6%</td><td class='num'>46 min</td><td class='num'>0</td><td class='num'>50.0%</td></tr><tr class="red"><td><strong>Brandi Hutchinson</strong></td><td class='num'>38</td><td class='num'>31.6%</td><td class='num'>2 min</td><td class='num'>0</td><td class='num'>39.5%</td></tr><tr class="red"><td><strong>Jason Arceneaux</strong></td><td class='num'>21</td><td class='num'>38.1%</td><td class='num'>12 min</td><td class='num'><strong>2</strong></td><td class='num'>38.1%</td></tr><tr class="red"><td><strong>Tommy Ngo</strong></td><td class='num'>22</td><td class='num'>40.9%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>27.3%</td></tr><tr class="red"><td><strong>David Spikes</strong></td><td class='num'>19</td><td class='num'>42.1%</td><td class='num'>1h 04m</td><td class='num'>0</td><td class='num'>42.1%</td></tr><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num'>27</td><td class='num'>44.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>63.0%</td></tr><tr class="red"><td><strong>Blaysen Toney</strong></td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>45.5%</td></tr><tr class="red"><td><strong>Kyle Adibyazdi</strong></td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>54.5%</td></tr><tr class="red"><td><strong>Milla Augustine</strong></td><td class='num'>17</td><td class='num'>52.9%</td><td class='num'>2 min</td><td class='num'><strong>1</strong></td><td class='num'>23.5%</td></tr><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num'>27</td><td class='num'>55.6%</td><td class='num'>5 min</td><td class='num'>0</td><td class='num'>44.4%</td></tr><tr class="red"><td><strong>Reginald Day</strong></td><td class='num'>8</td><td class='num'>62.5%</td><td class='num'>8 min</td><td class='num'>0</td><td class='num'>87.5%</td></tr><tr class="dim"><td>Charles Tortorich</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class="dim"><td>Neil Coll</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
-          </table>
+          
+            <div class="sub group-block">
+              <h3>New Sales <span class="when-inline">139 sales leads this week</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Salesperson</th>
+                  <th class="num">Leads received</th>
+                  <th class="num">Contact rate</th>
+                  <th class="num">Median response</th>
+                  <th class="num">Untouched &gt;24h</th>
+                  <th class="num">Multi-channel</th>
+                </tr></thead>
+                <tbody><tr class="red"><td><strong>Josh Kinsley</strong></td><td class='num'>17</td><td class='num'>11.8%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>5.9%</td></tr><tr class="red"><td><strong>Kerry Beary</strong></td><td class='num'>27</td><td class='num'>25.9%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>29.6%</td></tr><tr class="red"><td><strong>Payton Lusk</strong></td><td class='num'>14</td><td class='num'>28.6%</td><td class='num'>46 min</td><td class='num'>0</td><td class='num'>50.0%</td></tr><tr class="red"><td><strong>Tommy Ngo</strong></td><td class='num'>22</td><td class='num'>40.9%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>27.3%</td></tr><tr class="red"><td><strong>David Spikes</strong></td><td class='num'>19</td><td class='num'>42.1%</td><td class='num'>1h 04m</td><td class='num'>0</td><td class='num'>42.1%</td></tr><tr class="red"><td><strong>Blaysen Toney</strong></td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>45.5%</td></tr><tr class="red"><td><strong>Kyle Adibyazdi</strong></td><td class='num'>11</td><td class='num'>45.5%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>54.5%</td></tr><tr class="red"><td><strong>Milla Augustine</strong></td><td class='num'>17</td><td class='num'>52.9%</td><td class='num'>2 min</td><td class='num'><strong>1</strong></td><td class='num'>23.5%</td></tr><tr class="dim"><td>Neil Coll</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+              </table>
+            </div>
+            <div class="sub group-block">
+              <h3>Used Sales <span class="when-inline">121 sales leads this week</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Salesperson</th>
+                  <th class="num">Leads received</th>
+                  <th class="num">Contact rate</th>
+                  <th class="num">Median response</th>
+                  <th class="num">Untouched &gt;24h</th>
+                  <th class="num">Multi-channel</th>
+                </tr></thead>
+                <tbody><tr class="red"><td><strong>Brandi Hutchinson</strong></td><td class='num'>38</td><td class='num'>31.6%</td><td class='num'>2 min</td><td class='num'>0</td><td class='num'>39.5%</td></tr><tr class="red"><td><strong>Jason Arceneaux</strong></td><td class='num'>21</td><td class='num'>38.1%</td><td class='num'>12 min</td><td class='num'><strong>2</strong></td><td class='num'>38.1%</td></tr><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num'>27</td><td class='num'>44.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>63.0%</td></tr><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num'>27</td><td class='num'>55.6%</td><td class='num'>5 min</td><td class='num'>0</td><td class='num'>44.4%</td></tr><tr class="red"><td><strong>Reginald Day</strong></td><td class='num'>8</td><td class='num'>62.5%</td><td class='num'>8 min</td><td class='num'>0</td><td class='num'>87.5%</td></tr></tbody>
+              </table>
+            </div>
+            <div class="sub group-block">
+              <h3>Manager <span class="when-inline">1 sales leads this week</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Salesperson</th>
+                  <th class="num">Leads received</th>
+                  <th class="num">Contact rate</th>
+                  <th class="num">Median response</th>
+                  <th class="num">Untouched &gt;24h</th>
+                  <th class="num">Multi-channel</th>
+                </tr></thead>
+                <tbody><tr class="dim"><td>Charles Tortorich</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+              </table>
+            </div>
+            <div class="sub group-block">
+              <h3>Service <span class="when-inline">7 sales leads this week</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Salesperson</th>
+                  <th class="num">Leads received</th>
+                  <th class="num">Contact rate</th>
+                  <th class="num">Median response</th>
+                  <th class="num">Untouched &gt;24h</th>
+                  <th class="num">Multi-channel</th>
+                </tr></thead>
+                <tbody><tr class="red"><td><strong>Darrell Buggage</strong></td><td class='num'>7</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+              </table>
+            </div>
           <div class="col-help">
             <div><strong>Leads received</strong> — how many new sales leads were assigned to them this week.</div>
             <div><strong>Contact rate</strong> — % of those leads they touched. Higher better (~90%+ good).</div>
@@ -255,7 +304,7 @@
           <strong>Prior week:</strong> Jul 7–13, 2026.<br/>
           Only Internet / Phone / Walk-in sales leads count. Service and parts leads are excluded.
           Lead data from VinSolutions for <strong>Brian Harris BMW</strong> only.
-          Generated Jul 21, 2026 12:59 PM.
+          Generated Jul 21, 2026 1:00 PM.
         </section>
   </div>
   <footer>Brian Harris BMW · GM Weekly Performance Brief · The Cooperative Agency</footer>
