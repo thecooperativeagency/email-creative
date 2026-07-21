@@ -5,61 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GM Weekly Performance Brief — Audi Baton Rouge</title>
 <style>
-:root { --accent: #bb0a21; --ink:#111; --muted:#5b6472; --line:#e6e8ee; --bg:#f4f5f7; --card:#fff;
-  --good:#0f7b3a; --good-bg:#e8f7ee; --warn:#9a6700; --warn-bg:#fff6e0; --bad:#b42318; --bad-bg:#fdeceb; }
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
-.top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 20px; }
-.wrap { max-width:880px; margin:0 auto; padding:18px 16px 48px; }
-.brand { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
-h1 { font-size:26px; margin-top:4px; letter-spacing:-.02em; }
-.sub { color:var(--muted); font-size:14px; margin-top:4px; }
-.meta-line { font-size:13px; color:var(--muted); margin:0 0 16px; }
-.verdict { background:#111; color:#fff; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
-.verdict-label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
-.verdict-text { font-size:18px; font-weight:700; margin-top:6px; line-height:1.35; }
-.verdict-range { font-size:13px; opacity:.75; margin-top:8px; }
-.kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
-.kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:4px solid #c5c9d3; }
-.kpi.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--good-bg)); }
-.kpi.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warn-bg)); }
-.kpi.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--bad-bg)); }
-.kpi.neutral { border-top-color:#c5c9d3; }
-.kpi-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
-.kpi-range { font-size:12px; color:var(--muted); margin-top:4px; min-height:34px; }
-.kpi-value { font-size:30px; font-weight:800; margin-top:8px; letter-spacing:-.03em; }
-.kpi-sub { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.4; }
-.kpi-why { font-size:12px; color:#334; margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,.08); line-height:1.45; }
-.kpi-why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:3px; }
-.explain { font-size:13px; color:#333; background:#f7f8fa; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:10px 0 12px; line-height:1.45; }
-.explain strong { color:#111; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
-.card.quiet { background:#fafbfc; }
-.card-title { font-size:16px; font-weight:800; }
-.range { font-size:13px; color:var(--muted); margin-top:3px; margin-bottom:12px; }
-.body { font-size:14px; }
-.good-text { color:var(--good); font-weight:600; }
-.flags { margin:0 0 0 18px; }
-.flags li { margin:6px 0; font-size:14px; }
-table { width:100%; border-collapse:collapse; font-size:13px; }
-th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
-td { padding:9px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
-.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-tr.redrow td { background:#fff5f5; }
-tr.dim td { opacity:.45; }
-.meta { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
-.subcard { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
-.subcard-h { font-size:13px; font-weight:700; margin-bottom:8px; }
-.mini-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-.mini-label { font-size:11px; color:var(--muted); text-transform:uppercase; }
-.mini-value { font-size:20px; font-weight:800; margin-top:4px; }
-.up { color:var(--good); font-weight:700; }
-.down { color:var(--bad); font-weight:700; }
-.neutral { color:var(--muted); }
-.footnotes { font-size:12px; color:var(--muted); line-height:1.55; padding:8px 4px 0; }
-footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
-@media (max-width:720px) { .kpis,.mini-grid { grid-template-columns:1fr; } h1 { font-size:22px; } }
-@media print { body { background:#fff; } .card,.kpi,.verdict { break-inside:avoid; } }
+  :root { --accent:#bb0a21; --ink:#111; --muted:#5b6472; --line:#e5e7eb; --bg:#f3f4f6; --card:#fff;
+    --good:#0f7b3a; --goodbg:#e9f8ef; --warn:#9a6700; --warnbg:#fff7e6; --bad:#b42318; --badbg:#fdeceb; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+  .top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 16px; }
+  .wrap { max-width:760px; margin:0 auto; padding:18px 16px 48px; }
+  .brand { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+  h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
+  .sub { color:var(--muted); font-size:14px; margin-top:4px; }
+  .meta { font-size:13px; color:var(--muted); margin:0 0 14px; }
+  .verdict { background:#111; color:#fff; border-radius:14px; padding:18px; margin-bottom:14px; }
+  .verdict .lbl { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
+  .verdict .txt { font-size:20px; font-weight:750; margin-top:8px; line-height:1.35; }
+  .verdict .when { font-size:13px; opacity:.8; margin-top:10px; }
+  .block { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:14px; }
+  h2 { font-size:18px; font-weight:800; margin-bottom:4px; }
+  h3 { font-size:14px; margin:14px 0 8px; }
+  .when { font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .when-inline { font-weight:500; color:var(--muted); }
+  .why { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; margin:0 0 14px; font-size:13px; color:#243041; }
+  .why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:4px; }
+  .metric { border:1px solid var(--line); border-radius:12px; padding:14px; margin:0 0 12px; border-top:5px solid #c5c9d3; }
+  .metric.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--goodbg)); }
+  .metric.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warnbg)); }
+  .metric.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--badbg)); }
+  .metric-top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+  .m-label { font-size:13px; font-weight:800; }
+  .m-when { font-size:12px; color:var(--muted); margin-top:3px; }
+  .m-value { font-size:34px; font-weight:850; margin-top:8px; letter-spacing:-.03em; }
+  .m-delta { font-size:12px; color:var(--muted); margin-top:6px; line-height:1.4; }
+  .badge { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; padding:5px 8px; border-radius:999px; background:#eef1f5; color:#445; }
+  .metric.good .badge { background:#d8f3e3; color:var(--good); }
+  .metric.warn .badge { background:#ffe9b8; color:var(--warn); }
+  .metric.bad .badge { background:#ffd6d3; color:var(--bad); }
+  ul { margin:0 0 0 18px; }
+  li { margin:7px 0; font-size:14px; }
+  .ok { color:var(--good); font-weight:700; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
+  td { padding:10px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr.red td { background:#fff1f0; }
+  tr.green td { background:#f1fbf5; }
+  tr.dim td { opacity:.42; }
+  .col-help { margin-top:12px; display:grid; gap:8px; }
+  .col-help div { font-size:12px; color:#334; background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
+  .sub { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+  .webline { margin-top:14px; font-size:13px; color:var(--muted); line-height:1.5; }
+  .foot { font-size:12px; color:var(--muted); line-height:1.55; padding:6px 2px 0; }
+  .up { color:var(--good); font-weight:700; }
+  .down { color:var(--bad); font-weight:700; }
+  .neutral { color:var(--muted); }
+  footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
+  @media print { body { background:#fff; } .block,.metric,.verdict { break-inside:avoid; } }
 </style>
 </head>
 <body>
@@ -67,114 +66,197 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     <div class="wrap" style="padding-top:0;padding-bottom:0;">
       <div class="brand">GM Weekly Performance Brief · Prepared by The Cooperative Agency</div>
       <h1>Audi Baton Rouge</h1>
-      <div class="sub">Sales lead handling · VinSolutions · This week: Jul 14–20, 2026</div>
+      <div class="sub">How your sales team handled new leads · VinSolutions</div>
     </div>
   </div>
   <div class="wrap">
-    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:55 PM · This page is for Audi Baton Rouge only</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:59 PM</div>
     <div class="verdict">
-      <div class="verdict-label">This week at a glance</div>
-      <div class="verdict-text">Lead handling is mixed this week — 7 salespeople are below standard on response or contact.</div>
-      <div class="verdict-range">Date range for this summary: Jul 14–20, 2026</div>
+      <div class="lbl">This week at a glance</div>
+      <div class="txt">Lead handling is mixed — 7 salespeople are below standard on speed or contact this week.</div>
+      <div class="when">Date range for this summary: Jul 14–20, 2026</div>
     </div>
     
-        <div class="kpis">
-          <div class="kpi bad">
-            <div class="kpi-label">Contact rate</div>
-            <div class="kpi-range">Sales leads · Jul 14–20, 2026</div>
-            <div class="kpi-value">55.0%</div>
-            <div class="kpi-sub"><span class="up">↑ 5.3 pts vs prior week</span><br/>Prior week (Jul 7–13, 2026): 49.7%</div>
-            <div class="kpi-why"><strong>What this means</strong>
-              Share of new sales leads your team marked as contacted.
-              Higher is better. Green is about 90%+.</div>
-          </div>
-          <div class="kpi good">
-            <div class="kpi-label">Median response time</div>
-            <div class="kpi-range">Contacted sales leads · Jul 14–20, 2026</div>
-            <div class="kpi-value">5 min</div>
-            <div class="kpi-sub"><span class="neutral">same as prior week</span><br/>Prior week (Jul 7–13, 2026): 5 min</div>
-            <div class="kpi-why"><strong>What this means</strong>
-              Typical time from lead arrival to first touch.
-              “Median” = the middle value (half faster, half slower).
-              Lower is better. Green is about 30 minutes or less.</div>
-          </div>
-          <div class="kpi warn">
-            <div class="kpi-label">Untouched leads (over 24h)</div>
-            <div class="kpi-range">No contact yet · as of Jul 21, 2026</div>
-            <div class="kpi-value">1</div>
-            <div class="kpi-sub">Sales leads this week (Jul 14–20, 2026): 131<br/>Prior week (Jul 7–13, 2026): 179 (<span class="down">↓ 27%</span>)</div>
-            <div class="kpi-why"><strong>What this means</strong>
-              Sales leads still sitting with zero contact after a full day.
-              This is the fire alarm. Ideal is 0.</div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-title">Needs attention</div>
-          <div class="range">Based on sales leads from Jul 14–20, 2026</div>
-          <div class="explain"><strong>What this means:</strong> People or situations to handle in today’s sales meeting — slow follow-up, ignored leads, or weak contact coverage.</div>
-          <ul class='flags'><li>Will Picard contact rate is 23% on 22 sales leads.</li><li>Randon Kimery contact rate is 27% on 11 sales leads.</li><li>Jak Langston contact rate is 35% on 26 sales leads.</li><li>Ryan Kinsley contact rate is 67% on 6 sales leads.</li><li>Shane Ducote contact rate is 74% on 31 sales leads.</li></ul>
-            <div class="subcard">
-              <div class="subcard-h">Oldest untouched examples · as of Jul 21, 2026</div>
-              <table><thead><tr><th>Salesperson</th><th>Source</th><th>Lead arrived</th><th class="num">Age</th></tr></thead>
-              <tbody><tr><td>Michael Craig</td><td>Autotrader.Com - Call Start Phone Lead</td><td>Jul 17 9:31 AM</td><td class='num'>110h</td></tr></tbody></table>
+        
+        <section class="block">
+          <h2>The three numbers that matter</h2>
+          <div class="when">Date range: <strong>Jul 14–20, 2026</strong> (compared with prior week <strong>Jul 7–13, 2026</strong>)</div>
+          <div class="why"><strong>What this section is</strong>
+            Three quick grades for how your sales team handled new sales leads this week.
+            Green = good, yellow = watch, red = problem.</div>
+
+          <div class="metric bad">
+            <div class="metric-top">
+              <div>
+                <div class="m-label">1) Contact rate</div>
+                <div class="m-when">Sales leads · Jul 14–20, 2026</div>
+              </div>
+              <div class="badge">Problem</div>
             </div>
-        </div>
-        <div class="card">
-          <div class="card-title">Sales team scoreboard</div>
-          <div class="range">Sales leads received Jul 14–20, 2026 · worst contact rate first</div>
-          <div class="explain"><strong>How to read this table:</strong> Top rows need the most coaching.
-          <em>Contacted</em> = % of their leads they touched.
-          <em>Median response</em> = typical speed to first touch.
-          <em>Untouched &gt;24h</em> = leads still ignored after a day.
-          <em>Multi-channel</em> = used more than one way to reach the customer (email + phone/text).</div>
+            <div class="m-value">55.0%</div>
+            <div class="m-delta"><span class="up">↑ 5.3 points vs prior week</span> · Prior week (Jul 7–13, 2026): 49.7%</div>
+            <div class="why"><strong>What this means</strong>
+              Out of every 100 new sales leads, how many did someone on your team actually touch?
+              Higher is better. About <strong>90% or more</strong> is good. Under <strong>80%</strong> is a problem.
+              Example: 55% means almost half of new leads got no contact.</div>
+          </div>
+
+          <div class="metric good">
+            <div class="metric-top">
+              <div>
+                <div class="m-label">2) Median first-response time</div>
+                <div class="m-when">Contacted sales leads · Jul 14–20, 2026</div>
+              </div>
+              <div class="badge">Good</div>
+            </div>
+            <div class="m-value">5 min</div>
+            <div class="m-delta"><span class="neutral">same as prior week</span> · Prior week (Jul 7–13, 2026): 5 min</div>
+            <div class="why"><strong>What this means</strong>
+              How fast the team usually makes first contact after a lead comes in.
+              <em>Median</em> means the middle result (half the leads were faster, half slower) — not thrown off by one extreme delay.
+              Lower is better. About <strong>30 minutes or less</strong> is good. Over <strong>2 hours</strong> is a problem.</div>
+          </div>
+
+          <div class="metric warn">
+            <div class="metric-top">
+              <div>
+                <div class="m-label">3) Untouched leads older than 24 hours</div>
+                <div class="m-when">As of Jul 21, 2026 · from sales leads in Jul 14–20, 2026</div>
+              </div>
+              <div class="badge">Watch</div>
+            </div>
+            <div class="m-value">1</div>
+            <div class="m-delta">Sales leads this week: 131 · prior week: 179 (<span class="down">↓ 27%</span>)</div>
+            <div class="why"><strong>What this means</strong>
+              How many sales leads still have <em>zero</em> contact after sitting more than a full day.
+              This is the fire alarm. <strong>0</strong> is ideal. <strong>4 or more</strong> needs same-day management attention.</div>
+          </div>
+        </section>
+        <section class="block">
+          <h2>Needs attention today</h2>
+          <div class="when">Based on sales leads from <strong>Jul 14–20, 2026</strong></div>
+          <div class="why"><strong>What this means</strong>
+            Names and issues to bring into the next sales meeting — ignored leads, slow follow-up, or weak contact coverage.</div>
+          <ul><li>Will Picard only contacted 23% of their 22 sales leads.</li><li>Randon Kimery only contacted 27% of their 11 sales leads.</li><li>Jak Langston only contacted 35% of their 26 sales leads.</li><li>Ryan Kinsley only contacted 67% of their 6 sales leads.</li><li>Shane Ducote only contacted 74% of their 31 sales leads.</li></ul>
+            <div class="sub">
+              <h3>Oldest untouched examples <span class="when-inline">as of Jul 21, 2026</span></h3>
+              <table>
+                <thead><tr><th>Salesperson</th><th>Where lead came from</th><th>When lead arrived</th><th class="num">How long waiting</th></tr></thead>
+                <tbody><tr><td>Michael Craig</td><td>Autotrader.Com - Call Start Phone Lead</td><td>Jul 17 9:31 AM</td><td class='num'>110 hours</td></tr></tbody>
+              </table>
+            </div>
+        </section>
+
+        <section class="block">
+          <h2>Sales team scoreboard</h2>
+          <div class="when">Sales leads received <strong>Jul 14–20, 2026</strong> · worst contact rate first</div>
+          <div class="why"><strong>How to read this</strong>
+            Top of the list = people who need coaching first.
+            Red rows = below standard. Green rows = hitting the mark.
+            Gray rows = fewer than 3 leads (not enough to judge) or system/unassigned.</div>
           <table>
             <thead><tr>
-              <th>Salesperson</th><th>Team</th><th class="num">Leads</th><th class="num">Contacted</th>
-              <th class="num">Median response</th><th class="num">Untouched &gt;24h</th><th class="num">Multi-channel</th>
+              <th>Salesperson</th>
+              <th class="num">Leads received</th>
+              <th class="num">Contact rate</th>
+              <th class="num">Median response</th>
+              <th class="num">Untouched &gt;24h</th>
+              <th class="num">Multi-channel</th>
             </tr></thead>
-            <tbody><tr class="redrow"><td><strong>Will Picard</strong></td><td>Used Car Sales</td><td class='num'>22</td><td class='num'>22.7%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>13.6%</td></tr><tr class="redrow"><td><strong>Randon Kimery</strong></td><td>New Car Sales</td><td class='num'>11</td><td class='num'>27.3%</td><td class='num'>14h 12m</td><td class='num'>0</td><td class='num'>63.6%</td></tr><tr class="redrow"><td><strong>Jak Langston</strong></td><td>New Car Sales</td><td class='num'>26</td><td class='num'>34.6%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>26.9%</td></tr><tr class="redrow"><td><strong>Ryan Kinsley</strong></td><td>New Car Sales</td><td class='num'>6</td><td class='num'>66.7%</td><td class='num'>1h 46m</td><td class='num'>0</td><td class='num'>66.7%</td></tr><tr class="redrow"><td><strong>Shane Ducote</strong></td><td>Used Car Sales</td><td class='num'>31</td><td class='num'>74.2%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>41.9%</td></tr><tr class="redrow"><td><strong>David Marcantel</strong></td><td>New Car Sales</td><td class='num'>4</td><td class='num'>75.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>25.0%</td></tr><tr class="redrow"><td><strong>Michael Craig</strong></td><td>Used Car Sales</td><td class='num'>12</td><td class='num'>75.0%</td><td class='num'>39 min</td><td class='num'>1</td><td class='num'>66.7%</td></tr><tr><td><strong>Mike Cyprian</strong></td><td>Used Car Sales</td><td class='num'>17</td><td class='num'>82.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>76.5%</td></tr><tr class="dim"><td><strong>Sebastian Melancon</strong></td><td>New Car Sales</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr><tr class="dim"><td><strong>Your Internet Friends At Audi Baton Rouge</strong></td><td>Orphan</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>1 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
+            <tbody><tr class="red"><td><strong>Will Picard</strong></td><td class='num'>22</td><td class='num'>22.7%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>13.6%</td></tr><tr class="red"><td><strong>Randon Kimery</strong></td><td class='num'>11</td><td class='num'>27.3%</td><td class='num'>14h 12m</td><td class='num'>0</td><td class='num'>63.6%</td></tr><tr class="red"><td><strong>Jak Langston</strong></td><td class='num'>26</td><td class='num'>34.6%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>26.9%</td></tr><tr class="red"><td><strong>Ryan Kinsley</strong></td><td class='num'>6</td><td class='num'>66.7%</td><td class='num'>1h 46m</td><td class='num'>0</td><td class='num'>66.7%</td></tr><tr class="red"><td><strong>Shane Ducote</strong></td><td class='num'>31</td><td class='num'>74.2%</td><td class='num'>4 min</td><td class='num'>0</td><td class='num'>41.9%</td></tr><tr class="red"><td><strong>Michael Craig</strong></td><td class='num'>12</td><td class='num'>75.0%</td><td class='num'>39 min</td><td class='num'><strong>1</strong></td><td class='num'>66.7%</td></tr><tr class="red"><td><strong>David Marcantel</strong></td><td class='num'>4</td><td class='num'>75.0%</td><td class='num'>0 min</td><td class='num'>0</td><td class='num'>25.0%</td></tr><tr><td>Mike Cyprian</td><td class='num'>17</td><td class='num'>82.4%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>76.5%</td></tr><tr class="dim"><td>Sebastian Melancon</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr><tr class="dim"><td>Your Internet Friends At Audi Baton Rouge</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>1 min</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
           </table>
-          <p class="meta">
-            All columns cover sales leads from <strong>Jul 14–20, 2026</strong> only.
-            Untouched &gt;24h uses report date <strong>Jul 21, 2026</strong>.
-            Multi-channel = email plus phone and/or text on the same lead.
-            Rows with fewer than 3 leads are faded.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-title">Lead flow by source</div>
-          <div class="range">This week Jul 14–20, 2026 vs prior week Jul 7–13, 2026</div>
-          <div class="explain"><strong>What this means:</strong> Where this week’s sales leads came from, compared with last week.
-          “Dealer website” = your store site (including Motive forms/chat).
-          Big drops can mean a form, ad, or 3rd-party feed broke.</div>
-          <table>
-            <thead><tr><th>Source group</th><th class="num">This week</th><th class="num">Prior week</th><th class="num">Change</th><th>Note</th></tr></thead>
-            <tbody><tr><td>Other</td><td class='num'>64</td><td class='num'>104</td><td class='num'>-38%</td><td>Big swing vs prior week</td></tr><tr><td>Dealer website</td><td class='num'>20</td><td class='num'>25</td><td class='num'>-20%</td><td>Big swing vs prior week</td></tr><tr><td>AudiBatonRouge.com</td><td class='num'>15</td><td class='num'>18</td><td class='num'>-17%</td><td>Normal</td></tr><tr><td>Autotrader</td><td class='num'>11</td><td class='num'>8</td><td class='num'>+38%</td><td>Big swing vs prior week</td></tr><tr><td>TRUECAR</td><td class='num'>9</td><td class='num'>16</td><td class='num'>-44%</td><td>Big swing vs prior week</td></tr><tr><td>Edmunds</td><td class='num'>7</td><td class='num'>2</td><td class='num'>+250%</td><td>Big swing vs prior week</td></tr><tr><td>Cargurus</td><td class='num'>3</td><td class='num'>4</td><td class='num'>-25%</td><td>Normal</td></tr></tbody>
-          </table>
-          <p class="meta">Dealer website includes Motive and dealer-site forms/chat. Groups under 3 leads this week are hidden.</p>
-        </div>
-        <div class="card quiet">
-          <div class="card-title">Last 30 days context</div>
-          <div class="range">Jun 21 – Jul 20, 2026</div>
-          <div class="explain"><strong>What this means:</strong> Same lead-handling picture, but for a full month instead of one week — useful to see if this week was normal or a blip.</div>
-          <div class="mini-grid">
-            <div><div class="mini-label">Sales leads</div><div class="mini-value">665</div></div>
-            <div><div class="mini-label">Contact rate</div><div class="mini-value">47.8%</div></div>
-            <div><div class="mini-label">Median response</div><div class="mini-value">7 min</div></div>
-            <div><div class="mini-label">Customer contact</div><div class="mini-value">48.0%</div></div>
+          <div class="col-help">
+            <div><strong>Leads received</strong> — how many new sales leads were assigned to them this week.</div>
+            <div><strong>Contact rate</strong> — % of those leads they touched. Higher better (~90%+ good).</div>
+            <div><strong>Median response</strong> — typical time to first touch. Lower better (~30 min or less good).</div>
+            <div><strong>Untouched &gt;24h</strong> — leads still ignored after a day. Ideal is 0.</div>
+            <div><strong>Multi-channel</strong> — % of leads where they used more than one contact method (for example email + phone). Higher usually means more real follow-up effort.</div>
           </div>
-          <p class="meta">Dealer website traffic (last 30 days, Google Analytics cache dated 2026-07-15): 18,827 sessions (visits) · 16,703 users (people). A session is one visit to the site; users are unique people.</p>
-        </div>
-        <div class="footnotes">
-          <strong>Date ranges used on this page</strong><br/>
+        </section>
+
+        <section class="block">
+          <h2>Lead flow — did anything change?</h2>
+          <div class="when">This week <strong>Jul 14–20, 2026</strong> vs prior week <strong>Jul 7–13, 2026</strong></div>
+          <div class="why"><strong>What this means</strong>
+            Not a full marketing report. Just: did a lead source spike or dry up this week?
+            “Dealer website” = your store website (including Motive forms and chat).</div>
+          <h3>Anomalies</h3>
+          <ul><li>Other: 64 this week vs 104 prior week (-38%).</li><li>Dealer website: 20 this week vs 25 prior week (-20%).</li><li>Autotrader: 11 this week vs 8 prior week (+38%).</li><li>TRUECAR: 9 this week vs 16 prior week (-44%).</li><li>Edmunds: 7 this week vs 2 prior week (+250%).</li></ul>
+          <table>
+            <thead><tr>
+              <th>Source group</th>
+              <th class="num">This week</th>
+              <th class="num">Prior week</th>
+              <th class="num">Change</th>
+              <th>Note</th>
+            </tr></thead>
+            <tbody><tr><td>Other</td><td class='num'>64</td><td class='num'>104</td><td class='num'>-38%</td><td>Significant change vs prior week</td></tr><tr><td>Dealer website</td><td class='num'>20</td><td class='num'>25</td><td class='num'>-20%</td><td>Significant change vs prior week</td></tr><tr><td>AudiBatonRouge.com</td><td class='num'>15</td><td class='num'>18</td><td class='num'>-17%</td><td>Normal</td></tr><tr><td>Autotrader</td><td class='num'>11</td><td class='num'>8</td><td class='num'>+38%</td><td>Significant change vs prior week</td></tr><tr><td>TRUECAR</td><td class='num'>9</td><td class='num'>16</td><td class='num'>-44%</td><td>Significant change vs prior week</td></tr><tr><td>Edmunds</td><td class='num'>7</td><td class='num'>2</td><td class='num'>+250%</td><td>Significant change vs prior week</td></tr><tr><td>Cargurus</td><td class='num'>3</td><td class='num'>4</td><td class='num'>-25%</td><td>Normal</td></tr></tbody>
+          </table>
+          <p class="webline">Dealer website traffic (last 30 days, analytics cache 2026-07-15): 18,827 visits · 16,703 people. A visit is one trip to the site; people are unique visitors.</p>
+        </section>
+
+        <section class="block">
+          <h2>How the team is trying to reach customers</h2>
+          <div class="when">Sales leads from <strong>Jul 14–20, 2026</strong></div>
+          <div class="why"><strong>What this means</strong>
+            Share of this week’s sales leads where the team used each contact method.
+            Phone is usually the strongest “real” attempt. Multi-channel means they tried more than one way.</div>
+          <table>
+            <thead><tr><th>Contact method</th><th class="num">Share of this week’s sales leads</th><th>Plain English</th></tr></thead>
+            <tbody>
+              <tr><td>Phone attempt</td><td class="num">59.5%</td><td>Someone tried calling</td></tr>
+              <tr><td>Email attempt</td><td class="num">56.5%</td><td>Someone sent an email</td></tr>
+              <tr><td>Text attempt</td><td class="num">2.3%</td><td>Someone sent a text</td></tr>
+              <tr><td>Multi-channel</td><td class="num">44.3%</td><td>Used 2+ methods on the same lead</td></tr>
+              <tr><td>Customer actually responded / connected</td><td class="num">55.7%</td><td>CRM shows a real customer contact, not just an outbound attempt</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="block">
+          <h2>What cars people asked about</h2>
+          <div class="when">Sales leads from <strong>Jul 14–20, 2026</strong></div>
+          <div class="why"><strong>What this means</strong>
+            The vehicle of interest on the lead (when CRM has it). Helps sales managers stock, desk, and coach to demand — not a sold report.</div>
+          <table>
+            <thead><tr><th>New / used / CPO interest</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
+            <tbody>
+              <tr><td>Used</td><td class='num'>75</td><td class='num'>57.3%</td></tr><tr><td>New</td><td class='num'>35</td><td class='num'>26.7%</td></tr><tr><td>Unknown</td><td class='num'>13</td><td class='num'>9.9%</td></tr><tr><td>Certified</td><td class='num'>8</td><td class='num'>6.1%</td></tr>
+            </tbody>
+          </table>
+          <div class="sub">
+            <h3>Top vehicles of interest <span class="when-inline">Jul 14–20, 2026</span></h3>
+            <table>
+              <thead><tr><th>Year / make / model</th><th class="num">Leads</th><th class="num">Share</th></tr></thead>
+              <tbody>
+                <tr><td>2026 Audi Q5</td><td class='num'>8</td><td class='num'>7.5%</td></tr><tr><td>2024 Ford F-150</td><td class='num'>6</td><td class='num'>5.6%</td></tr><tr><td>2026 Audi Q3</td><td class='num'>5</td><td class='num'>4.7%</td></tr><tr><td>2023 Audi Q3</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2025 Audi Q8</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2026 Audi Q8</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2013 INFINITI G37 Sedan</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2024 Jeep Wagoneer L</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2019 Honda Accord Sedan</td><td class='num'>4</td><td class='num'>3.7%</td></tr><tr><td>2024 Audi A3</td><td class='num'>3</td><td class='num'>2.8%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Trade-ins mentioned</h2>
+          <div class="when">Sales leads from <strong>Jul 14–20, 2026</strong></div>
+          <div class="why"><strong>What this means</strong>
+            How often a trade vehicle showed up on the lead, and which trades appeared most.
+            5.3% of this week’s sales leads included a trade.</div>
+          <table>
+            <thead><tr><th>Trade year / make / model</th><th class="num">Leads</th><th class="num">Share of trades</th></tr></thead>
+            <tbody>
+              <tr><td>2023 Nissan Maxima</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2021 Audi Q8</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2019 Chevrolet Blazer</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2026 Hyundai Tucson</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2018 Ford Mustang</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2021 Nissan Murano</td><td class='num'>1</td><td class='num'>14.3%</td></tr><tr><td>2021 Honda Accord</td><td class='num'>1</td><td class='num'>14.3%</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="foot">
+          <strong>Date ranges on this page</strong><br/>
           <strong>This week:</strong> Jul 14–20, 2026.<br/>
           <strong>Prior week:</strong> Jul 7–13, 2026.<br/>
-          <strong>Last 30 days:</strong> Jun 21 – Jul 20, 2026.<br/>
-          Sales leads only (Internet / Phone / Walk-in). Service/parts excluded.
+          Only Internet / Phone / Walk-in sales leads count. Service and parts leads are excluded.
           Lead data from VinSolutions for <strong>Audi Baton Rouge</strong> only.
-          Generated Jul 21, 2026 12:55 PM.
-        </div>
+          Generated Jul 21, 2026 12:59 PM.
+        </section>
   </div>
   <footer>Audi Baton Rouge · GM Weekly Performance Brief · The Cooperative Agency</footer>
 </body>

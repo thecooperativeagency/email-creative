@@ -5,61 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GM Weekly Performance Brief — BMW of Jackson</title>
 <style>
-:root { --accent: #1c69d4; --ink:#111; --muted:#5b6472; --line:#e6e8ee; --bg:#f4f5f7; --card:#fff;
-  --good:#0f7b3a; --good-bg:#e8f7ee; --warn:#9a6700; --warn-bg:#fff6e0; --bad:#b42318; --bad-bg:#fdeceb; }
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
-.top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 20px; }
-.wrap { max-width:880px; margin:0 auto; padding:18px 16px 48px; }
-.brand { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
-h1 { font-size:26px; margin-top:4px; letter-spacing:-.02em; }
-.sub { color:var(--muted); font-size:14px; margin-top:4px; }
-.meta-line { font-size:13px; color:var(--muted); margin:0 0 16px; }
-.verdict { background:#111; color:#fff; border-radius:12px; padding:16px 18px; margin-bottom:16px; }
-.verdict-label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
-.verdict-text { font-size:18px; font-weight:700; margin-top:6px; line-height:1.35; }
-.verdict-range { font-size:13px; opacity:.75; margin-top:8px; }
-.kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
-.kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; border-top:4px solid #c5c9d3; }
-.kpi.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--good-bg)); }
-.kpi.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warn-bg)); }
-.kpi.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--bad-bg)); }
-.kpi.neutral { border-top-color:#c5c9d3; }
-.kpi-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
-.kpi-range { font-size:12px; color:var(--muted); margin-top:4px; min-height:34px; }
-.kpi-value { font-size:30px; font-weight:800; margin-top:8px; letter-spacing:-.03em; }
-.kpi-sub { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.4; }
-.kpi-why { font-size:12px; color:#334; margin-top:10px; padding-top:10px; border-top:1px solid rgba(0,0,0,.08); line-height:1.45; }
-.kpi-why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:3px; }
-.explain { font-size:13px; color:#333; background:#f7f8fa; border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:10px 0 12px; line-height:1.45; }
-.explain strong { color:#111; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
-.card.quiet { background:#fafbfc; }
-.card-title { font-size:16px; font-weight:800; }
-.range { font-size:13px; color:var(--muted); margin-top:3px; margin-bottom:12px; }
-.body { font-size:14px; }
-.good-text { color:var(--good); font-weight:600; }
-.flags { margin:0 0 0 18px; }
-.flags li { margin:6px 0; font-size:14px; }
-table { width:100%; border-collapse:collapse; font-size:13px; }
-th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
-td { padding:9px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
-.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-tr.redrow td { background:#fff5f5; }
-tr.dim td { opacity:.45; }
-.meta { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
-.subcard { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
-.subcard-h { font-size:13px; font-weight:700; margin-bottom:8px; }
-.mini-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-.mini-label { font-size:11px; color:var(--muted); text-transform:uppercase; }
-.mini-value { font-size:20px; font-weight:800; margin-top:4px; }
-.up { color:var(--good); font-weight:700; }
-.down { color:var(--bad); font-weight:700; }
-.neutral { color:var(--muted); }
-.footnotes { font-size:12px; color:var(--muted); line-height:1.55; padding:8px 4px 0; }
-footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
-@media (max-width:720px) { .kpis,.mini-grid { grid-template-columns:1fr; } h1 { font-size:22px; } }
-@media print { body { background:#fff; } .card,.kpi,.verdict { break-inside:avoid; } }
+  :root { --accent:#1c69d4; --ink:#111; --muted:#5b6472; --line:#e5e7eb; --bg:#f3f4f6; --card:#fff;
+    --good:#0f7b3a; --goodbg:#e9f8ef; --warn:#9a6700; --warnbg:#fff7e6; --bad:#b42318; --badbg:#fdeceb; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
+  .top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 16px; }
+  .wrap { max-width:760px; margin:0 auto; padding:18px 16px 48px; }
+  .brand { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+  h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
+  .sub { color:var(--muted); font-size:14px; margin-top:4px; }
+  .meta { font-size:13px; color:var(--muted); margin:0 0 14px; }
+  .verdict { background:#111; color:#fff; border-radius:14px; padding:18px; margin-bottom:14px; }
+  .verdict .lbl { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
+  .verdict .txt { font-size:20px; font-weight:750; margin-top:8px; line-height:1.35; }
+  .verdict .when { font-size:13px; opacity:.8; margin-top:10px; }
+  .block { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:14px; }
+  h2 { font-size:18px; font-weight:800; margin-bottom:4px; }
+  h3 { font-size:14px; margin:14px 0 8px; }
+  .when { font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .when-inline { font-weight:500; color:var(--muted); }
+  .why { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; margin:0 0 14px; font-size:13px; color:#243041; }
+  .why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:4px; }
+  .metric { border:1px solid var(--line); border-radius:12px; padding:14px; margin:0 0 12px; border-top:5px solid #c5c9d3; }
+  .metric.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--goodbg)); }
+  .metric.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warnbg)); }
+  .metric.bad { border-top-color:var(--bad); background:linear-gradient(#fff,var(--badbg)); }
+  .metric-top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+  .m-label { font-size:13px; font-weight:800; }
+  .m-when { font-size:12px; color:var(--muted); margin-top:3px; }
+  .m-value { font-size:34px; font-weight:850; margin-top:8px; letter-spacing:-.03em; }
+  .m-delta { font-size:12px; color:var(--muted); margin-top:6px; line-height:1.4; }
+  .badge { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; padding:5px 8px; border-radius:999px; background:#eef1f5; color:#445; }
+  .metric.good .badge { background:#d8f3e3; color:var(--good); }
+  .metric.warn .badge { background:#ffe9b8; color:var(--warn); }
+  .metric.bad .badge { background:#ffd6d3; color:var(--bad); }
+  ul { margin:0 0 0 18px; }
+  li { margin:7px 0; font-size:14px; }
+  .ok { color:var(--good); font-weight:700; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); border-bottom:1px solid var(--line); padding:8px 6px; }
+  td { padding:10px 6px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr.red td { background:#fff1f0; }
+  tr.green td { background:#f1fbf5; }
+  tr.dim td { opacity:.42; }
+  .col-help { margin-top:12px; display:grid; gap:8px; }
+  .col-help div { font-size:12px; color:#334; background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
+  .sub { margin-top:14px; border-top:1px solid var(--line); padding-top:12px; }
+  .webline { margin-top:14px; font-size:13px; color:var(--muted); line-height:1.5; }
+  .foot { font-size:12px; color:var(--muted); line-height:1.55; padding:6px 2px 0; }
+  .up { color:var(--good); font-weight:700; }
+  .down { color:var(--bad); font-weight:700; }
+  .neutral { color:var(--muted); }
+  footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
+  @media print { body { background:#fff; } .block,.metric,.verdict { break-inside:avoid; } }
 </style>
 </head>
 <body>
@@ -67,24 +66,25 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     <div class="wrap" style="padding-top:0;padding-bottom:0;">
       <div class="brand">GM Weekly Performance Brief · Prepared by The Cooperative Agency</div>
       <h1>BMW of Jackson</h1>
-      <div class="sub">Sales lead handling · Focus · This week: Jul 14–20, 2026</div>
+      <div class="sub">How your sales team handled new leads · Focus</div>
     </div>
   </div>
   <div class="wrap">
-    <div class="meta-line">Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:55 PM · This page is for BMW of Jackson only</div>
+    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Jul 21, 2026 · Generated Jul 21, 2026 12:59 PM</div>
     <div class="verdict">
-      <div class="verdict-label">This week at a glance</div>
-      <div class="verdict-text">BMW of Jackson — website traffic only until lead reporting is connected.</div>
-      <div class="verdict-range">Date range for this summary: Jul 14–20, 2026</div>
+      <div class="lbl">This week at a glance</div>
+      <div class="txt">BMW of Jackson: website traffic only until lead reporting is connected.</div>
+      <div class="when">Date range for this summary: Jul 14–20, 2026</div>
     </div>
     
-    
-        <div class="card">
-          <div class="card-title">Sales lead handling</div>
-          <div class="range">No sales-lead file connected for this store yet</div>
-          <p class="body">Dealer website traffic is available. Sales lead handling and the salesperson board will appear once Focus reporting is connected for this store only.</p>
-          <p class="meta">Dealer website traffic (last 30 days, Google Analytics cache dated 2026-07-15): 28,161 sessions (visits) · 24,887 users (people). A session is one visit to the site; users are unique people.</p>
-        </div>
+        <section class="block">
+          <h2>Sales lead handling</h2>
+          <div class="when">Status as of Jul 21, 2026</div>
+          <div class="why"><strong>What this means</strong>
+            This store’s CRM lead feed is not connected yet, so we can only show website traffic notes.
+            Salesperson follow-up scores will appear here once Focus reporting is set up.</div>
+          <p class="p">Dealer website traffic (last 30 days, analytics cache 2026-07-15): 28,161 visits · 24,887 people. A visit is one trip to the site; people are unique visitors.</p>
+        </section>
   </div>
   <footer>BMW of Jackson · GM Weekly Performance Brief · The Cooperative Agency</footer>
 </body>
