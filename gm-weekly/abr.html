@@ -20,6 +20,18 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
 .verdict .txt { font-size:18px; font-weight:750; margin-top:8px; line-height:1.35; }
 .verdict .when { font-size:13px; opacity:.8; margin-top:10px; }
 .block { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:14px; }
+  .funnel-stage { margin:22px 0 10px; padding:10px 14px; border-radius:10px; background:#111; color:#fff; }
+  .funnel-stage .n { font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.7; }
+  .funnel-stage .t { font-size:16px; font-weight:800; margin-top:4px; }
+  .funnel-stage .d { font-size:13px; opacity:.85; margin-top:4px; line-height:1.4; }
+  .funnel-arrow { text-align:center; color:#98a0ad; font-size:22px; margin:-4px 0 8px; }
+  .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
+  .stat { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; }
+  .stat .v { font-size:22px; font-weight:850; margin-top:4px; }
+  .stat .s { font-size:12px; color:var(--muted); margin-top:4px; }
+  @media (max-width:720px) { .stat-grid { grid-template-columns:1fr; } }
+
 h2 { font-size:18px; font-weight:800; margin-bottom:4px; }
 h3 { font-size:14px; margin:14px 0 8px; }
 .when { font-size:13px; color:var(--muted); margin-bottom:10px; }
@@ -85,15 +97,149 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 22, 2026 · Generated Jul 22, 2026 12:06 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 22, 2026 · Generated Jul 22, 2026 12:13 PM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: contact coverage is strong; internet response is solid (median 15 min); Audi Partner is 127 opps at 3.1% close — watch list; 1 workable leads still untouched over 24h.</div>
       <div class="when">Rolling 30-day range: Jun 22 – Jul 21, 2026 · compared with prior 30 days May 23 – Jun 21, 2026</div>
     </div>
 
+    
+    <div class="funnel-stage">
+      <div class="n">Stage 1 · Top of funnel</div>
+      <div class="t">Website traffic</div>
+      <div class="d">People visiting audibatonrouge.com (and related store sites) before any CRM lead is created.</div>
+    </div>
     <section class="block">
-      <h2>The numbers that matter</h2>
+      <h2>Total website traffic picture</h2>
+      <div class="when">Google Analytics · last ~30 days in cache dated 2026-07-15 · align with CRM window <strong>Jun 22 – Jul 21, 2026</strong> where possible</div>
+      <div class="why"><strong>What this means</strong>
+        This is the top of the sales funnel: how much store-site demand you are generating.
+        Traffic alone is not leads — the next stage shows how that demand becomes CRM opportunities
+        (website forms, 3rd-party portals, then phone and walk-in).</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">18,827</div>
+          <div class="s">One visit = one trip to the site</div></div>
+        <div class="stat"><div class="k">People (users)</div><div class="v">16,703</div>
+          <div class="s">Unique visitors</div></div>
+        <div class="stat"><div class="k">Page views</div><div class="v">37,247</div>
+          <div class="s">2.0 pages per visit</div></div>
+        <div class="stat"><div class="k">Engagement rate</div><div class="v">37.5%</div>
+          <div class="s">Visits with meaningful activity</div></div>
+        <div class="stat"><div class="k">Bounce rate</div><div class="v">62.5%</div>
+          <div class="s">Left after one page — lower is usually better</div></div>
+        <div class="stat"><div class="k">Mobile share</div><div class="v">56.2%</div>
+          <div class="s">Visits from phones/tablets</div></div>
+      </div>
+      <h3>Where site traffic came from (top sources)</h3>
+      <table>
+        <thead><tr><th>Source / medium</th><th class="num">Visits</th><th class="num">People</th></tr></thead>
+        <tbody><tr><td>(direct) / (none)</td><td class='num'>13,866</td><td class='num'>10,623</td></tr><tr><td>google / organic</td><td class='num'>11,562</td><td class='num'>5,355</td></tr><tr><td>google / cpc</td><td class='num'>4,984</td><td class='num'>4,208</td></tr><tr><td>cdn.flashtalking.com / referral</td><td class='num'>3,378</td><td class='num'>3,280</td></tr><tr><td>ig / paid</td><td class='num'>3,356</td><td class='num'>3,130</td></tr><tr><td>(not set) / (not set)</td><td class='num'>2,051</td><td class='num'>2,037</td></tr><tr><td>autotrader.com / social</td><td class='num'>1,746</td><td class='num'>1,499</td></tr><tr><td>audiusa.com / referral</td><td class='num'>1,097</td><td class='num'>773</td></tr></tbody>
+      </table>
+      <p class="webline">Includes paid/organic/social/referral mix feeding the store website — not the same as CRM lead source labels.</p>
+    </section>
+    <div class="funnel-arrow">↓</div>
+
+    
+    <div class="funnel-stage">
+      <div class="n">Stage 2 · Demand becomes leads</div>
+      <div class="t">CRM opportunities from website + 3rd parties</div>
+      <div class="d">Unique sales opportunities (de-duped) created in VinSolutions for Jun 22 – Jul 21, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in.</div>
+    </div>
+    <section class="block">
+      <h2>Lead volume entering the funnel</h2>
+      <div class="when">Unique opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · de-duped · Bad excluded from “workable”</div>
+      <div class="why"><strong>What this means</strong>
+        After someone visits a site (yours or a 3rd party), the next funnel step is a <strong>lead opportunity</strong> in the CRM.
+        We de-dupe so the same shopper is not counted three times as internet + phone + walk-in.
+        <em>Workable</em> excludes Bad records so junk does not look like real demand.</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Unique opportunities</div><div class="v">646</div>
+          <div class="s">From 867 CRM rows · collapsed 221 repeats</div></div>
+        <div class="stat"><div class="k">Workable (excl. Bad)</div><div class="v">547</div>
+          <div class="s">Bad records set aside: 99</div></div>
+        <div class="stat"><div class="k">Sold in window</div><div class="v">26</div>
+          <div class="s">Close rate 4.8% of workable</div></div>
+      </div>
+
+      <h3>A) Where digital demand is sourced</h3>
+      <div class="why"><strong>Funnel read</strong>
+        Owned website + on-site tools (Motive, Carcode, dealer-site KBB ICO) vs 3rd-party portals (Autotrader/KBB network, CarGurus, TrueCar…)
+        vs OEM partner feeds. These are the “top of digital funnel” sources that create internet opportunities — and often later phone/walk-in on the same shopper.</div>
+      <table>
+        <thead><tr>
+          <th>Digital source family</th><th class="num">Workable opps</th><th class="num">Share of internet</th>
+          <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>Dealer website &amp; on-site</strong></td>
+            <td class="num">82</td><td class="num">16.3%</td>
+            <td class="num">100.0%</td>
+            <td class="num">10</td>
+            <td class="num">12.2%</td></tr>
+          <tr><td><strong>Autotrader / KBB</strong> <span class="pill-at">AT</span><span class="pill-kbb">KBB</span></td>
+            <td class="num">236</td><td class="num">47.0%</td>
+            <td class="num">99.6%</td>
+            <td class="num">1</td>
+            <td class="num">0.4%</td></tr>
+          <tr><td><strong>Other 3rd-party marketplaces</strong></td>
+            <td class="num">50</td><td class="num">10.0%</td>
+            <td class="num">100.0%</td>
+            <td class="num">3</td>
+            <td class="num">6.0%</td></tr>
+          <tr><td><strong>Audi Partner (OEM partner)</strong></td>
+            <td class="num">127</td><td class="num">25.3%</td>
+            <td class="num">100.0%</td>
+            <td class="num">4</td>
+            <td class="num">3.1%</td></tr>
+          <tr><td><strong>Other OEM / brand digital</strong></td>
+            <td class="num">7</td><td class="num">1.4%</td>
+            <td class="num">100.0%</td>
+            <td class="num">0</td>
+            <td class="num">0.0%</td></tr>
+        </tbody>
+      </table>
+
+      <h3>B) How opportunities show up in the CRM (channel)</h3>
+      <div class="why"><strong>Funnel read</strong>
+        Website and 3rd-party activity turns into <strong>internet form leads</strong>, <strong>phone calls</strong>, and <strong>walk-ins</strong>.
+        Leaks appear when traffic is healthy but unique opportunities are weak — or when internet opps never get a real attempt.</div>
+      <table>
+        <thead><tr>
+          <th>CRM channel</th><th class="num">Workable opps</th><th class="num">Share</th>
+          <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close</th><th>Plain English</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>Internet</strong> (web forms / digital)</td>
+            <td class="num">485</td><td class="num">88.7%</td>
+            <td class="num">99.8%</td>
+            <td class="num">18</td><td class="num">3.7%</td>
+            <td>Forms, portals, chat, partner feeds</td></tr>
+          <tr><td><strong>Phone</strong></td>
+            <td class="num">38</td><td class="num">6.9%</td>
+            <td class="num">100.0%</td>
+            <td class="num">3</td><td class="num">7.9%</td>
+            <td>Phone-ups / tracked calls</td></tr>
+          <tr><td><strong>Walk-in</strong></td>
+            <td class="num">24</td><td class="num">4.4%</td>
+            <td class="num">100.0%</td>
+            <td class="num">5</td><td class="num">20.8%</td>
+            <td>In-store / drive-by</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <div class="funnel-arrow">↓</div>
+
+    
+    <div class="funnel-stage">
+      <div class="n">Stage 3 · Lead handling quality</div>
+      <div class="t">How well are we taking care of the leads?</div>
+      <div class="d">Speed, contact coverage, and leaks — especially on internet opportunities that came from the traffic and sources above.</div>
+    </div>
+
+
+    <section class="block">
+      <h2>Pertinent handling numbers</h2>
       <div class="when">Date range: <strong>Jun 22 – Jul 21, 2026</strong> (vs prior 30 days <strong>May 23 – Jun 21, 2026</strong>)</div>
       <div class="why"><strong>What this section is</strong>
         Four quick grades for the last 30 days. Green = good, yellow = watch, red = problem.
@@ -191,13 +337,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </section>
 
     <section class="block">
-      <h2>Where leads came from</h2>
-      <div class="when">Unique workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · de-duped</div>
-      <div class="why"><strong>What this means (industry lens)</strong>
-        Break demand into <strong>walk-in</strong>, <strong>phone</strong>, and <strong>internet</strong> first (NADA-style channel mix),
-        then split internet into owned website, OEM/partner, Autotrader/KBB (one 3rd party with many of their channels), other marketplaces, and campaigns.
-        Grade sources on unique opportunities + contact + close — not raw volume.
-        Dealer website includes Motive, store-domain forms/chat, and Carcode widgets.</div>
+      <h2>Source detail — find the leaks</h2>
+      <div class="when">Unique workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · de-duped · same funnel window</div>
+      <div class="why"><strong>What this means</strong>
+        Drill-down under Stage 2. Compare owned website vs Autotrader/KBB vs other portals vs OEM partner.
+        Low close + high volume = quality leak. Slow internet response = handling leak.
+        Dealer website includes Motive, store-domain forms/chat, Carcode, and dealer-site KBB ICO.
+        Autotrader/KBB is one 3rd party with many of their own channels (forms, calls, ICO, walk-in tags).</div>
 
       <h3>1) Channel mix</h3>
       <table>
@@ -299,6 +445,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
             </div>
     </section>
 
+    
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-stage">
+      <div class="n">Stage 4 · People + execution</div>
+      <div class="t">Salesperson effectiveness</div>
+      <div class="d">Who is working internet leads well, who is slow, and where coaching should start — by team group.</div>
+    </div>
+
     <section class="block">
       <h2>Sales team scoreboard</h2>
       <div class="when">Workable unique opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · split by VinSolutions team · worst contact first inside each group</div>
@@ -352,6 +506,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       </div>
     </section>
 
+    
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-stage">
+      <div class="n">Stage 5 · Context</div>
+      <div class="t">Vehicles, trades, contact methods</div>
+      <div class="d">What shoppers asked about and how the team tried to reach them — supporting detail under the funnel.</div>
+    </div>
+
     <section class="block">
       <h2>How the team is trying to reach customers</h2>
       <div class="when">Workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong></div>
@@ -403,11 +565,11 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       <strong>Date ranges on this page</strong><br/>
       <strong>Last 30 days:</strong> Jun 22 – Jul 21, 2026.<br/>
       <strong>Prior 30 days:</strong> May 23 – Jun 21, 2026.<br/>
-      Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
+      Organized as a sales funnel: website traffic → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
       Internet + phone + walk-in on the same shopper counts as one.
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-15): 18,827 visits · 16,703 people. Generated Jul 22, 2026 12:06 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-15): 18,827 visits · 16,703 people. Generated Jul 22, 2026 12:13 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>
