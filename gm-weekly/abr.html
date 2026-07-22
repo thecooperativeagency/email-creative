@@ -87,7 +87,32 @@ tr.dim td { opacity:.42; }
 .neutral { color:var(--muted); }
 footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 @media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } }
-@media print { body { background:#fff; } .block,.metric,.verdict { break-inside:avoid; } }
+
+/* Stage tabs — one stage at a time */
+.stage-tabs-wrap { position:sticky; top:0; z-index:40; background:var(--bg); padding:10px 0 8px; margin:0 0 12px; border-bottom:1px solid var(--line); }
+.stage-tabs { display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; padding-bottom:2px; }
+.stage-tabs button { flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:9px 12px; font:inherit; font-size:12px; font-weight:750; cursor:pointer; line-height:1.15; text-align:left; }
+.stage-tabs button .tn { display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:2px; }
+.stage-tabs button .tl { display:block; font-size:12px; font-weight:800; }
+.stage-tabs button:hover { border-color:#c5c9d3; }
+.stage-tabs button.active { background:#111; color:#fff; border-color:#111; }
+.stage-tabs button.active .tn { color:rgba(255,255,255,.7); }
+.stage-tabs button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.tab-panel .funnel-arrow { display:none; }
+.tab-panel > .funnel-stage:first-child { margin-top:4px; }
+.tab-nav-footer { display:flex; justify-content:space-between; gap:10px; margin:8px 0 4px; }
+.tab-nav-footer button { border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+.tab-nav-footer button:hover { background:#f8fafc; }
+.tabs-hint { font-size:12px; color:var(--muted); margin:0 0 10px; }
+@media print {
+  body { background:#fff; }
+  .block,.metric,.verdict { break-inside:avoid; }
+  .stage-tabs-wrap, .tab-nav-footer, .tabs-hint { display:none !important; }
+  .tab-panel { display:block !important; }
+  .tab-panel .funnel-arrow { display:block; }
+}
 </style>
 </head>
 <body>
@@ -99,14 +124,40 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 22, 2026 · Generated Jul 22, 2026 5:15 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 22, 2026 · Generated Jul 22, 2026 5:21 PM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: contact coverage is strong; internet response is solid (median 15 min); Audi Partner is 127 opps at 3.1% close — watch list; 1 workable leads still untouched over 24h.</div>
       <div class="when">Rolling 30-day range: Jun 22 – Jul 21, 2026 · compared with prior 30 days May 23 – Jun 21, 2026</div>
     </div>
 
-    
+    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Leads → Handling → People → Context. Print still shows every stage.</p>
+    <div class="stage-tabs-wrap">
+      <div class="stage-tabs" role="tablist" aria-label="Sales funnel stages">
+        <button type="button" role="tab" data-tab="traffic" aria-selected="false">
+          <span class="tn">1 · Demand</span><span class="tl">Traffic</span>
+        </button>
+        
+        <button type="button" role="tab" data-tab="inventory" aria-selected="false">
+          <span class="tn">1b · Supply</span><span class="tl">Inventory</span>
+        </button>
+        <button type="button" role="tab" data-tab="leads" aria-selected="false">
+          <span class="tn">2 · Demand → leads</span><span class="tl">Leads</span>
+        </button>
+        <button type="button" role="tab" data-tab="handling" class="active" aria-selected="true">
+          <span class="tn">3 · Quality</span><span class="tl">Handling</span>
+        </button>
+        <button type="button" role="tab" data-tab="people" aria-selected="false">
+          <span class="tn">4 · Execution</span><span class="tl">People</span>
+        </button>
+        <button type="button" role="tab" data-tab="context" aria-selected="false">
+          <span class="tn">5 · Detail</span><span class="tl">Context</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-traffic" role="tabpanel" data-tab="traffic" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 1 · Top of funnel</div>
       <div class="t">Website traffic</div>
@@ -140,9 +191,15 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       </table>
       <p class="webline">Includes paid/organic/social/referral mix feeding the store website — not the same as CRM lead source labels.</p>
     </section>
-    <div class="funnel-arrow">↓</div>
 
+      <div class="tab-nav-footer">
+        <span></span>
+        <button type="button" data-go="inventory">Next: Inventory →</button>
+      </div>
+    </div>
     
+    <div class="tab-panel" id="panel-inventory" role="tabpanel" data-tab="inventory" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 1b · Supply next to demand</div>
       <div class="t">Inventory health (active lot)</div>
@@ -204,9 +261,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       <p class="webline"><strong>Photo gap:</strong> 46 active units (26.6%) marked without a photo — website and marketplace presentation risk, separate from lead handling.</p>
       <p class="webline">Source: VinSolutions inventory export (Active only). Website search counts can differ slightly from CRM Active — this panel is the ops lot, not a scrape of the public inventory grid.</p>
     </section>
-    <div class="funnel-arrow">↓</div>
 
-    
+      <div class="tab-nav-footer">
+        <button type="button" data-go="traffic">← Traffic</button>
+        <button type="button" data-go="leads">Next: Leads →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-leads" role="tabpanel" data-tab="leads" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 2 · Demand becomes leads</div>
       <div class="t">CRM opportunities from website + 3rd parties</div>
@@ -307,15 +369,19 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         </tbody>
       </table>
     </section>
-    <div class="funnel-arrow">↓</div>
 
-    
+      <div class="tab-nav-footer">
+        <button type="button" data-go="inventory">← Back</button>
+        <button type="button" data-go="handling">Next: Handling →</button>
+      </div>
+    </div>
+    <div class="tab-panel active" id="panel-handling" role="tabpanel" data-tab="handling">
+      
     <div class="funnel-stage">
       <div class="n">Stage 3 · Lead handling quality</div>
       <div class="t">How well are we taking care of the leads?</div>
       <div class="d">Speed, contact coverage, and leaks — especially on internet opportunities that came from the traffic and sources above.</div>
     </div>
-
 
     <section class="block">
       <h2>Pertinent handling numbers</h2>
@@ -523,9 +589,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
               </table>
             </div>
     </section>
-
-    
-    <div class="funnel-arrow">↓</div>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="leads">← Leads</button>
+        <button type="button" data-go="people">Next: People →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-people" role="tabpanel" data-tab="people" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 4 · People + execution</div>
       <div class="t">Salesperson effectiveness</div>
@@ -584,9 +654,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div><strong>Close rate</strong> — sold ÷ their workable opps.</div>
       </div>
     </section>
-
-    
-    <div class="funnel-arrow">↓</div>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="handling">← Handling</button>
+        <button type="button" data-go="context">Next: Context →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 5 · Context</div>
       <div class="t">Vehicles, trades, contact methods</div>
@@ -639,7 +713,6 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <tbody><tr><td>2018 Ford Mustang</td><td class='num'>3</td><td class='num'>1.2%</td></tr><tr><td>2021 Dodge Charger</td><td class='num'>3</td><td class='num'>1.2%</td></tr><tr><td>2023 Toyota Tundra CrewMax</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr><td>2018 Ford F150 SuperCrew Cab</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr><td>2011 BMW 5 Series</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr><td>2024 Volkswagen Atlas Cross Sport</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr><td>2020 Hyundai Tucson</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr><td>2022 Ford F150 SuperCrew Cab</td><td class='num'>2</td><td class='num'>0.8%</td></tr><tr class='total-row'><td>Total</td><td class='num'>18</td><td class='num'>100.0%</td></tr></tbody>
       </table>
     </section>
-
     <div class="foot">
       <strong>Date ranges on this page</strong><br/>
       <strong>Last 30 days:</strong> Jun 22 – Jul 21, 2026.<br/>
@@ -649,10 +722,43 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions <strong>Active</strong> units only when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-15): 18,827 visits · 16,703 people. Generated Jul 22, 2026 5:15 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-15): 18,827 visits · 16,703 people. Generated Jul 22, 2026 5:21 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>
   <footer>Audi Baton Rouge · GM Performance Brief · The Cooperative Agency</footer>
+  <script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.stage-tabs [data-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel[data-tab]'));
+    var valid = {};
+    tabs.forEach(function (b) { valid[b.getAttribute('data-tab')] = true; });
+    function show(id, push) {
+      if (!valid[id]) id = 'handling';
+      tabs.forEach(function (b) {
+        var on = b.getAttribute('data-tab') === id;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function (p) {
+        var on = p.getAttribute('data-tab') === id;
+        p.classList.toggle('active', on);
+        if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+      });
+      if (push !== false) {
+        try { history.replaceState(null, '', '#' + id); } catch (e) {}
+      }
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0,0); }
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-tab')); });
+    });
+    document.querySelectorAll('[data-go]').forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-go')); });
+    });
+    var initial = (location.hash || '').replace(/^#/, '');
+    show(valid[initial] ? initial : 'handling', false);
+  })();
+  </script>
 </body>
 </html>
