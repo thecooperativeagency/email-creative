@@ -124,10 +124,10 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Jul 23, 2026 · Generated Jul 23, 2026 4:11 PM</div>
+    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Jul 23, 2026 · Generated Jul 23, 2026 4:21 PM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
-      <div class="txt">Last 30 days: 301 unique workable opportunities (371 CRM rows before de-dupe); retail close 26.1% (74 retail sold, +18 wholesale/auction); 135 still open in CRM status; internet is 61.8% of workable; contact/response-time fields not in this CRM export — handling speed not graded.</div>
+      <div class="txt">Last 30 days: 301 workable opportunities (371 unique after de-dupe; Bad excluded from workable); retail close 26.1% (74 retail sold, +18 wholesale/auction); 135 still open in CRM status; internet is 61.8% of workable; contact/response-time fields not in this CRM export — handling speed not graded.</div>
       <div class="when">Rolling 30-day range: Jun 23 – Jul 22, 2026 · compared with prior 30 days May 24 – Jun 22, 2026</div>
     </div>
 
@@ -161,7 +161,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     <div class="funnel-stage">
       <div class="n">Stage 1 · Top of funnel</div>
       <div class="t">Website traffic</div>
-      <div class="d">People visiting bmwofjackson.com (and related store sites) before any CRM lead is created.</div>
+      <div class="d">People visiting bmwofjackson.com before any CRM lead is created.</div>
     </div>
     <section class="block">
       <h2>Total website traffic picture</h2>
@@ -185,11 +185,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
           <div class="s">Visits from phones/tablets</div></div>
       </div>
       <h3>Where site traffic came from (top sources)</h3>
+      <div class="why"><strong>How to read this</strong>
+        Top source/medium rows from the GA4 cache. These are mix indicators — they are <strong>not</strong> required to sum to total site sessions above (attribution overlap and cache windows differ).</div>
       <table>
-        <thead><tr><th>Source / medium</th><th class="num">Visits</th><th class="num">People</th></tr></thead>
-        <tbody><tr><td>google / cpc</td><td class='num'>46,161</td><td class='num'>32,529</td></tr><tr><td>(direct) / (none)</td><td class='num'>14,509</td><td class='num'>11,542</td></tr><tr><td>google / organic</td><td class='num'>9,597</td><td class='num'>5,123</td></tr><tr><td>facebook / cpc</td><td class='num'>5,123</td><td class='num'>4,078</td></tr><tr><td>(not set) / (not set)</td><td class='num'>1,464</td><td class='num'>1,324</td></tr><tr><td>bing / organic</td><td class='num'>960</td><td class='num'>459</td></tr><tr><td>(data not available) / (data not available)</td><td class='num'>432</td><td class='num'>422</td></tr><tr><td>facebook.com / referral</td><td class='num'>350</td><td class='num'>320</td></tr><tr class='total-row'><td>Total (top sources listed)</td><td class='num'>78,596</td><td class='num'>55,797</td></tr></tbody>
+        <thead><tr><th>Source / medium</th><th class="num">Sessions (row)</th><th class="num">People (row)</th></tr></thead>
+        <tbody><tr><td>google / cpc</td><td class='num'>46,161</td><td class='num'>32,529</td></tr><tr><td>(direct) / (none)</td><td class='num'>14,509</td><td class='num'>11,542</td></tr><tr><td>google / organic</td><td class='num'>9,597</td><td class='num'>5,123</td></tr><tr><td>facebook / cpc</td><td class='num'>5,123</td><td class='num'>4,078</td></tr><tr><td>(not set) / (not set)</td><td class='num'>1,464</td><td class='num'>1,324</td></tr><tr><td>bing / organic</td><td class='num'>960</td><td class='num'>459</td></tr><tr><td>(data not available) / (data not available)</td><td class='num'>432</td><td class='num'>422</td></tr><tr><td>facebook.com / referral</td><td class='num'>350</td><td class='num'>320</td></tr></tbody>
       </table>
-      <p class="webline">Includes paid/organic/social/referral mix feeding the store website — not the same as CRM lead source labels.</p>
+      <p class="webline">Website traffic mix only — not the same labels as CRM lead sources. No source total row (avoids a sum that can exceed site sessions).</p>
     </section>
 
       <div class="tab-nav-footer">
@@ -201,66 +203,18 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     <div class="tab-panel" id="panel-inventory" role="tabpanel" data-tab="inventory" hidden>
       
     <div class="funnel-stage">
-      <div class="n">Stage 1b · Supply next to demand</div>
-      <div class="t">Inventory health (active lot)</div>
-      <div class="d">What the store has to sell right now — after website traffic, before CRM leads. Not lead handling.</div>
+      <div class="n">Stage 1b · Supply</div>
+      <div class="t">Inventory export incomplete this cycle</div>
+      <div class="d">Full lot aging is withheld until the export looks like a complete active lot.</div>
     </div>
     <section class="block">
-      <h2>Store inventory on the ground</h2>
-      <div class="when">Focus live-lot units · snapshot file bmwj-inventory-latest.csv · as of Jul 23, 2026 3:39 PM · lead window for context <strong>Jun 23 – Jul 22, 2026</strong></div>
+      <h2>Partial inventory export</h2>
+      <div class="when">Focus file bmwj-inventory-latest.csv · as of Jul 23, 2026 3:39 PM · lead window <strong>Jun 23 – Jul 22, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
-        Live lot composition and aging. Traffic and 3rd-party demand only convert if the metal matches what shoppers want.
-        File rows: 10 → lot units shown: 10.
-         Export looks smaller than a full store lot — treat as the units in this file, not necessarily every unit in DMS.
-        This is <strong>not</strong> contact rate or response speed — those start at Stage 3.</div>
-      <div class="stat-grid">
-        <div class="stat"><div class="k">Active total</div><div class="v">10</div>
-          <div class="s">Units in Active status</div></div>
-        <div class="stat"><div class="k">New</div><div class="v">10</div>
-          <div class="s">100.0% of active lot</div></div>
-        <div class="stat"><div class="k">Used</div><div class="v">0</div>
-          <div class="s">Retail used (excl. Certified)</div></div>
-        <div class="stat"><div class="k">Certified</div><div class="v">0</div>
-          <div class="s">CPO subset of the lot</div></div>
-        <div class="stat"><div class="k">Median age</div><div class="v">178 d</div>
-          <div class="s">Days in inventory (Active)</div></div>
-        <div class="stat"><div class="k">No photo</div><div class="v">10</div>
-          <div class="s">100.0% of active units</div></div>
-      </div>
-
-      <h3>Age of active inventory</h3>
-      <table>
-        <thead><tr><th>Age bucket</th><th class="num">Units</th><th class="num">Share</th></tr></thead>
-        <tbody><tr><td>0–30 days</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>31–60 days</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>61–90 days</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>91–180 days</td><td class='num'>5</td><td class='num'>50.0%</td></tr><tr><td>180+ days</td><td class='num'>5</td><td class='num'>50.0%</td></tr><tr class='total-row'><td>Total aged units</td><td class='num'>10</td><td class='num'>100%</td></tr></tbody>
-      </table>
-
-      <h3>Aging by New / Used / Certified</h3>
-      <table>
-        <thead><tr>
-          <th>Type</th><th class="num">Units</th><th class="num">Median age</th>
-          <th class="num">&gt;60d</th><th class="num">&gt;90d</th><th class="num">&gt;180d</th>
-        </tr></thead>
-        <tbody><tr><td><strong>New</strong></td><td class='num'>10</td><td class='num'>178 d</td><td class='num'>10</td><td class='num'>10</td><td class='num'>5</td></tr><tr class='total-row'><td>All active</td><td class='num'>10</td><td class='num'>178 d</td><td class='num'>10</td><td class='num'>10</td><td class='num'>5</td></tr></tbody>
-      </table>
-
-      
-      <div class="sub">
-        <h3>New — top models</h3>
-        <table>
-          <thead><tr><th>Unit</th><th class="num">Count</th><th class="num">Share of active lot</th></tr></thead>
-          <tbody><tr><td>530i 530i Sedan</td><td class='num'>2</td><td class='num'>20.0%</td></tr><tr><td>X5 sDrive40i sDrive40i</td><td class='num'>2</td><td class='num'>20.0%</td></tr><tr><td>X5 xDrive50e xDrive50e</td><td class='num'>2</td><td class='num'>20.0%</td></tr><tr><td>X3 M50 xDrive</td><td class='num'>1</td><td class='num'>10.0%</td></tr><tr><td>430i 430i Gran</td><td class='num'>1</td><td class='num'>10.0%</td></tr><tr><td>X3 30 xDrive</td><td class='num'>1</td><td class='num'>10.0%</td></tr><tr><td>X5 xDrive40i xDrive40i</td><td class='num'>1</td><td class='num'>10.0%</td></tr><tr class='total-row'><td>Top listed</td><td class='num'>10</td><td class='num'>100.0%</td></tr></tbody>
-        </table>
-      </div>
-      
-      <div class="sub">
-        <h3>Used + Certified — top make / model</h3>
-        <table>
-          <thead><tr><th>Unit</th><th class="num">Count</th><th class="num">Share of active lot</th></tr></thead>
-          <tbody><tr><td colspan='3'>No used/CPO units</td></tr></tbody>
-        </table>
-      </div>
-      <p class="webline"><strong>Photo gap:</strong> 10 active units (100.0%) marked without a photo — website and marketplace presentation risk, separate from lead handling.</p>
-      <p class="webline">Source: Focus inventory export (live lot). Website search counts can differ — this panel is the ops lot from the CRM file, not a scrape of the public inventory grid.</p>
+        File returned 10 units (New 10 · Used 0 · CPO 0).
+        Export looks smaller than a full store lot — treat as the units in this file, not necessarily every unit in DMS.
+        Median age in file: 178 days · no-photo flags: 10.
+        Re-export full active New/Used/CPO before using inventory as a coaching stage.</div>
     </section>
 
       <div class="tab-nav-footer">
@@ -283,10 +237,10 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         We de-dupe so the same shopper is not counted three times as internet + phone + walk-in.
         <em>Workable</em> excludes Bad records so junk does not look like real demand.</div>
       <div class="stat-grid">
-        <div class="stat"><div class="k">Unique opportunities</div><div class="v">371</div>
-          <div class="s">From 481 CRM rows · collapsed 110 repeats</div></div>
+        <div class="stat"><div class="k">Unique after de-dupe</div><div class="v">371</div>
+          <div class="s">From 481 raw CRM rows · 110 repeats collapsed</div></div>
         <div class="stat"><div class="k">Workable (excl. Bad)</div><div class="v">301</div>
-          <div class="s">Bad records set aside: 70</div></div>
+          <div class="s">Of 371 unique · Bad set aside: 70</div></div>
         <div class="stat"><div class="k">Retail sold</div><div class="v">74</div>
           <div class="s">Retail close 26.1% of 283 retail workable</div></div>
         <div class="stat"><div class="k">Wholesale / auction sold</div><div class="v">18</div>
@@ -331,11 +285,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
             <td class="num">22.8%</td></tr>
         </tbody>
       </table>
+      <p class="webline">Digital families above total <strong>123</strong> workable internet-side rows shown in those buckets; internet CRM channel is <strong>186</strong>. Gap is other internet sources (campaigns, uncategorized, etc.) detailed under Source detail.</p>
 
       <h3>B) How opportunities show up in the CRM (channel)</h3>
       <div class="why"><strong>Funnel read</strong>
-        Website and 3rd-party activity turns into <strong>internet form leads</strong>, <strong>phone calls</strong>, and <strong>walk-ins</strong>.
-        Leaks appear when traffic is healthy but unique opportunities are weak — or when internet opps never get a real attempt.</div>
+        Website and 3rd-party activity turns into <strong>internet form leads</strong>, <strong>phone calls</strong>, and <strong>walk-ins</strong> (plus Other CRM types).
+        Close = retail sold ÷ retail workable on the hero grade; per-row close uses that channel’s workable opps.
+        Contacted column is blank — Focus export has no attempt/contacted fields this cycle.</div>
       <table>
         <thead><tr>
           <th>CRM channel</th><th class="num">Workable opps</th><th class="num">Share</th>
@@ -399,13 +355,13 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <thead><tr>
           <th>Created</th><th>Outlet</th><th>Buyer</th><th>Vehicle</th><th class="num">Stock</th><th>Logged rep</th>
         </tr></thead>
-        <tbody><tr><td>Jun 23</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2024 Chevrolet Tahoe</td><td class='num'>B12105A</td><td>Justin McFarland</td></tr><tr><td>Jun 24</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2023 Jaguar F-TYPE</td><td class='num'>B12314B</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jun 24</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2023 BMW iX M60</td><td class='num'>BPL3992</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jun 26</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2020 Mercedes-Benz GLE 350</td><td class='num'>B12350A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jun 29</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2017 BMW 530i</td><td class='num'>B12218A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jun 29</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2015 BMW 328i</td><td class='num'>BP3952A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 02</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2006 Chevrolet Silverado 1500</td><td class='num'>B12276B</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 07</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2018 BMW 540i</td><td class='num'>B12335A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 09</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2026 Honda CR-V Hybrid</td><td class='num'>BL11893A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 09</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2022 BMW X3 xDrive30i</td><td class='num'>B12289A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 10</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2019 BMW X3 sDrive30i</td><td class='num'>B12239A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 11</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2021 BMW X3 M40i</td><td class='num'>B12351A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 13</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2021 Mercedes-Benz GLS 580</td><td class='num'>B12333A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 14</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2026 BMW i5</td><td class='num'>B12347A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 15</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2022 Toyota Camry</td><td class='num'>B12332B</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 20</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2024 Mazda MX-5 Miata</td><td class='num'>B12347B</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 20</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2019 BMW X7 xDrive40i</td><td class='num'>BP3980A</td><td>OrphanClient St03 BU01</td></tr><tr><td>Jul 22</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2018 BMW 340i</td><td class='num'>B12257C</td><td>OrphanClient St03 BU01</td></tr></tbody>
+        <tbody><tr><td>Jun 23</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2024 Chevrolet Tahoe</td><td class='num'>B12105A</td><td>Justin McFarland</td></tr><tr><td>Jun 24</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2023 Jaguar F-TYPE</td><td class='num'>B12314B</td><td>Unassigned (system)</td></tr><tr><td>Jun 24</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2023 BMW iX M60</td><td class='num'>BPL3992</td><td>Unassigned (system)</td></tr><tr><td>Jun 26</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2020 Mercedes-Benz GLE 350</td><td class='num'>B12350A</td><td>Unassigned (system)</td></tr><tr><td>Jun 29</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2017 BMW 530i</td><td class='num'>B12218A</td><td>Unassigned (system)</td></tr><tr><td>Jun 29</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2015 BMW 328i</td><td class='num'>BP3952A</td><td>Unassigned (system)</td></tr><tr><td>Jul 02</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2006 Chevrolet Silverado 1500</td><td class='num'>B12276B</td><td>Unassigned (system)</td></tr><tr><td>Jul 07</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2018 BMW 540i</td><td class='num'>B12335A</td><td>Unassigned (system)</td></tr><tr><td>Jul 09</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2026 Honda CR-V Hybrid</td><td class='num'>BL11893A</td><td>Unassigned (system)</td></tr><tr><td>Jul 09</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2022 BMW X3 xDrive30i</td><td class='num'>B12289A</td><td>Unassigned (system)</td></tr><tr><td>Jul 10</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2019 BMW X3 sDrive30i</td><td class='num'>B12239A</td><td>Unassigned (system)</td></tr><tr><td>Jul 11</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2021 BMW X3 M40i</td><td class='num'>B12351A</td><td>Unassigned (system)</td></tr><tr><td>Jul 13</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2021 Mercedes-Benz GLS 580</td><td class='num'>B12333A</td><td>Unassigned (system)</td></tr><tr><td>Jul 14</td><td>Give Me The Vin</td><td>GIVE ME THE VIN</td><td>2026 BMW i5</td><td class='num'>B12347A</td><td>Unassigned (system)</td></tr><tr><td>Jul 15</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2022 Toyota Camry</td><td class='num'>B12332B</td><td>Unassigned (system)</td></tr><tr><td>Jul 20</td><td>CarMax</td><td>CARMAX AUTO SUPERSTORES INC</td><td>2024 Mazda MX-5 Miata</td><td class='num'>B12347B</td><td>Unassigned (system)</td></tr><tr><td>Jul 20</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2019 BMW X7 xDrive40i</td><td class='num'>BP3980A</td><td>Unassigned (system)</td></tr><tr><td>Jul 22</td><td>OPENLANE</td><td>OPENLANE, INC</td><td>2018 BMW 340i</td><td class='num'>B12257C</td><td>Unassigned (system)</td></tr></tbody>
       </table>
     </section>
 
     <section class="block">
       <h2>Source detail</h2>
-      <div class="when">Unique workable opportunities · <strong>Jun 23 – Jul 22, 2026</strong> · de-duped · same funnel window</div>
+      <div class="when">Unique workable opportunities · <strong>Jun 23 – Jul 22, 2026</strong> · de-duped · same funnel window · Close = sold ÷ opps · Contact blank — not in Focus export</div>
       <div class="why"><strong>What this means</strong>
         Drill-down on <strong>where demand came from</strong> — owned website vs Autotrader/KBB vs other portals vs OEM/brand digital, then phone and walk-in. High volume + low close often means a <em>source quality</em> issue. Whether the team worked those leads fast belongs on the <strong>Handling</strong> tab. Dealer website includes Motive, Remora, store-domain forms/chat, and on-site quote tools. Autotrader/KBB is one 3rd party with many of their own channels.</div>
 
@@ -415,7 +371,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
           <th>Channel</th><th class="num">Opps</th><th class="num">Share</th>
           <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close</th>
         </tr></thead>
-        <tbody><tr><td><strong>Internet</strong></td><td class='num'>186</td><td class='num'>61.8%</td><td class='num'>—</td><td class='num'>37</td><td class='num'>20.0%</td></tr><tr><td><strong>Phone</strong></td><td class='num'>29</td><td class='num'>9.6%</td><td class='num'>—</td><td class='num'>5</td><td class='num'>17.2%</td></tr><tr><td><strong>Walk-in</strong></td><td class='num'>45</td><td class='num'>15.0%</td><td class='num'>—</td><td class='num'>20</td><td class='num'>44.4%</td></tr><tr><td><strong>Other</strong></td><td class='num'>41</td><td class='num'>13.6%</td><td class='num'>—</td><td class='num'>12</td><td class='num'>50.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>301</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>74</td><td class='num'>24.6%</td></tr></tbody>
+        <tbody><tr><td><strong>Internet</strong></td><td class='num'>186</td><td class='num'>61.8%</td><td class='num'>—</td><td class='num'>37</td><td class='num'>20.0%</td></tr><tr><td><strong>Phone</strong></td><td class='num'>29</td><td class='num'>9.6%</td><td class='num'>—</td><td class='num'>5</td><td class='num'>17.2%</td></tr><tr><td><strong>Walk-in</strong></td><td class='num'>45</td><td class='num'>15.0%</td><td class='num'>—</td><td class='num'>20</td><td class='num'>44.4%</td></tr><tr><td><strong>Other</strong></td><td class='num'>41</td><td class='num'>13.6%</td><td class='num'>—</td><td class='num'>12</td><td class='num'>50.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>301</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>74</td><td class='num'>26.1%</td></tr></tbody>
       </table>
 
       <h3>2) Internet broken down</h3>
@@ -615,7 +571,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
                 <thead><tr>
                   <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet opps</th><th class="num">Sold</th><th class="num">Close rate</th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>OrphanClient St03 BU01</td><td class='num'>18</td><td class='num'>0</td><td class='num'>18</td><td class='num'>100.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>18</td><td class='num'>0</td><td class='num'>18</td><td class='num'>100.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Unassigned (system)</td><td class='num'>18</td><td class='num'>0</td><td class='num'>18</td><td class='num'>100.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>18</td><td class='num'>0</td><td class='num'>18</td><td class='num'>100.0%</td></tr></tbody>
               </table>
             </div>
 
@@ -696,7 +652,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses Focus live-lot units when an inventory export is present.
-      Lead data: Focus. Website traffic (GA4 cache 2026-07-15): 28,161 visits · 24,887 people. Generated Jul 23, 2026 4:11 PM.
+      Lead data: Focus. Website traffic (GA4 cache 2026-07-15): 28,161 visits · 24,887 people. Generated Jul 23, 2026 4:21 PM.
       This page is for BMW of Jackson only — no other stores.
     </div>
   </div>
