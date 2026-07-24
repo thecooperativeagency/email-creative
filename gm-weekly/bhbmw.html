@@ -139,7 +139,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 10:27 AM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 10:48 AM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 599 workable opportunities (809 unique after de-dupe; Bad excluded from workable); retail close 18.2% (109 retail sold); internet is 67.9% of workable; internet CRM contact 97.5%; internet median response 11 min; 12 workable leads still untouched over 24h.</div>
@@ -153,6 +153,9 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
           <span class="tn">1 · Demand</span><span class="tl">Traffic</span>
         </button>
         
+        <button type="button" role="tab" data-tab="inventory" aria-selected="false">
+          <span class="tn">1b · Supply</span><span class="tl">Inventory</span>
+        </button>
         <button type="button" role="tab" data-tab="leads" aria-selected="false">
           <span class="tn">2 · Demand → leads</span><span class="tl">Leads</span>
         </button>
@@ -208,10 +211,80 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 
       <div class="tab-nav-footer">
         <span></span>
-        <button type="button" data-go="leads">Next: Leads →</button>
+        <button type="button" data-go="inventory">Next: Inventory →</button>
       </div>
     </div>
     
+    <div class="tab-panel" id="panel-inventory" role="tabpanel" data-tab="inventory" hidden>
+      
+    <div class="funnel-stage">
+      <div class="n">Stage 1b · Supply next to demand</div>
+      <div class="t">Inventory health (active lot)</div>
+      <div class="d">What the store has to sell right now — after website traffic, before CRM leads. Not lead handling.</div>
+    </div>
+    <section class="block">
+      <h2>Store inventory on the ground</h2>
+      <div class="when">VinSolutions live-lot units · snapshot file bhbmw-inventory-latest.csv · as of Jul 24, 2026 10:48 AM · lead window for context <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Live lot composition and aging. Traffic and 3rd-party demand only convert if the metal matches what shoppers want.
+        File rows: 6,448 → lot units shown: 308.
+        
+        This is <strong>not</strong> contact rate or response speed — those start at Stage 3.</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Active total</div><div class="v">308</div>
+          <div class="s">Units in Active status</div></div>
+        <div class="stat"><div class="k">New</div><div class="v">176</div>
+          <div class="s">57.1% of active lot</div></div>
+        <div class="stat"><div class="k">Used</div><div class="v">76</div>
+          <div class="s">Retail used (excl. Certified)</div></div>
+        <div class="stat"><div class="k">Certified</div><div class="v">56</div>
+          <div class="s">CPO subset of the lot</div></div>
+        <div class="stat"><div class="k">Median age</div><div class="v">52.0 d</div>
+          <div class="s">Days in inventory (Active)</div></div>
+        <div class="stat"><div class="k">No photo</div><div class="v">115</div>
+          <div class="s">37.3% of active units</div></div>
+      </div>
+
+      <h3>Age of active inventory</h3>
+      <table>
+        <thead><tr><th>Age bucket</th><th class="num">Units</th><th class="num">Share</th></tr></thead>
+        <tbody><tr><td>0–30 days</td><td class='num'>94</td><td class='num'>30.5%</td></tr><tr><td>31–60 days</td><td class='num'>74</td><td class='num'>24.0%</td></tr><tr><td>61–90 days</td><td class='num'>49</td><td class='num'>15.9%</td></tr><tr><td>91–180 days</td><td class='num'>50</td><td class='num'>16.2%</td></tr><tr><td>180+ days</td><td class='num'>41</td><td class='num'>13.3%</td></tr><tr class='total-row'><td>Total aged units</td><td class='num'>308</td><td class='num'>100%</td></tr></tbody>
+      </table>
+
+      <h3>Aging by New / Used / Certified</h3>
+      <table>
+        <thead><tr>
+          <th>Type</th><th class="num">Units</th><th class="num">Median age</th>
+          <th class="num">&gt;60d</th><th class="num">&gt;90d</th><th class="num">&gt;180d</th>
+        </tr></thead>
+        <tbody><tr><td><strong>New</strong></td><td class='num'>176</td><td class='num'>64.5 d</td><td class='num'>90</td><td class='num'>66</td><td class='num'>22</td></tr><tr><td><strong>Used</strong></td><td class='num'>76</td><td class='num'>36.0 d</td><td class='num'>22</td><td class='num'>5</td><td class='num'>1</td></tr><tr><td><strong>Certified</strong></td><td class='num'>56</td><td class='num'>59.5 d</td><td class='num'>28</td><td class='num'>20</td><td class='num'>18</td></tr><tr class='total-row'><td>All active</td><td class='num'>308</td><td class='num'>52.0 d</td><td class='num'>140</td><td class='num'>91</td><td class='num'>41</td></tr></tbody>
+      </table>
+
+      
+      <div class="sub">
+        <h3>New — top models</h3>
+        <table>
+          <thead><tr><th>Unit</th><th class="num">Count</th><th class="num">Share of active lot</th></tr></thead>
+          <tbody><tr><td>X3</td><td class='num'>50</td><td class='num'>16.2%</td></tr><tr><td>X5</td><td class='num'>48</td><td class='num'>15.6%</td></tr><tr><td>X1</td><td class='num'>18</td><td class='num'>5.8%</td></tr><tr><td>4 Series</td><td class='num'>10</td><td class='num'>3.2%</td></tr><tr><td>X7</td><td class='num'>10</td><td class='num'>3.2%</td></tr><tr><td>3 Series</td><td class='num'>6</td><td class='num'>1.9%</td></tr><tr><td>5 Series</td><td class='num'>6</td><td class='num'>1.9%</td></tr><tr><td>2 Series</td><td class='num'>5</td><td class='num'>1.6%</td></tr><tr><td>X6</td><td class='num'>4</td><td class='num'>1.3%</td></tr><tr><td>8 Series</td><td class='num'>4</td><td class='num'>1.3%</td></tr><tr class='total-row'><td>Top listed</td><td class='num'>161</td><td class='num'>52.3%</td></tr></tbody>
+        </table>
+      </div>
+      
+      <div class="sub">
+        <h3>Used + Certified — top make / model</h3>
+        <table>
+          <thead><tr><th>Unit</th><th class="num">Count</th><th class="num">Share of active lot</th></tr></thead>
+          <tbody><tr><td>BMW X3</td><td class='num'>18</td><td class='num'>5.8%</td></tr><tr><td>BMW X5</td><td class='num'>17</td><td class='num'>5.5%</td></tr><tr><td>BMW X7</td><td class='num'>9</td><td class='num'>2.9%</td></tr><tr><td>BMW 5 Series</td><td class='num'>7</td><td class='num'>2.3%</td></tr><tr><td>BMW 3 Series</td><td class='num'>7</td><td class='num'>2.3%</td></tr><tr><td>BMW X1</td><td class='num'>5</td><td class='num'>1.6%</td></tr><tr><td>Mercedes-Benz GLE</td><td class='num'>5</td><td class='num'>1.6%</td></tr><tr><td>BMW 4 Series</td><td class='num'>3</td><td class='num'>1.0%</td></tr><tr><td>BMW 2 Series</td><td class='num'>3</td><td class='num'>1.0%</td></tr><tr><td>BMW X4</td><td class='num'>2</td><td class='num'>0.6%</td></tr><tr class='total-row'><td>Top listed</td><td class='num'>76</td><td class='num'>24.7%</td></tr></tbody>
+        </table>
+      </div>
+      <p class="webline"><strong>Photo gap:</strong> 115 active units (37.3%) marked without a photo — website and marketplace presentation risk, separate from lead handling.</p>
+      <p class="webline">Source: VinSolutions inventory export (live lot). Website search counts can differ — this panel is the ops lot from the CRM file, not a scrape of the public inventory grid.</p>
+    </section>
+
+      <div class="tab-nav-footer">
+        <button type="button" data-go="traffic">← Traffic</button>
+        <button type="button" data-go="leads">Next: Leads →</button>
+      </div>
+    </div>
     <div class="tab-panel" id="panel-leads" role="tabpanel" data-tab="leads" hidden>
       
     <div class="funnel-stage">
@@ -422,7 +495,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
             </div>
     </section>
       <div class="tab-nav-footer">
-        <button type="button" data-go="traffic">← Back</button>
+        <button type="button" data-go="inventory">← Back</button>
         <button type="button" data-go="handling">Next: Handling →</button>
       </div>
     </div>
@@ -671,7 +744,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 10:27 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 10:48 AM.
       This page is for Brian Harris BMW only — no other stores.
     </div>
   </div>
