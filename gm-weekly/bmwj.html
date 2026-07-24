@@ -10,6 +10,19 @@
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
 .top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 16px; }
+.top.has-photo {
+  position:relative; color:#fff; overflow:hidden;
+  background-color:#0b1a2e; background-position:center; background-size:cover; background-repeat:no-repeat;
+  border-bottom:3px solid var(--accent); padding:40px 16px 34px;
+}
+.top.has-photo::before {
+  content:""; position:absolute; inset:0; z-index:0;
+  background:linear-gradient(105deg, rgba(6,14,28,.78) 0%, rgba(6,14,28,.55) 48%, rgba(6,14,28,.42) 100%);
+}
+.top.has-photo > .wrap { position:relative; z-index:1; }
+.top.has-photo .brand { color:rgba(255,255,255,.78); }
+.top.has-photo h1 { color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.35); }
+.top.has-photo .sub { color:rgba(255,255,255,.9); }
 .wrap { max-width:800px; margin:0 auto; padding:18px 16px 48px; }
 .brand { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
 h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
@@ -86,7 +99,20 @@ tr.dim td { opacity:.42; }
 .down { color:var(--bad); font-weight:700; }
 .neutral { color:var(--muted); }
 footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
-@media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } }
+@media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } .top.has-photo { padding:28px 16px 24px; } }
+
+
+.src-main { display:block; font-weight:650; }
+.src-sub { display:block; font-size:11px; color:var(--muted); font-weight:500; margin-top:2px; }
+.th-sub { display:block; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+.ch-cell { text-align:right; vertical-align:middle; min-width:62px; }
+.ch-cell .ch-n { display:block; font-weight:750; font-variant-numeric:tabular-nums; line-height:1.2; }
+.ch-cell .ch-unit { font-weight:600; font-size:10px; color:var(--muted); }
+.ch-cell .ch-s { display:block; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); margin-top:2px; }
+.ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:1px; }
+.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c { opacity:.35; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+table.scoreboard { font-size:12.5px; min-width:700px; }
 
 /* Stage tabs — one stage at a time */
 .stage-tabs-wrap { position:sticky; top:0; z-index:40; background:var(--bg); padding:10px 0 8px; margin:0 0 12px; border-bottom:1px solid var(--line); }
@@ -112,6 +138,8 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
   .stage-tabs-wrap, .tab-nav-footer, .tabs-hint { display:none !important; }
   .tab-panel { display:block !important; }
   .tab-panel .funnel-arrow { display:block; }
+  .top.has-photo { background:#111 !important; color:#fff; }
+  .top.has-photo::before { display:none; }
 }
 </style>
 </head>
@@ -124,14 +152,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 7:03 AM</div>
+    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 1:08 PM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 286 workable opportunities (355 unique after de-dupe; Bad excluded from workable); retail close 26.5% (71 retail sold, +18 wholesale/auction); 129 still open in CRM status; internet is 62.2% of workable; contact/response-time fields not in this CRM export — handling speed not graded.</div>
       <div class="when">Rolling 30-day range: Jun 24 – Jul 23, 2026 · compared with prior 30 days May 25 – Jun 23, 2026</div>
     </div>
 
-    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Leads → Handling → People → Context. Print still shows every stage.</p>
+    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Demand shape → Leads → Handling → People. Print still shows every stage.</p>
     <div class="stage-tabs-wrap">
       <div class="stage-tabs" role="tablist" aria-label="Sales funnel stages">
         <button type="button" role="tab" data-tab="traffic" aria-selected="false">
@@ -141,17 +169,17 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <button type="button" role="tab" data-tab="inventory" aria-selected="false">
           <span class="tn">1b · Supply</span><span class="tl">Inventory</span>
         </button>
+        <button type="button" role="tab" data-tab="context" aria-selected="false">
+          <span class="tn">2 · Shape</span><span class="tl">Demand shape</span>
+        </button>
         <button type="button" role="tab" data-tab="leads" aria-selected="false">
-          <span class="tn">2 · Demand → leads</span><span class="tl">Leads</span>
+          <span class="tn">3 · Demand → leads</span><span class="tl">Leads</span>
         </button>
         <button type="button" role="tab" data-tab="handling" class="active" aria-selected="true">
-          <span class="tn">3 · Quality</span><span class="tl">Handling</span>
+          <span class="tn">4 · Quality</span><span class="tl">Handling</span>
         </button>
         <button type="button" role="tab" data-tab="people" aria-selected="false">
-          <span class="tn">4 · Execution</span><span class="tl">People</span>
-        </button>
-        <button type="button" role="tab" data-tab="context" aria-selected="false">
-          <span class="tn">5 · Detail</span><span class="tl">Context</span>
+          <span class="tn">5 · Execution</span><span class="tl">People</span>
         </button>
       </div>
     </div>
@@ -219,13 +247,72 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 
       <div class="tab-nav-footer">
         <button type="button" data-go="traffic">← Traffic</button>
+        <button type="button" data-go="context">Next: Demand shape →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
+      
+    <div class="funnel-stage">
+      <div class="n">Stage 2 · Demand shape</div>
+      <div class="t">How demand shows up</div>
+      <div class="d">Vehicles of interest, trades, and how shoppers want to be reached — demand pressure next to traffic and inventory, not leftover detail.</div>
+    </div>
+
+    <section class="block">
+      <h2>How the team is trying to reach customers</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity.</div>
+      <table>
+        <thead><tr><th>Method</th><th class="num">Share of workable opps</th><th>Plain English</th></tr></thead>
+        <tbody>
+          <tr><td>Phone attempt</td><td class="num">0.0%</td><td>Someone tried calling</td></tr>
+          <tr><td>Email attempt</td><td class="num">0.0%</td><td>Someone sent an email</td></tr>
+          <tr><td>Text attempt</td><td class="num">0.0%</td><td>Someone sent a text</td></tr>
+          <tr><td>Multi-channel</td><td class="num">0.0%</td><td>Used 2+ methods on the same opp</td></tr>
+          <tr><td>Customer contact logged</td><td class="num">0.0%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>What cars people asked about</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
+      <table>
+        <thead><tr><th>New / used / CPO interest</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
+        <tbody><tr><td>New</td><td class='num'>116</td><td class='num'>40.6%</td></tr><tr><td>Unknown</td><td class='num'>68</td><td class='num'>23.8%</td></tr><tr><td>Used</td><td class='num'>58</td><td class='num'>20.3%</td></tr><tr><td>Certified</td><td class='num'>44</td><td class='num'>15.4%</td></tr><tr class='total-row'><td>Total</td><td class='num'>286</td><td class='num'>100.0%</td></tr></tbody>
+      </table>
+      <div class="sub">
+        <h3>Top vehicles of interest <span class="when-inline">Jun 24 – Jul 23, 2026</span></h3>
+        <table>
+          <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
+          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>23</td><td class='num'>10.3%</td></tr><tr><td>2026 BMW X3 30 xDrive</td><td class='num'>21</td><td class='num'>9.4%</td></tr><tr><td>2026 BMW X5 xDrive40i</td><td class='num'>12</td><td class='num'>5.4%</td></tr><tr><td>2026 BMW X1 xDrive28i</td><td class='num'>9</td><td class='num'>4.0%</td></tr><tr><td>2026 BMW X5 sDrive40i</td><td class='num'>7</td><td class='num'>3.1%</td></tr><tr><td>2026 BMW 330i NA</td><td class='num'>6</td><td class='num'>2.7%</td></tr><tr><td>2026 BMW 530i</td><td class='num'>5</td><td class='num'>2.2%</td></tr><tr><td>2025 BMW X3 30 xDrive</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr><td>2026 BMW 228</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr><td>2026 BMW X5 xDrive50e</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr class='total-row'><td>Total</td><td class='num'>95</td><td class='num'>100.0%</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Trade-ins mentioned</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        29.0% of workable opportunities included a trade vehicle.
+        Higher trade rates often signal more serious shoppers.</div>
+      <table>
+        <thead><tr><th>Trade year / make / model</th><th class="num">Opps</th><th class="num">Share of trades</th></tr></thead>
+        <tbody><tr><td>2022 BMW X7 xDrive40i</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2024 BMW X3 sDrive30i</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2022 BMW X5</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2020 BMW 740i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2024 GMC Sierra 1500</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2024 BMW X5 xDrive50e</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2022 BMW 430i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2023 BMW X5 sDrive40i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr class='total-row'><td>Total</td><td class='num'>19</td><td class='num'>100.0%</td></tr></tbody>
+      </table>
+    </section>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="inventory">← Inventory</button>
         <button type="button" data-go="leads">Next: Leads →</button>
       </div>
     </div>
     <div class="tab-panel" id="panel-leads" role="tabpanel" data-tab="leads" hidden>
       
     <div class="funnel-stage">
-      <div class="n">Stage 2 · Demand becomes leads</div>
+      <div class="n">Stage 3 · Demand becomes leads</div>
       <div class="t">CRM opportunities from website + 3rd parties</div>
       <div class="d">Unique sales opportunities (de-duped) created in Focus for Jun 24 – Jul 23, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in — including full source detail on this tab.</div>
     </div>
@@ -461,14 +548,14 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
             </div>
     </section>
       <div class="tab-nav-footer">
-        <button type="button" data-go="inventory">← Back</button>
+        <button type="button" data-go="context">← Demand shape</button>
         <button type="button" data-go="handling">Next: Handling →</button>
       </div>
     </div>
     <div class="tab-panel active" id="panel-handling" role="tabpanel" data-tab="handling">
       
     <div class="funnel-stage">
-      <div class="n">Stage 3 · Lead handling quality</div>
+      <div class="n">Stage 4 · Lead handling quality</div>
       <div class="t">How well are we taking care of the leads?</div>
       <div class="d">Speed and contact coverage when the CRM export includes them; retail close and open pipeline always. Source mix lives on the Leads tab.</div>
     </div>
@@ -545,7 +632,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     <div class="tab-panel" id="panel-people" role="tabpanel" data-tab="people" hidden>
       
     <div class="funnel-stage">
-      <div class="n">Stage 4 · People + execution</div>
+      <div class="n">Stage 5 · People + execution</div>
       <div class="t">Salesperson effectiveness</div>
       <div class="d">Who owns volume and retail close — and where coaching should start.</div>
     </div>
@@ -555,24 +642,29 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       <div class="when">Workable unique opportunities · <strong>Jun 24 – Jul 23, 2026</strong> · split by Focus team · volume + close rate (contact fields not in export)</div>
       <div class="why"><strong>How to read this</strong>
         Focus export does not include New/Used team groups — one Sales board plus wholesale/auction when present. 
+        Channel columns show <strong>opps · sold count · close %</strong>. Close % = sold ÷ that channel’s opps. Total rolls all channels up.
         Red rows need coaching first. Gray rows have fewer than 3 leads or are system/unassigned.
         Contact/speed columns hidden until attempt fields are in the export.</div>
       <div class="sub group-block">
               <h3>Sales <span class="when-inline">267 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet opps</th><th class="num">Sold</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · sold · close</span></th><th class="num">Internet<br><span class="th-sub">opps · sold · close</span></th><th class="num">Phone<br><span class="th-sub">opps · sold · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · sold · close</span></th><th class="num">Other<br><span class="th-sub">opps · sold · close</span></th>
                 </tr></thead>
-                <tbody><tr><td>AB Erhabor</td><td class='num'>16</td><td class='num'>6</td><td class='num'>8</td><td class='num'>50.0%</td></tr><tr><td>Justin McFarland</td><td class='num'>67</td><td class='num'>52</td><td class='num'>18</td><td class='num'>26.9%</td></tr><tr><td>Landon Tucker</td><td class='num'>4</td><td class='num'>3</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>Michael Lacey</td><td class='num'>20</td><td class='num'>10</td><td class='num'>4</td><td class='num'>20.0%</td></tr><tr><td>Mike Green</td><td class='num'>75</td><td class='num'>53</td><td class='num'>19</td><td class='num'>25.3%</td></tr><tr><td>Sarrah Brown</td><td class='num'>63</td><td class='num'>46</td><td class='num'>15</td><td class='num'>23.8%</td></tr><tr class="dim"><td>Deidra Estes</td><td class='num'>1</td><td class='num'>0</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class="dim"><td>James Franks</td><td class='num'>1</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class="dim"><td>Parker Mulhollen</td><td class='num'>13</td><td class='num'>1</td><td class='num'>4</td><td class='num'>30.8%</td></tr><tr class="dim"><td>Shaun Conerly</td><td class='num'>1</td><td class='num'>0</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class="dim"><td>(Unassigned)</td><td class='num'>6</td><td class='num'>6</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>267</td><td class='num'>177</td><td class='num'>70</td><td class='num'>26.2%</td></tr></tbody>
+                <tbody><tr><td>AB Erhabor</td><td class='num ch-cell'><span class='ch-n'>16 <span class='ch-unit'>opps</span></span><span class='ch-s'>8 sold</span><span class='ch-c'>50.0% close</span></td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>16.7% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>66.7% close</span></td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>5 sold</span><span class='ch-c'>83.3% close</span></td></tr><tr><td>Justin McFarland</td><td class='num ch-cell'><span class='ch-n'>67 <span class='ch-unit'>opps</span></span><span class='ch-s'>18 sold</span><span class='ch-c'>26.9% close</span></td><td class='num ch-cell'><span class='ch-n'>52 <span class='ch-unit'>opps</span></span><span class='ch-s'>12 sold</span><span class='ch-c'>23.1% close</span></td><td class='num ch-cell'><span class='ch-n'>5 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>40.0% close</span></td><td class='num ch-cell'><span class='ch-n'>8 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>50.0% close</span></td><td class='num ch-cell'><span class='ch-n'>2 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td></tr><tr><td>Landon Tucker</td><td class='num ch-cell'><span class='ch-n'>4 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td></tr><tr><td>Michael Lacey</td><td class='num ch-cell'><span class='ch-n'>20 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>20.0% close</span></td><td class='num ch-cell'><span class='ch-n'>10 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>10.0% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>33.3% close</span></td><td class='num ch-cell'><span class='ch-n'>4 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>50.0% close</span></td></tr><tr><td>Mike Green</td><td class='num ch-cell'><span class='ch-n'>75 <span class='ch-unit'>opps</span></span><span class='ch-s'>19 sold</span><span class='ch-c'>25.3% close</span></td><td class='num ch-cell'><span class='ch-n'>53 <span class='ch-unit'>opps</span></span><span class='ch-s'>10 sold</span><span class='ch-c'>18.9% close</span></td><td class='num ch-cell'><span class='ch-n'>5 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>40.0% close</span></td><td class='num ch-cell'><span class='ch-n'>12 <span class='ch-unit'>opps</span></span><span class='ch-s'>6 sold</span><span class='ch-c'>50.0% close</span></td><td class='num ch-cell'><span class='ch-n'>5 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>20.0% close</span></td></tr><tr><td>Sarrah Brown</td><td class='num ch-cell'><span class='ch-n'>63 <span class='ch-unit'>opps</span></span><span class='ch-s'>15 sold</span><span class='ch-c'>23.8% close</span></td><td class='num ch-cell'><span class='ch-n'>46 <span class='ch-unit'>opps</span></span><span class='ch-s'>10 sold</span><span class='ch-c'>21.7% close</span></td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>16.7% close</span></td><td class='num ch-cell'><span class='ch-n'>9 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>44.4% close</span></td><td class='num ch-cell'><span class='ch-n'>2 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td></tr><tr class="dim"><td>Deidra Estes</td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td></tr><tr class="dim"><td>James Franks</td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td></tr><tr class="dim"><td>Parker Mulhollen</td><td class='num ch-cell'><span class='ch-n'>13 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>30.8% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell'><span class='ch-n'>5 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>20.0% close</span></td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>16.7% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td></tr><tr class="dim"><td>Shaun Conerly</td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td></tr><tr class="dim"><td>(Unassigned)</td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>6 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>267 <span class='ch-unit'>opps</span></span><span class='ch-s'>70 sold</span><span class='ch-c'>26.2% close</span></td><td class='num ch-cell'><span class='ch-n'>177 <span class='ch-unit'>opps</span></span><span class='ch-s'>35 sold</span><span class='ch-c'>19.8% close</span></td><td class='num ch-cell'><span class='ch-n'>27 <span class='ch-unit'>opps</span></span><span class='ch-s'>6 sold</span><span class='ch-c'>22.2% close</span></td><td class='num ch-cell'><span class='ch-n'>41 <span class='ch-unit'>opps</span></span><span class='ch-s'>18 sold</span><span class='ch-c'>43.9% close</span></td><td class='num ch-cell'><span class='ch-n'>22 <span class='ch-unit'>opps</span></span><span class='ch-s'>11 sold</span><span class='ch-c'>50.0% close</span></td></tr></tbody>
               </table>
+              </div>
             </div><div class="sub group-block">
               <h3>Wholesale / auction <span class="when-inline">19 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet opps</th><th class="num">Sold</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · sold · close</span></th><th class="num">Internet<br><span class="th-sub">opps · sold · close</span></th><th class="num">Phone<br><span class="th-sub">opps · sold · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · sold · close</span></th><th class="num">Other<br><span class="th-sub">opps · sold · close</span></th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>Unassigned (system)</td><td class='num'>19</td><td class='num'>1</td><td class='num'>19</td><td class='num'>100.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>19</td><td class='num'>1</td><td class='num'>19</td><td class='num'>100.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Unassigned (system)</td><td class='num ch-cell'><span class='ch-n'>19 <span class='ch-unit'>opps</span></span><span class='ch-s'>19 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>18 <span class='ch-unit'>opps</span></span><span class='ch-s'>18 sold</span><span class='ch-c'>100.0% close</span></td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>19 <span class='ch-unit'>opps</span></span><span class='ch-s'>19 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>18 <span class='ch-unit'>opps</span></span><span class='ch-s'>18 sold</span><span class='ch-c'>100.0% close</span></td></tr></tbody>
               </table>
+              </div>
             </div>
 
       <div class="col-help">
@@ -586,73 +678,19 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </section>
       <div class="tab-nav-footer">
         <button type="button" data-go="handling">← Handling</button>
-        <button type="button" data-go="context">Next: Context →</button>
+        <span></span>
       </div>
     </div>
-    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
-      
-    <div class="funnel-stage">
-      <div class="n">Stage 5 · Context</div>
-      <div class="t">Vehicles, trades, contact methods</div>
-      <div class="d">What shoppers asked about and how the team tried to reach them — supporting detail under the funnel.</div>
-    </div>
-
-    <section class="block">
-      <h2>How the team is trying to reach customers</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity.</div>
-      <table>
-        <thead><tr><th>Method</th><th class="num">Share of workable opps</th><th>Plain English</th></tr></thead>
-        <tbody>
-          <tr><td>Phone attempt</td><td class="num">0.0%</td><td>Someone tried calling</td></tr>
-          <tr><td>Email attempt</td><td class="num">0.0%</td><td>Someone sent an email</td></tr>
-          <tr><td>Text attempt</td><td class="num">0.0%</td><td>Someone sent a text</td></tr>
-          <tr><td>Multi-channel</td><td class="num">0.0%</td><td>Used 2+ methods on the same opp</td></tr>
-          <tr><td>Customer contact logged</td><td class="num">0.0%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="block">
-      <h2>What cars people asked about</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
-      <table>
-        <thead><tr><th>New / used / CPO interest</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-        <tbody><tr><td>New</td><td class='num'>116</td><td class='num'>40.6%</td></tr><tr><td>Unknown</td><td class='num'>68</td><td class='num'>23.8%</td></tr><tr><td>Used</td><td class='num'>58</td><td class='num'>20.3%</td></tr><tr><td>Certified</td><td class='num'>44</td><td class='num'>15.4%</td></tr><tr class='total-row'><td>Total</td><td class='num'>286</td><td class='num'>100.0%</td></tr></tbody>
-      </table>
-      <div class="sub">
-        <h3>Top vehicles of interest <span class="when-inline">Jun 24 – Jul 23, 2026</span></h3>
-        <table>
-          <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>23</td><td class='num'>10.3%</td></tr><tr><td>2026 BMW X3 30 xDrive</td><td class='num'>21</td><td class='num'>9.4%</td></tr><tr><td>2026 BMW X5 xDrive40i</td><td class='num'>12</td><td class='num'>5.4%</td></tr><tr><td>2026 BMW X1 xDrive28i</td><td class='num'>9</td><td class='num'>4.0%</td></tr><tr><td>2026 BMW X5 sDrive40i</td><td class='num'>7</td><td class='num'>3.1%</td></tr><tr><td>2026 BMW 330i NA</td><td class='num'>6</td><td class='num'>2.7%</td></tr><tr><td>2026 BMW 530i</td><td class='num'>5</td><td class='num'>2.2%</td></tr><tr><td>2025 BMW X3 30 xDrive</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr><td>2026 BMW 228</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr><td>2026 BMW X5 xDrive50e</td><td class='num'>4</td><td class='num'>1.8%</td></tr><tr class='total-row'><td>Total</td><td class='num'>95</td><td class='num'>100.0%</td></tr></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="block">
-      <h2>Trade-ins mentioned</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        29.0% of workable opportunities included a trade vehicle.
-        Higher trade rates often signal more serious shoppers.</div>
-      <table>
-        <thead><tr><th>Trade year / make / model</th><th class="num">Opps</th><th class="num">Share of trades</th></tr></thead>
-        <tbody><tr><td>2022 BMW X7 xDrive40i</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2024 BMW X3 sDrive30i</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2022 BMW X5</td><td class='num'>3</td><td class='num'>3.6%</td></tr><tr><td>2020 BMW 740i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2024 GMC Sierra 1500</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2024 BMW X5 xDrive50e</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2022 BMW 430i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr><td>2023 BMW X5 sDrive40i</td><td class='num'>2</td><td class='num'>2.4%</td></tr><tr class='total-row'><td>Total</td><td class='num'>19</td><td class='num'>100.0%</td></tr></tbody>
-      </table>
-    </section>
     <div class="foot">
       <strong>Date ranges on this page</strong><br/>
       <strong>Last 30 days:</strong> Jun 24 – Jul 23, 2026.<br/>
       <strong>Prior 30 days:</strong> May 25 – Jun 23, 2026.<br/>
-      Organized as a sales funnel: website traffic → inventory health (active lot) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
+      Organized as a sales funnel: website traffic → inventory health (active lot) → demand shape (VOI / trades / contact methods) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
       Internet + phone + walk-in on the same shopper counts as one.
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses Focus live-lot units when an inventory export is present.
-      Lead data: Focus. Website traffic (GA4 cache 2026-07-24): 28,347 visits · 25,038 people. Generated Jul 24, 2026 7:03 AM.
+      Lead data: Focus. Website traffic (GA4 cache 2026-07-24): 28,347 visits · 25,038 people. Generated Jul 24, 2026 1:08 PM.
       This page is for BMW of Jackson only — no other stores.
     </div>
   </div>

@@ -102,6 +102,8 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 @media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } .top.has-photo { padding:28px 16px 24px; } }
 
 
+.src-main { display:block; font-weight:650; }
+.src-sub { display:block; font-size:11px; color:var(--muted); font-weight:500; margin-top:2px; }
 .th-sub { display:block; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
 .ch-cell { text-align:right; vertical-align:middle; min-width:62px; }
 .ch-cell .ch-n { display:block; font-weight:750; font-variant-numeric:tabular-nums; line-height:1.2; }
@@ -229,14 +231,14 @@ footer { letter-spacing:.04em; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 11:28 AM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 1:09 PM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 599 workable opportunities (809 unique after de-dupe; Bad excluded from workable); retail close 18.2% (109 retail sold); internet is 67.9% of workable; internet CRM contact 97.5%; internet median response 11 min; 12 workable leads still untouched over 24h.</div>
       <div class="when">Rolling 30-day range: Jun 24 – Jul 23, 2026 · compared with prior 30 days May 25 – Jun 23, 2026</div>
     </div>
 
-    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Leads → Handling → People → Context. Print still shows every stage.</p>
+    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Demand shape → Leads → Handling → People. Print still shows every stage.</p>
     <div class="stage-tabs-wrap">
       <div class="stage-tabs" role="tablist" aria-label="Sales funnel stages">
         <button type="button" role="tab" data-tab="traffic" aria-selected="false">
@@ -246,17 +248,17 @@ footer { letter-spacing:.04em; }
         <button type="button" role="tab" data-tab="inventory" aria-selected="false">
           <span class="tn">1b · Supply</span><span class="tl">Inventory</span>
         </button>
+        <button type="button" role="tab" data-tab="context" aria-selected="false">
+          <span class="tn">2 · Shape</span><span class="tl">Demand shape</span>
+        </button>
         <button type="button" role="tab" data-tab="leads" aria-selected="false">
-          <span class="tn">2 · Demand → leads</span><span class="tl">Leads</span>
+          <span class="tn">3 · Demand → leads</span><span class="tl">Leads</span>
         </button>
         <button type="button" role="tab" data-tab="handling" class="active" aria-selected="true">
-          <span class="tn">3 · Quality</span><span class="tl">Handling</span>
+          <span class="tn">4 · Quality</span><span class="tl">Handling</span>
         </button>
         <button type="button" role="tab" data-tab="people" aria-selected="false">
-          <span class="tn">4 · Execution</span><span class="tl">People</span>
-        </button>
-        <button type="button" role="tab" data-tab="context" aria-selected="false">
-          <span class="tn">5 · Detail</span><span class="tl">Context</span>
+          <span class="tn">5 · Execution</span><span class="tl">People</span>
         </button>
       </div>
     </div>
@@ -319,7 +321,7 @@ footer { letter-spacing:.04em; }
         Live lot composition and aging. Traffic and 3rd-party demand only convert if the metal matches what shoppers want.
         File rows: 6,448 → lot units shown: 308.
         
-        This is <strong>not</strong> contact rate or response speed — those start at Stage 3.</div>
+        This is <strong>not</strong> contact rate or response speed — those start at Stage 4 (Handling).</div>
       <div class="stat-grid">
         <div class="stat"><div class="k">Active total</div><div class="v">308</div>
           <div class="s">Units in Active status</div></div>
@@ -372,13 +374,72 @@ footer { letter-spacing:.04em; }
 
       <div class="tab-nav-footer">
         <button type="button" data-go="traffic">← Traffic</button>
+        <button type="button" data-go="context">Next: Demand shape →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
+      
+    <div class="funnel-stage">
+      <div class="n">Stage 2 · Demand shape</div>
+      <div class="t">How demand shows up</div>
+      <div class="d">Vehicles of interest, trades, and how shoppers want to be reached — demand pressure next to traffic and inventory, not leftover detail.</div>
+    </div>
+
+    <section class="block">
+      <h2>How the team is trying to reach customers</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity.</div>
+      <table>
+        <thead><tr><th>Method</th><th class="num">Share of workable opps</th><th>Plain English</th></tr></thead>
+        <tbody>
+          <tr><td>Phone attempt</td><td class="num">80.5%</td><td>Someone tried calling</td></tr>
+          <tr><td>Email attempt</td><td class="num">75.0%</td><td>Someone sent an email</td></tr>
+          <tr><td>Text attempt</td><td class="num">36.1%</td><td>Someone sent a text</td></tr>
+          <tr><td>Multi-channel</td><td class="num">69.6%</td><td>Used 2+ methods on the same opp</td></tr>
+          <tr><td>Customer contact logged</td><td class="num">74.0%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2>What cars people asked about</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
+      <table>
+        <thead><tr><th>New / used / CPO interest</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
+        <tbody><tr><td>New</td><td class='num'>249</td><td class='num'>41.6%</td></tr><tr><td>Used</td><td class='num'>194</td><td class='num'>32.4%</td></tr><tr><td>Certified</td><td class='num'>92</td><td class='num'>15.4%</td></tr><tr><td>Unknown</td><td class='num'>64</td><td class='num'>10.7%</td></tr><tr class='total-row'><td>Total</td><td class='num'>599</td><td class='num'>100.0%</td></tr></tbody>
+      </table>
+      <div class="sub">
+        <h3>Top vehicles of interest <span class="when-inline">Jun 24 – Jul 23, 2026</span></h3>
+        <table>
+          <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
+          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>40</td><td class='num'>8.3%</td></tr><tr><td>2026 BMW X5</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2026 BMW X3</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2024 BMW X5</td><td class='num'>19</td><td class='num'>3.9%</td></tr><tr><td>2027 BMW X7</td><td class='num'>14</td><td class='num'>2.9%</td></tr><tr><td>2023 BMW X3</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW X1</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW 3 Series</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2027 BMW X6</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2026 BMW 3</td><td class='num'>7</td><td class='num'>1.5%</td></tr><tr class='total-row'><td>Total</td><td class='num'>196</td><td class='num'>100.0%</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Trade-ins mentioned</h2>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        28.9% of workable opportunities included a trade vehicle.
+        Higher trade rates often signal more serious shoppers.</div>
+      <table>
+        <thead><tr><th>Trade year / make / model</th><th class="num">Opps</th><th class="num">Share of trades</th></tr></thead>
+        <tbody><tr><td>2024 BMW X3</td><td class='num'>7</td><td class='num'>4.0%</td></tr><tr><td>2022 BMW X5</td><td class='num'>5</td><td class='num'>2.9%</td></tr><tr><td>2022 BMW X7</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2024 BMW X4</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 BMW 5 Series</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 Jeep Grand Cherokee</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2020 Land Rover Range Rover Sport</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2023 BMW 4 Series</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr class='total-row'><td>Total</td><td class='num'>27</td><td class='num'>100.0%</td></tr></tbody>
+      </table>
+    </section>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="inventory">← Inventory</button>
         <button type="button" data-go="leads">Next: Leads →</button>
       </div>
     </div>
     <div class="tab-panel" id="panel-leads" role="tabpanel" data-tab="leads" hidden>
       
     <div class="funnel-stage">
-      <div class="n">Stage 2 · Demand becomes leads</div>
+      <div class="n">Stage 3 · Demand becomes leads</div>
       <div class="t">CRM opportunities from website + 3rd parties</div>
       <div class="d">Unique sales opportunities (de-duped) created in VinSolutions for Jun 24 – Jul 23, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in — including full source detail on this tab.</div>
     </div>
@@ -585,14 +646,14 @@ footer { letter-spacing:.04em; }
             </div>
     </section>
       <div class="tab-nav-footer">
-        <button type="button" data-go="inventory">← Back</button>
+        <button type="button" data-go="context">← Demand shape</button>
         <button type="button" data-go="handling">Next: Handling →</button>
       </div>
     </div>
     <div class="tab-panel active" id="panel-handling" role="tabpanel" data-tab="handling">
       
     <div class="funnel-stage">
-      <div class="n">Stage 3 · Lead handling quality</div>
+      <div class="n">Stage 4 · Lead handling quality</div>
       <div class="t">How well are we taking care of the leads?</div>
       <div class="d">Speed and contact coverage when the CRM export includes them; retail close and open pipeline always. Source mix lives on the Leads tab.</div>
     </div>
@@ -703,7 +764,7 @@ footer { letter-spacing:.04em; }
     <div class="tab-panel" id="panel-people" role="tabpanel" data-tab="people" hidden>
       
     <div class="funnel-stage">
-      <div class="n">Stage 4 · People + execution</div>
+      <div class="n">Stage 5 · People + execution</div>
       <div class="t">Salesperson effectiveness</div>
       <div class="d">Who owns volume and retail close — and where coaching should start — by team group.</div>
     </div>
@@ -778,73 +839,19 @@ footer { letter-spacing:.04em; }
     </section>
       <div class="tab-nav-footer">
         <button type="button" data-go="handling">← Handling</button>
-        <button type="button" data-go="context">Next: Context →</button>
+        <span></span>
       </div>
     </div>
-    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
-      
-    <div class="funnel-stage">
-      <div class="n">Stage 5 · Context</div>
-      <div class="t">Vehicles, trades, contact methods</div>
-      <div class="d">What shoppers asked about and how the team tried to reach them — supporting detail under the funnel.</div>
-    </div>
-
-    <section class="block">
-      <h2>How the team is trying to reach customers</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity.</div>
-      <table>
-        <thead><tr><th>Method</th><th class="num">Share of workable opps</th><th>Plain English</th></tr></thead>
-        <tbody>
-          <tr><td>Phone attempt</td><td class="num">80.5%</td><td>Someone tried calling</td></tr>
-          <tr><td>Email attempt</td><td class="num">75.0%</td><td>Someone sent an email</td></tr>
-          <tr><td>Text attempt</td><td class="num">36.1%</td><td>Someone sent a text</td></tr>
-          <tr><td>Multi-channel</td><td class="num">69.6%</td><td>Used 2+ methods on the same opp</td></tr>
-          <tr><td>Customer contact logged</td><td class="num">74.0%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="block">
-      <h2>What cars people asked about</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
-      <table>
-        <thead><tr><th>New / used / CPO interest</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-        <tbody><tr><td>New</td><td class='num'>249</td><td class='num'>41.6%</td></tr><tr><td>Used</td><td class='num'>194</td><td class='num'>32.4%</td></tr><tr><td>Certified</td><td class='num'>92</td><td class='num'>15.4%</td></tr><tr><td>Unknown</td><td class='num'>64</td><td class='num'>10.7%</td></tr><tr class='total-row'><td>Total</td><td class='num'>599</td><td class='num'>100.0%</td></tr></tbody>
-      </table>
-      <div class="sub">
-        <h3>Top vehicles of interest <span class="when-inline">Jun 24 – Jul 23, 2026</span></h3>
-        <table>
-          <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>40</td><td class='num'>8.3%</td></tr><tr><td>2026 BMW X5</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2026 BMW X3</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2024 BMW X5</td><td class='num'>19</td><td class='num'>3.9%</td></tr><tr><td>2027 BMW X7</td><td class='num'>14</td><td class='num'>2.9%</td></tr><tr><td>2023 BMW X3</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW X1</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW 3 Series</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2027 BMW X6</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2026 BMW 3</td><td class='num'>7</td><td class='num'>1.5%</td></tr><tr class='total-row'><td>Total</td><td class='num'>196</td><td class='num'>100.0%</td></tr></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="block">
-      <h2>Trade-ins mentioned</h2>
-      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
-      <div class="why"><strong>What this means</strong>
-        28.9% of workable opportunities included a trade vehicle.
-        Higher trade rates often signal more serious shoppers.</div>
-      <table>
-        <thead><tr><th>Trade year / make / model</th><th class="num">Opps</th><th class="num">Share of trades</th></tr></thead>
-        <tbody><tr><td>2024 BMW X3</td><td class='num'>7</td><td class='num'>4.0%</td></tr><tr><td>2022 BMW X5</td><td class='num'>5</td><td class='num'>2.9%</td></tr><tr><td>2022 BMW X7</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2024 BMW X4</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 BMW 5 Series</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 Jeep Grand Cherokee</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2020 Land Rover Range Rover Sport</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2023 BMW 4 Series</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr class='total-row'><td>Total</td><td class='num'>27</td><td class='num'>100.0%</td></tr></tbody>
-      </table>
-    </section>
     <div class="foot">
       <strong>Date ranges on this page</strong><br/>
       <strong>Last 30 days:</strong> Jun 24 – Jul 23, 2026.<br/>
       <strong>Prior 30 days:</strong> May 25 – Jun 23, 2026.<br/>
-      Organized as a sales funnel: website traffic → inventory health (active lot) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
+      Organized as a sales funnel: website traffic → inventory health (active lot) → demand shape (VOI / trades / contact methods) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
       Internet + phone + walk-in on the same shopper counts as one.
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 11:28 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 1:09 PM.
       This page is for Brian Harris BMW only — no other stores.
     </div>
   </div>
