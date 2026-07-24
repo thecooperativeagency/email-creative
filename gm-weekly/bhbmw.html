@@ -10,6 +10,19 @@
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
 .top { background:#fff; border-bottom:3px solid var(--accent); padding:22px 16px; }
+.top.has-photo {
+  position:relative; color:#fff; overflow:hidden;
+  background-color:#0b1a2e; background-position:center; background-size:cover; background-repeat:no-repeat;
+  border-bottom:3px solid var(--accent); padding:40px 16px 34px;
+}
+.top.has-photo::before {
+  content:""; position:absolute; inset:0; z-index:0;
+  background:linear-gradient(105deg, rgba(6,14,28,.78) 0%, rgba(6,14,28,.55) 48%, rgba(6,14,28,.42) 100%);
+}
+.top.has-photo > .wrap { position:relative; z-index:1; }
+.top.has-photo .brand { color:rgba(255,255,255,.78); }
+.top.has-photo h1 { color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.35); }
+.top.has-photo .sub { color:rgba(255,255,255,.9); }
 .wrap { max-width:800px; margin:0 auto; padding:18px 16px 48px; }
 .brand { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
 h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
@@ -86,12 +99,39 @@ tr.dim td { opacity:.42; }
 .down { color:var(--bad); font-weight:700; }
 .neutral { color:var(--muted); }
 footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
-@media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } }
-@media print { body { background:#fff; } .block,.metric,.verdict { break-inside:avoid; } }
+@media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } .top.has-photo { padding:28px 16px 24px; } }
+
+/* Stage tabs — one stage at a time */
+.stage-tabs-wrap { position:sticky; top:0; z-index:40; background:var(--bg); padding:10px 0 8px; margin:0 0 12px; border-bottom:1px solid var(--line); }
+.stage-tabs { display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; padding-bottom:2px; }
+.stage-tabs button { flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:9px 12px; font:inherit; font-size:12px; font-weight:750; cursor:pointer; line-height:1.15; text-align:left; }
+.stage-tabs button .tn { display:block; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:2px; }
+.stage-tabs button .tl { display:block; font-size:12px; font-weight:800; }
+.stage-tabs button:hover { border-color:#c5c9d3; }
+.stage-tabs button.active { background:#111; color:#fff; border-color:#111; }
+.stage-tabs button.active .tn { color:rgba(255,255,255,.7); }
+.stage-tabs button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+.tab-panel .funnel-arrow { display:none; }
+.tab-panel > .funnel-stage:first-child { margin-top:4px; }
+.tab-nav-footer { display:flex; justify-content:space-between; gap:10px; margin:8px 0 4px; }
+.tab-nav-footer button { border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+.tab-nav-footer button:hover { background:#f8fafc; }
+.tabs-hint { font-size:12px; color:var(--muted); margin:0 0 10px; }
+@media print {
+  body { background:#fff; }
+  .block,.metric,.verdict { break-inside:avoid; }
+  .stage-tabs-wrap, .tab-nav-footer, .tabs-hint { display:none !important; }
+  .tab-panel { display:block !important; }
+  .tab-panel .funnel-arrow { display:block; }
+  .top.has-photo { background:#111 !important; color:#fff; }
+  .top.has-photo::before { display:none; }
+}
 </style>
 </head>
 <body>
-  <div class="top">
+  <div class="top has-photo" style="background-image:url('assets/bhbmw-drone-header.jpg');">
     <div class="wrap" style="padding-top:0;padding-bottom:0;">
       <div class="brand">GM Performance Brief · Prepared by The Cooperative Agency · calendar dates on every section</div>
       <h1>Brian Harris BMW</h1>
@@ -99,14 +139,37 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 22, 2026 · Generated Jul 22, 2026 3:21 PM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 10:27 AM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
-      <div class="txt">Last 30 days: contact coverage is strong; internet response is solid (median 11 min); 12 workable leads still untouched over 24h.</div>
-      <div class="when">Rolling 30-day range: Jun 22 – Jul 21, 2026 · compared with prior 30 days May 23 – Jun 21, 2026</div>
+      <div class="txt">Last 30 days: 599 workable opportunities (809 unique after de-dupe; Bad excluded from workable); retail close 18.2% (109 retail sold); internet is 67.9% of workable; internet CRM contact 97.5%; internet median response 11 min; 12 workable leads still untouched over 24h.</div>
+      <div class="when">Rolling 30-day range: Jun 24 – Jul 23, 2026 · compared with prior 30 days May 25 – Jun 23, 2026</div>
     </div>
 
-    
+    <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Leads → Handling → People → Context. Print still shows every stage.</p>
+    <div class="stage-tabs-wrap">
+      <div class="stage-tabs" role="tablist" aria-label="Sales funnel stages">
+        <button type="button" role="tab" data-tab="traffic" aria-selected="false">
+          <span class="tn">1 · Demand</span><span class="tl">Traffic</span>
+        </button>
+        
+        <button type="button" role="tab" data-tab="leads" aria-selected="false">
+          <span class="tn">2 · Demand → leads</span><span class="tl">Leads</span>
+        </button>
+        <button type="button" role="tab" data-tab="handling" class="active" aria-selected="true">
+          <span class="tn">3 · Quality</span><span class="tl">Handling</span>
+        </button>
+        <button type="button" role="tab" data-tab="people" aria-selected="false">
+          <span class="tn">4 · Execution</span><span class="tl">People</span>
+        </button>
+        <button type="button" role="tab" data-tab="context" aria-selected="false">
+          <span class="tn">5 · Detail</span><span class="tl">Context</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-traffic" role="tabpanel" data-tab="traffic" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 1 · Top of funnel</div>
       <div class="t">Website traffic</div>
@@ -114,60 +177,69 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
     <section class="block">
       <h2>Total website traffic picture</h2>
-      <div class="when">Google Analytics · last ~30 days in cache dated 2026-07-15 · align with CRM window <strong>Jun 22 – Jul 21, 2026</strong> where possible</div>
+      <div class="when">Google Analytics · last ~30 days in cache dated 2026-07-24 · align with CRM window <strong>Jun 24 – Jul 23, 2026</strong> where possible</div>
       <div class="why"><strong>What this means</strong>
         This is the top of the sales funnel: how much store-site demand you are generating.
-        Traffic alone is not leads — the next stage shows how that demand becomes CRM opportunities
+        Traffic alone is not leads — next is what the store has to sell (active inventory), then how demand becomes CRM opportunities
         (website forms, 3rd-party portals, then phone and walk-in).</div>
       <div class="stat-grid">
-        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">26,184</div>
+        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">26,919</div>
           <div class="s">One visit = one trip to the site</div></div>
-        <div class="stat"><div class="k">People (users)</div><div class="v">21,957</div>
+        <div class="stat"><div class="k">People (users)</div><div class="v">22,821</div>
           <div class="s">Unique visitors</div></div>
-        <div class="stat"><div class="k">Page views</div><div class="v">93,847</div>
+        <div class="stat"><div class="k">Page views</div><div class="v">95,666</div>
           <div class="s">3.5 pages per visit</div></div>
-        <div class="stat"><div class="k">Engagement rate</div><div class="v">47.1%</div>
+        <div class="stat"><div class="k">Engagement rate</div><div class="v">48.0%</div>
           <div class="s">Visits with meaningful activity</div></div>
-        <div class="stat"><div class="k">Bounce rate</div><div class="v">52.9%</div>
+        <div class="stat"><div class="k">Bounce rate</div><div class="v">52.0%</div>
           <div class="s">Left after one page — lower is usually better</div></div>
-        <div class="stat"><div class="k">Mobile share</div><div class="v">54.5%</div>
+        <div class="stat"><div class="k">Mobile share</div><div class="v">52.8%</div>
           <div class="s">Visits from phones/tablets</div></div>
       </div>
       <h3>Where site traffic came from (top sources)</h3>
+      <div class="why"><strong>How to read this</strong>
+        Top source/medium rows from the GA4 cache. These are mix indicators — they are <strong>not</strong> required to sum to total site sessions above (attribution overlap and cache windows differ).</div>
       <table>
-        <thead><tr><th>Source / medium</th><th class="num">Visits</th><th class="num">People</th></tr></thead>
-        <tbody><tr><td>google / cpc</td><td class='num'>25,879</td><td class='num'>19,183</td></tr><tr><td>(direct) / (none)</td><td class='num'>21,783</td><td class='num'>16,556</td></tr><tr><td>google / organic</td><td class='num'>15,697</td><td class='num'>7,019</td></tr><tr><td>facebook / cpc</td><td class='num'>2,120</td><td class='num'>1,753</td></tr><tr><td>amp / text</td><td class='num'>1,771</td><td class='num'>1,108</td></tr><tr><td>bing / organic</td><td class='num'>1,718</td><td class='num'>934</td></tr><tr><td>vinurl.com / referral</td><td class='num'>828</td><td class='num'>533</td></tr><tr><td>bmwusa.com / referral</td><td class='num'>779</td><td class='num'>419</td></tr><tr class='total-row'><td>Total (top sources listed)</td><td class='num'>70,575</td><td class='num'>47,505</td></tr></tbody>
+        <thead><tr><th>Source / medium</th><th class="num">Sessions (row)</th><th class="num">People (row)</th></tr></thead>
+        <tbody><tr><td>google / cpc</td><td class='num'>25,421</td><td class='num'>18,786</td></tr><tr><td>(direct) / (none)</td><td class='num'>23,683</td><td class='num'>18,723</td></tr><tr><td>google / organic</td><td class='num'>15,900</td><td class='num'>7,138</td></tr><tr><td>facebook / cpc</td><td class='num'>2,358</td><td class='num'>1,945</td></tr><tr><td>bing / organic</td><td class='num'>1,707</td><td class='num'>928</td></tr><tr><td>amp / text</td><td class='num'>1,590</td><td class='num'>994</td></tr><tr><td>vinurl.com / referral</td><td class='num'>814</td><td class='num'>519</td></tr><tr><td>bmwusa.com / referral</td><td class='num'>766</td><td class='num'>406</td></tr></tbody>
       </table>
-      <p class="webline">Includes paid/organic/social/referral mix feeding the store website — not the same as CRM lead source labels.</p>
+      <p class="webline">Website traffic mix only — not the same labels as CRM lead sources. No source total row (avoids a sum that can exceed site sessions).</p>
     </section>
-    <div class="funnel-arrow">↓</div>
 
+      <div class="tab-nav-footer">
+        <span></span>
+        <button type="button" data-go="leads">Next: Leads →</button>
+      </div>
+    </div>
     
+    <div class="tab-panel" id="panel-leads" role="tabpanel" data-tab="leads" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 2 · Demand becomes leads</div>
       <div class="t">CRM opportunities from website + 3rd parties</div>
-      <div class="d">Unique sales opportunities (de-duped) created in VinSolutions for Jun 22 – Jul 21, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in.</div>
+      <div class="d">Unique sales opportunities (de-duped) created in VinSolutions for Jun 24 – Jul 23, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in — including full source detail on this tab.</div>
     </div>
     <section class="block">
       <h2>Lead volume entering the funnel</h2>
-      <div class="when">Unique opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · de-duped · Bad excluded from “workable”</div>
+      <div class="when">Unique opportunities · <strong>Jun 24 – Jul 23, 2026</strong> · de-duped · Bad excluded from “workable”</div>
       <div class="why"><strong>What this means</strong>
         After someone visits a site (yours or a 3rd party), the next funnel step is a <strong>lead opportunity</strong> in the CRM.
         We de-dupe so the same shopper is not counted three times as internet + phone + walk-in.
         <em>Workable</em> excludes Bad records so junk does not look like real demand.</div>
       <div class="stat-grid">
-        <div class="stat"><div class="k">Unique opportunities</div><div class="v">782</div>
-          <div class="s">From 1,120 CRM rows · collapsed 338 repeats</div></div>
-        <div class="stat"><div class="k">Workable (excl. Bad)</div><div class="v">571</div>
-          <div class="s">Bad records set aside: 211</div></div>
-        <div class="stat"><div class="k">Sold in window</div><div class="v">104</div>
-          <div class="s">Close rate 18.2% of workable</div></div>
+        <div class="stat"><div class="k">Unique after de-dupe</div><div class="v">809</div>
+          <div class="s">From 1,152 raw CRM rows · 343 repeats collapsed</div></div>
+        <div class="stat"><div class="k">Workable (excl. Bad)</div><div class="v">599</div>
+          <div class="s">Of 809 unique · Bad set aside: 210</div></div>
+        <div class="stat"><div class="k">Retail sold</div><div class="v">109</div>
+          <div class="s">Retail close 18.2% of 599 retail workable</div></div>
+        <div class="stat"><div class="k">Wholesale / auction sold</div><div class="v">0</div>
+          <div class="s">Kept separate from retail close · total sold 109</div></div>
       </div>
 
       <h3>A) Where digital demand is sourced</h3>
       <div class="why"><strong>Funnel read</strong>
-        Owned website + on-site tools (Motive, Carcode, dealer-site KBB ICO) vs 3rd-party portals (Autotrader/KBB network, CarGurus, TrueCar…)
-        vs OEM partner feeds. These are the “top of digital funnel” sources that create internet opportunities — and often later phone/walk-in on the same shopper.</div>
+        Owned website + on-site tools (Motive, store forms/chat, Remora) vs 3rd-party portals (Autotrader/KBB, CarGurus, Carfax…) vs OEM/brand digital (BYO, BMW USA, military/event programs). These sources create internet opportunities — and often later phone/walk-in on the same shopper.</div>
       <table>
         <thead><tr>
           <th>Digital source family</th><th class="num">Workable opps</th><th class="num">Share of internet</th>
@@ -175,43 +247,41 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         </tr></thead>
         <tbody>
           <tr><td><strong>Dealer website &amp; on-site</strong></td>
-            <td class="num">101</td><td class="num">25.5%</td>
+            <td class="num">99</td><td class="num">23.6%</td>
             <td class="num">99.0%</td>
             <td class="num">15</td>
-            <td class="num">14.9%</td></tr>
+            <td class="num">15.2%</td></tr>
           <tr><td><strong>Autotrader / KBB</strong> <span class="pill-at">AT</span><span class="pill-kbb">KBB</span></td>
-            <td class="num">44</td><td class="num">11.1%</td>
-            <td class="num">95.5%</td>
+            <td class="num">53</td><td class="num">12.6%</td>
+            <td class="num">96.2%</td>
             <td class="num">8</td>
-            <td class="num">18.2%</td></tr>
+            <td class="num">15.1%</td></tr>
           <tr><td><strong>Other 3rd-party marketplaces</strong></td>
-            <td class="num">114</td><td class="num">28.8%</td>
-            <td class="num">98.2%</td>
-            <td class="num">13</td>
-            <td class="num">11.4%</td></tr>
-          <tr><td><strong>Audi Partner (OEM partner)</strong></td>
-            <td class="num">0</td><td class="num">—</td>
-            <td class="num">—</td>
-            <td class="num">—</td>
-            <td class="num">—</td></tr>
-          <tr><td><strong>Other OEM / brand digital</strong></td>
-            <td class="num">14</td><td class="num">3.5%</td>
+            <td class="num">121</td><td class="num">28.8%</td>
+            <td class="num">98.3%</td>
+            <td class="num">17</td>
+            <td class="num">14.0%</td></tr>
+          
+          <tr><td><strong>OEM / brand digital</strong></td>
+            <td class="num">17</td><td class="num">4.0%</td>
             <td class="num">100.0%</td>
-            <td class="num">1</td>
-            <td class="num">7.1%</td></tr>
+            <td class="num">2</td>
+            <td class="num">11.8%</td></tr>
           <tr class="total-row"><td>Total / avg (families above)</td>
-            <td class="num">273</td>
+            <td class="num">290</td>
             <td class="num">—</td>
             <td class="num">—</td>
-            <td class="num">37</td>
-            <td class="num">13.6%</td></tr>
+            <td class="num">42</td>
+            <td class="num">14.5%</td></tr>
         </tbody>
       </table>
+      <p class="webline">Digital families above total <strong>290</strong> workable internet-side rows shown in those buckets; internet CRM channel is <strong>407</strong>. Gap is other internet sources (campaigns, uncategorized, etc.) detailed under Source detail.</p>
 
       <h3>B) How opportunities show up in the CRM (channel)</h3>
       <div class="why"><strong>Funnel read</strong>
-        Website and 3rd-party activity turns into <strong>internet form leads</strong>, <strong>phone calls</strong>, and <strong>walk-ins</strong>.
-        Leaks appear when traffic is healthy but unique opportunities are weak — or when internet opps never get a real attempt.</div>
+        Website and 3rd-party activity turns into <strong>internet form leads</strong>, <strong>phone calls</strong>, and <strong>walk-ins</strong> (plus Other CRM types).
+        Close = retail sold ÷ retail workable on the hero grade; per-row close uses that channel’s workable opps.
+        Contacted = real work attempt on that channel.</div>
       <table>
         <thead><tr>
           <th>CRM channel</th><th class="num">Workable opps</th><th class="num">Share</th>
@@ -219,61 +289,171 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         </tr></thead>
         <tbody>
           <tr><td><strong>Internet</strong> (web forms / digital)</td>
-            <td class="num">384</td><td class="num">67.3%</td>
-            <td class="num">97.4%</td>
-            <td class="num">45</td><td class="num">11.7%</td>
-            <td>Forms, portals, chat, partner feeds</td></tr>
+            <td class="num">407</td><td class="num">67.9%</td>
+            <td class="num">97.5%</td>
+            <td class="num">51</td><td class="num">12.5%</td>
+            <td>Forms, portals, chat, brand digital</td></tr>
           <tr><td><strong>Phone</strong></td>
-            <td class="num">89</td><td class="num">15.6%</td>
+            <td class="num">89</td><td class="num">14.9%</td>
             <td class="num">97.8%</td>
-            <td class="num">20</td><td class="num">22.5%</td>
+            <td class="num">21</td><td class="num">23.6%</td>
             <td>Phone-ups / tracked calls</td></tr>
           <tr><td><strong>Walk-in</strong></td>
-            <td class="num">98</td><td class="num">17.2%</td>
+            <td class="num">103</td><td class="num">17.2%</td>
             <td class="num">100.0%</td>
-            <td class="num">39</td><td class="num">39.8%</td>
+            <td class="num">37</td><td class="num">35.9%</td>
             <td>In-store / drive-by</td></tr>
+          <tr><td><strong>Other</strong></td>
+            <td class="num">—</td><td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td><td class="num">—</td>
+            <td>Referral, repeat, DMS, other CRM types</td></tr>
           <tr class="total-row"><td>Total / avg</td>
-            <td class="num">571</td>
+            <td class="num">599</td>
             <td class="num">100.0%</td>
-            <td class="num">97.9%</td>
-            <td class="num">104</td>
+            <td class="num">98.0%</td>
+            <td class="num">109</td>
             <td class="num">18.2%</td>
             <td></td></tr>
         </tbody>
       </table>
     </section>
-    <div class="funnel-arrow">↓</div>
 
-    
+      
+    <section class="block">
+      <h2>Source detail</h2>
+      <div class="when">Unique workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong> · de-duped · same funnel window · Close = sold ÷ opps</div>
+      <div class="why"><strong>What this means</strong>
+        Drill-down on <strong>where demand came from</strong> — owned website vs Autotrader/KBB vs other portals vs OEM/brand digital, then phone and walk-in. High volume + low close often means a <em>source quality</em> issue. Whether the team worked those leads fast belongs on the <strong>Handling</strong> tab. Dealer website includes Motive, Remora, store-domain forms/chat, and on-site quote tools. Autotrader/KBB is one 3rd party with many of their own channels.</div>
+
+      <h3>1) Channel mix</h3>
+      <table>
+        <thead><tr>
+          <th>Channel</th><th class="num">Opps</th><th class="num">Share</th>
+          <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close</th>
+        </tr></thead>
+        <tbody><tr><td><strong>Internet</strong></td><td class='num'>407</td><td class='num'>67.9%</td><td class='num'>97.5%</td><td class='num'>51</td><td class='num'>12.5%</td></tr><tr><td><strong>Phone</strong></td><td class='num'>89</td><td class='num'>14.9%</td><td class='num'>97.8%</td><td class='num'>21</td><td class='num'>23.6%</td></tr><tr><td><strong>Walk-in</strong></td><td class='num'>103</td><td class='num'>17.2%</td><td class='num'>100.0%</td><td class='num'>37</td><td class='num'>35.9%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>599</td><td class='num'>100.0%</td><td class='num'>98.0%</td><td class='num'>109</td><td class='num'>18.2%</td></tr></tbody>
+      </table>
+
+      <h3>2) Internet broken down</h3>
+      <div class="when" style="margin-top:-2px">Families inside internet · Jun 24 – Jul 23, 2026</div>
+      
+      <div class="sub group-block">
+              <h3>Dealer website &amp; on-site
+                <span class="when-inline">99 · 23.6% of internet · close 15.2%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class=''><td>Motive — Website</td><td class='num'>41</td><td class='num'>41.4%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>7.3%</td></tr><tr class=''><td>Dealer website — Request more info</td><td class='num'>28</td><td class='num'>28.3%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>17.9%</td></tr><tr class=''><td>Motive — Credit</td><td class='num'>11</td><td class='num'>11.1%</td><td class='num'>100.0%</td><td class='num'>4</td><td class='num'>36.4%</td></tr><tr class=''><td>Dealer website — Chat</td><td class='num'>9</td><td class='num'>9.1%</td><td class='num'>88.9%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Motive — Qualify</td><td class='num'>5</td><td class='num'>5.1%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>60.0%</td></tr><tr class=''><td>Dealer Contact - Inventory</td><td class='num'>2</td><td class='num'>2.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Motive — Trade</td><td class='num'>2</td><td class='num'>2.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Dealer website — Finance pre-qual</td><td class='num'>1</td><td class='num'>1.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>99</td><td class='num'>100.0%</td><td class='num'>99.0%</td><td class='num'>15</td><td class='num'>15.2%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block">
+              <h3>OEM / brand digital
+                <span class="when-inline">17 · 4.0% of internet · close 11.8%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class=''><td>BYO - GET A QUOTE</td><td class='num'>10</td><td class='num'>58.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Get a quote - Inventory</td><td class='num'>3</td><td class='num'>17.6%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>33.3%</td></tr><tr class=''><td>Byo Matching Inventory - Get a Quote</td><td class='num'>2</td><td class='num'>11.8%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>50.0%</td></tr><tr class=''><td>ORDER NOW - BUILD YOUR OWN</td><td class='num'>2</td><td class='num'>11.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Bmwusa Test Drive Appointment</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>17</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>11.8%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block at-kbb">
+              <h3><span class="pill-at">AT</span><span class="pill-kbb">KBB</span>Autotrader / KBB <span style="font-weight:600;color:#5b6472;font-size:12px;">(one 3rd party · their channels)</span>
+                <span class="when-inline">53 · 12.6% of internet · close 15.1%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Internet lead</td><td class='num'>27</td><td class='num'>50.9%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>18.5%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Call tracking</td><td class='num'>13</td><td class='num'>24.5%</td><td class='num'>84.6%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Wallet</td><td class='num'>9</td><td class='num'>17.0%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>22.2%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Phone lead</td><td class='num'>4</td><td class='num'>7.5%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>25.0%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Car and Driver</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>53</td><td class='num'>100.0%</td><td class='num'>96.2%</td><td class='num'>8</td><td class='num'>15.1%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block">
+              <h3>Third-party marketplaces
+                <span class="when-inline">121 · 28.8% of internet · close 14.0%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class=''><td>Carfax, Inc</td><td class='num'>37</td><td class='num'>30.6%</td><td class='num'>94.6%</td><td class='num'>6</td><td class='num'>16.2%</td></tr><tr class=''><td>Truecar/Truecar</td><td class='num'>23</td><td class='num'>19.0%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>13.0%</td></tr><tr class=''><td>Cargurus</td><td class='num'>17</td><td class='num'>14.0%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>11.8%</td></tr><tr class=''><td>Truecar/Truecar For Intuit Credit Karma Members</td><td class='num'>6</td><td class='num'>5.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>16.7%</td></tr><tr class=''><td>Truecar/Perkspot</td><td class='num'>6</td><td class='num'>5.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Navy Federal</td><td class='num'>5</td><td class='num'>4.1%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>20.0%</td></tr><tr class=''><td>Truecar/Benefithub</td><td class='num'>4</td><td class='num'>3.3%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>25.0%</td></tr><tr class=''><td>Truecar/Sams Club</td><td class='num'>3</td><td class='num'>2.5%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>33.3%</td></tr><tr class=''><td>Truecar/Truecar For Drivers On Uber</td><td class='num'>3</td><td class='num'>2.5%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Extended Network</td><td class='num'>3</td><td class='num'>2.5%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/U.S. News</td><td class='num'>2</td><td class='num'>1.7%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Consumer Reports</td><td class='num'>2</td><td class='num'>1.7%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Perks At Work</td><td class='num'>2</td><td class='num'>1.7%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>50.0%</td></tr><tr class=''><td>Truecar/Aaa</td><td class='num'>1</td><td class='num'>0.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Lifecare</td><td class='num'>1</td><td class='num'>0.8%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>115</td><td class='num'>100.0%</td><td class='num'>98.3%</td><td class='num'>17</td><td class='num'>14.8%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block">
+              <h3>Campaigns &amp; conquest
+                <span class="when-inline">19 · 4.5% of internet · close 5.3%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class=''><td>Southern26_2026 Clint Dempsey Track Day_0611</td><td class='num'>8</td><td class='num'>42.1%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Domestic Military Program Validated Customer</td><td class='num'>6</td><td class='num'>31.6%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>16.7%</td></tr><tr class=''><td>Fs Active Lead Service</td><td class='num'>2</td><td class='num'>10.5%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Military Program - Contact Dealer - Failed Verification</td><td class='num'>1</td><td class='num'>5.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Southern26_2026 Peachtree Expo_0601</td><td class='num'>1</td><td class='num'>5.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Current Owner In Markt</td><td class='num'>1</td><td class='num'>5.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Fs Loan Lead Service</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>Fs Loan Lead</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>FS LEASE LEAD 270</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>FS LEASE CUSTOMER INTENT LEAD</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>FS LOAN CUSTOMER INTENT LEAD</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>Lease Buyout - Still In Vehicle</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>Lease Buyout - Still In Vehicle Fs Loan</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>19</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>5.3%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block">
+              <h3>Other internet
+                <span class="when-inline">111 · 26.4% of internet · close 7.2%</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr class=''><td>Trade In</td><td class='num'>48</td><td class='num'>43.2%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>10.4%</td></tr><tr class=''><td>Podium</td><td class='num'>39</td><td class='num'>35.1%</td><td class='num'>84.6%</td><td class='num'>2</td><td class='num'>5.1%</td></tr><tr class=''><td>Gmt26_gen M Tour_no Show</td><td class='num'>9</td><td class='num'>8.1%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Gmt26_gen M Tour_attended</td><td class='num'>6</td><td class='num'>5.4%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>AMP - Service to Sales Opportunity</td><td class='num'>3</td><td class='num'>2.7%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Car and Driver Blackbook Trade In</td><td class='num'>2</td><td class='num'>1.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Pre-Owned Inventory - Test Drive - Maco</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class=''><td>WALK  IN  DRIVE BY</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Test Drive</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>AMP - Refinance Opportunity</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>0.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Fs Warranty Exp</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class=''><td>FS CPO EXPIRATION</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>111</td><td class='num'>100.0%</td><td class='num'>93.7%</td><td class='num'>8</td><td class='num'>7.2%</td></tr></tbody>
+              </table>
+            </div>
+
+      <h3>3) Phone and walk-in detail</h3>
+      <div class="sub group-block">
+              <h3>Phone <span class="when-inline">76 opportunities</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Logged as</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr><td>Phone Up</td><td class='num'>25</td><td class='num'>32.9%</td><td class='num'>100.0%</td><td class='num'>7</td><td class='num'>28.0%</td></tr><tr><td>Repeat Customer</td><td class='num'>19</td><td class='num'>25.0%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>26.3%</td></tr><tr><td>Referral</td><td class='num'>10</td><td class='num'>13.2%</td><td class='num'>100.0%</td><td class='num'>6</td><td class='num'>60.0%</td></tr><tr><td>Dealers WebSite</td><td class='num'>10</td><td class='num'>13.2%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>20.0%</td></tr><tr><td>Service Dept</td><td class='num'>8</td><td class='num'>10.5%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>WALK  IN  DRIVE BY</td><td class='num'>3</td><td class='num'>3.9%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>33.3%</td></tr><tr><td>Television</td><td class='num'>1</td><td class='num'>1.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>76</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>21</td><td class='num'>27.6%</td></tr></tbody>
+              </table>
+            </div><div class="sub group-block">
+              <h3>Walk-in <span class="when-inline">103 opportunities</span></h3>
+              <table>
+                <thead><tr>
+                  <th>Logged as</th><th class="num">Count</th><th class="num">Share</th>
+                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
+                </tr></thead>
+                <tbody><tr><td>WALK  IN  DRIVE BY</td><td class='num'>60</td><td class='num'>58.3%</td><td class='num'>100.0%</td><td class='num'>24</td><td class='num'>40.0%</td></tr><tr><td>Dealers WebSite</td><td class='num'>16</td><td class='num'>15.5%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>12.5%</td></tr><tr><td>Repeat Customer</td><td class='num'>15</td><td class='num'>14.6%</td><td class='num'>100.0%</td><td class='num'>7</td><td class='num'>46.7%</td></tr><tr><td>Referral</td><td class='num'>6</td><td class='num'>5.8%</td><td class='num'>100.0%</td><td class='num'>4</td><td class='num'>66.7%</td></tr><tr><td>Service Dept</td><td class='num'>6</td><td class='num'>5.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>103</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>37</td><td class='num'>35.9%</td></tr></tbody>
+              </table>
+            </div>
+    </section>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="traffic">← Back</button>
+        <button type="button" data-go="handling">Next: Handling →</button>
+      </div>
+    </div>
+    <div class="tab-panel active" id="panel-handling" role="tabpanel" data-tab="handling">
+      
     <div class="funnel-stage">
       <div class="n">Stage 3 · Lead handling quality</div>
       <div class="t">How well are we taking care of the leads?</div>
-      <div class="d">Speed, contact coverage, and leaks — especially on internet opportunities that came from the traffic and sources above.</div>
+      <div class="d">Speed and contact coverage when the CRM export includes them; retail close and open pipeline always. Source mix lives on the Leads tab.</div>
     </div>
-
 
     <section class="block">
       <h2>Pertinent handling numbers</h2>
-      <div class="when">Date range: <strong>Jun 22 – Jul 21, 2026</strong> (vs prior 30 days <strong>May 23 – Jun 21, 2026</strong>)</div>
+      <div class="when">Date range: <strong>Jun 24 – Jul 23, 2026</strong> (vs prior 30 days <strong>May 25 – Jun 23, 2026</strong>)</div>
       <div class="why"><strong>What this section is</strong>
-        Four quick grades for the last 30 days. Green = good, yellow = watch, red = problem.
-        Counts are <strong>unique opportunities</strong> after de-dupe (same shopper across internet/phone/walk-in counts once).
-        Bad CRM leads are excluded from grades.</div>
-
+        Handling grades for the last 30 days on <strong>unique opportunities</strong> after de-dupe.
+        Bad CRM leads are excluded. Contact and speed grades appear only when the CRM export includes attempt fields.</div>
+      
       <div class="metric good">
         <div class="metric-top">
           <div>
             <div class="m-label">1) Internet contact rate</div>
-            <div class="m-when">Internet leads only · workable unique opportunities · Jun 22 – Jul 21, 2026</div>
+            <div class="m-when">Internet leads only · workable unique opportunities · Jun 24 – Jul 23, 2026</div>
           </div>
           <div class="badge">Good</div>
         </div>
-        <div class="m-value">97.4%</div>
-        <div class="m-delta"><span class="down">↓ 1.6 pts vs prior 30 days</span> · Prior 30 days (May 23 – Jun 21, 2026): 99.0%<br/>
-          Internet workable (excl. Bad): 384 · worked 374<br/>
-          All-channel contact (for context): 97.9% on 571 workable opps<br/>
-          Unique after de-dupe: 782 · CRM rows before de-dupe: 1,120 · collapsed 338 repeats</div>
+        <div class="m-value">97.5%</div>
+        <div class="m-delta"><span class="down">↓ 1.2 pts vs prior 30 days</span> · Prior 30 days (May 25 – Jun 23, 2026): 98.7%<br/>
+          Internet workable (excl. Bad): 407 · worked 397<br/>
+          All-channel contact (for context): 98.0% on 599 workable opps<br/>
+          Unique after de-dupe: 809 · CRM rows before de-dupe: 1,152 · collapsed 343 repeats</div>
         <div class="why"><strong>What this means</strong>
           Of <strong>internet</strong> unique opportunities (de-duped, excluding Bad), how many show a <em>real work attempt</em> —
           first contact attempt, phone/email/text, customer contact, or CRM contacted flag?
@@ -285,21 +465,21 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div class="metric-top">
           <div>
             <div class="m-label">2) Internet response time (median)</div>
-            <div class="m-when">Internet leads only · CRM adjusted response time · Jun 22 – Jul 21, 2026</div>
+            <div class="m-when">Internet leads only · CRM adjusted response time · Jun 24 – Jul 23, 2026</div>
           </div>
           <div class="badge">Good</div>
         </div>
         <div class="m-value">11 min</div>
-        <div class="m-delta"><span class="neutral">same as prior 30 days</span> · Prior 30 days (May 23 – Jun 21, 2026): 11 min<br/>
-          Based on 351 timed internet leads (of 384 internet workable opps)</div>
+        <div class="m-delta"><span class="down">slower by 0 min vs prior 30 days</span> · Prior 30 days (May 25 – Jun 23, 2026): 10 min<br/>
+          Based on 371 timed internet leads (of 407 internet workable opps)</div>
         <div class="buckets">
-          <div class="b"><b>≤15 min</b><span>200 (57.0%)</span></div>
-          <div class="b"><b>16–30 min</b><span>49 (14.0%)</span></div>
-          <div class="b"><b>Over 30 min (missed goal)</b><span>102 (29.1%)</span></div>
-          <div class="b"><b>No timed response</b><span>33</span></div>
+          <div class="b"><b>≤15 min</b><span>209 (56.3%)</span></div>
+          <div class="b"><b>16–30 min</b><span>49 (13.2%)</span></div>
+          <div class="b"><b>Over 30 min (missed goal)</b><span>113 (30.5%)</span></div>
+          <div class="b"><b>No timed response</b><span>36</span></div>
         </div>
         <div class="why"><strong>What this means</strong>
-          <em>Internet only</em>, using VinSolutions <strong>adjusted response time</strong> (same idea as the CRM internet response chart).
+          <em>Internet only</em>, using VinSolutions <strong>adjusted response time</strong> when the export includes it.
           Phone-ups and walk-ins are <strong>not</strong> mixed in — they often show as 0 minutes and fake a fast store.
           Industry bands: ≤5 min ideal · ≤15 strong · ≤30 acceptable · over 30 missed goal.</div>
       </div>
@@ -307,16 +487,16 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       <div class="metric good">
         <div class="metric-top">
           <div>
-            <div class="m-label">3) Close rate</div>
-            <div class="m-when">Sold ÷ workable unique opportunities · Jun 22 – Jul 21, 2026</div>
+            <div class="m-label">3) Retail close rate</div>
+            <div class="m-when">Retail sold ÷ retail workable · wholesale separate · Jun 24 – Jul 23, 2026</div>
           </div>
           <div class="badge">Good</div>
         </div>
         <div class="m-value">18.2%</div>
-        <div class="m-delta"><span class="down">↓ 3.3 pts vs prior 30 days</span> · Prior 30 days (May 23 – Jun 21, 2026): 21.5%<br/>
-          Sold: 104 of 571 workable</div>
+        <div class="m-delta"><span class="down">↓ 3.6 pts vs prior 30 days</span> · Prior 30 days (May 25 – Jun 23, 2026): 21.8%<br/>
+          Retail sold: 109 of 599 retail workable</div>
         <div class="why"><strong>What this means</strong>
-          How many workable opportunities ended as sold in the CRM.
+          Retail close only — wholesale/auction DMS solds (OPENLANE, CarMax, etc.) are listed on the Leads tab and excluded from this grade.
           Useful for source quality; not the only measure of sales performance (inventory and desking matter too).
           Rough store-level bands used here: ≥8% good · 5–8% watch · under 5% problem.</div>
       </div>
@@ -325,209 +505,111 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         <div class="metric-top">
           <div>
             <div class="m-label">4) Untouched over 24 hours</div>
-            <div class="m-when">Workable opps still with no attempt · as of Jul 22, 2026</div>
+            <div class="m-when">Workable opps still with no attempt · as of Jul 24, 2026</div>
           </div>
           <div class="badge">Problem</div>
         </div>
         <div class="m-value">12</div>
-        <div class="m-delta">From opportunities in Jun 22 – Jul 21, 2026</div>
+        <div class="m-delta">From opportunities in Jun 24 – Jul 23, 2026</div>
         <div class="why"><strong>What this means</strong>
           Workable leads still sitting with zero attempt after a full day. Ideal is 0. This is the same-day coaching list.</div>
       </div>
+
     </section>
 
     <section class="block">
       <h2>Needs attention</h2>
-      <div class="when">Based on unique opportunities in <strong>Jun 22 – Jul 21, 2026</strong></div>
+      <div class="when">Based on unique opportunities in <strong>Jun 24 – Jul 23, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
-        People, sources, or situations to bring into the next sales meeting.</div>
-      <ul class='flags'><li>Yasoob Zia has 4 workable leads untouched over 24 hours.</li><li>Tasha Stubbs has 4 workable leads untouched over 24 hours.</li></ul>
+        Handling problems to bring into the next sales meeting — slow or no-attempt work, untouched leads, named coaching flags.
+        Source mix and close-by-origin live on the <strong>Leads</strong> tab.</div>
+      <ul class='flags'><li>Tasha Stubbs has 4 workable leads untouched over 24 hours.</li><li>Yasoob Zia has 3 workable leads untouched over 24 hours.</li></ul>
       <div class="sub">
-          <h3>Oldest untouched examples <span class="when-inline">as of Jul 22, 2026</span></h3>
+          <h3>Oldest untouched examples <span class="when-inline">as of Jul 24, 2026</span></h3>
           <table>
             <thead><tr><th>Salesperson</th><th>Source</th><th>Arrived</th><th class="num">Age</th></tr></thead>
-            <tbody><tr><td>Yasoob Zia</td><td>Podium</td><td>Jun 23 8:17 AM</td><td class='num'>712h</td></tr><tr><td>Tasha Stubbs</td><td>Carfax, Inc</td><td>Jun 27 12:37 PM</td><td class='num'>611h</td></tr><tr><td>Yasoob Zia</td><td>Podium</td><td>Jun 29 9:58 AM</td><td class='num'>566h</td></tr><tr><td>David Spikes</td><td>Autotrader — Call tracking</td><td>Jun 30 12:13 PM</td><td class='num'>540h</td></tr><tr><td>Tasha Stubbs</td><td>Carfax, Inc</td><td>Jun 30 4:13 PM</td><td class='num'>536h</td></tr></tbody>
+            <tbody><tr><td>Tasha Stubbs</td><td>Carfax, Inc</td><td>Jun 27 12:37 PM</td><td class='num'>659h</td></tr><tr><td>Yasoob Zia</td><td>Podium</td><td>Jun 29 9:58 AM</td><td class='num'>614h</td></tr><tr><td>David Spikes</td><td>Autotrader — Call tracking</td><td>Jun 30 12:13 PM</td><td class='num'>588h</td></tr><tr><td>Tasha Stubbs</td><td>Carfax, Inc</td><td>Jun 30 4:13 PM</td><td class='num'>584h</td></tr><tr><td>Yasoob Zia</td><td>Podium</td><td>Jun 30 5:48 PM</td><td class='num'>582h</td></tr></tbody>
           </table>
         </div>
     </section>
-
-    <section class="block">
-      <h2>Source detail — find the leaks</h2>
-      <div class="when">Unique workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · de-duped · same funnel window</div>
-      <div class="why"><strong>What this means</strong>
-        Drill-down under Stage 2. Compare owned website vs Autotrader/KBB vs other portals vs OEM partner.
-        Low close + high volume = quality leak. Slow internet response = handling leak.
-        Dealer website includes Motive, store-domain forms/chat, Carcode, and dealer-site KBB ICO.
-        Autotrader/KBB is one 3rd party with many of their own channels (forms, calls, ICO, walk-in tags).</div>
-
-      <h3>1) Channel mix</h3>
-      <table>
-        <thead><tr>
-          <th>Channel</th><th class="num">Opps</th><th class="num">Share</th>
-          <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close</th>
-        </tr></thead>
-        <tbody><tr><td><strong>Internet</strong></td><td class='num'>384</td><td class='num'>67.3%</td><td class='num'>97.4%</td><td class='num'>45</td><td class='num'>11.7%</td></tr><tr><td><strong>Phone</strong></td><td class='num'>89</td><td class='num'>15.6%</td><td class='num'>97.8%</td><td class='num'>20</td><td class='num'>22.5%</td></tr><tr><td><strong>Walk-in</strong></td><td class='num'>98</td><td class='num'>17.2%</td><td class='num'>100.0%</td><td class='num'>39</td><td class='num'>39.8%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>571</td><td class='num'>100.0%</td><td class='num'>97.9%</td><td class='num'>104</td><td class='num'>18.2%</td></tr></tbody>
-      </table>
-
-      <h3>2) Internet broken down</h3>
-      <div class="when" style="margin-top:-2px">Families inside internet · Jun 22 – Jul 21, 2026</div>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="leads">← Leads</button>
+        <button type="button" data-go="people">Next: People →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-people" role="tabpanel" data-tab="people" hidden>
       
-      <div class="sub group-block">
-              <h3>Dealer website &amp; on-site
-                <span class="when-inline">101 · 25.5% of internet · close 14.9%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class=''><td>Motive — Website</td><td class='num'>41</td><td class='num'>40.6%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>7.3%</td></tr><tr class=''><td>Dealer Website - Request More Info</td><td class='num'>27</td><td class='num'>26.7%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>18.5%</td></tr><tr class=''><td>Dealer Website - Chat</td><td class='num'>11</td><td class='num'>10.9%</td><td class='num'>90.9%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Motive — Credit</td><td class='num'>10</td><td class='num'>9.9%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>50.0%</td></tr><tr class=''><td>Motive — Qualify</td><td class='num'>4</td><td class='num'>4.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>25.0%</td></tr><tr class=''><td>Get a quote - Inventory</td><td class='num'>3</td><td class='num'>3.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>33.3%</td></tr><tr class=''><td>Dealer Website - Finance Pre Qual</td><td class='num'>2</td><td class='num'>2.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Dealer Contact - Inventory</td><td class='num'>2</td><td class='num'>2.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Motive — Trade</td><td class='num'>1</td><td class='num'>1.0%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>101</td><td class='num'>100.0%</td><td class='num'>99.0%</td><td class='num'>15</td><td class='num'>14.9%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block">
-              <h3>OEM / brand digital
-                <span class="when-inline">14 · 3.5% of internet · close 7.1%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class=''><td>BYO - GET A QUOTE</td><td class='num'>10</td><td class='num'>71.4%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Byo Matching Inventory - Get a Quote</td><td class='num'>2</td><td class='num'>14.3%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>50.0%</td></tr><tr class=''><td>ORDER NOW - BUILD YOUR OWN</td><td class='num'>2</td><td class='num'>14.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>14</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>7.1%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block at-kbb">
-              <h3><span class="pill-at">AT</span><span class="pill-kbb">KBB</span>Autotrader / KBB <span style="font-weight:600;color:#5b6472;font-size:12px;">(one 3rd party · their channels)</span>
-                <span class="when-inline">44 · 11.1% of internet · close 18.2%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Internet lead</td><td class='num'>21</td><td class='num'>47.7%</td><td class='num'>100.0%</td><td class='num'>4</td><td class='num'>19.0%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Call tracking</td><td class='num'>12</td><td class='num'>27.3%</td><td class='num'>83.3%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Wallet</td><td class='num'>7</td><td class='num'>15.9%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>42.9%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Phone lead</td><td class='num'>4</td><td class='num'>9.1%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>25.0%</td></tr><tr class='row-at'><td><span class="pill-at">AT</span>Autotrader — Car and Driver</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>44</td><td class='num'>100.0%</td><td class='num'>95.4%</td><td class='num'>8</td><td class='num'>18.2%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block">
-              <h3>Third-party marketplaces
-                <span class="when-inline">114 · 28.8% of internet · close 11.4%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class=''><td>Carfax, Inc</td><td class='num'>37</td><td class='num'>32.5%</td><td class='num'>94.6%</td><td class='num'>4</td><td class='num'>10.8%</td></tr><tr class=''><td>Truecar/Truecar</td><td class='num'>18</td><td class='num'>15.8%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>16.7%</td></tr><tr class=''><td>Cargurus</td><td class='num'>15</td><td class='num'>13.2%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>13.3%</td></tr><tr class=''><td>Truecar/Truecar For Intuit Credit Karma Members</td><td class='num'>8</td><td class='num'>7.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>12.5%</td></tr><tr class=''><td>Truecar/Perkspot</td><td class='num'>7</td><td class='num'>6.1%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Navy Federal</td><td class='num'>5</td><td class='num'>4.4%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>20.0%</td></tr><tr class=''><td>Truecar/Truecar For Drivers On Uber</td><td class='num'>3</td><td class='num'>2.6%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Extended Network</td><td class='num'>3</td><td class='num'>2.6%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Benefithub</td><td class='num'>3</td><td class='num'>2.6%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Sams Club</td><td class='num'>2</td><td class='num'>1.8%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>50.0%</td></tr><tr class=''><td>Truecar/U.S. News</td><td class='num'>2</td><td class='num'>1.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Consumer Reports</td><td class='num'>2</td><td class='num'>1.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Perks At Work</td><td class='num'>2</td><td class='num'>1.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Aaa</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Truecar/Lifecare</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>109</td><td class='num'>100.0%</td><td class='num'>98.2%</td><td class='num'>13</td><td class='num'>11.9%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block">
-              <h3>Campaigns &amp; conquest
-                <span class="when-inline">7 · 1.8% of internet · close 14.3%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class=''><td>Domestic Military Program Validated Customer</td><td class='num'>5</td><td class='num'>71.4%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>20.0%</td></tr><tr class=''><td>Military Program - Contact Dealer - Failed Verification</td><td class='num'>1</td><td class='num'>14.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Current Owner In Markt</td><td class='num'>1</td><td class='num'>14.3%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>7</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>14.3%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block">
-              <h3>Other internet
-                <span class="when-inline">116 · 29.3% of internet · close 6.0%</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Source detail</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr class=''><td>Trade In</td><td class='num'>45</td><td class='num'>38.8%</td><td class='num'>100.0%</td><td class='num'>4</td><td class='num'>8.9%</td></tr><tr class=''><td>Podium</td><td class='num'>35</td><td class='num'>30.2%</td><td class='num'>82.9%</td><td class='num'>2</td><td class='num'>5.7%</td></tr><tr class=''><td>Gmt26_gen M Tour_no Show</td><td class='num'>9</td><td class='num'>7.8%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Southern26_2026 Clint Dempsey Track Day_0611</td><td class='num'>8</td><td class='num'>6.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Gmt26_gen M Tour_attended</td><td class='num'>6</td><td class='num'>5.2%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>AMP - Service to Sales Opportunity</td><td class='num'>3</td><td class='num'>2.6%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Fs Active Lead Service</td><td class='num'>2</td><td class='num'>1.7%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Car and Driver Blackbook Trade In</td><td class='num'>2</td><td class='num'>1.7%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Pre-Owned Inventory - Test Drive - Maco</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>100.0%</td></tr><tr class=''><td>WALK  IN  DRIVE BY</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Test Drive</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Southern26_2026 Peachtree Expo_0601</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>Jd Power Smartleads</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>AMP - Refinance Opportunity</td><td class='num'>1</td><td class='num'>0.9%</td><td class='num'>0.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class=''><td>FS LEASE LEAD 270</td><td class='num'>0</td><td class='num'>0.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>—</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>116</td><td class='num'>100.0%</td><td class='num'>94.0%</td><td class='num'>7</td><td class='num'>6.0%</td></tr></tbody>
-              </table>
-            </div>
-
-      <h3>3) Phone and walk-in detail</h3>
-      <div class="sub group-block">
-              <h3>Phone <span class="when-inline">77 opportunities</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Logged as</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr><td>Phone Up</td><td class='num'>22</td><td class='num'>28.6%</td><td class='num'>100.0%</td><td class='num'>7</td><td class='num'>31.8%</td></tr><tr><td>Repeat Customer</td><td class='num'>22</td><td class='num'>28.6%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>22.7%</td></tr><tr><td>Dealers WebSite</td><td class='num'>13</td><td class='num'>16.9%</td><td class='num'>100.0%</td><td class='num'>2</td><td class='num'>15.4%</td></tr><tr><td>Referral</td><td class='num'>9</td><td class='num'>11.7%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>55.6%</td></tr><tr><td>Service Dept</td><td class='num'>8</td><td class='num'>10.4%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr><td>WALK  IN  DRIVE BY</td><td class='num'>3</td><td class='num'>3.9%</td><td class='num'>100.0%</td><td class='num'>1</td><td class='num'>33.3%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>77</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>20</td><td class='num'>26.0%</td></tr></tbody>
-              </table>
-            </div><div class="sub group-block">
-              <h3>Walk-in <span class="when-inline">98 opportunities</span></h3>
-              <table>
-                <thead><tr>
-                  <th>Logged as</th><th class="num">Count</th><th class="num">Share</th>
-                  <th class="num">Contacted</th><th class="num">Sold</th><th class="num">Close rate</th>
-                </tr></thead>
-                <tbody><tr><td>WALK  IN  DRIVE BY</td><td class='num'>58</td><td class='num'>59.2%</td><td class='num'>100.0%</td><td class='num'>24</td><td class='num'>41.4%</td></tr><tr><td>Repeat Customer</td><td class='num'>15</td><td class='num'>15.3%</td><td class='num'>100.0%</td><td class='num'>7</td><td class='num'>46.7%</td></tr><tr><td>Dealers WebSite</td><td class='num'>13</td><td class='num'>13.3%</td><td class='num'>100.0%</td><td class='num'>3</td><td class='num'>23.1%</td></tr><tr><td>Referral</td><td class='num'>7</td><td class='num'>7.1%</td><td class='num'>100.0%</td><td class='num'>5</td><td class='num'>71.4%</td></tr><tr><td>Service Dept</td><td class='num'>5</td><td class='num'>5.1%</td><td class='num'>100.0%</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>98</td><td class='num'>100.0%</td><td class='num'>100.0%</td><td class='num'>39</td><td class='num'>39.8%</td></tr></tbody>
-              </table>
-            </div>
-    </section>
-
-    
-    <div class="funnel-arrow">↓</div>
     <div class="funnel-stage">
       <div class="n">Stage 4 · People + execution</div>
       <div class="t">Salesperson effectiveness</div>
-      <div class="d">Who is working internet leads well, who is slow, and where coaching should start — by team group.</div>
+      <div class="d">Who owns volume and retail close — and where coaching should start — by team group.</div>
     </div>
 
     <section class="block">
       <h2>Sales team scoreboard</h2>
-      <div class="when">Workable unique opportunities · <strong>Jun 22 – Jul 21, 2026</strong> · split by VinSolutions team · worst contact first inside each group</div>
+      <div class="when">Workable unique opportunities · <strong>Jun 24 – Jul 23, 2026</strong> · split by VinSolutions team · worst contact first inside each group</div>
       <div class="why"><strong>How to read this</strong>
-        Separate boards for New Car Sales vs Used Car Sales (and other groups).
+        Salespeople by team group when the CRM provides groups (New/Used). 
         Red rows need coaching first. Gray rows have fewer than 3 leads or are system/unassigned.
         Internet median is adjusted response on internet leads only.</div>
       <div class="sub group-block">
-              <h3>New Sales <span class="when-inline">298 workable opportunities</span></h3>
+              <h3>New Sales <span class="when-inline">314 workable opportunities</span></h3>
               <table>
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th>
-                  <th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
                 </tr></thead>
-                <tbody><tr><td>Blaysen Toney</td><td class='num'>12</td><td class='num'>87.5%</td><td class='num'>18 min</td><td class='num'><strong>1</strong></td><td class='num'>0.0%</td></tr><tr><td>David Spikes</td><td class='num'>49</td><td class='num'>100.0%</td><td class='num'>8 min</td><td class='num'><strong>1</strong></td><td class='num'>36.7%</td></tr><tr><td>Milla Augustine</td><td class='num'>51</td><td class='num'>100.0%</td><td class='num'>11 min</td><td class='num'><strong>1</strong></td><td class='num'>25.5%</td></tr><tr class="green"><td>Josh Kinsley</td><td class='num'>23</td><td class='num'>100.0%</td><td class='num'>20 min</td><td class='num'>0</td><td class='num'>34.8%</td></tr><tr class="green"><td>Kerry Beary</td><td class='num'>45</td><td class='num'>100.0%</td><td class='num'>30 min</td><td class='num'>0</td><td class='num'>22.2%</td></tr><tr class="green"><td>Kyle Adibyazdi</td><td class='num'>39</td><td class='num'>100.0%</td><td class='num'>9 min</td><td class='num'>0</td><td class='num'>25.6%</td></tr><tr class="green"><td>Payton Lusk</td><td class='num'>27</td><td class='num'>100.0%</td><td class='num'>26 min</td><td class='num'>0</td><td class='num'>14.8%</td></tr><tr><td>Tommy Ngo</td><td class='num'>50</td><td class='num'>100.0%</td><td class='num'>32 min</td><td class='num'>0</td><td class='num'>20.0%</td></tr><tr class="dim"><td>Neil Coll</td><td class='num'>2</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>298</td><td class='num'>99.4%</td><td class='num'>18 min</td><td class='num'>3</td><td class='num'>24.5%</td></tr></tbody>
+                <tbody><tr><td>Blaysen Toney</td><td class='num'>14</td><td class='num'>87.5%</td><td class='num'>18 min</td><td class='num'><strong>1</strong></td><td class='num'>0.0%</td></tr><tr><td>David Spikes</td><td class='num'>49</td><td class='num'>100.0%</td><td class='num'>8 min</td><td class='num'><strong>1</strong></td><td class='num'>36.7%</td></tr><tr><td>Milla Augustine</td><td class='num'>55</td><td class='num'>100.0%</td><td class='num'>11 min</td><td class='num'><strong>1</strong></td><td class='num'>21.8%</td></tr><tr class="green"><td>Josh Kinsley</td><td class='num'>27</td><td class='num'>100.0%</td><td class='num'>19 min</td><td class='num'>0</td><td class='num'>29.6%</td></tr><tr class="green"><td>Kerry Beary</td><td class='num'>46</td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td><td class='num'>21.7%</td></tr><tr class="green"><td>Kyle Adibyazdi</td><td class='num'>37</td><td class='num'>100.0%</td><td class='num'>16 min</td><td class='num'>0</td><td class='num'>29.7%</td></tr><tr class="green"><td>Payton Lusk</td><td class='num'>27</td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td><td class='num'>14.8%</td></tr><tr class="green"><td>Tommy Ngo</td><td class='num'>58</td><td class='num'>100.0%</td><td class='num'>29 min</td><td class='num'>0</td><td class='num'>19.0%</td></tr><tr class="dim"><td>Neil Coll</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>314</td><td class='num'>99.4%</td><td class='num'>18 min</td><td class='num'>3</td><td class='num'>23.6%</td></tr></tbody>
               </table>
             </div><div class="sub group-block">
-              <h3>Used Sales <span class="when-inline">270 workable opportunities</span></h3>
+              <h3>Used Sales <span class="when-inline">281 workable opportunities</span></h3>
               <table>
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th>
-                  <th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
                 </tr></thead>
-                <tbody><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num'>72</td><td class='num'>93.4%</td><td class='num'>9 min</td><td class='num'><strong>4</strong></td><td class='num'>12.5%</td></tr><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num'>77</td><td class='num'>93.9%</td><td class='num'>8 min</td><td class='num'><strong>4</strong></td><td class='num'>9.1%</td></tr><tr><td>Jason Arceneaux</td><td class='num'>40</td><td class='num'>96.9%</td><td class='num'>18 min</td><td class='num'><strong>1</strong></td><td class='num'>15.0%</td></tr><tr class="green"><td>Brandi Hutchinson</td><td class='num'>65</td><td class='num'>100.0%</td><td class='num'>6 min</td><td class='num'>0</td><td class='num'>12.3%</td></tr><tr class="green"><td>Reginald Day</td><td class='num'>16</td><td class='num'>100.0%</td><td class='num'>13 min</td><td class='num'>0</td><td class='num'>6.2%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>270</td><td class='num'>95.9%</td><td class='num'>8 min</td><td class='num'>9</td><td class='num'>11.5%</td></tr></tbody>
+                <tbody><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num'>75</td><td class='num'>93.9%</td><td class='num'>10 min</td><td class='num'><strong>4</strong></td><td class='num'>10.7%</td></tr><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num'>78</td><td class='num'>95.2%</td><td class='num'>10 min</td><td class='num'><strong>3</strong></td><td class='num'>14.1%</td></tr><tr><td>Jason Arceneaux</td><td class='num'>42</td><td class='num'>97.1%</td><td class='num'>17 min</td><td class='num'><strong>1</strong></td><td class='num'>11.9%</td></tr><tr><td>Brandi Hutchinson</td><td class='num'>65</td><td class='num'>98.1%</td><td class='num'>6 min</td><td class='num'><strong>1</strong></td><td class='num'>13.8%</td></tr><tr class="green"><td>Reginald Day</td><td class='num'>21</td><td class='num'>100.0%</td><td class='num'>18 min</td><td class='num'>0</td><td class='num'>4.8%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>281</td><td class='num'>96.1%</td><td class='num'>10 min</td><td class='num'>9</td><td class='num'>12.1%</td></tr></tbody>
               </table>
             </div><div class="sub group-block">
               <h3>Orphan <span class="when-inline">1 workable opportunities</span></h3>
               <table>
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th>
-                  <th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
                 </tr></thead>
                 <tbody><tr class="dim"><td>Your Service Dept at Brian Harris BMW</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
               </table>
             </div><div class="sub group-block">
-              <h3>Service <span class="when-inline">1 workable opportunities</span></h3>
+              <h3>Service <span class="when-inline">2 workable opportunities</span></h3>
               <table>
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th>
-                  <th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>Darrell Buggage</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Darrell Buggage</td><td class='num'>2</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>50.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>2</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>50.0%</td></tr></tbody>
               </table>
             </div><div class="sub group-block">
               <h3>Ungrouped <span class="when-inline">1 workable opportunities</span></h3>
               <table>
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th>
-                  <th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
                 </tr></thead>
                 <tbody><tr class="dim"><td>Triston Sittig</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
               </table>
             </div>
+
       <div class="col-help">
         <div><strong>Opps</strong> — workable unique opportunities assigned to them.</div>
         <div><strong>Internet contact</strong> — % of their internet leads with a real work attempt (not Contacted flag alone). Phone/walk-in not in this column.</div>
         <div><strong>Internet median</strong> — typical adjusted response on their internet leads.</div>
         <div><strong>Untouched &gt;24h</strong> — still no attempt after a day.</div>
-        <div><strong>Close rate</strong> — sold ÷ their workable opps.</div>
+        <div><strong>Close rate</strong> — retail sold ÷ their workable opps (wholesale excluded).</div>
       </div>
-    </section>
 
-    
-    <div class="funnel-arrow">↓</div>
+    </section>
+      <div class="tab-nav-footer">
+        <button type="button" data-go="handling">← Handling</button>
+        <button type="button" data-go="context">Next: Context →</button>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-context" role="tabpanel" data-tab="context" hidden>
+      
     <div class="funnel-stage">
       <div class="n">Stage 5 · Context</div>
       <div class="t">Vehicles, trades, contact methods</div>
@@ -536,63 +618,96 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 
     <section class="block">
       <h2>How the team is trying to reach customers</h2>
-      <div class="when">Workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity.</div>
       <table>
         <thead><tr><th>Method</th><th class="num">Share of workable opps</th><th>Plain English</th></tr></thead>
         <tbody>
-          <tr><td>Phone attempt</td><td class="num">81.6%</td><td>Someone tried calling</td></tr>
-          <tr><td>Email attempt</td><td class="num">74.8%</td><td>Someone sent an email</td></tr>
-          <tr><td>Text attempt</td><td class="num">36.8%</td><td>Someone sent a text</td></tr>
-          <tr><td>Multi-channel</td><td class="num">69.9%</td><td>Used 2+ methods on the same opp</td></tr>
-          <tr><td>Customer contact logged</td><td class="num">74.1%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
+          <tr><td>Phone attempt</td><td class="num">80.5%</td><td>Someone tried calling</td></tr>
+          <tr><td>Email attempt</td><td class="num">75.0%</td><td>Someone sent an email</td></tr>
+          <tr><td>Text attempt</td><td class="num">36.1%</td><td>Someone sent a text</td></tr>
+          <tr><td>Multi-channel</td><td class="num">69.6%</td><td>Used 2+ methods on the same opp</td></tr>
+          <tr><td>Customer contact logged</td><td class="num">74.0%</td><td>CRM shows an actual customer connect, not only outbound</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="block">
       <h2>What cars people asked about</h2>
-      <div class="when">Workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
       <table>
         <thead><tr><th>New / used / CPO interest</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-        <tbody><tr><td>New</td><td class='num'>239</td><td class='num'>41.9%</td></tr><tr><td>Used</td><td class='num'>183</td><td class='num'>32.0%</td></tr><tr><td>Certified</td><td class='num'>89</td><td class='num'>15.6%</td></tr><tr><td>Unknown</td><td class='num'>60</td><td class='num'>10.5%</td></tr><tr class='total-row'><td>Total</td><td class='num'>571</td><td class='num'>100.0%</td></tr></tbody>
+        <tbody><tr><td>New</td><td class='num'>249</td><td class='num'>41.6%</td></tr><tr><td>Used</td><td class='num'>194</td><td class='num'>32.4%</td></tr><tr><td>Certified</td><td class='num'>92</td><td class='num'>15.4%</td></tr><tr><td>Unknown</td><td class='num'>64</td><td class='num'>10.7%</td></tr><tr class='total-row'><td>Total</td><td class='num'>599</td><td class='num'>100.0%</td></tr></tbody>
       </table>
       <div class="sub">
-        <h3>Top vehicles of interest <span class="when-inline">Jun 22 – Jul 21, 2026</span></h3>
+        <h3>Top vehicles of interest <span class="when-inline">Jun 24 – Jul 23, 2026</span></h3>
         <table>
           <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
-          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>39</td><td class='num'>8.5%</td></tr><tr><td>2026 BMW X5</td><td class='num'>39</td><td class='num'>8.5%</td></tr><tr><td>2026 BMW X3</td><td class='num'>35</td><td class='num'>7.6%</td></tr><tr><td>2024 BMW X5</td><td class='num'>18</td><td class='num'>3.9%</td></tr><tr><td>2023 BMW X3</td><td class='num'>12</td><td class='num'>2.6%</td></tr><tr><td>2026 BMW X1</td><td class='num'>10</td><td class='num'>2.2%</td></tr><tr><td>2027 BMW X7</td><td class='num'>10</td><td class='num'>2.2%</td></tr><tr><td>2026 BMW 3 Series</td><td class='num'>9</td><td class='num'>2.0%</td></tr><tr><td>2027 BMW X6</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2026 BMW X7</td><td class='num'>7</td><td class='num'>1.5%</td></tr><tr class='total-row'><td>Total</td><td class='num'>187</td><td class='num'>100.0%</td></tr></tbody>
+          <tbody><tr><td>2026 BMW Full Line</td><td class='num'>40</td><td class='num'>8.3%</td></tr><tr><td>2026 BMW X5</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2026 BMW X3</td><td class='num'>39</td><td class='num'>8.1%</td></tr><tr><td>2024 BMW X5</td><td class='num'>19</td><td class='num'>3.9%</td></tr><tr><td>2027 BMW X7</td><td class='num'>14</td><td class='num'>2.9%</td></tr><tr><td>2023 BMW X3</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW X1</td><td class='num'>11</td><td class='num'>2.3%</td></tr><tr><td>2026 BMW 3 Series</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2027 BMW X6</td><td class='num'>8</td><td class='num'>1.7%</td></tr><tr><td>2026 BMW 3</td><td class='num'>7</td><td class='num'>1.5%</td></tr><tr class='total-row'><td>Total</td><td class='num'>196</td><td class='num'>100.0%</td></tr></tbody>
         </table>
       </div>
     </section>
 
     <section class="block">
       <h2>Trade-ins mentioned</h2>
-      <div class="when">Workable opportunities · <strong>Jun 22 – Jul 21, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Jun 24 – Jul 23, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
-        29.1% of workable opportunities included a trade vehicle.
+        28.9% of workable opportunities included a trade vehicle.
         Higher trade rates often signal more serious shoppers.</div>
       <table>
         <thead><tr><th>Trade year / make / model</th><th class="num">Opps</th><th class="num">Share of trades</th></tr></thead>
-        <tbody><tr><td>2022 BMW X5</td><td class='num'>5</td><td class='num'>3.0%</td></tr><tr><td>2024 BMW X3</td><td class='num'>5</td><td class='num'>3.0%</td></tr><tr><td>2024 BMW X4</td><td class='num'>4</td><td class='num'>2.4%</td></tr><tr><td>2022 BMW X7</td><td class='num'>3</td><td class='num'>1.8%</td></tr><tr><td>2020 Jeep Grand Cherokee</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2023 BMW 4 Series</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2021 BMW 430i</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2019 Jeep Grand Cherokee</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr class='total-row'><td>Total</td><td class='num'>25</td><td class='num'>100.0%</td></tr></tbody>
+        <tbody><tr><td>2024 BMW X3</td><td class='num'>7</td><td class='num'>4.0%</td></tr><tr><td>2022 BMW X5</td><td class='num'>5</td><td class='num'>2.9%</td></tr><tr><td>2022 BMW X7</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2024 BMW X4</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 BMW 5 Series</td><td class='num'>3</td><td class='num'>1.7%</td></tr><tr><td>2019 Jeep Grand Cherokee</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2020 Land Rover Range Rover Sport</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr><td>2023 BMW 4 Series</td><td class='num'>2</td><td class='num'>1.2%</td></tr><tr class='total-row'><td>Total</td><td class='num'>27</td><td class='num'>100.0%</td></tr></tbody>
       </table>
     </section>
-
     <div class="foot">
       <strong>Date ranges on this page</strong><br/>
-      <strong>Last 30 days:</strong> Jun 22 – Jul 21, 2026.<br/>
-      <strong>Prior 30 days:</strong> May 23 – Jun 21, 2026.<br/>
-      Organized as a sales funnel: website traffic → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
+      <strong>Last 30 days:</strong> Jun 24 – Jul 23, 2026.<br/>
+      <strong>Prior 30 days:</strong> May 25 – Jun 23, 2026.<br/>
+      Organized as a sales funnel: website traffic → inventory health (active lot) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
       Internet + phone + walk-in on the same shopper counts as one.
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-15): 26,184 visits · 21,957 people. Generated Jul 22, 2026 3:21 PM.
+      Inventory panel uses VinSolutions live-lot units when an inventory export is present.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 10:27 AM.
       This page is for Brian Harris BMW only — no other stores.
     </div>
   </div>
   <footer>Brian Harris BMW · GM Performance Brief · The Cooperative Agency</footer>
+  <script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.stage-tabs [data-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel[data-tab]'));
+    var valid = {};
+    tabs.forEach(function (b) { valid[b.getAttribute('data-tab')] = true; });
+    function show(id, push) {
+      if (!valid[id]) id = 'handling';
+      tabs.forEach(function (b) {
+        var on = b.getAttribute('data-tab') === id;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(function (p) {
+        var on = p.getAttribute('data-tab') === id;
+        p.classList.toggle('active', on);
+        if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+      });
+      if (push !== false) {
+        try { history.replaceState(null, '', '#' + id); } catch (e) {}
+      }
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0,0); }
+    }
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-tab')); });
+    });
+    document.querySelectorAll('[data-go]').forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-go')); });
+    });
+    var initial = (location.hash || '').replace(/^#/, '');
+    show(valid[initial] ? initial : 'handling', false);
+  })();
+  </script>
 </body>
 </html>
