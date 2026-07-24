@@ -101,6 +101,15 @@ tr.dim td { opacity:.42; }
 footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
 @media (max-width:720px) { .buckets { grid-template-columns:1fr; } h1 { font-size:22px; } .top.has-photo { padding:28px 16px 24px; } }
 
+
+.th-sub { display:block; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+.ch-cell { text-align:right; vertical-align:middle; min-width:62px; }
+.ch-cell .ch-n { display:block; font-weight:750; font-variant-numeric:tabular-nums; line-height:1.2; }
+.ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:2px; }
+.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-c { opacity:.35; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+table.scoreboard { font-size:12.5px; min-width:700px; }
+
 /* Stage tabs — one stage at a time */
 .stage-tabs-wrap { position:sticky; top:0; z-index:40; background:var(--bg); padding:10px 0 8px; margin:0 0 12px; border-bottom:1px solid var(--line); }
 .stage-tabs { display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; padding-bottom:2px; }
@@ -128,6 +137,83 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
   .top.has-photo { background:#111 !important; color:#fff; }
   .top.has-photo::before { display:none; }
 }
+
+/* BMW / brianharrisbmw.com skin */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+:root {
+  --accent:#1C69D3;
+  --ink:#221F1F;
+  --muted:#727171;
+  --line:#EBEBEB;
+  --bg:#F6F6F6;
+  --card:#FFFFFF;
+  --radius:0px;
+  --font:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+* { box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
+.top { border-bottom:4px solid var(--accent); }
+.top:not(.has-photo) { background:#fff; }
+.brand { letter-spacing:.12em; font-weight:600; font-size:10px; }
+h1 { font-weight:700; letter-spacing:-.03em; }
+.sub { color:var(--muted); }
+.verdict { border-radius:var(--radius); background:#221F1F; }
+.block, .metric, .stat, .why, .group-block h3, .buckets .b, .col-help div {
+  border-radius:var(--radius) !important;
+}
+.block { border-color:var(--line); box-shadow:none; }
+.funnel-stage { border-radius:var(--radius); background:#221F1F; }
+.stat { background:#fff; border-color:var(--line); }
+.stat .k { letter-spacing:.08em; color:var(--muted); }
+.stat .v { letter-spacing:-.03em; color:var(--ink); }
+.badge { border-radius:0; letter-spacing:.08em; }
+.stage-tabs-wrap {
+  background:rgba(246,246,246,.96);
+  backdrop-filter:saturate(1.1) blur(8px);
+  border-bottom:1px solid var(--line);
+  padding:12px 0 0;
+}
+.stage-tabs { gap:0; }
+.stage-tabs button {
+  border-radius:0;
+  border:1px solid transparent;
+  border-bottom:3px solid transparent;
+  background:transparent;
+  color:var(--muted);
+  padding:12px 14px 10px;
+  margin:0;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.stage-tabs button .tn {
+  font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:inherit; opacity:.75; margin-bottom:3px;
+}
+.stage-tabs button .tl { font-size:13px; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+.stage-tabs button:hover { background:#fff; border-color:var(--line); border-bottom-color:transparent; }
+.stage-tabs button.active {
+  background:#fff;
+  color:var(--ink);
+  border-color:var(--line);
+  border-bottom:3px solid var(--accent);
+  box-shadow:none;
+}
+.stage-tabs button.active .tn { color:var(--accent); opacity:1; }
+.stage-tabs button.active .tl { color:var(--ink); }
+.tab-nav-footer button {
+  border-radius:0; border:1px solid var(--line); background:#fff; font-weight:600; letter-spacing:.02em;
+}
+.tab-nav-footer button:hover { border-color:var(--accent); color:var(--accent); }
+.group-block h3 { background:#F0F2F5; border-left:4px solid var(--accent); border-radius:0; }
+th { letter-spacing:.08em; font-weight:600; }
+table.scoreboard { font-size:12px; min-width:720px; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -2px; }
+.th-sub { display:block; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+.ch-cell { text-align:right; vertical-align:middle; min-width:64px; }
+.ch-cell .ch-n { display:block; font-weight:750; font-variant-numeric:tabular-nums; color:var(--ink); line-height:1.2; }
+.ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:2px; }
+.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-c { opacity:.35; }
+tr.total-row td .ch-n { font-weight:850; }
+footer { letter-spacing:.04em; }
 </style>
 </head>
 <body>
@@ -139,7 +225,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 10:48 AM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW</strong> only · Report as of Jul 24, 2026 · Generated Jul 24, 2026 11:01 AM</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 599 workable opportunities (809 unique after de-dupe; Bad excluded from workable); retail close 18.2% (109 retail sold); internet is 67.9% of workable; internet CRM contact 97.5%; internet median response 11 min; 12 workable leads still untouched over 24h.</div>
@@ -627,52 +713,61 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
         Internet median is adjusted response on internet leads only.</div>
       <div class="sub group-block">
               <h3>New Sales <span class="when-inline">314 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · close</span></th><th class="num">Internet<br><span class="th-sub">opps · close</span></th><th class="num">Phone<br><span class="th-sub">opps · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · close</span></th><th class="num">Other<br><span class="th-sub">opps · close</span></th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th>
                 </tr></thead>
-                <tbody><tr><td>Blaysen Toney</td><td class='num'>14</td><td class='num'>87.5%</td><td class='num'>18 min</td><td class='num'><strong>1</strong></td><td class='num'>0.0%</td></tr><tr><td>David Spikes</td><td class='num'>49</td><td class='num'>100.0%</td><td class='num'>8 min</td><td class='num'><strong>1</strong></td><td class='num'>36.7%</td></tr><tr><td>Milla Augustine</td><td class='num'>55</td><td class='num'>100.0%</td><td class='num'>11 min</td><td class='num'><strong>1</strong></td><td class='num'>21.8%</td></tr><tr class="green"><td>Josh Kinsley</td><td class='num'>27</td><td class='num'>100.0%</td><td class='num'>19 min</td><td class='num'>0</td><td class='num'>29.6%</td></tr><tr class="green"><td>Kerry Beary</td><td class='num'>46</td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td><td class='num'>21.7%</td></tr><tr class="green"><td>Kyle Adibyazdi</td><td class='num'>37</td><td class='num'>100.0%</td><td class='num'>16 min</td><td class='num'>0</td><td class='num'>29.7%</td></tr><tr class="green"><td>Payton Lusk</td><td class='num'>27</td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td><td class='num'>14.8%</td></tr><tr class="green"><td>Tommy Ngo</td><td class='num'>58</td><td class='num'>100.0%</td><td class='num'>29 min</td><td class='num'>0</td><td class='num'>19.0%</td></tr><tr class="dim"><td>Neil Coll</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>314</td><td class='num'>99.4%</td><td class='num'>18 min</td><td class='num'>3</td><td class='num'>23.6%</td></tr></tbody>
+                <tbody><tr><td>Blaysen Toney</td><td class='num ch-cell'><span class='ch-n'>14</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>8</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>5</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>87.5%</td><td class='num'>18 min</td><td class='num'><strong>1</strong></td></tr><tr><td>David Spikes</td><td class='num ch-cell'><span class='ch-n'>49</span><span class='ch-c'>36.7%</span></td><td class='num ch-cell'><span class='ch-n'>26</span><span class='ch-c'>26.9%</span></td><td class='num ch-cell'><span class='ch-n'>17</span><span class='ch-c'>35.3%</span></td><td class='num ch-cell'><span class='ch-n'>6</span><span class='ch-c'>83.3%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>8 min</td><td class='num'><strong>1</strong></td></tr><tr><td>Milla Augustine</td><td class='num ch-cell'><span class='ch-n'>55</span><span class='ch-c'>21.8%</span></td><td class='num ch-cell'><span class='ch-n'>29</span><span class='ch-c'>3.4%</span></td><td class='num ch-cell'><span class='ch-n'>10</span><span class='ch-c'>40.0%</span></td><td class='num ch-cell'><span class='ch-n'>16</span><span class='ch-c'>43.8%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>11 min</td><td class='num'><strong>1</strong></td></tr><tr class="green"><td>Josh Kinsley</td><td class='num ch-cell'><span class='ch-n'>27</span><span class='ch-c'>29.6%</span></td><td class='num ch-cell'><span class='ch-n'>14</span><span class='ch-c'>21.4%</span></td><td class='num ch-cell'><span class='ch-n'>5</span><span class='ch-c'>40.0%</span></td><td class='num ch-cell'><span class='ch-n'>8</span><span class='ch-c'>37.5%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>19 min</td><td class='num'>0</td></tr><tr class="green"><td>Kerry Beary</td><td class='num ch-cell'><span class='ch-n'>46</span><span class='ch-c'>21.7%</span></td><td class='num ch-cell'><span class='ch-n'>28</span><span class='ch-c'>21.4%</span></td><td class='num ch-cell'><span class='ch-n'>7</span><span class='ch-c'>14.3%</span></td><td class='num ch-cell'><span class='ch-n'>11</span><span class='ch-c'>27.3%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td></tr><tr class="green"><td>Kyle Adibyazdi</td><td class='num ch-cell'><span class='ch-n'>37</span><span class='ch-c'>29.7%</span></td><td class='num ch-cell'><span class='ch-n'>27</span><span class='ch-c'>18.5%</span></td><td class='num ch-cell'><span class='ch-n'>2</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>8</span><span class='ch-c'>75.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>16 min</td><td class='num'>0</td></tr><tr class="green"><td>Payton Lusk</td><td class='num ch-cell'><span class='ch-n'>27</span><span class='ch-c'>14.8%</span></td><td class='num ch-cell'><span class='ch-n'>12</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>9</span><span class='ch-c'>22.2%</span></td><td class='num ch-cell'><span class='ch-n'>6</span><span class='ch-c'>33.3%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>24 min</td><td class='num'>0</td></tr><tr class="green"><td>Tommy Ngo</td><td class='num ch-cell'><span class='ch-n'>58</span><span class='ch-c'>19.0%</span></td><td class='num ch-cell'><span class='ch-n'>29</span><span class='ch-c'>3.4%</span></td><td class='num ch-cell'><span class='ch-n'>12</span><span class='ch-c'>25.0%</span></td><td class='num ch-cell'><span class='ch-n'>17</span><span class='ch-c'>41.2%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>29 min</td><td class='num'>0</td></tr><tr class="dim"><td>Neil Coll</td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>314</span><span class='ch-c'>23.6%</span></td><td class='num ch-cell'><span class='ch-n'>173</span><span class='ch-c'>13.3%</span></td><td class='num ch-cell'><span class='ch-n'>64</span><span class='ch-c'>28.1%</span></td><td class='num ch-cell'><span class='ch-n'>77</span><span class='ch-c'>42.9%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>99.4%</td><td class='num'>18 min</td><td class='num'>3</td></tr></tbody>
               </table>
+              </div>
             </div><div class="sub group-block">
               <h3>Used Sales <span class="when-inline">281 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · close</span></th><th class="num">Internet<br><span class="th-sub">opps · close</span></th><th class="num">Phone<br><span class="th-sub">opps · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · close</span></th><th class="num">Other<br><span class="th-sub">opps · close</span></th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th>
                 </tr></thead>
-                <tbody><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num'>75</td><td class='num'>93.9%</td><td class='num'>10 min</td><td class='num'><strong>4</strong></td><td class='num'>10.7%</td></tr><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num'>78</td><td class='num'>95.2%</td><td class='num'>10 min</td><td class='num'><strong>3</strong></td><td class='num'>14.1%</td></tr><tr><td>Jason Arceneaux</td><td class='num'>42</td><td class='num'>97.1%</td><td class='num'>17 min</td><td class='num'><strong>1</strong></td><td class='num'>11.9%</td></tr><tr><td>Brandi Hutchinson</td><td class='num'>65</td><td class='num'>98.1%</td><td class='num'>6 min</td><td class='num'><strong>1</strong></td><td class='num'>13.8%</td></tr><tr class="green"><td>Reginald Day</td><td class='num'>21</td><td class='num'>100.0%</td><td class='num'>18 min</td><td class='num'>0</td><td class='num'>4.8%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>281</td><td class='num'>96.1%</td><td class='num'>10 min</td><td class='num'>9</td><td class='num'>12.1%</td></tr></tbody>
+                <tbody><tr class="red"><td><strong>Tasha Stubbs</strong></td><td class='num ch-cell'><span class='ch-n'>75</span><span class='ch-c'>10.7%</span></td><td class='num ch-cell'><span class='ch-n'>66</span><span class='ch-c'>10.6%</span></td><td class='num ch-cell'><span class='ch-n'>4</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>5</span><span class='ch-c'>20.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>93.9%</td><td class='num'>10 min</td><td class='num'><strong>4</strong></td></tr><tr class="red"><td><strong>Yasoob Zia</strong></td><td class='num ch-cell'><span class='ch-n'>78</span><span class='ch-c'>14.1%</span></td><td class='num ch-cell'><span class='ch-n'>63</span><span class='ch-c'>17.5%</span></td><td class='num ch-cell'><span class='ch-n'>4</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>11</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>95.2%</td><td class='num'>10 min</td><td class='num'><strong>3</strong></td></tr><tr><td>Jason Arceneaux</td><td class='num ch-cell'><span class='ch-n'>42</span><span class='ch-c'>11.9%</span></td><td class='num ch-cell'><span class='ch-n'>35</span><span class='ch-c'>5.7%</span></td><td class='num ch-cell'><span class='ch-n'>4</span><span class='ch-c'>25.0%</span></td><td class='num ch-cell'><span class='ch-n'>3</span><span class='ch-c'>66.7%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>97.1%</td><td class='num'>17 min</td><td class='num'><strong>1</strong></td></tr><tr><td>Brandi Hutchinson</td><td class='num ch-cell'><span class='ch-n'>65</span><span class='ch-c'>13.8%</span></td><td class='num ch-cell'><span class='ch-n'>53</span><span class='ch-c'>13.2%</span></td><td class='num ch-cell'><span class='ch-n'>10</span><span class='ch-c'>20.0%</span></td><td class='num ch-cell'><span class='ch-n'>2</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>98.1%</td><td class='num'>6 min</td><td class='num'><strong>1</strong></td></tr><tr class="green"><td>Reginald Day</td><td class='num ch-cell'><span class='ch-n'>21</span><span class='ch-c'>4.8%</span></td><td class='num ch-cell'><span class='ch-n'>17</span><span class='ch-c'>5.9%</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>3</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>18 min</td><td class='num'>0</td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>281</span><span class='ch-c'>12.1%</span></td><td class='num ch-cell'><span class='ch-n'>234</span><span class='ch-c'>12.0%</span></td><td class='num ch-cell'><span class='ch-n'>23</span><span class='ch-c'>13.0%</span></td><td class='num ch-cell'><span class='ch-n'>24</span><span class='ch-c'>12.5%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>96.1%</td><td class='num'>10 min</td><td class='num'>9</td></tr></tbody>
               </table>
+              </div>
             </div><div class="sub group-block">
               <h3>Orphan <span class="when-inline">1 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · close</span></th><th class="num">Internet<br><span class="th-sub">opps · close</span></th><th class="num">Phone<br><span class="th-sub">opps · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · close</span></th><th class="num">Other<br><span class="th-sub">opps · close</span></th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>Your Service Dept at Brian Harris BMW</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Your Service Dept at Brian Harris BMW</td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr></tbody>
               </table>
+              </div>
             </div><div class="sub group-block">
               <h3>Service <span class="when-inline">2 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · close</span></th><th class="num">Internet<br><span class="th-sub">opps · close</span></th><th class="num">Phone<br><span class="th-sub">opps · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · close</span></th><th class="num">Other<br><span class="th-sub">opps · close</span></th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>Darrell Buggage</td><td class='num'>2</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>50.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>2</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>50.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Darrell Buggage</td><td class='num ch-cell'><span class='ch-n'>2</span><span class='ch-c'>50.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>100.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>2</span><span class='ch-c'>50.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>100.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr></tbody>
               </table>
+              </div>
             </div><div class="sub group-block">
               <h3>Ungrouped <span class="when-inline">1 workable opportunities</span></h3>
-              <table>
+              <div class="table-scroll">
+              <table class="scoreboard">
                 <thead><tr>
-                  <th>Salesperson</th><th class="num">Opps</th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th><th class="num">Close rate</th>
+                  <th>Salesperson</th><th class="num">Total<br><span class="th-sub">opps · close</span></th><th class="num">Internet<br><span class="th-sub">opps · close</span></th><th class="num">Phone<br><span class="th-sub">opps · close</span></th><th class="num">Walk-in<br><span class="th-sub">opps · close</span></th><th class="num">Other<br><span class="th-sub">opps · close</span></th><th class="num">Internet contact</th><th class="num">Internet median</th><th class="num">Untouched &gt;24h</th>
                 </tr></thead>
-                <tbody><tr class="dim"><td>Triston Sittig</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr><tr class='total-row'><td>Total / avg</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td><td class='num'>0.0%</td></tr></tbody>
+                <tbody><tr class="dim"><td>Triston Sittig</td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num ch-cell'><span class='ch-n'>1</span><span class='ch-c'>0.0%</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-c'>—</span></td><td class='num'>100.0%</td><td class='num'>—</td><td class='num'>0</td></tr></tbody>
               </table>
+              </div>
             </div>
 
       <div class="col-help">
         <div><strong>Opps</strong> — workable unique opportunities assigned to them.</div>
-        <div><strong>Internet contact</strong> — % of their internet leads with a real work attempt (not Contacted flag alone). Phone/walk-in not in this column.</div>
-        <div><strong>Internet median</strong> — typical adjusted response on their internet leads.</div>
-        <div><strong>Untouched &gt;24h</strong> — still no attempt after a day.</div>
-        <div><strong>Close rate</strong> — retail sold ÷ their workable opps (wholesale excluded).</div>
+                <div><strong>Total / channel columns</strong> — top number = workable opps; bottom = close rate on those opps (sold ÷ channel opps). Other = referral/DMS/wholesale-ish CRM types not Internet/Phone/Walk-in.</div>
+        <div><strong>Internet contact</strong> — % of their internet leads with a real work attempt (not Contacted flag alone).</div>
+        <div><strong>Internet median</strong> — median adjusted response on internet timed leads only.</div>
       </div>
 
     </section>
@@ -744,7 +839,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 10:48 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-24): 26,919 visits · 22,821 people. Generated Jul 24, 2026 11:01 AM.
       This page is for Brian Harris BMW only — no other stores.
     </div>
   </div>
