@@ -58,6 +58,23 @@ h3 { font-size:14px; margin:14px 0 8px; }
 .when-inline { font-weight:500; color:var(--muted); }
 .why { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; margin:0 0 14px; font-size:13px; color:#243041; }
 .why strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:4px; }
+.legend { background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin:0 0 14px; }
+.legend-title { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:10px; }
+.legend-items { display:grid; grid-template-columns:1fr 1fr; gap:10px 14px; }
+.legend-item { display:flex; gap:10px; align-items:flex-start; min-width:0; }
+.legend-swatch { flex:0 0 18px; width:18px; height:18px; border-radius:4px; border:1px solid var(--line); margin-top:2px; }
+.legend-swatch.lg-green { background:#f1fbf5; border-color:#b7e4c7; }
+.legend-swatch.lg-red { background:#fff1f0; border-color:#f5c2c0; }
+.legend-swatch.lg-dim { background:#f0f1f3; border-color:#d0d4db; }
+.legend-swatch.lg-sort { background:linear-gradient(180deg,#1a1a1a 0 35%,#e8eaed 35% 100%); border-color:#111; }
+.legend-swatch.lg-good { background:var(--goodbg); border-color:var(--good); border-top-width:4px; }
+.legend-swatch.lg-warn { background:var(--warnbg); border-color:var(--warn); border-top-width:4px; }
+.legend-swatch.lg-bad { background:var(--badbg); border-color:var(--bad); border-top-width:4px; }
+.legend-swatch.lg-note { background:#eef1f5; border-color:#c5c9d3; border-radius:999px; }
+.legend-copy { min-width:0; font-size:12.5px; line-height:1.35; color:#243041; }
+.legend-copy strong { display:block; font-size:12.5px; font-weight:800; color:var(--ink); margin-bottom:2px; }
+.legend-copy span { color:#3d4654; }
+@media (max-width:720px) { .legend-items { grid-template-columns:1fr; } }
 .metric { border:1px solid var(--line); border-radius:12px; padding:14px; margin:0 0 12px; border-top:5px solid #c5c9d3; }
 .metric.good { border-top-color:var(--good); background:linear-gradient(#fff,var(--goodbg)); }
 .metric.warn { border-top-color:var(--warn); background:linear-gradient(#fff,var(--warnbg)); }
@@ -296,7 +313,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Jul 27, 2026 · Generated Jul 27, 2026 11:24 AM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Jul 27, 2026 · Generated Jul 27, 2026 11:34 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html" class="on">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner"><strong>New department</strong> — opportunities owned by New sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="verdict">
@@ -524,6 +541,10 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           <div class="s">Of 404 unique · Bad set aside: 53</div></div>
         <div class="stat"><div class="k">Retail sold</div><div class="v">9</div>
           <div class="s">Retail close 2.6% of 351 retail workable</div></div>
+        <div class="stat"><div class="k">Delivered</div><div class="v">9</div>
+          <div class="s">CRM status Delivered · of retail sold</div></div>
+        <div class="stat"><div class="k">On Order</div><div class="v">0</div>
+          <div class="s">CRM status On Order · sold, not delivered yet</div></div>
         <div class="stat"><div class="k">Wholesale / auction sold</div><div class="v">0</div>
           <div class="s">Kept separate from retail close · total sold 9</div></div>
       </div>
@@ -740,6 +761,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <div class="why"><strong>What this section is</strong>
         Handling grades for the last 30 days on <strong>unique opportunities</strong> after de-dupe.
         Bad CRM leads are excluded. Contact and speed grades appear only when the CRM export includes attempt fields.</div>
+      <div class="legend" role="note"><div class="legend-title">Handling color legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-good" aria-hidden="true"></span><div class="legend-copy"><strong>Good</strong><span>KPI is in the healthy band for that metric</span></div></div><div class="legend-item"><span class="legend-swatch lg-warn" aria-hidden="true"></span><div class="legend-copy"><strong>Watch</strong><span>KPI is middling — keep an eye on it</span></div></div><div class="legend-item"><span class="legend-swatch lg-bad" aria-hidden="true"></span><div class="legend-copy"><strong>Problem</strong><span>KPI is below the store target band</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Per-card rules</strong><span>Internet contact ≥90% good / &lt;75% problem · response ≤15 min good / &gt;30 problem · retail close ≥8% good / &lt;5% problem · untouched 0 good</span></div></div></div></div>
       
       <div class="metric good">
         <div class="metric-top">
@@ -794,9 +816,11 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
         </div>
         <div class="m-value">2.6%</div>
         <div class="m-delta"><span class="down">↓ 1.8 pts vs prior 30 days</span> · Prior 30 days (May 28 – Jun 26, 2026): 4.4%<br/>
-          Retail sold: 9 of 351 retail workable</div>
+          Retail sold: 9 of 351 retail workable
+          · Delivered 9 · On Order 0</div>
         <div class="why"><strong>What this means</strong>
           Retail close only — wholesale/auction DMS solds (OPENLANE, CarMax, etc.) are listed on the Leads tab and excluded from this grade.
+          <strong>On Order</strong> is still a retail sold (customer has a car ordered) — counted in close, broken out from Delivered.
           Useful for source quality; not the only measure of sales performance (inventory and desking matter too).
           Rough store-level bands used here: ≥8% good · 5–8% watch · under 5% problem.</div>
       </div>
@@ -842,10 +866,11 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     <section class="block">
       <h2>Sales team scoreboard</h2>
       <div class="when">Workable unique opportunities · <strong>Jun 27 – Jul 26, 2026</strong> · split by VinSolutions team · most sold first inside each group</div>
+      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group</span></div></div></div></div>
       <div class="why"><strong>How to read this</strong>
         Salespeople by team group when the CRM provides groups (New/Used). 
         Channel columns show <strong>opps · sold count · close %</strong>. Close % = sold ÷ that channel’s opps. Total rolls all channels up.
-        Row color = overall close rate: <strong>red under 14%</strong>, <strong>green 14%+</strong>. Gray rows have fewer than 3 leads or are system/unassigned.
+        See the <strong>Scoreboard legend</strong> above for row colors and sort order.
         Internet contact/median stay internet-only handling grades.</div>
       <div class="sub group-block">
               <h3>New Car Sales <span class="when-inline">348 workable opportunities</span></h3>
@@ -891,7 +916,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-27): 18,834 visits · 16,799 people. Generated Jul 27, 2026 11:24 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-27): 18,834 visits · 16,799 people. Generated Jul 27, 2026 11:34 AM.
       This page is for Audi Baton Rouge · New only — no other stores.
     </div>
   </div>
