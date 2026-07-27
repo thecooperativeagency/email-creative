@@ -624,6 +624,32 @@ footer { letter-spacing:.04em; }
 
       
     <section class="block">
+      <h2>On Order <span class="when-inline">retail sold · not delivered yet</span></h2>
+      <div class="when">VinSolutions <strong>Lead Status = On Order</strong> · Status Type = Sold · unique opps in <strong>Jun 27 – Jul 26, 2026</strong></div>
+      <div class="why"><strong>What this means</strong>
+        Customer has a vehicle on order. These count as <strong>retail sold</strong> (and in close rate), but are not Delivered yet.
+        Almost always New department. Stock/VIN are often blank until the unit lands.
+        Do not treat On Order as lost or open — it is a sold outcome status.</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">On Order</div><div class="v">3</div>
+          <div class="s">Of 103 retail sold</div></div>
+        <div class="stat"><div class="k">Delivered</div><div class="v">100</div>
+          <div class="s">CRM status Delivered</div></div>
+        <div class="stat"><div class="k">Share of retail sold</div><div class="v">2.9%</div>
+          <div class="s">On Order ÷ retail sold</div></div>
+      </div>
+      <h3>On Order units in window</h3>
+      <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
+        <thead><tr>
+          <th>Lead created</th><th>Sold date</th><th>Rep</th><th>Team</th><th>Channel</th>
+          <th>Vehicle</th><th>Inv type</th><th class="num">Stock</th><th>Status</th><th>Status custom</th>
+        </tr></thead>
+        <tbody><tr><td>Jul 13</td><td>Jul 14</td><td>David Spikes</td><td>New Sales</td><td>Walk-in</td><td>2027 BMW X6 M</td><td>New</td><td class='num'>—</td><td><strong>On Order</strong></td><td>—</td></tr><tr><td>Jun 27</td><td>Jul 04</td><td>Kyle Adibyazdi</td><td>New Sales</td><td>Walk-in</td><td>2027 BMW X7 xDrive40i</td><td>New</td><td class='num'>—</td><td><strong>On Order</strong></td><td>Warm - Weekly Follow-Up</td></tr><tr><td>Jun 30</td><td>Jul 02</td><td>Kerry Beary</td><td>New Sales</td><td>Internet</td><td>—</td><td>Unknown</td><td class='num'>—</td><td><strong>On Order</strong></td><td>—</td></tr></tbody>
+      </table></div>
+    </section>
+
+      
+    <section class="block">
       <h2>Source detail</h2>
       <div class="when">Unique workable opportunities · <strong>Jun 27 – Jul 26, 2026</strong> · de-duped · same funnel window · Close = sold ÷ opps</div>
       <div class="why"><strong>What this means</strong>
@@ -858,6 +884,7 @@ footer { letter-spacing:.04em; }
       <div class="why"><strong>How to read this</strong>
         Salespeople by team group when the CRM provides groups (New/Used). 
         Channel columns show <strong>opps · sold count · close %</strong>. Close % = sold ÷ that channel’s opps. Total rolls all channels up.
+        When VinSolutions marks a sold as <strong>On Order</strong>, the Total cell shows <em>N on order</em> under sold (still counted in close).
         See the <strong>Scoreboard legend</strong> above for row colors and sort order.
         Internet contact/median stay internet-only handling grades.</div>
       <div class="sub group-block">
