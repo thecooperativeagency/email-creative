@@ -45,7 +45,22 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
   .funnel-stage .t { font-size:16px; font-weight:800; margin-top:4px; }
   .funnel-stage .d { font-size:13px; opacity:.85; margin-top:4px; line-height:1.4; }
   .funnel-arrow { text-align:center; color:#98a0ad; font-size:22px; margin:-4px 0 8px; }
-  .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
+  .acq-strip {
+  margin:10px 0 14px; padding:10px 12px; border-radius:10px;
+  border:1px solid #90caf9; background:#f3f9ff;
+  font-size:13px; line-height:1.35; color:var(--ink);
+}
+.acq-strip-top { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 8px; }
+.acq-pill {
+  display:inline-block; font-size:10px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:#0d47a1; background:#bbdefb;
+  border-radius:999px; padding:2px 8px;
+}
+.acq-n { font-weight:800; font-size:16px; color:#0d47a1; font-variant-numeric:tabular-nums; }
+.acq-sep { color:var(--muted); }
+.acq-note { color:var(--muted); font-size:12.5px; }
+.acq-strip-sub { margin-top:4px; font-size:12px; color:var(--muted); }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
   .stat { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; }
   .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; }
   .stat .v { font-size:22px; font-weight:850; margin-top:4px; }
@@ -328,7 +343,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 12:04 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 12:13 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html" class="on">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner"><strong>New department</strong> — opportunities owned by New sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="verdict">
@@ -527,12 +542,10 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
     <section class="block">
       <h2>Lead volume entering the funnel</h2>
-      <div class="when">Unique opportunities · <strong>Jul 1–30, 2026</strong> · de-duped · retail workable excludes Bad <em>and</em> KBB ICO acquisition</div>
+      <div class="when">Unique opportunities · <strong>Jul 1–30, 2026</strong> · de-duped · retail workable = excl. Bad + excl. KBB ICO acquisition</div>
       <div class="why"><strong>What this means</strong>
-        After someone visits a site (yours or a 3rd party), the next funnel step is a <strong>lead opportunity</strong> in the CRM.
-        We de-dupe so the same shopper is not counted three times as internet + phone + walk-in.
-        <em>Retail workable</em> is the sales opportunity set: Bad junk out, and <strong>KBB ICO / Instant Cash Offer out</strong>
-        (those people want a cash value on <em>their</em> car — not to buy from the lot). Acquisition is the panel below, not in retail close.</div>
+        CRM sales opportunities after de-dupe. Same shopper is not counted three times as internet + phone + walk-in.
+        Retail workable drops Bad junk and KBB ICO (acquisition — they want a value on their car, not a retail buy).</div>
       <div class="stat-grid">
         <div class="stat"><div class="k">Unique after de-dupe</div><div class="v">191</div>
           <div class="s">From 231 raw CRM rows · 40 repeats collapsed</div></div>
@@ -940,7 +953,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 12:04 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 12:13 PM.
       This page is for Audi Baton Rouge · New only — no other stores.
     </div>
   </div>

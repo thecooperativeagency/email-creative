@@ -45,7 +45,22 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
   .funnel-stage .t { font-size:16px; font-weight:800; margin-top:4px; }
   .funnel-stage .d { font-size:13px; opacity:.85; margin-top:4px; line-height:1.4; }
   .funnel-arrow { text-align:center; color:#98a0ad; font-size:22px; margin:-4px 0 8px; }
-  .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
+  .acq-strip {
+  margin:10px 0 14px; padding:10px 12px; border-radius:10px;
+  border:1px solid #90caf9; background:#f3f9ff;
+  font-size:13px; line-height:1.35; color:var(--ink);
+}
+.acq-strip-top { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 8px; }
+.acq-pill {
+  display:inline-block; font-size:10px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:#0d47a1; background:#bbdefb;
+  border-radius:999px; padding:2px 8px;
+}
+.acq-n { font-weight:800; font-size:16px; color:#0d47a1; font-variant-numeric:tabular-nums; }
+.acq-sep { color:var(--muted); }
+.acq-note { color:var(--muted); font-size:12.5px; }
+.acq-strip-sub { margin-top:4px; font-size:12px; color:var(--muted); }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
   .stat { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; }
   .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; }
   .stat .v { font-size:22px; font-weight:850; margin-top:4px; }
@@ -328,7 +343,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 12:04 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 12:13 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html" class="on">Store</a><a href="abr-new.html">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="abr-new.html">New</a> · <a href="abr-used.html">Used</a>.</div>
     <div class="verdict">
@@ -527,12 +542,10 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
     <section class="block">
       <h2>Lead volume entering the funnel</h2>
-      <div class="when">Unique opportunities · <strong>Jul 1–30, 2026</strong> · de-duped · retail workable excludes Bad <em>and</em> KBB ICO acquisition</div>
+      <div class="when">Unique opportunities · <strong>Jul 1–30, 2026</strong> · de-duped · retail workable = excl. Bad + excl. KBB ICO acquisition</div>
       <div class="why"><strong>What this means</strong>
-        After someone visits a site (yours or a 3rd party), the next funnel step is a <strong>lead opportunity</strong> in the CRM.
-        We de-dupe so the same shopper is not counted three times as internet + phone + walk-in.
-        <em>Retail workable</em> is the sales opportunity set: Bad junk out, and <strong>KBB ICO / Instant Cash Offer out</strong>
-        (those people want a cash value on <em>their</em> car — not to buy from the lot). Acquisition is the panel below, not in retail close.</div>
+        CRM sales opportunities after de-dupe. Same shopper is not counted three times as internet + phone + walk-in.
+        Retail workable drops Bad junk and KBB ICO (acquisition — they want a value on their car, not a retail buy).</div>
       <div class="stat-grid">
         <div class="stat"><div class="k">Unique after de-dupe</div><div class="v">619</div>
           <div class="s">From 821 raw CRM rows · 202 repeats collapsed</div></div>
@@ -549,26 +562,15 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       </div>
 
       
-      <div class="block acq-callout" style="border:2px solid #1e88e5;background:linear-gradient(180deg,#eef6ff 0%,#f7fbff 100%);margin-top:14px;">
-        <h2 style="margin-top:0;">KBB ICO / acquisition leads <span class="when-inline">NOT retail opportunities</span></h2>
-        <div class="when">Pulled out of retail workable · <strong>Jul 1–30, 2026</strong> · Instant Cash Offer intent</div>
-        <div class="why"><strong>What this means</strong>
-          These people are asking the store to put a <strong>cash / trade value on their car</strong> so the store can buy it.
-          They are <em>not</em> shoppers looking to buy a vehicle from the lot.
-          CRM often types them as Wholesale. They do <strong>not</strong> count in retail workable, retail close,
-          internet handling grades, or the People scoreboard.</div>
-        <div class="stat-grid">
-          <div class="stat" style="border-color:#1e88e5;"><div class="k">Acquisition leads</div><div class="v" style="color:#0d47a1;">233</div>
-            <div class="s">KBB ICO unique in window · not retail</div></div>
-          <div class="stat"><div class="k">Retail workable (after pull-out)</div><div class="v">307</div>
-            <div class="s">True sales opportunities</div></div>
-          <div class="stat"><div class="k">Share of unique</div><div class="v">37.6%</div>
-            <div class="s">Acquisition ÷ unique after de-dupe</div></div>
+      <div class="acq-strip" role="note">
+        <div class="acq-strip-top">
+          <span class="acq-pill">Not retail</span>
+          <strong>KBB ICO / acquisition</strong>
+          <span class="acq-n">233</span>
+          <span class="acq-sep">·</span>
+          <span class="acq-note">cash offer on <em>their</em> car — excluded from retail workable &amp; close</span>
         </div>
-        <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
-          <thead><tr><th>Source</th><th class="num">Leads</th><th class="num">Share of acquisition</th></tr></thead>
-          <tbody><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — KBB site</strong></td><td class='num'>225</td><td class='num'>96.6%</td></tr><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — Dealer website</strong></td><td class='num'>5</td><td class='num'>2.1%</td></tr><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — ATC</strong></td><td class='num'>3</td><td class='num'>1.3%</td></tr><tr class='total-row'><td>Total acquisition (not retail opps)</td><td class='num'>233</td><td class='num'>100%</td></tr></tbody>
-        </table></div>
+        <div class="acq-strip-sub">KBB ICO — KBB site 225 · KBB ICO — Dealer website 5 · KBB ICO — ATC 3 · retail workable stays 307</div>
       </div>
 
 
@@ -665,22 +667,8 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <h2>Wholesale &amp; acquisition <span class="when-inline">not retail sales opps</span></h2>
       <div class="when">Unique opportunities in <strong>Jul 1–30, 2026</strong> · excluded from retail close, internet handling grades, and People scoreboard</div>
       
-      <h3>KBB ICO / acquisition leads <span class="when-inline">not retail opportunities</span></h3>
-      <div class="why"><strong>What this means</strong>
-        Instant Cash Offer / KBB ICO is someone asking the store to put a value on <em>their</em> car
-        so the store can buy it — not a shopper looking to buy a car from the lot.
-        CRM often types these as Wholesale. They are shown here and excluded from retail
-        workable counts, internet contact/speed grades, People scoreboard, and retail close.</div>
-      <div class="stat-grid">
-        <div class="stat"><div class="k">Acquisition leads</div><div class="v">233</div>
-          <div class="s">Unique KBB ICO in window · not retail opps</div></div>
-        <div class="stat"><div class="k">Retail workable</div><div class="v">307</div>
-          <div class="s">True sales opportunities after pull-out</div></div>
-      </div>
-      <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
-        <thead><tr><th>Source</th><th class="num">Leads</th><th class="num">Share of acquisition</th></tr></thead>
-        <tbody><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — KBB site</strong></td><td class='num'>225</td><td class='num'>96.6%</td></tr><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — Dealer website</strong></td><td class='num'>5</td><td class='num'>2.1%</td></tr><tr class='row-kbb'><td><span class="pill-kbb">KBB</span><strong>KBB ICO — ATC</strong></td><td class='num'>3</td><td class='num'>1.3%</td></tr><tr class='total-row'><td>Total acquisition (not retail)</td><td class='num'>233</td><td class='num'>100%</td></tr></tbody>
-      </table></div>
+      <p class="webline" style="margin:8px 0 12px;"><strong>KBB ICO / acquisition:</strong> 233 leads
+      (cash offer on their car) — already called out on the Leads volume strip; excluded from retail workable &amp; close.</p>
 
       
     </section>
@@ -1012,7 +1000,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 12:04 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 12:13 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>
