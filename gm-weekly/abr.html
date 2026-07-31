@@ -89,7 +89,22 @@ h3 { font-size:14px; margin:14px 0 8px; }
 .metric.warn .badge { background:#ffe9b8; color:var(--warn); }
 .metric.bad .badge { background:#ffd6d3; color:var(--bad); }
 .buckets { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
-.buckets .b { background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; gap:8px; }
+.buckets .b { background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
+.buckets .b b { line-height:1.25; }
+.buckets .b .b-num { font-variant-numeric:tabular-nums; font-weight:800; white-space:nowrap; }
+.buckets .b.b-good { background:#f1fbf5; border-color:#9ed4b5; }
+.buckets .b.b-good b { color:var(--good); }
+.buckets .b.b-warn { background:#fff8e8; border-color:#f0c36d; }
+.buckets .b.b-warn b { color:#9a6700; }
+.buckets .b.b-bad { background:#fff1f0; border:2px solid #d92d20; box-shadow:0 0 0 1px rgba(217,45,32,.08); }
+.buckets .b.b-bad b { color:var(--bad); font-weight:900; }
+.buckets .b.b-bad .b-num { color:var(--bad); font-size:13px; }
+.buckets .b.b-muted { background:#f6f7f9; color:#556; }
+.speed-alert { margin-top:12px; padding:10px 12px; border-radius:10px; border:1px solid #f0b4ae; background:#fff5f4; color:#7a1f1a; font-size:13px; line-height:1.45; }
+.speed-alert strong { color:#b42318; }
+.speed-alert.warn { border-color:#f0c36d; background:#fff8e8; color:#7a5b00; }
+.speed-alert.warn strong { color:#9a6700; }
+.speed-goal { margin-top:8px; font-size:12.5px; font-weight:700; color:#334; }
 ul.flags { margin:0 0 0 18px; }
 ul.flags li { margin:7px 0; font-size:14px; }
 .ok { color:var(--good); font-weight:700; }
@@ -313,12 +328,12 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 10:50 AM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 11:01 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html" class="on">Store</a><a href="abr-new.html">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="abr-new.html">New</a> · <a href="abr-used.html">Used</a>.</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
-      <div class="txt">Last 30 days: 540 workable opportunities (619 unique after de-dupe; Bad excluded from workable); retail close 5.0% (27 retail sold); internet is 89.1% of workable; internet CRM contact 99.8%; internet median response 16 min; 1 workable leads still untouched over 24h; Audi Partner is 102 opps at 4.9% close — watch list.</div>
+      <div class="txt">Last 30 days: 540 workable opportunities (619 unique after de-dupe; Bad excluded from workable); retail close 5.0% (27 retail sold); internet is 89.1% of workable; internet CRM contact 99.8%; internet median response 16 min; 37.4% of timed internet leads over 30 min (missed goal); 1 workable leads still untouched over 24h; Audi Partner is 102 opps at 4.9% close — watch list.</div>
       <div class="when">Rolling 30-day range: Jul 1–30, 2026 · compared with prior 30 days Jun 1–30, 2026</div>
     </div>
 
@@ -745,7 +760,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <div class="why"><strong>What this section is</strong>
         Handling grades for the last 30 days on <strong>unique opportunities</strong> after de-dupe.
         Bad CRM leads are excluded. Contact and speed grades appear only when the CRM export includes attempt fields.</div>
-      <div class="legend" role="note"><div class="legend-title">Handling color legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-good" aria-hidden="true"></span><div class="legend-copy"><strong>Good</strong><span>KPI is in the healthy band for that metric</span></div></div><div class="legend-item"><span class="legend-swatch lg-warn" aria-hidden="true"></span><div class="legend-copy"><strong>Watch</strong><span>KPI is middling — keep an eye on it</span></div></div><div class="legend-item"><span class="legend-swatch lg-bad" aria-hidden="true"></span><div class="legend-copy"><strong>Problem</strong><span>KPI is below the store target band</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Per-card rules</strong><span>Internet contact ≥90% good / &lt;75% problem · response ≤15 min good / &gt;30 problem · retail close ≥8% good / &lt;5% problem · untouched 0 good</span></div></div></div></div>
+      <div class="legend" role="note"><div class="legend-title">Handling color legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-good" aria-hidden="true"></span><div class="legend-copy"><strong>Good</strong><span>KPI is in the healthy band for that metric</span></div></div><div class="legend-item"><span class="legend-swatch lg-warn" aria-hidden="true"></span><div class="legend-copy"><strong>Watch</strong><span>KPI is middling — keep an eye on it</span></div></div><div class="legend-item"><span class="legend-swatch lg-bad" aria-hidden="true"></span><div class="legend-copy"><strong>Problem</strong><span>KPI is below the store target band</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Per-card rules</strong><span>Internet contact ≥90% good / &lt;75% problem · response goal ≤15 min (after 15 = not good; ≥25% over 30 = problem even if median looks ok) · retail close ≥8% good / &lt;5% problem · untouched 0 good</span></div></div></div></div>
       
       <div class="metric good">
         <div class="metric-top">
@@ -767,27 +782,31 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           Higher is better. About <strong>90%+</strong> is good. Under <strong>75%</strong> is a problem.</div>
       </div>
 
-      <div class="metric warn">
+      <div class="metric bad">
         <div class="metric-top">
           <div>
             <div class="m-label">2) Internet response time (median)</div>
             <div class="m-when">Internet leads only · CRM adjusted response time · Jul 1–30, 2026</div>
           </div>
-          <div class="badge">Watch</div>
+          <div class="badge">Problem</div>
         </div>
         <div class="m-value">16 min</div>
         <div class="m-delta"><span class="up">faster by 4 min vs prior 30 days</span> · Prior 30 days (Jun 1–30, 2026): 20 min<br/>
           Based on 374 timed internet leads (of 481 internet workable opps)</div>
+        <div class="speed-goal">Store goal: first internet response in ≤15 minutes. After 15 min = not good. Over 30 min = missed goal.</div>
         <div class="buckets">
-          <div class="b"><b>≤15 min</b><span>181 (48.4%)</span></div>
-          <div class="b"><b>16–30 min</b><span>53 (14.2%)</span></div>
-          <div class="b"><b>Over 30 min (missed goal)</b><span>140 (37.4%)</span></div>
-          <div class="b"><b>No timed response</b><span>107</span></div>
+          <div class="b b-good"><b>≤15 min · on goal</b><span class="b-num">181 (48.4%)</span></div>
+          <div class="b b-warn"><b>16–30 min · late (after 15)</b><span class="b-num">53 (14.2%)</span></div>
+          <div class="b b-bad"><b>Over 30 min · missed goal</b><span class="b-num">140 (37.4%)</span></div>
+          <div class="b b-muted"><b>No timed response</b><span class="b-num">107</span></div>
         </div>
+        <div class="speed-alert" role="status"><strong>Speed problem — missed goal:</strong> 140 timed internet leads (37.4%) took <strong>over 30 minutes</strong>. Store goal is first response in <strong>≤15 minutes</strong>. 193 (51.6%) were after 15 min — that is not good. Do not let the median hide this bucket.</div>
         <div class="why"><strong>What this means</strong>
           <em>Internet only</em>, using VinSolutions <strong>adjusted response time</strong> when the export includes it.
           Phone-ups and walk-ins are <strong>not</strong> mixed in — they often show as 0 minutes and fake a fast store.
-          Industry bands: ≤5 min ideal · ≤15 strong · ≤30 acceptable · over 30 missed goal.</div>
+          <strong>Goal is ≤15 minutes.</strong> Any first response after 15 min is not good.
+          The red <strong>over 30 min</strong> bucket is the problem list — read it even when the median looks okay.
+          Bands: ≤15 on goal · 16–30 late · over 30 missed goal.</div>
       </div>
 
       <div class="metric warn">
@@ -848,7 +867,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <div class="why"><strong>What this means</strong>
         Handling problems to bring into the next sales meeting — slow or no-attempt work, untouched leads, named coaching flags.
         Source mix and close-by-origin live on the <strong>Leads</strong> tab.</div>
-      <ul class='flags'><li>Audi Partner: 102 opportunities, close rate 4.9% — keep separate from website quality.</li></ul>
+      <ul class='flags'><li>Audi Partner: 102 opportunities, close rate 4.9% — keep separate from website quality.</li><li>Internet speed: 140 timed leads (37.4%) responded after 30 minutes — missed goal. Store goal is ≤15 min; 193 (51.6%) were after 15 min. Median alone understates this.</li><li>Ryan Kinsley internet median response is 1h 56m (after the 15-min goal).</li><li>David Marcantel internet median response is 52 min (after the 15-min goal).</li></ul>
       <div class="sub">
           <h3>Oldest untouched examples <span class="when-inline">as of Jul 31, 2026</span></h3>
           <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
@@ -944,7 +963,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 10:50 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-07-31): 18,585 visits · 16,523 people. Generated Jul 31, 2026 11:01 AM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>

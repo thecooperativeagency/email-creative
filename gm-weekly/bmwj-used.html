@@ -89,7 +89,22 @@ h3 { font-size:14px; margin:14px 0 8px; }
 .metric.warn .badge { background:#ffe9b8; color:var(--warn); }
 .metric.bad .badge { background:#ffd6d3; color:var(--bad); }
 .buckets { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
-.buckets .b { background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; gap:8px; }
+.buckets .b { background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
+.buckets .b b { line-height:1.25; }
+.buckets .b .b-num { font-variant-numeric:tabular-nums; font-weight:800; white-space:nowrap; }
+.buckets .b.b-good { background:#f1fbf5; border-color:#9ed4b5; }
+.buckets .b.b-good b { color:var(--good); }
+.buckets .b.b-warn { background:#fff8e8; border-color:#f0c36d; }
+.buckets .b.b-warn b { color:#9a6700; }
+.buckets .b.b-bad { background:#fff1f0; border:2px solid #d92d20; box-shadow:0 0 0 1px rgba(217,45,32,.08); }
+.buckets .b.b-bad b { color:var(--bad); font-weight:900; }
+.buckets .b.b-bad .b-num { color:var(--bad); font-size:13px; }
+.buckets .b.b-muted { background:#f6f7f9; color:#556; }
+.speed-alert { margin-top:12px; padding:10px 12px; border-radius:10px; border:1px solid #f0b4ae; background:#fff5f4; color:#7a1f1a; font-size:13px; line-height:1.45; }
+.speed-alert strong { color:#b42318; }
+.speed-alert.warn { border-color:#f0c36d; background:#fff8e8; color:#7a5b00; }
+.speed-alert.warn strong { color:#9a6700; }
+.speed-goal { margin-top:8px; font-size:12.5px; font-weight:700; color:#334; }
 ul.flags { margin:0 0 0 18px; }
 ul.flags li { margin:7px 0; font-size:14px; }
 .ok { color:var(--good); font-weight:700; }
@@ -225,7 +240,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>BMW of Jackson · Used</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 10:50 AM</div>
+    <div class="meta">This page is for <strong>BMW of Jackson · Used</strong> only · Report as of Jul 31, 2026 · Generated Jul 31, 2026 11:01 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="bmwj.html">Store</a><a href="bmwj-new.html">New</a><a href="bmwj-used.html" class="on">Used</a></nav>
     <div class="dept-banner"><strong>Used department</strong> — opportunities owned by Used sales teams (Focus has no New/Used user groups — filtered by vehicle of interest stock type). Storewide website traffic is shown for context and is not department-split. Store collective: <a href="bmwj.html">BMW of Jackson GM Weekly</a>.</div>
     <div class="verdict">
@@ -701,7 +716,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses Focus live-lot units when an inventory export is present.
-      Lead data: Focus. Website traffic (GA4 cache 2026-07-31): 28,464 visits · 25,197 people. Generated Jul 31, 2026 10:50 AM.
+      Lead data: Focus. Website traffic (GA4 cache 2026-07-31): 28,464 visits · 25,197 people. Generated Jul 31, 2026 11:01 AM.
       This page is for BMW of Jackson · Used only — no other stores.
     </div>
   </div>
