@@ -338,8 +338,17 @@ table.scoreboard { font-size:12px; min-width:720px; }
 .ch-cell .ch-unit { font-weight:600; font-size:10px; color:var(--muted); }
 .ch-cell .ch-s { display:block; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); margin-top:2px; }
 .ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:1px; }
-.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c { opacity:.35; }
+.ch-cell .ch-avg { display:block; font-size:11px; font-weight:700; color:var(--ink); margin-top:4px; font-variant-numeric:tabular-nums; }
+.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c, .ch-cell.dim-ch .ch-avg { opacity:.35; }
+td.avg-cell { min-width:88px; vertical-align:middle; }
 tr.total-row td .ch-n { font-weight:850; }
+.dept-pill {
+  display:inline-block; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:2px 7px; border-radius:999px; margin-right:6px; vertical-align:middle;
+}
+.dept-pill.dept-new { background:#e8f1ff; color:#0b5fff; border:1px solid #b7d0ff; }
+.dept-pill.dept-used { background:#eaf8ef; color:#0f7a3a; border:1px solid #b7e4c7; }
+.people-group h3 { position:sticky; top:52px; z-index:5; }
 footer { letter-spacing:.04em; }
 </style>
 </head>
@@ -352,7 +361,7 @@ footer { letter-spacing:.04em; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Brian Harris BMW · New</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 10:36 AM</div>
+    <div class="meta">This page is for <strong>Brian Harris BMW · New</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 10:49 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="bhbmw.html">Store</a><a href="bhbmw-new.html" class="on">New</a><a href="bhbmw-used.html">Used</a></nav>
     <div class="dept-banner"><strong>New department</strong> — opportunities owned by New sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="bhbmw.html">Brian Harris BMW GM Weekly</a>.</div>
     <div class="verdict">
@@ -947,18 +956,14 @@ footer { letter-spacing:.04em; }
     <section class="block">
       <h2>Sales team scoreboard</h2>
       <div class="when">Workable unique opportunities · <strong>Jul 4 – Aug 2, 2026</strong> · split by VinSolutions team · most sold first inside each group</div>
-      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Car Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
+      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
       <div class="why"><strong>How to read this</strong>
-        Salespeople by team group when the CRM provides groups — <strong>New Car Sales</strong> first, then <strong>Used Car Sales</strong> (badges on each section). 
+        Salespeople by team — <strong>New Sales</strong> first, then <strong>Used Sales</strong>. 
+        Channel columns: <strong>opps · sold · close %</strong>. 
         
-        Channel columns show <strong>opps · sold count · close %</strong>. Close % = sold ÷ that channel’s opps. Total rolls all channels up. 
-        
-        
-        
-        When VinSolutions marks a sold as <strong>On Order</strong>, the Total cell shows <em>N on order</em> under sold (still counted in close). 
-        See the <strong>Scoreboard legend</strong> above for row colors and sort order.
-        <strong>Avg response</strong> sits on the Total stack <em>and</em> its own column (right after Total) so it is not lost off-screen — internet timed only, average drops anything over 4 hours. 
-        Internet contact is internet-only. </div>
+        When VinSolutions marks a sold as <strong>On Order</strong>, Total shows <em>N on order</em> under sold. 
+        <strong>Avg response</strong> is on the Total stack and its own column (after Total) — internet timed only; average drops &gt;4h. 
+        Internet contact is internet-only.</div>
       <div class="sub group-block people-group" data-group="New Sales">
               <h3><span class="dept-pill dept-new">New</span> New Sales <span class="when-inline">285 workable opportunities</span></h3>
               <div class="table-scroll">
@@ -993,7 +998,7 @@ footer { letter-spacing:.04em; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 28,564 visits · 24,428 people. Generated Aug 03, 2026 10:36 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 28,564 visits · 24,428 people. Generated Aug 03, 2026 10:49 AM.
       This page is for Brian Harris BMW · New only — no other stores.
     </div>
   </div>

@@ -345,8 +345,17 @@ table.scoreboard { font-size:12px; min-width:720px; }
 .ch-cell .ch-unit { font-weight:600; font-size:10px; color:var(--muted); }
 .ch-cell .ch-s { display:block; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); margin-top:2px; }
 .ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:1px; }
-.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c { opacity:.35; }
+.ch-cell .ch-avg { display:block; font-size:11px; font-weight:700; color:var(--ink); margin-top:4px; font-variant-numeric:tabular-nums; }
+.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c, .ch-cell.dim-ch .ch-avg { opacity:.35; }
+td.avg-cell { min-width:88px; vertical-align:middle; }
 tr.total-row td .ch-n { font-weight:850; }
+.dept-pill {
+  display:inline-block; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  padding:2px 7px; border-radius:999px; margin-right:6px; vertical-align:middle;
+}
+.dept-pill.dept-new { background:#fde8eb; color:#BB0A21; border:1px solid #f0b4ae; }
+.dept-pill.dept-used { background:#eaf8ef; color:#0f7a3a; border:1px solid #b7e4c7; }
+.people-group h3 { position:sticky; top:52px; z-index:5; }
 .pill-kbb { border-radius:0; }
 .pill-at { border-radius:0; }
 footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
@@ -361,7 +370,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 10:36 AM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 10:49 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html" class="on">Store</a><a href="abr-new.html">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="abr-new.html">New</a> · <a href="abr-used.html">Used</a>.</div>
     <div class="verdict">
@@ -1004,21 +1013,17 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
 
     <section class="block">
       <h2>Sales team scoreboard</h2>
-      <div class="when">Workable unique opportunities · <strong>Jul 4 – Aug 2, 2026</strong> · split by VinSolutions team · most sold first inside each group · Total sold = DMS closed (sales date)</div>
-      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Car Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
+      <div class="when">Workable unique opportunities · <strong>Jul 4 – Aug 2, 2026</strong> · split by VinSolutions team · most sold first inside each group · sold = DMS closed (sales date)</div>
+      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
       <div class="why"><strong>How to read this</strong>
-        Salespeople by team group when the CRM provides groups — <strong>New Car Sales</strong> first, then <strong>Used Car Sales</strong> (badges on each section). 
-        <strong>Total sold</strong> = DMS retail closed in this window (sales date), attributed by DMS salesperson — half each when two people are on the deal. Board total matches store/department DMS closed. 
-        Channel sold = same DMS closes, placed on the VinSolutions opportunity channel when VIN/stock matches an opp; unmatched closes land in Other. Channel sold sums to Total. 
-        Total close % = DMS sold ÷ that rep’s workable opps. 
-        Match rate this window: 24 of 26 closes linked to a VinSolutions opp · 2 DMS-only. 
-        DMS sales deals file through <strong>Jul 30, 2026</strong> — closes after that date are not attributed yet. 
+        Salespeople by team — <strong>New Sales</strong> first, then <strong>Used Sales</strong>. 
+        Channel columns: <strong>opps · sold · close %</strong>. 
+        <strong>Total sold</strong> = DMS closed in-window (½ each on dual-rep deals) · 24 of 26 matched to a VinSolutions opp · DMS file through Jul 30, 2026. 
         
-        See the <strong>Scoreboard legend</strong> above for row colors and sort order.
-        <strong>Avg response</strong> sits on the Total stack <em>and</em> its own column (right after Total) so it is not lost off-screen — internet timed only, average drops anything over 4 hours. 
-        Internet contact is internet-only. </div>
-      <div class="sub group-block people-group" data-group="New Car Sales">
-              <h3><span class="dept-pill dept-new">New</span> New Car Sales <span class="when-inline">136 workable opportunities</span></h3>
+        <strong>Avg response</strong> is on the Total stack and its own column (after Total) — internet timed only; average drops &gt;4h. 
+        Internet contact is internet-only.</div>
+      <div class="sub group-block people-group" data-group="New Sales">
+              <h3><span class="dept-pill dept-new">New</span> New Sales <span class="when-inline">136 workable opportunities</span></h3>
               <div class="table-scroll">
               <table class="scoreboard">
                 <thead><tr>
@@ -1027,8 +1032,8 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
                 <tbody><tr class="red"><td><strong>Jak Langston</strong></td><td class='num ch-cell'><span class='ch-n'>59 <span class='ch-unit'>opps</span></span><span class='ch-s'>8 sold</span><span class='ch-c'>13.6% close</span><span class='ch-avg'>avg 29 min · 50.0% ≤15 · drop 5 >4h</span></td><td class='num avg-cell'><strong>29 min</strong><br/><span style='font-size:11px;color:var(--muted)'>50.0% ≤15 · n=36<br/>avg drops 5 &gt;4h (on 31)</span></td><td class='num'>100.0%</td><td class='num'>0</td><td class='num ch-cell'><span class='ch-n'>39 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>10.3% close</span></td><td class='num ch-cell'><span class='ch-n'>15 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>6.7% close</span></td><td class='num ch-cell'><span class='ch-n'>5 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>40.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>0 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>— close</span></td></tr><tr class="red"><td><strong>Ryan Kinsley</strong></td><td class='num ch-cell'><span class='ch-n'>33 <span class='ch-unit'>opps</span></span><span class='ch-s'>4 sold</span><span class='ch-c'>12.1% close</span><span class='ch-avg'>avg 1h 16m · 15.4% ≤15 · drop 4 >4h</span></td><td class='num avg-cell'><strong>1h 16m</strong><br/><span style='font-size:11px;color:var(--muted)'>15.4% ≤15 · n=26<br/>avg drops 4 &gt;4h (on 22)</span></td><td class='num'>100.0%</td><td class='num'>0</td><td class='num ch-cell'><span class='ch-n'>28 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>3.6% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>2 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>100.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>0 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>— close</span></td></tr><tr class="red"><td><strong>Randon Kimery</strong></td><td class='num ch-cell'><span class='ch-n'>37 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>5.4% close</span><span class='ch-avg'>avg 36 min · 44.8% ≤15 · drop 2 >4h</span></td><td class='num avg-cell'><strong>36 min</strong><br/><span style='font-size:11px;color:var(--muted)'>44.8% ≤15 · n=29<br/>avg drops 2 &gt;4h (on 27)</span></td><td class='num'>100.0%</td><td class='num'>0</td><td class='num ch-cell'><span class='ch-n'>32 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>3.1% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>4 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>25.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td></tr><tr class="red"><td><strong>David Marcantel</strong></td><td class='num ch-cell'><span class='ch-n'>7 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span><span class='ch-avg'>avg 52 min · 0.0% ≤15</span></td><td class='num avg-cell'><strong>52 min</strong><br/><span style='font-size:11px;color:var(--muted)'>0.0% ≤15 · n=2<br/>outliers &gt;4h removed</span></td><td class='num'>100.0%</td><td class='num'>0</td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>1 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell'><span class='ch-n'>3 <span class='ch-unit'>opps</span></span><span class='ch-s'>0 sold</span><span class='ch-c'>0.0% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>—</span><span class='ch-s'>—</span><span class='ch-c'>—</span></td></tr><tr class='total-row'><td>Total / avg</td><td class='num ch-cell'><span class='ch-n'>136 <span class='ch-unit'>opps</span></span><span class='ch-s'>14 sold</span><span class='ch-c'>10.3% close</span><span class='ch-avg'>avg 45 min · 37.6% ≤15 · drop 11 >4h</span></td><td class='num avg-cell'><strong>45 min</strong><br/><span style='font-size:11px;color:var(--muted)'>37.6% ≤15 · n=93<br/>avg drops 11 &gt;4h (on 82)</span></td><td class='num'>100.0%</td><td class='num'>0</td><td class='num ch-cell'><span class='ch-n'>102 <span class='ch-unit'>opps</span></span><span class='ch-s'>6 sold</span><span class='ch-c'>5.9% close</span></td><td class='num ch-cell'><span class='ch-n'>20 <span class='ch-unit'>opps</span></span><span class='ch-s'>1 sold</span><span class='ch-c'>5.0% close</span></td><td class='num ch-cell'><span class='ch-n'>14 <span class='ch-unit'>opps</span></span><span class='ch-s'>5 sold</span><span class='ch-c'>35.7% close</span></td><td class='num ch-cell dim-ch'><span class='ch-n'>0 <span class='ch-unit'>opps</span></span><span class='ch-s'>2 sold</span><span class='ch-c'>— close</span></td></tr></tbody>
               </table>
               </div>
-            </div><div class="sub group-block people-group" data-group="Used Car Sales">
-              <h3><span class="dept-pill dept-used">Used</span> Used Car Sales <span class="when-inline">165 workable opportunities</span></h3>
+            </div><div class="sub group-block people-group" data-group="Used Sales">
+              <h3><span class="dept-pill dept-used">Used</span> Used Sales <span class="when-inline">165 workable opportunities</span></h3>
               <div class="table-scroll">
               <table class="scoreboard">
                 <thead><tr>
@@ -1081,7 +1086,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 18,212 visits · 16,133 people. Generated Aug 03, 2026 10:36 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 18,212 visits · 16,133 people. Generated Aug 03, 2026 10:49 AM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>
