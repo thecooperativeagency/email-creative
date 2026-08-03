@@ -215,6 +215,28 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
 .dept-pill.dept-new { background:#e8f1ff; color:#0b5fff; border:1px solid #b7d0ff; }
 .dept-pill.dept-used { background:#eaf8ef; color:#0f7a3a; border:1px solid #b7e4c7; }
 .people-group h3 { position:sticky; top:52px; z-index:5; }
+.people-dept-switch {
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  margin:0 0 14px; padding:10px 12px;
+  background:#f3f4f6; border:1px solid var(--line); border-radius:10px;
+}
+.people-dept-label {
+  font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-right:4px;
+}
+.people-dept-switch a {
+  display:inline-block; padding:6px 12px; border-radius:999px;
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+  font-weight:700; font-size:13px; text-decoration:none;
+}
+.people-dept-switch a.on {
+  background:var(--ink); color:#fff; border-color:var(--ink);
+}
+.people-dept-switch a:hover { border-color:var(--accent); color:var(--accent); }
+.people-dept-switch a.on:hover { color:#fff; border-color:var(--ink); }
+.people-dept-note {
+  font-size:12px; color:var(--muted); margin-left:auto;
+}
+.people-dept-note strong { color:var(--ink); font-weight:700; }
 .table-scroll {
   overflow-x:auto; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
   margin:6px 0 10px; padding-bottom:6px; max-width:100%;
@@ -372,7 +394,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 10:59 AM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 03, 2026 · Generated Aug 03, 2026 11:02 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html" class="on">Store</a><a href="abr-new.html">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="abr-new.html">New</a> · <a href="abr-used.html">Used</a>.</div>
     <div class="verdict">
@@ -1016,13 +1038,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     <section class="block">
       <h2>Sales team scoreboard</h2>
       <div class="when">Workable unique opportunities · <strong>Jul 4 – Aug 2, 2026</strong> · split by VinSolutions team · most sold first inside each group · sold = DMS closed (sales date)</div>
-      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
-      <div class="why"><strong>How to read this</strong>
-        Salespeople by team — New Sales first, then Used Sales.
-        Channel columns show opps · sold · close %.
-        Total sold = DMS closed in-window (½ each on dual-rep deals) · 24 of 26 matched to VinSolutions · DMS through Jul 30, 2026. 
-        
-        Avg response = internet timed only; average drops responses over 4 hours. Internet contact is internet-only.</div>
+      <div class="people-dept-switch" role="navigation" aria-label="People department"><span class="people-dept-label">Team view</span><a href="abr.html#people" class="on">Store</a><a href="abr-new.html#people">New</a><a href="abr-used.html#people">Used</a><span class="people-dept-note">Store = New + Used together</span></div>
       <div class="sub group-block people-group" data-group="New Sales">
               <h3><span class="dept-pill dept-new">New</span> New Sales <span class="when-inline">136 workable opportunities</span></h3>
               <div class="table-scroll">
@@ -1064,6 +1080,12 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
               </table>
               </div>
             </div>
+      <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
+      <div class="why"><strong>How to read this</strong>
+        New Sales first, then Used Sales on the Store view. Channel columns = opps · sold · close %.
+        Total sold = DMS closed in-window (½ each on dual-rep deals) · 24 of 26 matched to VinSolutions · DMS through Jul 30, 2026. 
+        
+        Avg response = internet timed only; average drops responses over 4 hours.</div>
 
       <div class="col-help">
         <div><strong>Opps</strong> — workable unique opportunities assigned to them.</div>
@@ -1087,7 +1109,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 18,212 visits · 16,133 people. Generated Aug 03, 2026 10:59 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-03): 18,212 visits · 16,133 people. Generated Aug 03, 2026 11:02 AM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
   </div>
