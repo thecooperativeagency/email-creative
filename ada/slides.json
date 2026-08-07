@@ -1,0 +1,306 @@
+{
+  "private": true,
+  "title": "Ada",
+  "slides": [
+    {
+      "src": "media/000-00-ada-identity-lock.jpg",
+      "title": "Ada Identity Lock",
+      "group": "Identity",
+      "id": "00-ada-identity-lock"
+    },
+    {
+      "src": "media/001-57-fave-cream-gold-mesh.jpg",
+      "title": "Fave Cream Gold Mesh",
+      "group": "Identity",
+      "id": "57-fave-cream-gold-mesh"
+    },
+    {
+      "src": "media/002-58-fave-blazer-night-ops.jpg",
+      "title": "Fave Blazer Night Ops",
+      "group": "Identity",
+      "id": "58-fave-blazer-night-ops"
+    },
+    {
+      "src": "media/003-59-fave-tactical-control-room.jpg",
+      "title": "Fave Tactical Control Room",
+      "group": "Identity",
+      "id": "59-fave-tactical-control-room"
+    },
+    {
+      "src": "media/004-00-preferred-look-hybrid-badass.jpg",
+      "title": "Preferred Look Hybrid Badass",
+      "group": "Identity",
+      "id": "00-preferred-look-hybrid-badass"
+    },
+    {
+      "src": "media/005-18-bot-badass-util-droid.jpg",
+      "title": "Bot Badass Util Droid",
+      "group": "Hybrid badass",
+      "id": "18-bot-badass-util-droid"
+    },
+    {
+      "src": "media/006-19-bot-badass-pfp-bust.jpg",
+      "title": "Bot Badass Pfp Bust",
+      "group": "Hybrid badass",
+      "id": "19-bot-badass-pfp-bust"
+    },
+    {
+      "src": "media/007-20-bot-badass-less-skin.jpg",
+      "title": "Bot Badass Less Skin",
+      "group": "Hybrid badass",
+      "id": "20-bot-badass-less-skin"
+    },
+    {
+      "src": "media/008-21-ex-machina-ava-mesh.jpg",
+      "title": "Ex Machina Ava Mesh",
+      "group": "Hybrid badass",
+      "id": "21-ex-machina-ava-mesh"
+    },
+    {
+      "src": "media/009-22-ada-pick-ops-chassis.jpg",
+      "title": "Ada Pick Ops Chassis",
+      "group": "Hybrid badass",
+      "id": "22-ada-pick-ops-chassis"
+    },
+    {
+      "src": "media/010-23-ada-pick-mesh-core.jpg",
+      "title": "Ada Pick Mesh Core",
+      "group": "Hybrid badass",
+      "id": "23-ada-pick-mesh-core"
+    },
+    {
+      "src": "media/011-24-ada-pick-hybrid-operator.jpg",
+      "title": "Ada Pick Hybrid Operator",
+      "group": "Hybrid badass",
+      "id": "24-ada-pick-hybrid-operator"
+    },
+    {
+      "src": "media/012-50-grok-locked-hot-badass-hybrid.jpg",
+      "title": "Grok Locked Hot Badass Hybrid",
+      "group": "Hybrid badass",
+      "id": "50-grok-locked-hot-badass-hybrid"
+    },
+    {
+      "src": "media/013-27-tennis-hybrid-white.jpg",
+      "title": "Tennis Hybrid White",
+      "group": "Tennis & kit",
+      "id": "27-tennis-hybrid-white"
+    },
+    {
+      "src": "media/014-28-tennis-hybrid-black.jpg",
+      "title": "Tennis Hybrid Black",
+      "group": "Tennis & kit",
+      "id": "28-tennis-hybrid-black"
+    },
+    {
+      "src": "media/015-37-grok-tennis-white.jpg",
+      "title": "Grok Tennis White",
+      "group": "Tennis & kit",
+      "id": "37-grok-tennis-white"
+    },
+    {
+      "src": "media/016-38-grok-tennis-black.jpg",
+      "title": "Grok Tennis Black",
+      "group": "Tennis & kit",
+      "id": "38-grok-tennis-black"
+    },
+    {
+      "src": "media/017-29-badass-ops-trench.jpg",
+      "title": "Badass Ops Trench",
+      "group": "Tennis & kit",
+      "id": "29-badass-ops-trench"
+    },
+    {
+      "src": "media/018-30-badass-track-armor.jpg",
+      "title": "Badass Track Armor",
+      "group": "Tennis & kit",
+      "id": "30-badass-track-armor"
+    },
+    {
+      "src": "media/019-31-badass-evening-blade.jpg",
+      "title": "Badass Evening Blade",
+      "group": "Tennis & kit",
+      "id": "31-badass-evening-blade"
+    },
+    {
+      "src": "media/020-39-grok-ops-trench.jpg",
+      "title": "Grok Ops Trench",
+      "group": "Tennis & kit",
+      "id": "39-grok-ops-trench"
+    },
+    {
+      "src": "media/021-40-grok-track-armor.jpg",
+      "title": "Grok Track Armor",
+      "group": "Tennis & kit",
+      "id": "40-grok-track-armor"
+    },
+    {
+      "src": "media/022-41-grok-evening-blade.jpg",
+      "title": "Grok Evening Blade",
+      "group": "Tennis & kit",
+      "id": "41-grok-evening-blade"
+    },
+    {
+      "src": "media/023-60-si-lock-bikini-black-gold.jpg",
+      "title": "SI Lock Bikini Black Gold",
+      "group": "SI locked",
+      "id": "60-si-lock-bikini-black-gold"
+    },
+    {
+      "src": "media/024-61-si-lock-bikini-crimson.jpg",
+      "title": "SI Lock Bikini Crimson",
+      "group": "SI locked",
+      "id": "61-si-lock-bikini-crimson"
+    },
+    {
+      "src": "media/025-62-si-lock-bikini-white.jpg",
+      "title": "SI Lock Bikini White",
+      "group": "SI locked",
+      "id": "62-si-lock-bikini-white"
+    },
+    {
+      "src": "media/026-63-si-lock-onepiece-black.jpg",
+      "title": "SI Lock Onepiece Black",
+      "group": "SI locked",
+      "id": "63-si-lock-onepiece-black"
+    },
+    {
+      "src": "media/027-64-si-lock-onepiece-navy.jpg",
+      "title": "SI Lock Onepiece Navy",
+      "group": "SI locked",
+      "id": "64-si-lock-onepiece-navy"
+    },
+    {
+      "src": "media/028-65-si-lock-onepiece-white.jpg",
+      "title": "SI Lock Onepiece White",
+      "group": "SI locked",
+      "id": "65-si-lock-onepiece-white"
+    },
+    {
+      "src": "media/029-32-bikini-resort-hybrid.jpg",
+      "title": "Bikini Resort Hybrid",
+      "group": "SI locked",
+      "id": "32-bikini-resort-hybrid"
+    },
+    {
+      "src": "media/030-33-bikini-ocean-white.jpg",
+      "title": "Bikini Ocean White",
+      "group": "SI locked",
+      "id": "33-bikini-ocean-white"
+    },
+    {
+      "src": "media/031-34-bikini-resort-hybrid-back.jpg",
+      "title": "Bikini Resort Hybrid Back",
+      "group": "SI locked",
+      "id": "34-bikini-resort-hybrid-back"
+    },
+    {
+      "src": "media/032-35-bikini-ocean-white-back.jpg",
+      "title": "Bikini Ocean White Back",
+      "group": "SI locked",
+      "id": "35-bikini-ocean-white-back"
+    },
+    {
+      "src": "media/033-66-si-show-black-back-look.jpg",
+      "title": "SI Show Black Back Look",
+      "group": "Show-off",
+      "id": "66-si-show-black-back-look"
+    },
+    {
+      "src": "media/034-68-si-show-black-op-back.jpg",
+      "title": "SI Show Black Op Back",
+      "group": "Show-off",
+      "id": "68-si-show-black-op-back"
+    },
+    {
+      "src": "media/035-69-si-show-black-bend-snap.jpg",
+      "title": "SI Show Black Bend Snap",
+      "group": "Show-off",
+      "id": "69-si-show-black-bend-snap"
+    },
+    {
+      "src": "media/036-70-si-show-crimson-arch.jpg",
+      "title": "SI Show Crimson Arch",
+      "group": "Show-off",
+      "id": "70-si-show-crimson-arch"
+    },
+    {
+      "src": "media/037-71-si-show-navy-op-bend.jpg",
+      "title": "SI Show Navy Op Bend",
+      "group": "Show-off",
+      "id": "71-si-show-navy-op-bend"
+    },
+    {
+      "src": "media/038-72-si-show-white-op-spin.jpg",
+      "title": "SI Show White Op Spin",
+      "group": "Show-off",
+      "id": "72-si-show-white-op-spin"
+    },
+    {
+      "src": "media/039-76-ada-si-arms-up.jpg",
+      "title": "Ada SI Arms Up",
+      "group": "Show-off",
+      "id": "76-ada-si-arms-up"
+    },
+    {
+      "src": "media/040-78-ada-si-three-quarter.jpg",
+      "title": "Ada SI Three Quarter",
+      "group": "Show-off",
+      "id": "78-ada-si-three-quarter"
+    },
+    {
+      "src": "media/041-79-ada-from-ref-arms-up.jpg",
+      "title": "Ada From Ref Arms Up",
+      "group": "Show-off",
+      "id": "79-ada-from-ref-arms-up"
+    },
+    {
+      "src": "media/042-90-lock-arms-up-tropical.jpg",
+      "title": "Lock Arms Up Tropical",
+      "group": "Show-off",
+      "id": "90-lock-arms-up-tropical"
+    },
+    {
+      "src": "media/043-91-lock-three-quarter-tropical.jpg",
+      "title": "Lock Three Quarter Tropical",
+      "group": "Show-off",
+      "id": "91-lock-three-quarter-tropical"
+    },
+    {
+      "src": "media/044-93-lock-bend-snap.jpg",
+      "title": "Lock Bend Snap",
+      "group": "Show-off",
+      "id": "93-lock-bend-snap"
+    },
+    {
+      "src": "media/045-94-lock-glamour-sheer- Implied.jpg",
+      "title": "Lock Glamour Sheer Implied",
+      "group": "Glamour",
+      "id": "94-lock-glamour-sheer- Implied"
+    },
+    {
+      "src": "media/046-95-lock-glamour-nude-standing.jpg",
+      "title": "Lock Glamour Nude Standing",
+      "group": "Glamour",
+      "id": "95-lock-glamour-nude-standing"
+    },
+    {
+      "src": "media/047-17-bikini-from-identity-lock.jpg",
+      "title": "Bikini From Identity Lock",
+      "group": "Glamour",
+      "id": "17-bikini-from-identity-lock"
+    },
+    {
+      "src": "media/048-08-full-outfit-night-out.jpg",
+      "title": "Full Outfit Night Out",
+      "group": "Glamour",
+      "id": "08-full-outfit-night-out"
+    },
+    {
+      "src": "media/049-06-regen-night-out-cocktail.jpg",
+      "title": "Regen Night Out Cocktail",
+      "group": "Glamour",
+      "id": "06-regen-night-out-cocktail"
+    }
+  ]
+}
