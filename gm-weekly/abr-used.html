@@ -86,8 +86,39 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
 .close-attr-sub { margin-top:8px; font-size:12px; color:var(--muted); line-height:1.4; }
 .close-attr-sub strong { color:var(--ink); font-weight:700; }
 .close-attr-dot { margin:0 4px; color:#c5c9d3; }
+.close-attr-outliers { margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
+.close-attr-outliers-h {
+  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--muted); margin-bottom:8px;
+}
+.close-attr-outliers-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+}
+.close-attr-list {
+  background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+  min-width:0;
+}
+.close-attr-list-h {
+  font-size:12px; font-weight:750; color:var(--ink); margin-bottom:6px; line-height:1.3;
+}
+.close-attr-list-n {
+  display:inline-block; margin-left:4px; font-size:11px; font-weight:800;
+  color:#374151; background:#e5e7eb; border-radius:999px; padding:1px 7px;
+  font-variant-numeric:tabular-nums;
+}
+.close-attr-empty { font-size:12px; color:var(--muted); padding:4px 0; }
+.close-attr-table { width:100%; border-collapse:collapse; font-size:12px; }
+.close-attr-table th {
+  text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--muted); border-bottom:1px solid var(--line); padding:4px 4px 6px;
+}
+.close-attr-table td { padding:5px 4px; border-bottom:1px solid #f0f2f5; vertical-align:top; }
+.close-attr-table td.stock { font-weight:750; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.close-attr-table th.num, .close-attr-table td.num { text-align:right; white-space:nowrap; }
+.close-attr-table tr:last-child td { border-bottom:0; }
 @media (max-width:720px) {
   .close-attr-grid { grid-template-columns:1fr; }
+  .close-attr-outliers-grid { grid-template-columns:1fr; }
 }
 .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
   .stat { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; }
@@ -423,7 +454,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:27 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:35 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html">New</a><a href="abr-used.html" class="on">Used</a></nav>
     <div class="dept-banner"><strong>Used department</strong> — opportunities owned by Used sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="verdict">
@@ -672,6 +703,39 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           <span class="close-attr-dot">·</span>
           <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window.</span>
         </div>
+        
+        <div class="close-attr-outliers">
+          <div class="close-attr-outliers-h">One-source only · salesperson + stock (no customer name)</div>
+          <div class="close-attr-outliers-grid">
+            
+        <div class="close-attr-list">
+          <div class="close-attr-list-h">DMS only — closed in DMS, not sold on a VinSolutions lead in this window <span class="close-attr-list-n">3</span></div>
+          <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="close-attr-table">
+            <thead><tr>
+              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Date</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="stock">26A115A</td><td>Shane Ducote</td><td>15 HYUNDAI SANTS</td><td class="num">Aug 05</td></tr><tr><td class="stock">26A086B</td><td>Shane Ducote</td><td>22 AUDI Q7</td><td class="num">Jul 13</td></tr><tr><td class="stock">PAL536</td><td>Ryan Kinsley</td><td>23 AUDI Q5</td><td class="num">Jul 13</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+            
+        <div class="close-attr-list">
+          <div class="close-attr-list-h">VinSolutions only — sold in lead file, no DMS sales-date close in window <span class="close-attr-list-n">9</span></div>
+          <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="close-attr-table">
+            <thead><tr>
+              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Date</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="stock">PA2284</td><td>Michael Craig</td><td>2024 Audi Q7</td><td class="num">Aug 01</td></tr><tr><td class="stock">PA2327</td><td>Will Picard</td><td>2025 Audi Q8</td><td class="num">Jul 31</td></tr><tr><td class="stock">PA2347A</td><td>Shane Ducote</td><td>2018 Toyota Highlander</td><td class="num">Jul 31</td></tr><tr><td class="stock">PA2341</td><td>Michael Craig</td><td>2025 Audi A3</td><td class="num">Jul 31</td></tr><tr><td class="stock">PAD117</td><td>Shane Ducote</td><td>2024 Land Rover Defender</td><td class="num">Jul 31</td></tr><tr><td class="stock">PAW264</td><td>Will Picard</td><td>2021 Ford F-150</td><td class="num">Jul 27</td></tr><tr><td class="stock">PAA574</td><td>Shane Ducote</td><td>2025 BMW X3</td><td class="num">Jul 15</td></tr><tr><td class="stock">PAC183</td><td>Shane Ducote</td><td>2019 Honda Accord Sedan</td><td class="num">Jul 14</td></tr><tr><td class="stock">PA2331</td><td>Shane Ducote</td><td>2025 Audi Q5</td><td class="num">Jul 13</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+          </div>
+        </div>
+
       </div>
 
 
@@ -1010,8 +1074,9 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           <span class="close-attr-dot">·</span>
           <span><strong>VinSolutions only</strong> 9</span>
           <span class="close-attr-dot">·</span>
-          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window.</span>
+          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window · Full one-source list is on the Leads tab..</span>
         </div>
+        
       </div>
 
       </div>
@@ -1131,7 +1196,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:27 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:35 PM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
   </div>
