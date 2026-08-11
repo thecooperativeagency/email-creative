@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZÜCA Garrett Gurthie Compact — Accessories & Upgrades</title>
-<meta name="description" content="Official ZÜCA and third-party accessories for the Garrett Gurthie Special Edition Compact Disc Golf Cart." />
+<title>ZÜCA Compact Disc Golf Cart — Accessories & Upgrades</title>
+<meta name="description" content="Official ZÜCA and third-party accessories for the ZÜCA Compact Disc Golf Cart — putter pouches, grips, phone mounts, rain gear, fenders, and DIY mods." />
 <style>
   :root {
     --navy: #0b1f3a;
@@ -99,6 +99,79 @@
     border: 1px solid rgba(255,255,255,.28);
   }
   .btn-ghost:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+  .variants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .variant {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+  }
+  .variant.highlight {
+    border-color: rgba(232, 93, 4, 0.45);
+    box-shadow: 0 0 0 1px rgba(232, 93, 4, 0.12);
+  }
+  .variant h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .variant .look {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .variant ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink);
+    font-size: 14px;
+    flex: 1;
+  }
+  .variant li { margin: 5px 0; }
+  .variant .shop-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .variant .shop-line a {
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .variant .shop-line a.primary {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  .variant .shop-line a.primary:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+  .buy-tip {
+    margin-top: 12px;
+    background: #eef6ff;
+    border: 1px solid #c9ddf7;
+    color: #1e3a5f;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
 
   .toolbar {
     margin: 22px 0 14px;
@@ -308,66 +381,92 @@
   <div class="wrap">
     <header class="hero">
       <div class="badge-row">
-        <span class="pill hot">Special Edition</span>
-        <span class="pill">Compact Cart</span>
-        <span class="pill">Garrett Gurthie / Double G</span>
+        <span class="pill hot">Compact Cart</span>
+        <span class="pill">Official + third-party</span>
+        <span class="pill">Community mods</span>
       </div>
-      <h1>Accessories & upgrades for your GG Compact</h1>
+      <h1>Accessories & upgrades for the ZÜCA Compact</h1>
       <p class="lede">
-        One place for official ZÜCA gear plus the third-party and community mods people actually put on Compact carts —
-        putter pouches, grips, phone mounts, rain gear, fenders, and DIY prints.
+        Official ZÜCA gear plus third-party and community mods for the Compact platform —
+        base carts, Garrett Gurthie SE, and Paul Ulibarri SE. Same accessory ecosystem; SE bundles change what you still need to buy.
       </p>
       <div class="meta">
-        <span><strong>Cart</strong> Garrett Gurthie Compact SE</span>
-        <span><strong>~</strong> $289 body</span>
-        <span><strong>Capacity</strong> ~15 discs + rack</span>
-        <span><strong>Seat frame</strong> rated to 300 lb</span>
+        <span><strong>Cart</strong> Compact Disc Golf Cart</span>
+        <span><strong>Editions</strong> Base · GG · Uli</span>
+        <span><strong>Capacity</strong> ~15 discs</span>
+        <span><strong>Seat</strong> 300 lb frame</span>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://zuca.com/products/garrett-gurthie-special-edition-compact-disc-golf-cart" target="_blank" rel="noopener">ZÜCA product page</a>
+        <a class="btn btn-primary" href="#included">Compare Base / GG / Uli</a>
         <a class="btn btn-ghost" href="#starter">Starter kits</a>
         <a class="btn btn-ghost" href="#catalog">Full catalog</a>
       </div>
     </header>
 
     <section class="section" id="included">
-      <h2>What the GG SE already includes</h2>
-      <p class="sub">You’re not starting from a bare frame. The Special Edition ships with a few upgrades already bolted on.</p>
-      <div class="grid">
-        <article class="card" data-source="official" data-cat="included">
-          <div class="card-top">
-            <div class="tags"><span class="tag included">Included</span></div>
+      <h2>Base Compact vs special editions</h2>
+      <p class="sub">Same Compact frame platform. GG and Uli ship with more already in the box — check your bundle before you rebuy rack, wheels, or pouches.</p>
+      <div class="variants">
+        <article class="variant">
+          <div class="tags"><span class="tag official">Base Compact</span></div>
+          <h3>Compact Disc Golf Cart</h3>
+          <p class="look">Standard colorways · build your own kit</p>
+          <ul>
+            <li>Frame + removable insert bag</li>
+            <li>Tubeless foam wheels (color by package)</li>
+            <li>Telescoping handle, seat frame (300 lb)</li>
+            <li>~15-disc capacity with flap/divider</li>
+            <li>Pencil mollies + side pockets</li>
+            <li>Often ships with bottle holders / mini pouches — confirm listing</li>
+            <li><strong>Rack often sold separate</strong> unless the listing bundles it</li>
+          </ul>
+          <div class="shop-line">
+            <a class="primary" href="https://zuca.com/collections/disc-golf" target="_blank" rel="noopener">Shop Compact line</a>
           </div>
-          <h3>Orange tubeless foam wheels</h3>
-          <p>GG colorway foam tires — removable, all-terrain, sealed bearings.</p>
         </article>
-        <article class="card" data-source="official" data-cat="included">
-          <div class="card-top">
-            <div class="tags"><span class="tag included">Included</span></div>
+
+        <article class="variant highlight">
+          <div class="tags"><span class="tag included">Special Edition</span></div>
+          <h3>Garrett Gurthie (GG)</h3>
+          <p class="look">Navy / orange hex-camo insert · ~$289</p>
+          <ul>
+            <li><strong>Compact Disc Golf Rack included</strong></li>
+            <li><strong>Orange tubeless foam wheels</strong></li>
+            <li><strong>(2) Mini utility pouches</strong></li>
+            <li>Pencil mollies + side pockets</li>
+            <li>GG hex-camo special insert</li>
+            <li>Same Compact frame / ~15 discs / 300 lb seat</li>
+          </ul>
+          <div class="shop-line">
+            <a class="primary" href="https://zuca.com/products/garrett-gurthie-special-edition-compact-disc-golf-cart" target="_blank" rel="noopener">GG product page</a>
           </div>
-          <h3>Compact Disc Golf Rack</h3>
-          <p>Upright disc organization for the Compact tub (sold alone ~$40 if you ever need a spare).</p>
         </article>
-        <article class="card" data-source="official" data-cat="included">
-          <div class="card-top">
-            <div class="tags"><span class="tag included">Included</span></div>
+
+        <article class="variant highlight">
+          <div class="tags"><span class="tag included">Special Edition</span></div>
+          <h3>Paul Ulibarri (Uli)</h3>
+          <p class="look">White frame + white wheels · black insert · ~$289</p>
+          <ul>
+            <li><strong>Compact Disc Golf Rack included</strong></li>
+            <li><strong>White solid foam wheels</strong></li>
+            <li><strong>(2) XL water bottle holders</strong></li>
+            <li><strong>Mini utility pouch duo</strong></li>
+            <li>White embroidered Ulibarri logo insert</li>
+            <li>Same Compact frame / ~15 discs / 300 lb seat</li>
+          </ul>
+          <div class="shop-line">
+            <a class="primary" href="https://zuca.com/products/uli-special-edition-compact-disc-golf-cart-white" target="_blank" rel="noopener">Uli product page</a>
           </div>
-          <h3>(2) Mini utility pouches + Pencil Mollies</h3>
-          <p>Small-item storage on the adjustable inner shelf + pencil mollies for markers/minis.</p>
         </article>
-        <article class="card" data-source="official" data-cat="included">
-          <div class="card-top">
-            <div class="tags"><span class="tag included">Included</span></div>
-          </div>
-          <h3>GG navy / orange hex-camo insert</h3>
-          <p>Special-edition removable, hand-washable insert bag — Garrett’s orange + blue camo look.</p>
-        </article>
+      </div>
+      <div class="buy-tip">
+        <strong>Shopping add-ons:</strong> If you own GG or Uli, skip rebuying the Compact rack and mini pouches (and Uli already has XL bottle holders). Base Compact owners should prioritize the rack first, then the usual community stack: putter pouch, grip, seat cushion, rain fly, fenders.
       </div>
     </section>
 
     <section class="section" id="starter">
       <h2>Community “buy these first” kits</h2>
-      <p class="sub">Rough street pricing from ZÜCA / major retailers. Stock and sale prices move — treat totals as planning numbers.</p>
+      <p class="sub">Rough street pricing from ZÜCA / major retailers. If you have GG or Uli, skip rack / mini pouches (and Uli’s XL bottle holders) already in the box.</p>
       <div class="starter">
         <div class="box">
           <h3>Essential (~$80–110)</h3>
@@ -605,7 +704,7 @@
             <div class="price">~$17–36</div>
           </div>
           <h3>Utility / Accessory Pouches</h3>
-          <p>Mini duo (GG includes a pair), small clear-top, large, combo sets. Hang on inner shelf / rails.</p>
+          <p>Mini duo (often in the box), small clear-top, large, combo sets. Hang on inner shelf / rails.</p>
           <footer>
             <a class="primary" href="https://zuca.com/products/mini-utility-pouch-duo" target="_blank" rel="noopener">Mini duo</a>
             <a href="https://zuca.com/products/accessory-pouch" target="_blank" rel="noopener">Accessory pouch</a>
@@ -640,12 +739,12 @@
           <div class="card-top">
             <div class="tags">
               <span class="tag official">Official</span>
-              <span class="tag included">GG includes one</span>
+              <span class="tag included">Often bundled</span>
             </div>
             <div class="price">~$40–45</div>
           </div>
           <h3>Compact Disc Golf Rack (spare / upgrade)</h3>
-          <p>Already on the GG SE. Buy only if you want a second layout or replacement.</p>
+          <p>Bundled on some SEs. Buy if your cart didn’t include one, or you want a replacement.</p>
           <footer>
             <a class="primary" href="https://zuca.com/products/compact-disc-golf-rack" target="_blank" rel="noopener">ZÜCA</a>
           </footer>
@@ -684,12 +783,12 @@
           <div class="card-top">
             <div class="tags">
               <span class="tag official">Official</span>
-              <span class="tag included">GG includes orange</span>
+              <span class="tag included">In the box</span>
             </div>
             <div class="price">~$28 each / ~$56 pair</div>
           </div>
           <h3>AT Tubeless Foam Wheels</h3>
-          <p>Color swaps or replacements. GG SE already has orange foam. Spares in many colors.</p>
+          <p>Color swaps or replacements. SE packages ship different colors (e.g. GG orange). Spares in many colors.</p>
           <footer>
             <a class="primary" href="https://zuca.com/products/all-terrain-tubeless-foam-wheel" target="_blank" rel="noopener">ZÜCA single</a>
             <a href="https://localroute.com/products/zuca-all-terrain-tubeless-foam-wheel-set-of-2" target="_blank" rel="noopener">Pair @ Local Route</a>
@@ -725,8 +824,8 @@
             <div class="tags"><span class="tag official">Official / dealers</span></div>
             <div class="price">varies</div>
           </div>
-          <h3>GG Compact Insert Bag (bag only)</h3>
-          <p>Swap looks later — special-edition Garrett Gurthie Compact insert sold separately at some shops.</p>
+          <h3>Compact Insert Bag (bag only)</h3>
+          <p>Swap looks later — standard and special-edition inserts (including Garrett Gurthie) sold separately at some shops.</p>
           <footer>
             <a class="primary" href="https://discgolfdealsusa.com/products/zuca-special-edition-garrett-gurthie-compact-cart-insert-bag" target="_blank" rel="noopener">DG Deals insert</a>
             <a href="https://www.discgolfbuy.com/product/zuca-compact-disc-golf-cart-insert-bag-garrett-gurthie-special-edition/" target="_blank" rel="noopener">DiscGolfBuy</a>
@@ -861,7 +960,7 @@
       <div class="shops">
         <a class="shop" href="https://zuca.com/collections/disc-golf-accessories" target="_blank" rel="noopener">
           <strong>ZÜCA official</strong>
-          <span>Full accessory catalog + GG cart</span>
+          <span>Full accessory catalog + Compact carts</span>
         </a>
         <a class="shop" href="https://discgolfdealsusa.com/collections/zuca-compact-cart-disc-golf-accessories" target="_blank" rel="noopener">
           <strong>Disc Golf Deals USA</strong>
@@ -897,7 +996,7 @@
     <section class="section">
       <h2>Compatibility quick map</h2>
       <div class="compat">
-        <p><strong>Safe Compact-labeled buys:</strong> Compact seat cushion, Compact fenders, Compact rain fly, Compact disc rack, GG Compact insert bag.</p>
+        <p><strong>Safe Compact-labeled buys:</strong> Compact seat cushion, Compact fenders, Compact rain fly, Compact disc rack, Compact insert bags.</p>
         <p><strong>Usually cross-compatible (confirm listing):</strong> putter pouches / sling, handle grips, phone/cart stud mounts, Looney Bin / bottle holders, foam wheels + covers, utility pouches, umbrella holder, FlighTowel mini, tune-up kit (AT/Compact kit).</p>
         <p><strong>Double-check before buying:</strong> AT 2&quot; padded seat, AT fenders, AT rain fly, AT disc rack (larger), backpack/trekker-only cushions and fenders, bike attachment (AT-oriented).</p>
         <p style="margin-bottom:0"><strong>Not a substitute for live stock:</strong> Prices and backorder status change. Open the linked product page before you commit.</p>
@@ -905,7 +1004,7 @@
     </section>
 
     <footer class="page-foot">
-      Built for the ZÜCA Garrett Gurthie Special Edition Compact Disc Golf Cart.
+      Built for the ZÜCA Compact Disc Golf Cart (all colorways and special editions).
       Compiled from ZÜCA, Disc Golf Deals USA, Local Route, Infinite, ZÜCA Europe, Thingiverse, and owner communities.
       Not affiliated with ZÜCA. Prices approximate as of research date — verify before purchase.
     </footer>
