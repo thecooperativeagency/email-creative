@@ -60,6 +60,35 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
 .acq-sep { color:var(--muted); }
 .acq-note { color:var(--muted); font-size:12.5px; }
 .acq-strip-sub { margin-top:4px; font-size:12px; color:var(--muted); }
+.close-attr {
+  margin:10px 0 14px; padding:10px 12px; border-radius:10px;
+  border:1px solid #c5c9d3; background:#f8fafc;
+  font-size:13px; line-height:1.35; color:var(--ink);
+}
+.close-attr-top { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 8px; margin-bottom:8px; }
+.close-attr-pill {
+  display:inline-block; font-size:10px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:#374151; background:#e5e7eb;
+  border-radius:999px; padding:2px 8px;
+}
+.close-attr-note { color:var(--muted); font-size:12px; }
+.close-attr-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px;
+}
+.close-attr-cell {
+  background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 10px;
+}
+.close-attr-cell .k { font-size:10px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; }
+.close-attr-cell .v { font-size:20px; font-weight:850; margin-top:2px; font-variant-numeric:tabular-nums; }
+.close-attr-cell .s { font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.3; }
+.close-attr-cell.both { border-color:#b7e4c7; background:#f1fbf5; }
+.close-attr-cell.both .v { color:#166534; }
+.close-attr-sub { margin-top:8px; font-size:12px; color:var(--muted); line-height:1.4; }
+.close-attr-sub strong { color:var(--ink); font-weight:700; }
+.close-attr-dot { margin:0 4px; color:#c5c9d3; }
+@media (max-width:720px) {
+  .close-attr-grid { grid-template-columns:1fr; }
+}
 .stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
   .stat { background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:12px; }
   .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:700; }
@@ -394,7 +423,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:18 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:27 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html">New</a><a href="abr-used.html" class="on">Used</a></nav>
     <div class="dept-banner"><strong>Used department</strong> — opportunities owned by Used sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="verdict">
@@ -611,6 +640,40 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
         <div class="stat"><div class="k">Wholesale / auction sold</div><div class="v">0</div>
           <div class="s">DMS outlets · separate from retail close · total sold 9</div></div>
       </div>
+
+      
+      <div class="close-attr" role="note">
+        <div class="close-attr-top">
+          <span class="close-attr-pill">Close attribution</span>
+          <strong>DMS vs VinSolutions</strong>
+          <span class="close-attr-note">retail only · Jul 12 – Aug 10, 2026</span>
+        </div>
+        <div class="close-attr-grid">
+          <div class="close-attr-cell">
+            <div class="k">DMS closed</div>
+            <div class="v">9</div>
+            <div class="s">sales date · 5.7% of 157 workable</div>
+          </div>
+          <div class="close-attr-cell">
+            <div class="k">VinSolutions sold</div>
+            <div class="v">15</div>
+            <div class="s">lead created in window · 9.6%</div>
+          </div>
+          <div class="close-attr-cell both">
+            <div class="k">In both</div>
+            <div class="v">6</div>
+            <div class="s">same VIN/stock</div>
+          </div>
+        </div>
+        <div class="close-attr-sub">
+          <span><strong>DMS only</strong> 3</span>
+          <span class="close-attr-dot">·</span>
+          <span><strong>VinSolutions only</strong> 9</span>
+          <span class="close-attr-dot">·</span>
+          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window.</span>
+        </div>
+      </div>
+
 
       
 
@@ -918,6 +981,39 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           <strong>Also in VinSolutions</strong> is how many of those opps the CRM marked sold — shown so both systems are visible. On Order stays CRM-only (not in DMS closes).<br/>
           DMS export currently runs through <strong>Aug 07, 2026</strong> — any units closed after that date are not counted yet.<br/>
           Rough store-level bands: ≥8% good · 5–8% watch · under 5% problem.</div>
+        
+      <div class="close-attr" role="note">
+        <div class="close-attr-top">
+          <span class="close-attr-pill">Close attribution</span>
+          <strong>DMS vs VinSolutions</strong>
+          <span class="close-attr-note">retail only · Jul 12 – Aug 10, 2026</span>
+        </div>
+        <div class="close-attr-grid">
+          <div class="close-attr-cell">
+            <div class="k">DMS closed</div>
+            <div class="v">9</div>
+            <div class="s">sales date · 5.7% of 157 workable</div>
+          </div>
+          <div class="close-attr-cell">
+            <div class="k">VinSolutions sold</div>
+            <div class="v">15</div>
+            <div class="s">lead created in window · 9.6%</div>
+          </div>
+          <div class="close-attr-cell both">
+            <div class="k">In both</div>
+            <div class="v">6</div>
+            <div class="s">same VIN/stock</div>
+          </div>
+        </div>
+        <div class="close-attr-sub">
+          <span><strong>DMS only</strong> 3</span>
+          <span class="close-attr-dot">·</span>
+          <span><strong>VinSolutions only</strong> 9</span>
+          <span class="close-attr-dot">·</span>
+          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window.</span>
+        </div>
+      </div>
+
       </div>
 
       <div class="metric warn">
@@ -1035,7 +1131,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:18 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:27 PM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
   </div>
