@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZÜCA Garrett Gurthie Compact — Accessories & Upgrades</title>
+<meta name="description" content="Official ZÜCA and third-party accessories for the Garrett Gurthie Special Edition Compact Disc Golf Cart." />
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --navy-2: #132a4a;
+    --ink: #0e1726;
+    --muted: #5b6b7c;
+    --line: #d8e0ea;
+    --paper: #f6f8fb;
+    --card: #ffffff;
+    --orange: #e85d04;
+    --orange-2: #ff7a1a;
+    --green: #0f7a4a;
+    --amber: #b45309;
+    --blue-tag: #1d4ed8;
+    --purple-tag: #6d28d9;
+    --shadow: 0 10px 30px rgba(11, 31, 58, 0.08);
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 500px at 10% -10%, rgba(232, 93, 4, 0.12), transparent 55%),
+      radial-gradient(900px 400px at 100% 0%, rgba(11, 31, 58, 0.10), transparent 50%),
+      var(--paper);
+    line-height: 1.5;
+  }
+
+  a { color: var(--navy); }
+  a:hover { color: var(--orange); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 24px 18px 80px; }
+
+  header.hero {
+    background: linear-gradient(145deg, var(--navy) 0%, var(--navy-2) 55%, #1a3a63 100%);
+    color: #fff;
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,93,4,.45), transparent 70%);
+    pointer-events: none;
+  }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 700; letter-spacing: .03em;
+    text-transform: uppercase;
+    padding: 6px 10px; border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
+  }
+  .pill.hot { background: rgba(232,93,4,.25); border-color: rgba(255,180,100,.45); }
+  h1 {
+    margin: 0 0 10px;
+    font-size: clamp(1.6rem, 3.5vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+  }
+  .lede { max-width: 62ch; color: rgba(255,255,255,.88); margin: 0 0 18px; font-size: 1.02rem; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 10px 18px;
+    font-size: 14px; color: rgba(255,255,255,.78);
+  }
+  .meta strong { color: #fff; font-weight: 700; }
+  .hero-actions { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; padding: 12px 16px; border-radius: 12px;
+    font-weight: 700; font-size: 14px; text-decoration: none;
+    transition: transform .12s ease, background .12s ease, color .12s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-primary:hover { background: var(--orange-2); color: #fff; }
+  .btn-ghost {
+    background: transparent; color: #fff;
+    border: 1px solid rgba(255,255,255,.28);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+  .toolbar {
+    margin: 22px 0 14px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+    align-items: center; justify-content: space-between;
+  }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px; font-weight: 650;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  .search {
+    flex: 1 1 220px;
+    max-width: 320px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .search:focus { outline: 2px solid rgba(232,93,4,.35); border-color: var(--orange); }
+
+  .note {
+    background: #fff8f0;
+    border: 1px solid #f3d2b0;
+    color: #6b3a0f;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .section { margin-top: 34px; }
+  .section h2 {
+    margin: 0 0 6px;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+  }
+  .section .sub {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 70ch;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: 0 1px 0 rgba(11,31,58,.03);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+  }
+  .card.hidden { display: none; }
+  .card-top {
+    display: flex; justify-content: space-between; gap: 10px; align-items: flex-start;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11px; font-weight: 800; letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px;
+  }
+  .tag.official { background: #e8f0ff; color: var(--blue-tag); }
+  .tag.third { background: #f3e8ff; color: var(--purple-tag); }
+  .tag.diy { background: #ecfdf3; color: var(--green); }
+  .tag.included { background: #fff1e6; color: #b45309; }
+  .tag.must { background: #fee2e2; color: #b91c1c; }
+  .price {
+    font-weight: 800;
+    white-space: nowrap;
+    color: var(--navy);
+    font-size: 15px;
+  }
+  .card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    flex: 1;
+  }
+  .card .why {
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 8px 10px;
+  }
+  .card footer {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    align-items: center;
+    margin-top: 2px;
+  }
+  .card footer a {
+    font-size: 13px; font-weight: 700; text-decoration: none;
+    padding: 8px 10px; border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .card footer a.primary {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  .card footer a.primary:hover { background: var(--orange); border-color: var(--orange); }
+  .seller { font-size: 12px; color: var(--muted); }
+
+  .starter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .starter .box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .starter h3 { margin: 0 0 8px; font-size: 1rem; }
+  .starter ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  .starter li { margin: 4px 0; }
+  .starter .total { margin-top: 10px; font-weight: 800; color: var(--navy); }
+
+  .shops {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .shop {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .12s ease, transform .12s ease;
+  }
+  .shop:hover { border-color: var(--orange); transform: translateY(-1px); color: inherit; }
+  .shop strong { display: block; margin-bottom: 4px; }
+  .shop span { font-size: 13px; color: var(--muted); }
+
+  .compat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .compat strong { color: var(--ink); }
+
+  footer.page-foot {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .empty {
+    display: none;
+    text-align: center;
+    padding: 28px;
+    color: var(--muted);
+    border: 1px dashed var(--line);
+    border-radius: 14px;
+    background: var(--card);
+  }
+  .empty.show { display: block; }
+
+  @media (max-width: 560px) {
+    header.hero { padding: 24px 18px; }
+    .search { max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .shop { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="badge-row">
+        <span class="pill hot">Special Edition</span>
+        <span class="pill">Compact Cart</span>
+        <span class="pill">Garrett Gurthie / Double G</span>
+      </div>
+      <h1>Accessories & upgrades for your GG Compact</h1>
+      <p class="lede">
+        One place for official ZÜCA gear plus the third-party and community mods people actually put on Compact carts —
+        putter pouches, grips, phone mounts, rain gear, fenders, and DIY prints.
+      </p>
+      <div class="meta">
+        <span><strong>Cart</strong> Garrett Gurthie Compact SE</span>
+        <span><strong>~</strong> $289 body</span>
+        <span><strong>Capacity</strong> ~15 discs + rack</span>
+        <span><strong>Seat frame</strong> rated to 300 lb</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://zuca.com/products/garrett-gurthie-special-edition-compact-disc-golf-cart" target="_blank" rel="noopener">ZÜCA product page</a>
+        <a class="btn btn-ghost" href="#starter">Starter kits</a>
+        <a class="btn btn-ghost" href="#catalog">Full catalog</a>
+      </div>
+    </header>
+
+    <section class="section" id="included">
+      <h2>What the GG SE already includes</h2>
+      <p class="sub">You’re not starting from a bare frame. The Special Edition ships with a few upgrades already bolted on.</p>
+      <div class="grid">
+        <article class="card" data-source="official" data-cat="included">
+          <div class="card-top">
+            <div class="tags"><span class="tag included">Included</span></div>
+          </div>
+          <h3>Orange tubeless foam wheels</h3>
+          <p>GG colorway foam tires — removable, all-terrain, sealed bearings.</p>
+        </article>
+        <article class="card" data-source="official" data-cat="included">
+          <div class="card-top">
+            <div class="tags"><span class="tag included">Included</span></div>
+          </div>
+          <h3>Compact Disc Golf Rack</h3>
+          <p>Upright disc organization for the Compact tub (sold alone ~$40 if you ever need a spare).</p>
+        </article>
+        <article class="card" data-source="official" data-cat="included">
+          <div class="card-top">
+            <div class="tags"><span class="tag included">Included</span></div>
+          </div>
+          <h3>(2) Mini utility pouches + Pencil Mollies</h3>
+          <p>Small-item storage on the adjustable inner shelf + pencil mollies for markers/minis.</p>
+        </article>
+        <article class="card" data-source="official" data-cat="included">
+          <div class="card-top">
+            <div class="tags"><span class="tag included">Included</span></div>
+          </div>
+          <h3>GG navy / orange hex-camo insert</h3>
+          <p>Special-edition removable, hand-washable insert bag — Garrett’s orange + blue camo look.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="starter">
+      <h2>Community “buy these first” kits</h2>
+      <p class="sub">Rough street pricing from ZÜCA / major retailers. Stock and sale prices move — treat totals as planning numbers.</p>
+      <div class="starter">
+        <div class="box">
+          <h3>Essential (~$80–110)</h3>
+          <ul>
+            <li>Putter pouch (ZÜCA or Valor Quick Draw)</li>
+            <li>Handle grip (FlighTowel / Briggsiware)</li>
+            <li>Compact seat cushion</li>
+          </ul>
+          <div class="total">Day-one comfort + putter access</div>
+        </div>
+        <div class="box">
+          <h3>Weather pack (~$100–140)</h3>
+          <ul>
+            <li>Compact rain fly</li>
+            <li>Compact fenders (mud)</li>
+            <li>Wheel covers (car trunk)</li>
+          </ul>
+          <div class="total">LA rain + muddy park paths</div>
+        </div>
+        <div class="box">
+          <h3>Content / full send (~$150–220)</h3>
+          <ul>
+            <li>Sector1 / FlighTowel phone + cart stud</li>
+            <li>Umbrella holder + vented umbrella</li>
+            <li>Looney Bin bottle holder (if stocked)</li>
+            <li>Extra utility pouches / cooler pouch</li>
+          </ul>
+          <div class="total">Film form + all-day comfort</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar" id="catalog">
+      <div class="filters" role="group" aria-label="Filter by source">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-filter="official" aria-pressed="false">Official ZÜCA</button>
+        <button type="button" class="chip" data-filter="third" aria-pressed="false">Third-party</button>
+        <button type="button" class="chip" data-filter="diy" aria-pressed="false">DIY / 3D print</button>
+        <button type="button" class="chip" data-filter="must" aria-pressed="false">Must-haves</button>
+      </div>
+      <input class="search" id="q" type="search" placeholder="Search putter, grip, fender…" autocomplete="off" />
+    </div>
+
+    <div class="note">
+      <strong>Compact-fit note:</strong> Prefer parts labeled Compact (seat cushion, fenders, rain fly, Compact rack).
+      Many handle grips, putter pouches, phone mounts, bottle holders, and AT foam wheels cross-fit Compact and AT frames.
+      AT-only padded 2&quot; seat and AT fenders are different geometry — don’t assume those drop on.
+    </div>
+
+    <div class="empty" id="empty">No items match that filter/search.</div>
+
+    <section class="section">
+      <h2>Comfort & handle</h2>
+      <p class="sub">What most owners add in week one.</p>
+      <div class="grid" data-group>
+        <article class="card" data-source="official" data-cat="comfort" data-must="1" data-name="compact seat cushion">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag must">Must-have</span>
+            </div>
+            <div class="price">~$18–20</div>
+          </div>
+          <h3>Compact Cart Seat Cushion</h3>
+          <p>Thin pad sized for the Compact seat. Cheap comfort upgrade after long rounds.</p>
+          <div class="why"><strong>Why:</strong> Stock seat is hard plastic. Everyone notices after hole 9.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/compact-cart-seat-cushion" target="_blank" rel="noopener">ZÜCA</a>
+            <span class="seller">Also DG Deals USA, Local Route</span>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official third" data-cat="comfort" data-must="1" data-name="cart grip flightowel briggsiware">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag third">FlighTowel</span>
+              <span class="tag must">Must-have</span>
+            </div>
+            <div class="price">~$16–20</div>
+          </div>
+          <h3>Handle grip (Briggsiware / FlighTowel)</h3>
+          <p>3D-printed contoured grip over the telescoping handle. Tons of colors. Community default mod.</p>
+          <div class="why"><strong>Why:</strong> Bare handle is slippery / thin. Grip + optional stash plug is the #1 custom buy.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/briggsiware-cart-grip" target="_blank" rel="noopener">ZÜCA grip</a>
+            <a href="https://localroute.com/products/flightowel-3d-printed-zuca-cart-grips" target="_blank" rel="noopener">Local Route</a>
+            <a href="https://discgolfdealsusa.com/products/flightowel-zuca-disc-golf-grip-handle" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="comfort" data-name="all terrain padded seat">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$39</div>
+          </div>
+          <h3>AT 2&quot; Padded Seat Cushion</h3>
+          <p>Thicker luxury pad — primarily All-Terrain geometry. Verify fit before buying for Compact.</p>
+          <div class="why"><strong>Why:</strong> More plush if it fits your seat plate; Compact-specific pad is the safe pick.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/all-terrain-padded-seat-cushion" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Putter access</h2>
+      <p class="sub">Keep putters off the main stack.</p>
+      <div class="grid" data-group>
+        <article class="card" data-source="official" data-cat="putter" data-must="1" data-name="putter pouch">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag must">Must-have</span>
+            </div>
+            <div class="price">~$29–38</div>
+          </div>
+          <h3>Disc Golf Putter Pouch</h3>
+          <p>Side-mount putter pouch in multiple colors. Clips to frame rails / common mount points.</p>
+          <div class="why"><strong>Why:</strong> Fastest path to “always know where my putter is.”</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/disc-golf-putter-pouch" target="_blank" rel="noopener">ZÜCA</a>
+            <a href="https://discgolfdealsusa.com/products/zuca-disc-golf-cart-putter-pouch" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="putter" data-name="putter pouch sling">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$42–45</div>
+          </div>
+          <h3>Putter Pouch Sling</h3>
+          <p>Pouch + sling strap — walk to the basket without rolling the cart every putt.</p>
+          <div class="why"><strong>Why:</strong> Great on wooded / multi-putt greens when cart stays on the path.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/disc-golf-putter-pouch-sling" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="third" data-cat="putter" data-name="valor quick draw putter pouch">
+          <div class="card-top">
+            <div class="tags"><span class="tag third">Third-party</span></div>
+            <div class="price">~$30</div>
+          </div>
+          <h3>Valor Discs Quick Draw Putter Pouch</h3>
+          <p>Popular non-ZÜCA putter pouch carried by Local Route and others; cart-friendly mount.</p>
+          <div class="why"><strong>Why:</strong> Solid alt if official colors are out or you want a different draw style.</div>
+          <footer>
+            <a class="primary" href="https://localroute.com/products/quick-draw-putter-pouch" target="_blank" rel="noopener">Local Route</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Weather & mud</h2>
+      <p class="sub">South LA rain + wet park grass — these matter.</p>
+      <div class="grid" data-group>
+        <article class="card" data-source="official" data-cat="weather" data-must="1" data-name="compact rain fly">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag must">Must-have</span>
+            </div>
+            <div class="price">~$28–29</div>
+          </div>
+          <h3>Compact Rain Fly</h3>
+          <p>Cover sized for Compact bag/rack. Keep discs dry when weather turns mid-round.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/compact-disc-golf-rain-fly" target="_blank" rel="noopener">ZÜCA</a>
+            <a href="https://discgolfdealsusa.com/products/compact-disc-golf-cart-rain-fly" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="weather" data-name="compact fenders">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$49–50</div>
+          </div>
+          <h3>Compact Cart Fenders (pair)</h3>
+          <p>Mud guards for Compact wheel geometry. Often backordered — buy when in stock.</p>
+          <div class="why"><strong>Why:</strong> Stops muddy rooster-tails on the bag and your calves.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/compact-disc-golf-cart-fenders" target="_blank" rel="noopener">ZÜCA</a>
+            <a href="https://discgolfdealsusa.com/products/compact-disc-golf-cart-fenders" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="weather" data-name="wheel covers">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$24</div>
+          </div>
+          <h3>All-Terrain Wheel Covers</h3>
+          <p>Slip-on covers so dirty foam wheels don’t trash the back seat / trunk.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/all-terrain-wheel-covers" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="weather" data-name="umbrella holder vented umbrella">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$39 + $29</div>
+          </div>
+          <h3>Umbrella Holder + Vented Golf Umbrella</h3>
+          <p>Holder mounts to frame; vented umbrella handles wind better than cheap beach umbrellas.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/all-terrain-umbrella-holder" target="_blank" rel="noopener">Holder</a>
+            <a href="https://zuca.com/products/vented-golf-umbrella" target="_blank" rel="noopener">Umbrella</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Storage, hydration, coolers</h2>
+      <div class="grid" data-group>
+        <article class="card" data-source="official" data-cat="storage" data-name="looney bin bottle holder">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official / Arundel</span></div>
+            <div class="price">~$30–32</div>
+          </div>
+          <h3>Looney Bin Bottle Holder</h3>
+          <p>Larger bottle cage upgrade beyond stock XL cupholders. Often popular / backordered.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/looney-bin-water-bottle-holder" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="utility pouches mini large clear">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$17–36</div>
+          </div>
+          <h3>Utility / Accessory Pouches</h3>
+          <p>Mini duo (GG includes a pair), small clear-top, large, combo sets. Hang on inner shelf / rails.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/mini-utility-pouch-duo" target="_blank" rel="noopener">Mini duo</a>
+            <a href="https://zuca.com/products/accessory-pouch" target="_blank" rel="noopener">Accessory pouch</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="coolzuca cooler pouch">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$45</div>
+          </div>
+          <h3>Disc Golf Cart Cooler (CoolZuca-style pouch)</h3>
+          <p>Insulated pouch for drinks/snacks — carried via ZÜCA and dealers.</p>
+          <footer>
+            <a class="primary" href="https://discgolfdealsusa.com/products/disc-golf-coolzuca-cooler" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="saddle bag set">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$59–69</div>
+          </div>
+          <h3>Saddle Bag Set</h3>
+          <p>Extra soft storage that drapes the frame — good for towels, layers, first-aid.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/saddle-bag-set" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="compact disc golf rack spare">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag included">GG includes one</span>
+            </div>
+            <div class="price">~$40–45</div>
+          </div>
+          <h3>Compact Disc Golf Rack (spare / upgrade)</h3>
+          <p>Already on the GG SE. Buy only if you want a second layout or replacement.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/compact-disc-golf-rack" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="disc cradle">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$29</div>
+          </div>
+          <h3>ZÜCA Disc Cradle</h3>
+          <p>Newer upright disc holder option showing up at dealers (DG Deals USA).</p>
+          <footer>
+            <a class="primary" href="https://discgolfdealsusa.com/products/zuca-disc-cradle" target="_blank" rel="noopener">DG Deals</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="flightowel mini">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official / FlighTowel</span></div>
+            <div class="price">~$16</div>
+          </div>
+          <h3>ZÜCA FlighTowel Mini</h3>
+          <p>Branded disc towel sized for cart life — clips / hangs easily.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/zuca-flightowel-mini-gray" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Wheels, maintenance, spare parts</h2>
+      <div class="grid" data-group>
+        <article class="card" data-source="official" data-cat="wheels" data-name="foam wheels orange">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag official">Official</span>
+              <span class="tag included">GG includes orange</span>
+            </div>
+            <div class="price">~$28 each / ~$56 pair</div>
+          </div>
+          <h3>AT Tubeless Foam Wheels</h3>
+          <p>Color swaps or replacements. GG SE already has orange foam. Spares in many colors.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/all-terrain-tubeless-foam-wheel" target="_blank" rel="noopener">ZÜCA single</a>
+            <a href="https://localroute.com/products/zuca-all-terrain-tubeless-foam-wheel-set-of-2" target="_blank" rel="noopener">Pair @ Local Route</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="wheels" data-name="tune up kit">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official</span></div>
+            <div class="price">~$15–21</div>
+          </div>
+          <h3>Tune-Up Kit (AT / Compact)</h3>
+          <p>Hardware / wear bits for Compact + AT family. Cheap insurance after a season of abuse.</p>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/tune-up-kit-compact-disc-golf-cart" target="_blank" rel="noopener">ZÜCA</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="wheels" data-name="clamps axles bearings spacers handle">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official / dealers</span></div>
+            <div class="price">$2–35</div>
+          </div>
+          <h3>Spare clamps, axles, bearings, spacers, handle sets</h3>
+          <p>Local Route stocks a deep spare-parts catalog: upper/lower clamps, axle knobs, bearings, wheel spacers, telescoping handle sets, end caps.</p>
+          <footer>
+            <a class="primary" href="https://localroute.com/collections/all-disc-golf-cart-accessories" target="_blank" rel="noopener">Local Route parts</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="official" data-cat="storage" data-name="gg insert bag only">
+          <div class="card-top">
+            <div class="tags"><span class="tag official">Official / dealers</span></div>
+            <div class="price">varies</div>
+          </div>
+          <h3>GG Compact Insert Bag (bag only)</h3>
+          <p>Swap looks later — special-edition Garrett Gurthie Compact insert sold separately at some shops.</p>
+          <footer>
+            <a class="primary" href="https://discgolfdealsusa.com/products/zuca-special-edition-garrett-gurthie-compact-cart-insert-bag" target="_blank" rel="noopener">DG Deals insert</a>
+            <a href="https://www.discgolfbuy.com/product/zuca-compact-disc-golf-cart-insert-bag-garrett-gurthie-special-edition/" target="_blank" rel="noopener">DiscGolfBuy</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Phone / camera mounts (third-party stars)</h2>
+      <p class="sub">Huge community category — film form without a tripod dance.</p>
+      <div class="grid" data-group>
+        <article class="card" data-source="third" data-cat="phone" data-must="1" data-name="sector1 flightowel cart stud phone mount">
+          <div class="card-top">
+            <div class="tags">
+              <span class="tag third">Sector1 / FlighTowel</span>
+              <span class="tag must">Community fav</span>
+            </div>
+            <div class="price">~$38–40</div>
+          </div>
+          <h3>Cart Stud + Phone Mount</h3>
+          <p>Stainless 1/4&quot;-20 stud mounts to ZÜCA frame; ball-head phone clamp. Also takes cameras/action cams. Listed on ZÜCA, Infinite, DG Deals, Local Route, Europe shops.</p>
+          <div class="why"><strong>Why:</strong> The default “record my throws” answer in Zuca FB groups.</div>
+          <footer>
+            <a class="primary" href="https://zuca.com/products/zuca-phone-mount" target="_blank" rel="noopener">ZÜCA listing</a>
+            <a href="https://infinitediscs.com/product/cart-accessories/flightowel-cart-stud-phone-mount" target="_blank" rel="noopener">Infinite</a>
+            <a href="https://localroute.com/products/sector1-zuca-cart-stud-and-phone-mount" target="_blank" rel="noopener">Local Route</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="third" data-cat="phone" data-name="etsy clip on phone holder">
+          <div class="card-top">
+            <div class="tags"><span class="tag third">Etsy / makers</span></div>
+            <div class="price">varies</div>
+          </div>
+          <h3>Clip-on horizontal phone holders</h3>
+          <p>3D-printed clip-on mounts for phones up to ~7&quot; — no stud install. Search Etsy “Zuca phone holder”.</p>
+          <footer>
+            <a class="primary" href="https://www.etsy.com/market/zuca_phone" target="_blank" rel="noopener">Etsy search</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>DIY / 3D-print library</h2>
+      <p class="sub">Free or cheap community files — print yourself or send to a print shop. Confirm Compact vs AT geometry on each listing.</p>
+      <div class="grid" data-group>
+        <article class="card" data-source="diy" data-cat="diy" data-name="thingiverse putter clip">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">Thingiverse</span></div>
+            <div class="price">Free STL</div>
+          </div>
+          <h3>Putter clip</h3>
+          <p>Simple rail clip for a putter — classic first print for Zuca owners.</p>
+          <footer>
+            <a class="primary" href="https://www.thingiverse.com/thing:5178756" target="_blank" rel="noopener">Thing 5178756</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="diy" data-cat="diy" data-name="handle plug stash">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">Thingiverse / FB mods</span></div>
+            <div class="price">Free / ~$15 kit</div>
+          </div>
+          <h3>Handle plug + stash compartment</h3>
+          <p>End-cap plug with hidden compartment; pairs with printed grips. FB “Zuca Cart Customs & Mods” sells finished kits too.</p>
+          <footer>
+            <a class="primary" href="https://www.thingiverse.com/thing:5434306" target="_blank" rel="noopener">Thing 5434306</a>
+            <a href="https://www.facebook.com/groups/1807052706205916/" target="_blank" rel="noopener">FB mods group</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="diy" data-cat="diy" data-name="kwik stik retriever holder">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">Thingiverse</span></div>
+            <div class="price">Free STL</div>
+          </div>
+          <h3>Kwik Stik / retriever holders</h3>
+          <p>Mounts for disc retrievers and umbrella poles on frame tubes.</p>
+          <footer>
+            <a class="primary" href="https://www.thingiverse.com/thing:4686699" target="_blank" rel="noopener">Kwik Stik holder</a>
+            <a href="https://www.thingiverse.com/thing:5182681" target="_blank" rel="noopener">Retriever/umbrella mounts</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="diy" data-cat="diy" data-name="bottle cup holder chalk bag">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">Thingiverse</span></div>
+            <div class="price">Free STL</div>
+          </div>
+          <h3>Bottle holders & chalk bag holders</h3>
+          <p>32oz cup holders, extra bottle cages, chalk bag clips — common print-to-fit upgrades.</p>
+          <footer>
+            <a class="primary" href="https://www.thingiverse.com/thing:4051915" target="_blank" rel="noopener">32oz cup holder</a>
+            <a href="https://www.thingiverse.com/thing:5100892" target="_blank" rel="noopener">Chalk bag holder</a>
+            <a href="https://www.thingiverse.com/thing:4906235" target="_blank" rel="noopener">Bottle holder</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="diy" data-cat="diy" data-name="compact rack divider fenders knobs">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">Thingiverse</span></div>
+            <div class="price">Free STL</div>
+          </div>
+          <h3>Compact rack divider, fenders, knobs</h3>
+          <p>Compact-specific rack divider, AT fender prints (geometry check!), custom axle knobs.</p>
+          <footer>
+            <a class="primary" href="https://www.thingiverse.com/thing:5475777" target="_blank" rel="noopener">Compact rack divider</a>
+            <a href="https://www.thingiverse.com/thing:5183796" target="_blank" rel="noopener">Cart knobs</a>
+            <a href="https://www.thingiverse.com/search?q=zuca+cart&type=things" target="_blank" rel="noopener">All Zuca things</a>
+          </footer>
+        </article>
+
+        <article class="card" data-source="diy" data-cat="diy" data-name="makerworld printables">
+          <div class="card-top">
+            <div class="tags"><span class="tag diy">MakerWorld / Printables</span></div>
+            <div class="price">Free / paid</div>
+          </div>
+          <h3>More print catalogs</h3>
+          <p>Search “Zuca” on MakerWorld and Printables for newer grip, molle, and FPV accessory packs.</p>
+          <footer>
+            <a class="primary" href="https://makerworld.com/en/search/models?keyword=zuca" target="_blank" rel="noopener">MakerWorld</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Where to shop</h2>
+      <p class="sub">Official first for warranty-critical parts; dealers for stock hunting; FB/Etsy/Thingiverse for customs.</p>
+      <div class="shops">
+        <a class="shop" href="https://zuca.com/collections/disc-golf-accessories" target="_blank" rel="noopener">
+          <strong>ZÜCA official</strong>
+          <span>Full accessory catalog + GG cart</span>
+        </a>
+        <a class="shop" href="https://discgolfdealsusa.com/collections/zuca-compact-cart-disc-golf-accessories" target="_blank" rel="noopener">
+          <strong>Disc Golf Deals USA</strong>
+          <span>Compact-filtered accessories</span>
+        </a>
+        <a class="shop" href="https://localroute.com/collections/all-disc-golf-cart-accessories" target="_blank" rel="noopener">
+          <strong>Local Route</strong>
+          <span>Deep spare-parts + grips + Sector1</span>
+        </a>
+        <a class="shop" href="https://infinitediscs.com/product/cart-accessories/flightowel-cart-stud-phone-mount" target="_blank" rel="noopener">
+          <strong>Infinite Discs</strong>
+          <span>FlighTowel phone mount stock</span>
+        </a>
+        <a class="shop" href="https://www.facebook.com/groups/1807052706205916/" target="_blank" rel="noopener">
+          <strong>FB: Zuca Cart Customs & Mods</strong>
+          <span>Printed grips, plugs, group buys</span>
+        </a>
+        <a class="shop" href="https://www.thingiverse.com/search?q=zuca+cart&type=things" target="_blank" rel="noopener">
+          <strong>Thingiverse</strong>
+          <span>~50 Zuca cart STLs</span>
+        </a>
+        <a class="shop" href="https://www.zuca-europe.com/en/sport/disc-golf/accessories/compact-disc-golf-cart/" target="_blank" rel="noopener">
+          <strong>ZÜCA Europe</strong>
+          <span>EU stock + Sector1 mount</span>
+        </a>
+        <a class="shop" href="https://www.reddit.com/r/discgolf/comments/w9etqz/zuca_compact_cart_accessories/" target="_blank" rel="noopener">
+          <strong>r/discgolf threads</strong>
+          <span>Owner accessory opinions</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Compatibility quick map</h2>
+      <div class="compat">
+        <p><strong>Safe Compact-labeled buys:</strong> Compact seat cushion, Compact fenders, Compact rain fly, Compact disc rack, GG Compact insert bag.</p>
+        <p><strong>Usually cross-compatible (confirm listing):</strong> putter pouches / sling, handle grips, phone/cart stud mounts, Looney Bin / bottle holders, foam wheels + covers, utility pouches, umbrella holder, FlighTowel mini, tune-up kit (AT/Compact kit).</p>
+        <p><strong>Double-check before buying:</strong> AT 2&quot; padded seat, AT fenders, AT rain fly, AT disc rack (larger), backpack/trekker-only cushions and fenders, bike attachment (AT-oriented).</p>
+        <p style="margin-bottom:0"><strong>Not a substitute for live stock:</strong> Prices and backorder status change. Open the linked product page before you commit.</p>
+      </div>
+    </section>
+
+    <footer class="page-foot">
+      Built for the ZÜCA Garrett Gurthie Special Edition Compact Disc Golf Cart.
+      Compiled from ZÜCA, Disc Golf Deals USA, Local Route, Infinite, ZÜCA Europe, Thingiverse, and owner communities.
+      Not affiliated with ZÜCA. Prices approximate as of research date — verify before purchase.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const chips = Array.from(document.querySelectorAll(".chip[data-filter]"));
+      const cards = Array.from(document.querySelectorAll(".card[data-source], .card[data-name]"));
+      const catalogCards = Array.from(document.querySelectorAll("[data-group] .card"));
+      const q = document.getElementById("q");
+      const empty = document.getElementById("empty");
+      let filter = "all";
+
+      function apply() {
+        const term = (q.value || "").trim().toLowerCase();
+        let shown = 0;
+        catalogCards.forEach((card) => {
+          const source = (card.getAttribute("data-source") || "");
+          const name = (card.getAttribute("data-name") || "") + " " + card.textContent.toLowerCase();
+          const isMust = card.getAttribute("data-must") === "1";
+          let ok = true;
+          if (filter === "official") ok = source.includes("official");
+          else if (filter === "third") ok = source.includes("third");
+          else if (filter === "diy") ok = source.includes("diy");
+          else if (filter === "must") ok = isMust;
+          if (term && !name.includes(term)) ok = false;
+          card.classList.toggle("hidden", !ok);
+          if (ok) shown++;
+        });
+        empty.classList.toggle("show", shown === 0);
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          filter = chip.getAttribute("data-filter");
+          chips.forEach((c) => c.setAttribute("aria-pressed", c === chip ? "true" : "false"));
+          apply();
+        });
+      });
+      q.addEventListener("input", apply);
+    })();
+  </script>
+</body>
+</html>
