@@ -86,6 +86,12 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
 .close-attr-sub { margin-top:8px; font-size:12px; color:var(--muted); line-height:1.4; }
 .close-attr-sub strong { color:var(--ink); font-weight:700; }
 .close-attr-dot { margin:0 4px; color:#c5c9d3; }
+.close-attr-avg {
+  margin-top:8px; padding:8px 10px; border-radius:8px;
+  background:#fff; border:1px solid var(--line);
+  font-size:12.5px; line-height:1.35; color:var(--ink);
+}
+.close-attr-avg strong { font-weight:750; }
 .close-attr-outliers { margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
 .close-attr-outliers-h {
   font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em;
@@ -454,12 +460,12 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:35 PM</div>
+    <div class="meta">This page is for <strong>Audi Baton Rouge · New</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 4:55 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html" class="on">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner"><strong>New department</strong> — opportunities owned by New sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance · New</div>
-      <div class="txt">Last 30 days · New department: 119 retail workable opportunities (156 unique after de-dupe; Bad excluded); retail close 13.4% (16 DMS closed · 11 also in VinSolutions); internet is 68.9% of retail workable; internet CRM contact 100.0%; internet median response 38 min; 54.1% of timed internet leads over 30 min (missed goal); Audi Partner is 36 opps at 2.8% close — watch list.</div>
+      <div class="txt">Last 30 days · New department: 119 retail workable opportunities (156 unique after de-dupe; Bad excluded); retail close 13.4% (16 DMS closed · 14 sold-date in VinSolutions); internet is 68.9% of retail workable; internet CRM contact 100.0%; internet median response 38 min; 54.1% of timed internet leads over 30 min (missed goal); Audi Partner is 36 opps at 2.8% close — watch list.</div>
       <div class="when">Rolling 30-day range: Jul 12 – Aug 10, 2026 · compared with prior 30 days Jun 12 – Jul 11, 2026</div>
     </div>
 
@@ -663,7 +669,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
         <div class="stat"><div class="k">Retail workable</div><div class="v">119</div>
           <div class="s">Excl. Bad (37) · excl. acquisition (0)</div></div>
         <div class="stat"><div class="k">Retail closed (DMS)</div><div class="v">16</div>
-          <div class="s">DMS closed · close 13.4% of 119 retail workable<br/><span class='s'>Through Aug 07, 2026</span><br/><span class='s'>Also in VinSolutions: 11 sold (9.2%)</span></div></div>
+          <div class="s">DMS closed · close 13.4% of 119 retail workable<br/><span class='s'>Through Aug 07, 2026</span><br/><span class='s'>Also in VinSolutions: 14 sold by sold date (11.8%)</span></div></div>
         <div class="stat"><div class="k">Delivered</div><div class="v">11</div>
           <div class="s">CRM status Delivered · of retail sold</div></div>
         <div class="stat"><div class="k">On Order</div><div class="v">0</div>
@@ -675,9 +681,9 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       
       <div class="close-attr" role="note">
         <div class="close-attr-top">
-          <span class="close-attr-pill">Close attribution</span>
+          <span class="close-attr-pill">Sold cars</span>
           <strong>DMS vs VinSolutions</strong>
-          <span class="close-attr-note">retail only · Jul 12 – Aug 10, 2026</span>
+          <span class="close-attr-note">retail · closed/sold date in Jul 12 – Aug 10, 2026 · not lead create date</span>
         </div>
         <div class="close-attr-grid">
           <div class="close-attr-cell">
@@ -687,48 +693,49 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           </div>
           <div class="close-attr-cell">
             <div class="k">VinSolutions sold</div>
-            <div class="v">11</div>
-            <div class="s">lead created in window · 9.2%</div>
+            <div class="v">14</div>
+            <div class="s">sold date · 11.8% of 119 workable</div>
           </div>
           <div class="close-attr-cell both">
             <div class="k">In both</div>
-            <div class="v">8</div>
-            <div class="s">same VIN/stock</div>
+            <div class="v">10</div>
+            <div class="s">same VIN/stock · both closed in window</div>
           </div>
         </div>
+        <div class="close-attr-avg"><strong>Avg days to close</strong> (DMS sale date − VinSolutions lead open · joined by VIN/stock) · New 6.2 days (n=16) · Used — · all 6.2 days (n=16)</div>
         <div class="close-attr-sub">
-          <span><strong>DMS only</strong> 8</span>
+          <span><strong>DMS only</strong> 6</span>
           <span class="close-attr-dot">·</span>
-          <span><strong>VinSolutions only</strong> 3</span>
+          <span><strong>VinSolutions only</strong> 4</span>
           <span class="close-attr-dot">·</span>
-          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window.</span>
+          <span>Both counts use <em>close/sold date</em> in the window — lead open date does not gate the count. Headline close still uses DMS ÷ retail workable. Match = VIN first, then stock.</span>
         </div>
         
         <div class="close-attr-outliers">
-          <div class="close-attr-outliers-h">One-source only · salesperson + stock (no customer name)</div>
+          <div class="close-attr-outliers-h">One-source sold cars · salesperson + stock (no customer name)</div>
           <div class="close-attr-outliers-grid">
             
         <div class="close-attr-list">
-          <div class="close-attr-list-h">DMS only — closed in DMS, not sold on a VinSolutions lead in this window <span class="close-attr-list-n">8</span></div>
+          <div class="close-attr-list-h">DMS only — sales date in window, no VinSolutions sold date in window on that VIN/stock <span class="close-attr-list-n">6</span></div>
           <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="close-attr-table">
             <thead><tr>
-              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Date</th>
+              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Sold date</th>
             </tr></thead>
             <tbody>
-              <tr><td class="stock">26A031</td><td>Randon Kimery</td><td>26 AUDI S3</td><td class="num">Aug 06</td></tr><tr><td class="stock">26A192</td><td>Randon Kimery</td><td>26 AUDI SQ5</td><td class="num">Jul 29</td></tr><tr><td class="stock">26A244</td><td>Ryan Kinsley</td><td>26 AUDI Q5</td><td class="num">Jul 28</td></tr><tr><td class="stock">26A171</td><td>John Potter Langston</td><td>26 AUDI Q5</td><td class="num">Jul 24</td></tr><tr><td class="stock">26A032</td><td>Shane Ducote</td><td>26 AUDI Q7</td><td class="num">Jul 21</td></tr><tr><td class="stock">26A194</td><td>Randon Kimery</td><td>26 AUDI Q5</td><td class="num">Jul 18</td></tr><tr><td class="stock">26A216</td><td>John Potter Langston</td><td>26 AUDI Q8</td><td class="num">Jul 18</td></tr><tr><td class="stock">26A077</td><td>John Potter Langston</td><td>26 AUDI Q7</td><td class="num">Jul 16</td></tr>
+              <tr><td class="stock">26A031</td><td>Randon Kimery</td><td>26 AUDI S3</td><td class="num">Aug 06</td></tr><tr><td class="stock">26A244</td><td>Ryan Kinsley</td><td>26 AUDI Q5</td><td class="num">Jul 28</td></tr><tr><td class="stock">26A171</td><td>John Potter Langston</td><td>26 AUDI Q5</td><td class="num">Jul 24</td></tr><tr><td class="stock">26A032</td><td>Shane Ducote</td><td>26 AUDI Q7</td><td class="num">Jul 21</td></tr><tr><td class="stock">26A216</td><td>John Potter Langston</td><td>26 AUDI Q8</td><td class="num">Jul 18</td></tr><tr><td class="stock">26A077</td><td>John Potter Langston</td><td>26 AUDI Q7</td><td class="num">Jul 16</td></tr>
             </tbody>
           </table></div>
         </div>
 
             
         <div class="close-attr-list">
-          <div class="close-attr-list-h">VinSolutions only — sold in lead file, no DMS sales-date close in window <span class="close-attr-list-n">3</span></div>
+          <div class="close-attr-list-h">VinSolutions only — sold date in window, no DMS sales-date close in window on that VIN/stock <span class="close-attr-list-n">4</span></div>
           <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="close-attr-table">
             <thead><tr>
-              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Date</th>
+              <th>Stock</th><th>Salesperson</th><th>Vehicle</th><th class="num">Sold date</th>
             </tr></thead>
             <tbody>
-              <tr><td class="stock">26A205</td><td>Jak Langston</td><td>2026 Audi Q5</td><td class="num">Jul 31</td></tr><tr><td class="stock">PA2337</td><td>Randon Kimery</td><td>2025 Audi A3</td><td class="num">Jul 22</td></tr><tr><td class="stock">26A212</td><td>Jak Langston</td><td>2026 Audi Q8</td><td class="num">Jul 20</td></tr>
+              <tr><td class="stock">26A205</td><td>Jak Langston</td><td>2026 Audi Q5</td><td class="num">Jul 31</td></tr><tr><td class="stock">PA2337</td><td>Randon Kimery</td><td>2025 Audi A3</td><td class="num">Jul 22</td></tr><tr><td class="stock">26A212</td><td>Jak Langston</td><td>2026 Audi Q8</td><td class="num">Jul 20</td></tr><tr><td class="stock">PA2331</td><td>Randon Kimery</td><td>2025 Audi Q5</td><td class="num">Jul 13</td></tr>
             </tbody>
           </table></div>
         </div>
@@ -1041,25 +1048,25 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
         <div class="metric-top">
           <div>
             <div class="m-label">3) Retail close rate</div>
-            <div class="m-when">DMS closed (sales date) ÷ retail workable opps · VinSolutions sold shown for comparison · Jul 12 – Aug 10, 2026 · DMS file through Aug 07, 2026</div>
+            <div class="m-when">DMS closed (sales date) ÷ retail workable opps · VinSolutions sold date shown for comparison · Jul 12 – Aug 10, 2026 · DMS file through Aug 07, 2026</div>
           </div>
           <div class="badge">Good</div>
         </div>
         <div class="m-value">13.4%</div>
         <div class="m-delta"><span class="up">↑ 6.8 pts vs prior 30 days</span> · Prior 30 days (Jun 12 – Jul 11, 2026): 6.6%<br/>
-          DMS closed: <strong>16</strong> of 119 retail workable<br/>Also in VinSolutions: 11 sold · CRM close 9.2% · On Order 0<br/><span class='s'>DMS sales deals through <strong>Aug 07, 2026</strong> · closes after that date are not in this file yet</span></div>
+          DMS closed: <strong>16</strong> of 119 retail workable<br/>Also in VinSolutions: 14 sold by sold date · CRM close 11.8% · On Order 0<br/><span class='s'>DMS sales deals through <strong>Aug 07, 2026</strong> · closes after that date are not in this file yet</span></div>
         <div class="why"><strong>What this means</strong>
           Headline close uses <strong>DMS sales deals</strong> closed on <em>sales date</em> in this window (deal type New + Used only — wholesale excluded).<br/>
           Denominator is still VinSolutions retail workable opportunities created in the window (same lead base as the rest of this brief).<br/>
-          <strong>Also in VinSolutions</strong> is how many of those opps the CRM marked sold — shown so both systems are visible. On Order stays CRM-only (not in DMS closes).<br/>
+          <strong>Also in VinSolutions</strong> is how many retail cars the CRM shows with <em>Sold Datetime</em> in this same window — not “leads created then later sold.” Lead open date does not gate that count.<br/>
           DMS export currently runs through <strong>Aug 07, 2026</strong> — any units closed after that date are not counted yet.<br/>
           Rough store-level bands: ≥8% good · 5–8% watch · under 5% problem.</div>
         
       <div class="close-attr" role="note">
         <div class="close-attr-top">
-          <span class="close-attr-pill">Close attribution</span>
+          <span class="close-attr-pill">Sold cars</span>
           <strong>DMS vs VinSolutions</strong>
-          <span class="close-attr-note">retail only · Jul 12 – Aug 10, 2026</span>
+          <span class="close-attr-note">retail · closed/sold date in Jul 12 – Aug 10, 2026 · not lead create date</span>
         </div>
         <div class="close-attr-grid">
           <div class="close-attr-cell">
@@ -1069,21 +1076,22 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
           </div>
           <div class="close-attr-cell">
             <div class="k">VinSolutions sold</div>
-            <div class="v">11</div>
-            <div class="s">lead created in window · 9.2%</div>
+            <div class="v">14</div>
+            <div class="s">sold date · 11.8% of 119 workable</div>
           </div>
           <div class="close-attr-cell both">
             <div class="k">In both</div>
-            <div class="v">8</div>
-            <div class="s">same VIN/stock</div>
+            <div class="v">10</div>
+            <div class="s">same VIN/stock · both closed in window</div>
           </div>
         </div>
+        <div class="close-attr-avg"><strong>Avg days to close</strong> (DMS sale date − VinSolutions lead open · joined by VIN/stock) · New 6.2 days (n=16) · Used — · all 6.2 days (n=16)</div>
         <div class="close-attr-sub">
-          <span><strong>DMS only</strong> 8</span>
+          <span><strong>DMS only</strong> 6</span>
           <span class="close-attr-dot">·</span>
-          <span><strong>VinSolutions only</strong> 3</span>
+          <span><strong>VinSolutions only</strong> 4</span>
           <span class="close-attr-dot">·</span>
-          <span>Match = VIN first, then stock. Headline close stays DMS. VinSolutions sold is the lead-file picture for the same window · Full one-source list is on the Leads tab..</span>
+          <span>Both counts use <em>close/sold date</em> in the window — lead open date does not gate the count. Headline close still uses DMS ÷ retail workable. Match = VIN first, then stock · Full one-source list is on the Leads tab..</span>
         </div>
         
       </div>
@@ -1209,7 +1217,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:35 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 4:55 PM.
       This page is for Audi Baton Rouge · New only — no other stores.
     </div>
   </div>
