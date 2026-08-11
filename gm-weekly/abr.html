@@ -29,11 +29,12 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
 .sub { color:var(--muted); font-size:14px; margin-top:4px; }
 .meta { font-size:13px; color:var(--muted); margin:0 0 14px; }
 .dept-switch { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; }
-.dept-switch a { display:inline-block; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:inherit; text-decoration:none; font-size:13px; font-weight:650; }
+.dept-switch a { display:inline-block; padding:8px 16px; border-radius:999px; border:1px solid #c5c9d3; background:#fff; color:#111; text-decoration:none; font-size:13px; font-weight:700; }
 .dept-switch a.on { background:var(--accent); border-color:var(--accent); color:#fff; }
-.dept-switch a:hover { border-color:var(--accent); }
-.dept-banner { font-size:13px; line-height:1.45; padding:11px 14px; border-radius:10px; border:1px solid var(--line); background:#f6f7f9; margin:0 0 14px; color:#333; }
-.dept-banner.muted { background:#fafbfc; color:#555; }
+.dept-switch a:hover { border-color:var(--accent); color:var(--accent); }
+.dept-switch a.on:hover { color:#fff; }
+.dept-banner { font-size:13px; line-height:1.45; padding:11px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; margin:0 0 14px; color:#333; }
+.dept-banner.muted { background:#fff; color:#444; }
 .dept-banner a { color:var(--accent); font-weight:650; }
 .verdict { background:#111; color:#fff; border-radius:14px; padding:18px; margin-bottom:14px; }
 .verdict .lbl { font-size:11px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
@@ -92,34 +93,49 @@ h1 { font-size:28px; margin-top:6px; letter-spacing:-.02em; }
   font-size:12.5px; line-height:1.35; color:var(--ink);
 }
 .close-attr-avg strong { font-weight:750; }
+.dept-switch { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px; }
+.dept-switch a {
+  display:inline-block; padding:8px 16px; border-radius:999px;
+  border:1px solid #c5c9d3; background:#fff; color:#111;
+  text-decoration:none; font-size:13px; font-weight:700;
+}
+.dept-switch a.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+.dept-switch a:hover { border-color:var(--accent); color:var(--accent); }
+.dept-switch a.on:hover { color:#fff; border-color:var(--accent); }
+.dept-banner { font-size:13px; line-height:1.45; padding:11px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; margin:0 0 14px; color:#333; }
+.dept-banner.muted { background:#fff; color:#444; }
+.dept-banner a { color:var(--accent); font-weight:650; }
+.page-main { background:transparent; }
+.page-meta { color:var(--muted) !important; }
 .period-switch {
   position:sticky; top:0; z-index:45; display:flex; flex-wrap:wrap; gap:8px; align-items:center;
-  margin:0 0 12px; padding:10px 0 12px; background:var(--bg);
-  border-bottom:1px solid var(--line);
+  margin:0 0 14px; padding:12px 14px; background:#fff;
+  border:1px solid var(--line); border-radius:12px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
 }
 .period-switch .ps-label {
-  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:#666;
   margin-right:4px;
 }
 .period-switch button {
-  border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px;
-  padding:8px 12px; font:inherit; font-size:12.5px; font-weight:750; cursor:pointer;
+  border:1px solid #c5c9d3; background:#fff; color:#111; border-radius:999px;
+  padding:8px 14px; font:inherit; font-size:12.5px; font-weight:750; cursor:pointer;
 }
-.period-switch button:hover { border-color:#c5c9d3; }
+.period-switch button:hover { border-color:#111; }
 .period-switch button.active { background:#111; color:#fff; border-color:#111; }
 .period-switch .ps-range {
-  flex:1 1 100%; font-size:12px; color:var(--muted); margin-top:2px;
+  flex:1 1 100%; font-size:12px; color:#666; margin-top:4px; line-height:1.35;
 }
 .period-coverage {
   margin:0 0 12px; padding:10px 12px; border-radius:10px;
-  border:1px solid #f0c36d; background:#fff8e8; font-size:13px; line-height:1.35;
+  border:1px solid #f0c36d; background:#fff8e8; font-size:13px; line-height:1.35; color:#333;
 }
 .period-coverage strong { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:#8a6d1d; margin-bottom:4px; }
 .period-root[hidden] { display:none !important; }
 @media print {
   .period-switch { display:none !important; }
-  .period-root[hidden] { display:block !important; }
-  .period-root:not(.print-active) { display:none !important; }
+  .period-root[hidden] { display:none !important; }
+  .period-root.print-active { display:block !important; }
 }
 .close-attr-outliers { margin-top:12px; padding-top:10px; border-top:1px solid var(--line); }
 .close-attr-outliers-h {
@@ -403,6 +419,19 @@ body { font-family:var(--font); background:var(--bg); color:var(--ink); -webkit-
 .top.has-photo::before {
   background:linear-gradient(105deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 48%, rgba(187,10,33,.28) 100%);
 }
+/* Force readable chrome on light main (never inherit white from hero) */
+.page-main .dept-switch a { background:#fff; color:#111; border-color:#c5c9d3; }
+.page-main .dept-switch a.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+.page-main .dept-switch a:hover { color:var(--accent); }
+.page-main .dept-switch a.on:hover { color:#fff; }
+.page-main .period-switch { background:#fff; border:1px solid var(--line); }
+.page-main .period-switch button { background:#fff; color:#111; border-color:#c5c9d3; }
+.page-main .period-switch button.active { background:#0a0a0a; color:#fff; border-color:#0a0a0a; }
+.page-main .period-switch .ps-label,
+.page-main .period-switch .ps-range { color:#666; }
+.page-main .dept-banner { background:#fff; color:#333; }
+.page-main .meta { color:#666; }
+
 .brand { letter-spacing:.14em; font-weight:600; font-size:10px; text-transform:uppercase; }
 h1 { font-weight:700; letter-spacing:-.04em; }
 .sub { color:var(--muted); }
@@ -487,14 +516,14 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <h1>Audi Baton Rouge</h1>
       <div class="sub">All departments · how your sales team handled unique sales opportunities · VinSolutions · pick a date range below</div>
     </div>
-  <div class="wrap">
-    <div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:25 PM · Use the date-range buttons to switch Rolling 30 / 60 / 90 / Month to date</div>
+  </div>
+  <div class="wrap page-main">
+    <div class="meta page-meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:44 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html" class="on">Store</a><a href="abr-new.html">New</a><a href="abr-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="abr-new.html">New</a> · <a href="abr-used.html">Used</a>.</div>
     <div class="period-switch" role="toolbar" aria-label="Date range"><span class="ps-label">Date range</span><button type="button" data-period="r30" data-range="Rolling 30: Jul 12 – Aug 10, 2026 · vs prior 30 days Jun 12 – Jul 11, 2026" class="active">Rolling 30</button><button type="button" data-period="r60" data-range="Rolling 60: Jun 12 – Aug 10, 2026 · vs prior 60 days Apr 13 – Jun 11, 2026" class="">Rolling 60</button><button type="button" data-period="r90" data-range="Rolling 90: May 13 – Aug 10, 2026 · vs prior 90 days Feb 12 – May 12, 2026" class="">Rolling 90</button><button type="button" data-period="mtd" data-range="Month to date: Aug 1–10, 2026 · vs same days last month Jul 1–10, 2026" class="">Month to date</button><div class="ps-range">Rolling 30: Jul 12 – Aug 10, 2026 · vs prior 30 days Jun 12 – Jul 11, 2026</div></div>
     <div class="period-root print-active" data-period="r30">
-<div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:25 PM</div>
-    <div class="verdict">
+<div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 277 retail workable opportunities (571 unique after de-dupe; Bad excluded; 232 wholesale/acquisition set aside); retail close 9.0% (25 DMS closed · 28 sold-date in VinSolutions); internet is 78.3% of retail workable; internet CRM contact 99.5%; internet median response 14 min; 32.8% of timed internet leads over 30 min (missed goal); 4 workable leads still untouched over 24h; 232 KBB ICO / acquisition leads (cash offer on their car — not retail opps); Audi Partner is 65 opps at 4.6% close — watch list.</div>
       <div class="when">Rolling 30: Jul 12 – Aug 10, 2026 · compared with prior 30 days Jun 12 – Jul 11, 2026</div>
@@ -1311,12 +1340,11 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 5:25 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 17,089 visits · 15,099 people. Generated Aug 11, 2026 5:44 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
 </div><div class="period-root" data-period="r60" hidden>
-<div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:25 PM</div>
-    <div class="period-coverage" role="note"><strong>Data coverage</strong> — Prior window: Lead export only covers May 12 – Aug 10, 2026. This window is partial (effective May 12 – Jun 11, 2026). Closed-deal (DMS) history may still be complete.</div>
+<div class="period-coverage" role="note"><strong>Data coverage</strong> — Prior window: Lead export only covers May 12 – Aug 10, 2026. This window is partial (effective May 12 – Jun 11, 2026). Closed-deal (DMS) history may still be complete.</div>
     <div class="verdict">
       <div class="lbl">Last 60 days at a glance</div>
       <div class="txt">Last 60 days: 589 retail workable opportunities (1198 unique after de-dupe; Bad excluded; 445 wholesale/acquisition set aside); retail close 8.7% (51 DMS closed · 67 sold-date in VinSolutions); internet is 80.6% of retail workable; internet CRM contact 99.8%; internet median response 15 min; 36.3% of timed internet leads over 30 min (missed goal); 5 workable leads still untouched over 24h; 445 KBB ICO / acquisition leads (cash offer on their car — not retail opps); Audi Partner is 189 opps at 3.2% close — watch list.</div>
@@ -2134,12 +2162,11 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people. Generated Aug 11, 2026 5:25 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people. Generated Aug 11, 2026 5:44 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
 </div><div class="period-root" data-period="r90" hidden>
-<div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:25 PM</div>
-    <div class="period-coverage" role="note"><strong>Data coverage</strong> — Prior window: Lead export only covers May 12 – Aug 10, 2026. This window is partial (effective May 12–12, 2026). Closed-deal (DMS) history may still be complete.</div>
+<div class="period-coverage" role="note"><strong>Data coverage</strong> — Prior window: Lead export only covers May 12 – Aug 10, 2026. This window is partial (effective May 12–12, 2026). Closed-deal (DMS) history may still be complete.</div>
     <div class="verdict">
       <div class="lbl">Last 90 days at a glance</div>
       <div class="txt">Last 90 days: 929 retail workable opportunities (1864 unique after de-dupe; Bad excluded; 673 wholesale/acquisition set aside); retail close 8.7% (81 DMS closed · 103 sold-date in VinSolutions); internet is 81.9% of retail workable; internet CRM contact 99.9%; internet median response 12 min; 35.1% of timed internet leads over 30 min (missed goal); 10 workable leads still untouched over 24h; 673 KBB ICO / acquisition leads (cash offer on their car — not retail opps); Audi Partner is 298 opps at 1.7% close — watch list.</div>
@@ -2967,12 +2994,11 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people · GA4 cache has last-30 / last-60 rollups (no dedicated 90d/MTD block yet) — traffic panel uses the best available rollup, not an exact period match. Generated Aug 11, 2026 5:25 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people · GA4 cache has last-30 / last-60 rollups (no dedicated 90d/MTD block yet) — traffic panel uses the best available rollup, not an exact period match. Generated Aug 11, 2026 5:44 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
 </div><div class="period-root" data-period="mtd" hidden>
-<div class="meta">This page is for <strong>Audi Baton Rouge</strong> only · Report as of Aug 11, 2026 · Generated Aug 11, 2026 5:25 PM</div>
-    <div class="verdict">
+<div class="verdict">
       <div class="lbl">Month to date at a glance</div>
       <div class="txt">Month to date: 76 retail workable opportunities (173 unique after de-dupe; Bad excluded; 75 wholesale/acquisition set aside); retail close 2.6% (2 DMS closed · 1 sold-date in VinSolutions); internet is 80.3% of retail workable; internet CRM contact 100.0%; internet median response 13 min; 28.3% of timed internet leads over 30 min (missed goal); 2 workable leads still untouched over 24h; 75 KBB ICO / acquisition leads (cash offer on their car — not retail opps).</div>
       <div class="when">Month to date: Aug 1–10, 2026 · compared with same days last month Jul 1–10, 2026</div>
@@ -3789,7 +3815,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people · GA4 cache has last-30 / last-60 rollups (no dedicated 90d/MTD block yet) — traffic panel uses the best available rollup, not an exact period match. Generated Aug 11, 2026 5:25 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-08-10): 35,453 visits · 31,376 people · GA4 cache has last-30 / last-60 rollups (no dedicated 90d/MTD block yet) — traffic panel uses the best available rollup, not an exact period match. Generated Aug 11, 2026 5:44 PM.
       This page is for Audi Baton Rouge only — no other stores.
     </div>
 </div>
