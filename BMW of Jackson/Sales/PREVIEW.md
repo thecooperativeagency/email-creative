@@ -1,5 +1,8 @@
 # Email Preview
 
+**August 2026 Sales Email**  
+**[👁️ Open Live Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/thecooperativeagency/email-creative/refs/heads/main/BMW%20of%20Jackson/Sales/bmw-jackson-august-2026-email.html)**
+
 **July 2026 Sales Email**  
 **[👁️ Open Live Preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/thecooperativeagency/email-creative/refs/heads/main/BMW%20of%20Jackson/Sales/bmw-jackson-july-2026-email.html)**
 
