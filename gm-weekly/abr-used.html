@@ -282,7 +282,7 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
   .stage-tabs button { padding:8px 10px; max-width:42vw; }
   .stage-tabs button .tl { font-size:11.5px; }
   .tabs-hint { font-size:11.5px; }
-  .tabs-hint::after { content:" Tables scroll inside their frame — headers stay put; swipe sideways on wide boards."; }
+  .tabs-hint::after { content:" Source boards fit the page (no sideways scroll). People boards: swipe if needed; first column stays pinned."; }
   th, td { padding:8px 5px; font-size:12px; }
   .ch-cell { min-width:52px; }
   .table-scroll {
@@ -292,10 +292,17 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
     border-radius:0;
     border-left:none; border-right:none;
   }
+  .table-scroll-fit { overflow-x:hidden; }
   .table-scroll::-webkit-scrollbar { height:6px; width:6px; }
-  table.wide { min-width:560px; }
+  table.sources-board th, table.sources-board td { padding:8px 6px; font-size:12px; }
+  table.sources-board th:nth-child(1), table.sources-board td.src-name { width:32%; }
+  table.sources-board th:nth-child(2) { width:20%; }
+  table.sources-board th:nth-child(3) { width:14%; }
+  table.sources-board th:nth-child(4) { width:34%; }
+  .stack-cell .sv { font-size:13px; }
+  table.wide { min-width:0; width:100%; }
   table.scoreboard { min-width:620px; font-size:11.5px; }
-  table.wide td:first-child, table.wide th:first-child { max-width:160px; min-width:120px; }
+  table.scoreboard td:first-child, table.scoreboard th:first-child { max-width:140px; min-width:100px; }
   .tab-nav-footer { flex-wrap:wrap; }
   .tab-nav-footer button { flex:1 1 auto; min-height:44px; }
   footer { padding:14px 10px 28px; }
@@ -353,7 +360,7 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
 }
 .people-dept-note strong { color:var(--ink); font-weight:700; }
 .table-scroll {
-  /* Scroll window: sideways for width + vertical so thead stays pinned */
+  /* Default: vertical frame + optional sideways only for true wide boards (People) */
   overflow:auto; -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
   margin:6px 0 10px; padding-bottom:0;
@@ -364,6 +371,11 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
   background:var(--card);
   scrollbar-width:thin;
 }
+.table-scroll-fit {
+  /* Fit-width boards (Traffic sources): vertical only — no horizontal scroll */
+  overflow-x:hidden;
+  overflow-y:auto;
+}
 .table-scroll:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .table-scroll > table { margin:0; }
 .table-scroll thead th {
@@ -371,28 +383,55 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
   background:var(--card);
   box-shadow:0 1px 0 var(--line);
 }
-table.wide { min-width:min(100%, 720px); width:max-content; max-width:none; }
-table.scoreboard { font-size:12.5px; min-width:min(100%, 760px); width:max-content; }
-/* Keep first column readable while swiping wide boards */
-table.scoreboard th:first-child, table.scoreboard td:first-child,
-table.wide th:first-child, table.wide td:first-child {
+/* Fit-width source board — 4 columns, stacked metrics, no sideways scroll */
+table.sources-board {
+  width:100%;
+  min-width:0;
+  table-layout:fixed;
+  border-collapse:collapse;
+}
+table.sources-board th, table.sources-board td {
+  white-space:normal;
+  vertical-align:top;
+  padding:10px 8px;
+  overflow-wrap:anywhere;
+}
+table.sources-board th:nth-child(1), table.sources-board td.src-name { width:34%; }
+table.sources-board th:nth-child(2), table.sources-board td.stack-cell:nth-child(2) { width:18%; }
+table.sources-board th:nth-child(3), table.sources-board td.time-cell { width:14%; }
+table.sources-board th:nth-child(4), table.sources-board td.stack-cell:nth-child(4) { width:34%; }
+table.sources-board td.src-name { font-weight:650; }
+table.sources-board td.time-cell {
+  font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.stack-cell .sk {
+  display:block; font-size:10px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--muted); margin-top:5px; line-height:1.15;
+}
+.stack-cell .sk:first-child { margin-top:0; }
+.stack-cell .sv {
+  display:block; font-size:14px; font-weight:800; font-variant-numeric:tabular-nums;
+  color:var(--ink); line-height:1.2;
+}
+table.wide { min-width:0; width:100%; max-width:100%; }
+table.scoreboard { font-size:12.5px; min-width:640px; width:max-content; }
+/* Keep first column readable while swiping People boards only */
+table.scoreboard th:first-child, table.scoreboard td:first-child {
   position:sticky; left:0; z-index:2; background:var(--card);
   box-shadow:4px 0 8px -4px rgba(0,0,0,.14);
 }
-/* Corner cell: sticky top + left above body */
-table.scoreboard thead th:first-child, table.wide thead th:first-child {
+table.scoreboard thead th:first-child {
   z-index:5; background:var(--card);
   box-shadow:4px 0 8px -4px rgba(0,0,0,.14), 0 1px 0 var(--line);
 }
 table.scoreboard tr.red td:first-child { background:#fff1f0; }
 table.scoreboard tr.green td:first-child { background:#f1fbf5; }
 table.scoreboard tr.dim td:first-child { background:var(--card); }
-table.scoreboard tfoot td:first-child, table.scoreboard tr.total-row td:first-child,
-table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { background:#eef1f5; z-index:3; }
-/* Dense source/CTA boards stay usable without blowing page width */
-table.wide th, table.wide td { white-space:nowrap; }
-table.wide td:first-child, table.wide th:first-child {
-  white-space:normal; max-width:220px; min-width:140px;
+table.scoreboard tfoot td:first-child, table.scoreboard tr.total-row td:first-child { background:#eef1f5; z-index:3; }
+/* Only scoreboard keeps forced nowrap density */
+table.scoreboard th, table.scoreboard td { white-space:nowrap; }
+table.scoreboard td:first-child, table.scoreboard th:first-child {
+  white-space:normal; max-width:160px; min-width:110px;
 }
 
 /* Stage tabs — one stage at a time */
@@ -551,7 +590,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap page-main">
-    <div class="meta page-meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Sep 08, 2026 · Generated Sep 08, 2026 11:28 AM</div>
+    <div class="meta page-meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Sep 08, 2026 · Generated Sep 08, 2026 11:55 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html">New</a><a href="abr-used.html" class="on">Used</a></nav>
     <div class="dept-banner"><strong>Used department</strong> — opportunities owned by Used sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="period-switch" role="toolbar" aria-label="Date range"><span class="ps-label">Date range</span><button type="button" data-period="r30" data-range="Rolling 30: Aug 9 – Sep 7, 2026 · vs prior 30 days Jul 10 – Aug 8, 2026" class="active">Rolling 30</button><button type="button" data-period="r60" data-range="Rolling 60: Jul 10 – Sep 7, 2026 · vs prior 60 days May 11 – Jul 9, 2026" class="">Rolling 60</button><button type="button" data-period="r90" data-range="Rolling 90: Jun 10 – Sep 7, 2026 · vs prior 90 days Mar 12 – Jun 9, 2026" class="">Rolling 90</button><button type="button" data-period="mtd" data-range="Month to date: Sep 1–8, 2026 · vs same days last month Aug 1–8, 2026" class="">Month to date</button><div class="ps-range">Rolling 30: Aug 9 – Sep 7, 2026 · vs prior 30 days Jul 10 – Aug 8, 2026</div></div>
@@ -621,24 +660,21 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <h3>Where site traffic came from (top sources)</h3>
       <div class="when">Source / medium · avg time on site · on-site next steps · GA4 2026-08-09 → 2026-09-07</div>
       <div class="why"><strong>How to read this</strong>
-        Visits and people are traffic mix. <strong>Avg time on site</strong> is average visit length for that source.
-        <strong>Vehicle pages</strong> = vehicle detail views. <strong>Main CTAs</strong> = primary button clicks on the site.
-        <strong>Forms started / completed</strong> and <strong>Phone taps</strong> are next-step actions — still not VinSolutions leads.
-        Rows are mix indicators and are <strong>not</strong> required to sum to total site sessions above.</div>
-      <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
+        <strong>Traffic</strong> = visits + people. <strong>Avg time</strong> = average visit length.
+        <strong>Next steps</strong> stacks vehicle-page views, main button clicks, forms, and phone taps — still not VinSolutions leads.
+        Rows are mix indicators and are <strong>not</strong> required to sum to total site sessions above.
+        Board is built to fit the page — scroll vertically inside the frame; no sideways swipe needed.</div>
+      <div class="table-scroll table-scroll-fit" role="region" aria-label="Traffic sources" tabindex="0">
+      <table class="sources-board">
         <thead><tr>
           <th>Source / medium</th>
-          <th class="num">Visits</th>
-          <th class="num">People</th>
+          <th class="num">Traffic</th>
           <th class="num">Avg time</th>
-          <th class="num">Vehicle pages</th>
-          <th class="num">Main CTAs</th>
-          <th class="num">Forms started</th>
-          <th class="num">Forms done</th>
-          <th class="num">Phone taps</th>
+          <th class="num">Next steps</th>
         </tr></thead>
-        <tbody><tr><td>(direct) / (none)</td><td class='num'>6,374</td><td class='num'>5,184</td><td class='num'>2m 06s</td><td class='num'>4,566</td><td class='num'>417</td><td class='num'>41</td><td class='num'>28</td><td class='num'>39</td></tr><tr><td>google / organic</td><td class='num'>3,208</td><td class='num'>1,708</td><td class='num'>5m 34s</td><td class='num'>2,405</td><td class='num'>1,014</td><td class='num'>69</td><td class='num'>48</td><td class='num'>39</td></tr><tr><td>google / cpc</td><td class='num'>2,283</td><td class='num'>1,823</td><td class='num'>2m 21s</td><td class='num'>584</td><td class='num'>289</td><td class='num'>24</td><td class='num'>4</td><td class='num'>25</td></tr><tr><td>(not set) / (not set)</td><td class='num'>863</td><td class='num'>837</td><td class='num'>1m 35s</td><td class='num'>119</td><td class='num'>41</td><td class='num'>2</td><td class='num'>1</td><td class='num'>2</td></tr><tr><td>imasdk.googleapis.com / referral</td><td class='num'>863</td><td class='num'>863</td><td class='num'>0s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>ig / paid</td><td class='num'>822</td><td class='num'>778</td><td class='num'>30s</td><td class='num'>57</td><td class='num'>101</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>fb / paid</td><td class='num'>695</td><td class='num'>667</td><td class='num'>30s</td><td class='num'>39</td><td class='num'>132</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>cdn.flashtalking.com / referral</td><td class='num'>575</td><td class='num'>559</td><td class='num'>28s</td><td class='num'>13</td><td class='num'>10</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>autotrader.com / social</td><td class='num'>474</td><td class='num'>415</td><td class='num'>49s</td><td class='num'>41</td><td class='num'>105</td><td class='num'>3</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>bing / organic</td><td class='num'>381</td><td class='num'>225</td><td class='num'>5m 11s</td><td class='num'>395</td><td class='num'>90</td><td class='num'>7</td><td class='num'>8</td><td class='num'>1</td></tr><tr><td>vinurl.com / referral</td><td class='num'>344</td><td class='num'>256</td><td class='num'>2m 22s</td><td class='num'>125</td><td class='num'>27</td><td class='num'>2</td><td class='num'>3</td><td class='num'>0</td></tr><tr><td>audiusa.com / referral</td><td class='num'>253</td><td class='num'>173</td><td class='num'>7m 13s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>facebook.com / referral</td><td class='num'>98</td><td class='num'>98</td><td class='num'>46s</td><td class='num'>8</td><td class='num'>2</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>(data not available) / (data not available)</td><td class='num'>93</td><td class='num'>93</td><td class='num'>1m 55s</td><td class='num'>12</td><td class='num'>4</td><td class='num'>1</td><td class='num'>0</td><td class='num'>1</td></tr><tr><td>tpc.googlesyndication.com / referral</td><td class='num'>88</td><td class='num'>84</td><td class='num'>7s</td><td class='num'>2</td><td class='num'>3</td><td class='num'>0</td><td class='num'>0</td><td class='num'>1</td></tr><tr><td>m.facebook.com / referral</td><td class='num'>75</td><td class='num'>74</td><td class='num'>4s</td><td class='num'>3</td><td class='num'>2</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>cargurus.com / referral</td><td class='num'>66</td><td class='num'>46</td><td class='num'>4m 04s</td><td class='num'>51</td><td class='num'>26</td><td class='num'>1</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>yahoo / organic</td><td class='num'>58</td><td class='num'>39</td><td class='num'>4m 30s</td><td class='num'>51</td><td class='num'>13</td><td class='num'>0</td><td class='num'>0</td><td class='num'>1</td></tr><tr><td>facebook / paid</td><td class='num'>51</td><td class='num'>51</td><td class='num'>36s</td><td class='num'>2</td><td class='num'>7</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>autotrader.com / referral</td><td class='num'>48</td><td class='num'>31</td><td class='num'>3m 18s</td><td class='num'>55</td><td class='num'>3</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr></tbody>
-      </table></div>
+        <tbody><tr><td class='src-name'>(direct) / (none)</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>6,374</span><span class='sk'>People</span><span class='sv'>5,184</span></td><td class='num time-cell'>2m 06s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>4,566</span><span class='sk'>Main CTAs</span><span class='sv'>417</span><span class='sk'>Forms start</span><span class='sv'>41</span><span class='sk'>Forms done</span><span class='sv'>28</span><span class='sk'>Phone taps</span><span class='sv'>39</span></td></tr><tr><td class='src-name'>google / organic</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>3,208</span><span class='sk'>People</span><span class='sv'>1,708</span></td><td class='num time-cell'>5m 34s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>2,405</span><span class='sk'>Main CTAs</span><span class='sv'>1,014</span><span class='sk'>Forms start</span><span class='sv'>69</span><span class='sk'>Forms done</span><span class='sv'>48</span><span class='sk'>Phone taps</span><span class='sv'>39</span></td></tr><tr><td class='src-name'>google / cpc</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>2,283</span><span class='sk'>People</span><span class='sv'>1,823</span></td><td class='num time-cell'>2m 21s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>584</span><span class='sk'>Main CTAs</span><span class='sv'>289</span><span class='sk'>Forms start</span><span class='sv'>24</span><span class='sk'>Forms done</span><span class='sv'>4</span><span class='sk'>Phone taps</span><span class='sv'>25</span></td></tr><tr><td class='src-name'>(not set) / (not set)</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>863</span><span class='sk'>People</span><span class='sv'>837</span></td><td class='num time-cell'>1m 35s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>119</span><span class='sk'>Main CTAs</span><span class='sv'>41</span><span class='sk'>Forms start</span><span class='sv'>2</span><span class='sk'>Forms done</span><span class='sv'>1</span><span class='sk'>Phone taps</span><span class='sv'>2</span></td></tr><tr><td class='src-name'>imasdk.googleapis.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>863</span><span class='sk'>People</span><span class='sv'>863</span></td><td class='num time-cell'>0s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>ig / paid</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>822</span><span class='sk'>People</span><span class='sv'>778</span></td><td class='num time-cell'>30s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>57</span><span class='sk'>Main CTAs</span><span class='sv'>101</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>fb / paid</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>695</span><span class='sk'>People</span><span class='sv'>667</span></td><td class='num time-cell'>30s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>39</span><span class='sk'>Main CTAs</span><span class='sv'>132</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>cdn.flashtalking.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>575</span><span class='sk'>People</span><span class='sv'>559</span></td><td class='num time-cell'>28s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>13</span><span class='sk'>Main CTAs</span><span class='sv'>10</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>autotrader.com / social</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>474</span><span class='sk'>People</span><span class='sv'>415</span></td><td class='num time-cell'>49s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>41</span><span class='sk'>Main CTAs</span><span class='sv'>105</span><span class='sk'>Forms start</span><span class='sv'>3</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>bing / organic</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>381</span><span class='sk'>People</span><span class='sv'>225</span></td><td class='num time-cell'>5m 11s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>395</span><span class='sk'>Main CTAs</span><span class='sv'>90</span><span class='sk'>Forms start</span><span class='sv'>7</span><span class='sk'>Forms done</span><span class='sv'>8</span><span class='sk'>Phone taps</span><span class='sv'>1</span></td></tr><tr><td class='src-name'>vinurl.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>344</span><span class='sk'>People</span><span class='sv'>256</span></td><td class='num time-cell'>2m 22s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>125</span><span class='sk'>Main CTAs</span><span class='sv'>27</span><span class='sk'>Forms start</span><span class='sv'>2</span><span class='sk'>Forms done</span><span class='sv'>3</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>audiusa.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>253</span><span class='sk'>People</span><span class='sv'>173</span></td><td class='num time-cell'>7m 13s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>facebook.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>98</span><span class='sk'>People</span><span class='sv'>98</span></td><td class='num time-cell'>46s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>8</span><span class='sk'>Main CTAs</span><span class='sv'>2</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>(data not available) / (data not available)</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>93</span><span class='sk'>People</span><span class='sv'>93</span></td><td class='num time-cell'>1m 55s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>12</span><span class='sk'>Main CTAs</span><span class='sv'>4</span><span class='sk'>Forms start</span><span class='sv'>1</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>1</span></td></tr><tr><td class='src-name'>tpc.googlesyndication.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>88</span><span class='sk'>People</span><span class='sv'>84</span></td><td class='num time-cell'>7s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>2</span><span class='sk'>Main CTAs</span><span class='sv'>3</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>1</span></td></tr><tr><td class='src-name'>m.facebook.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>75</span><span class='sk'>People</span><span class='sv'>74</span></td><td class='num time-cell'>4s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>3</span><span class='sk'>Main CTAs</span><span class='sv'>2</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>cargurus.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>66</span><span class='sk'>People</span><span class='sv'>46</span></td><td class='num time-cell'>4m 04s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>51</span><span class='sk'>Main CTAs</span><span class='sv'>26</span><span class='sk'>Forms start</span><span class='sv'>1</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>yahoo / organic</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>58</span><span class='sk'>People</span><span class='sv'>39</span></td><td class='num time-cell'>4m 30s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>51</span><span class='sk'>Main CTAs</span><span class='sv'>13</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>1</span></td></tr><tr><td class='src-name'>facebook / paid</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>51</span><span class='sk'>People</span><span class='sv'>51</span></td><td class='num time-cell'>36s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>2</span><span class='sk'>Main CTAs</span><span class='sv'>7</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>autotrader.com / referral</td><td class='num stack-cell'><span class='sk'>Visits</span><span class='sv'>48</span><span class='sk'>People</span><span class='sv'>31</span></td><td class='num time-cell'>3m 18s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>55</span><span class='sk'>Main CTAs</span><span class='sv'>3</span><span class='sk'>Forms start</span><span class='sv'>0</span><span class='sk'>Forms done</span><span class='sv'>0</span><span class='sk'>Phone taps</span><span class='sv'>0</span></td></tr></tbody>
+      </table>
+      </div>
       <p class="webline">Website traffic mix only — not the same labels as CRM lead sources. No source total row (avoids a sum that can exceed site sessions).</p>
 
       
@@ -667,13 +703,14 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       <div class="why"><strong>How to read this</strong>
         These hosts often appear from video/display ad stacks (for example Flashtalking, IMA SDK).
         They are <strong>candidates only</strong> — do not treat them as confirmed Gray Media traffic until the buy is tagged with a Gray/WAFB source or campaign name.</div>
-      <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
+      <div class="table-scroll table-scroll-fit" role="region" aria-label="Ad-tech referrals" tabindex="0">
+      <table class="sources-board">
         <thead><tr>
-          <th>Referral host</th><th class="num">Visits</th><th class="num">Avg time</th>
-          <th class="num">Vehicle pages</th><th class="num">Main CTAs</th><th class="num">Forms started</th>
+          <th>Referral host</th><th class="num">Visits</th><th class="num">Avg time</th><th class="num">Next steps</th>
         </tr></thead>
-        <tbody><tr><td>imasdk.googleapis.com / referral</td><td class='num'>863</td><td class='num'>0s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>cdn.flashtalking.com / referral</td><td class='num'>575</td><td class='num'>28s</td><td class='num'>13</td><td class='num'>10</td><td class='num'>0</td></tr><tr><td>tpc.googlesyndication.com / referral</td><td class='num'>88</td><td class='num'>7s</td><td class='num'>2</td><td class='num'>3</td><td class='num'>0</td></tr><tr><td>aax.amazon-adsystem.com / referral</td><td class='num'>38</td><td class='num'>0s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>banners2.esm1.net / referral</td><td class='num'>14</td><td class='num'>5s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>desk.thetradedesk.com / referral</td><td class='num'>1</td><td class='num'>2m 27s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr><tr><td>preview-desk.thetradedesk.com / referral</td><td class='num'>1</td><td class='num'>11m 33s</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr></tbody>
-      </table></div>
+        <tbody><tr><td class='src-name'>imasdk.googleapis.com / referral</td><td class='num'>863</td><td class='num time-cell'>0s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>cdn.flashtalking.com / referral</td><td class='num'>575</td><td class='num time-cell'>28s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>13</span><span class='sk'>Main CTAs</span><span class='sv'>10</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>tpc.googlesyndication.com / referral</td><td class='num'>88</td><td class='num time-cell'>7s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>2</span><span class='sk'>Main CTAs</span><span class='sv'>3</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>aax.amazon-adsystem.com / referral</td><td class='num'>38</td><td class='num time-cell'>0s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>banners2.esm1.net / referral</td><td class='num'>14</td><td class='num time-cell'>5s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>desk.thetradedesk.com / referral</td><td class='num'>1</td><td class='num time-cell'>2m 27s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr><tr><td class='src-name'>preview-desk.thetradedesk.com / referral</td><td class='num'>1</td><td class='num time-cell'>11m 33s</td><td class='num stack-cell'><span class='sk'>Vehicle pages</span><span class='sv'>0</span><span class='sk'>Main CTAs</span><span class='sv'>0</span><span class='sk'>Forms start</span><span class='sv'>0</span></td></tr></tbody>
+      </table>
+      </div>
 
 
       
@@ -1371,7 +1408,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-08-08 → 2026-09-06): 17,823 visits · 15,825 people. Generated Sep 08, 2026 11:28 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-08-08 → 2026-09-06): 17,823 visits · 15,825 people. Generated Sep 08, 2026 11:55 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="r60" hidden>
@@ -2152,7 +2189,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-07-09 → 2026-09-06): 35,445 visits · 31,378 people. Generated Sep 08, 2026 11:28 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-07-09 → 2026-09-06): 35,445 visits · 31,378 people. Generated Sep 08, 2026 11:55 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="r90" hidden>
@@ -2933,7 +2970,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-06-09 → 2026-09-06): 53,697 visits · 47,552 people. Generated Sep 08, 2026 11:28 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-06-09 → 2026-09-06): 53,697 visits · 47,552 people. Generated Sep 08, 2026 11:55 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="mtd" hidden>
@@ -3621,7 +3658,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-09-01 → 2026-09-07): 3,989 visits · 3,588 people. Generated Sep 08, 2026 11:28 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-07 · GA4 2026-09-01 → 2026-09-07): 3,989 visits · 3,588 people. Generated Sep 08, 2026 11:55 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div>
