@@ -166,7 +166,7 @@ We are **not** dumping everything into the single Dealer Instructions box. That 
 6. **Truth conflicts before go-live**
    - ABR shuttle/loaner: Podium = no; website marketing = yes/loaner/charger promo. Ops truth?
    - ABR service scope: “Audi only” vs “vehicles not purchased here” — final wording?
-7. **AI display names + clock-stop** — ABR Chloe; HP Kayleigh; BHBMW = Heidi Do AI replies stop the Vin response clock, and how are they labeled vs human?
+7. **AI display names + clock-stop** — ABR = Chloe; BHBMW = Heidi; HP = Kayleigh (confirmed). Do AI replies stop the Vin response clock, and how are they labeled vs human?
 
 ---
 
