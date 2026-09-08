@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VCA Settings Brief — Brian Harris Auto Group · for VinSolutions PM</title>
+<style>
+  :root {
+    --ink: #141414;
+    --muted: #5c5c5c;
+    --line: #e6e6e6;
+    --bg: #fafafa;
+    --card: #fff;
+    --accent: #1a1a1a;
+    --tag: #eef2f7;
+    --ok: #0f6b4c;
+    --warn: #8a5a00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.45;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+  header {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 28px 28px 22px;
+    margin-bottom: 20px;
+  }
+  h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    display: inline-block;
+    background: var(--tag);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #334;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 28px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+  p, li { font-size: 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 12px 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .where {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ok);
+  }
+  .where.alt { color: #1d4f91; }
+  .where.split { color: var(--warn); }
+  .note {
+    background: #fff8e8;
+    border: 1px solid #f0e0b8;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #5a4300;
+  }
+  .store-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .store-head .id { color: var(--muted); font-size: 13px; }
+  ul.tight { margin: 6px 0 0; padding-left: 18px; }
+  ul.tight li { margin: 3px 0; }
+  .topic {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .topic:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+  footer {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  code { font-size: 12px; background: #f3f3f3; padding: 1px 5px; border-radius: 4px; }
+  .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid #ccc; }
+  .toc li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>VCA Settings Brief — Brian Harris Auto Group</h1>
+  <p class="sub">Human-facing working doc for VinSolutions PM review. Source: current Podium Instant Answers + live store policies we want carried into VCA (Chloe / Kayleigh / store AI).</p>
+  <div class="meta">
+    <span class="pill">Stores: ABR · BHBMW · HP</span>
+    <span class="pill">Purpose: map settings → VCA area</span>
+    <span class="pill">Date: Sep 8, 2026</span>
+    <span class="pill">Owner: Lance / Cooperative</span>
+  </div>
+</header>
+
+<div class="card note">
+  <strong>How to use this with Vin PM</strong><br />
+  We are not asking to dump everything into the single “Dealer Instructions” box.
+  That box should stay short and brand-level. The tables below show what belongs in
+  <em>Dealer Instructions</em> vs what should live in Instant Answers, lead-type policies/procedures, or sales-line rules.
+  Please confirm the best VCA home for each row and flag anything Vin cannot support the same way Podium did.
+</div>
+
+<div class="card">
+  <h3>Recommended split</h3>
+  <div class="grid">
+    <div>
+      <p><span class="where">Dealer Instructions</span></p>
+      <ul class="tight">
+        <li>Identity, address, phones, hours</li>
+        <li>Tone / brand posture</li>
+        <li>Hard global rules (no pricing over text, no inventing offers)</li>
+        <li>One-line goal (convert to appointment / handoff)</li>
+      </ul>
+    </div>
+    <div>
+      <p><span class="where alt">Other VCA areas</span></p>
+      <ul class="tight">
+        <li>FAQ Instant Answers (service, deposits, keys, body shop, etc.)</li>
+        <li>Lead-type policies (AFS Off-Lease, KBB ICO, BMW FS NCI, EV sourcing)</li>
+        <li>Sales procedures (two test-drive times, appraisal flow)</li>
+        <li>Channel rules (sales line ≠ service scheduling)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#shared">Shared rules (all three stores)</a></li>
+    <li><a href="#abr">Audi Baton Rouge (ABR) — Chloe</a></li>
+    <li><a href="#bhbmw">Brian Harris BMW (BHBMW)</a></li>
+    <li><a href="#hp">Harris Porsche (HP) — Kayleigh</a></li>
+    <li><a href="#open">Open questions for Vin PM</a></li>
+  </ol>
+</div>
+
+<!-- SHARED -->
+<h2 id="shared">1) Shared rules — all three stores</h2>
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Setting</th><th>Detail</th><th>Suggested VCA home</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>No pricing over text</td>
+        <td>Never quote price, payment, APR, rebate, trade value, or out-the-door figures in chat/SMS.</td>
+        <td><span class="where">Dealer Instructions</span></td>
+      </tr>
+      <tr>
+        <td>No invented offers / inventory</td>
+        <td>Do not invent discounts, incentives, or availability. Point to live specials or a human specialist.</td>
+        <td><span class="where">Dealer Instructions</span></td>
+      </tr>
+      <tr>
+        <td>No negotiation / no competitor bashing</td>
+        <td>AI does not haggle or speak poorly of other dealers.</td>
+        <td><span class="where">Dealer Instructions</span></td>
+      </tr>
+      <tr>
+        <td>Fees language</td>
+        <td>Additional fees = tax, title, licensing only. Do not invent fee amounts.</td>
+        <td><span class="where alt">Instant Answers</span> + short reinforce in Dealer Instructions</td>
+      </tr>
+      <tr>
+        <td>Deposit language</td>
+        <td>Can reserve/hold with deposit; amount varies by vehicle. (HP: deposits nonrefundable if asked.)</td>
+        <td><span class="where alt">Instant Answers</span></td>
+      </tr>
+      <tr>
+        <td>Custom order / in-transit / advance purchase</td>
+        <td>Yes across stores (wording differs slightly by rooftop).</td>
+        <td><span class="where alt">Instant Answers</span></td>
+      </tr>
+      <tr>
+        <td>Lease pull-ahead</td>
+        <td>Yes — route to finance for details.</td>
+        <td><span class="where alt">Instant Answers</span></td>
+      </tr>
+      <tr>
+        <td>Key fobs</td>
+        <td>Yes; key separate from fob; cost varies. Historical avg key ~$300 — do not lock a hard quote.</td>
+        <td><span class="where alt">Instant Answers</span></td>
+      </tr>
+      <tr>
+        <td>Two test-drive times</td>
+        <td>When booking a test drive, offer two specific times (either/or), not “whenever works.”</td>
+        <td><span class="where alt">Sales procedure / policy</span></td>
+      </tr>
+      <tr>
+        <td>Group identity</td>
+        <td>Brian Harris Auto Group / Harris Family Difference — local premium, not volume discount culture.</td>
+        <td><span class="where">Dealer Instructions</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ABR -->
+<h2 id="abr">2) Audi Baton Rouge (ABR) — Chloe</h2>
+<div class="card">
+  <div class="store-head">
+    <div>
+      <h3 style="margin:0">Audi Baton Rouge</h3>
+      <div class="id">11955 Airline Hwy, Baton Rouge, LA 70817 · Sales (225) 686-6012 · audibatonrouge.com</div>
+    </div>
+    <span class="pill">AI name: Chloe</span>
+  </div>
+
+  <div class="topic">
+    <p><span class="where">Dealer Instructions — proposed content</span></p>
+    <ul class="tight">
+      <li>Identity: Audi Baton Rouge, Brian Harris / Harris Family</li>
+      <li>Tone: warm, polished, precise; premium local luxury</li>
+      <li>Hard rules: no pricing over text; no invented offers; hand off cleanly</li>
+      <li>Goal: short replies; convert to showroom / correct department</li>
+      <li>Hours snapshot: Sales Mon–Sat 9–7 (Sun closed); Service/Parts Mon–Fri 7–6, Sat 8–2 (Sun closed)</li>
+    </ul>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">Lead-type policies / procedures (from Podium)</span></p>
+    <table>
+      <thead><tr><th>Trigger</th><th>Behavior we want</th><th>VCA home</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>Afs - Off Lease</code> / AFS off-lease</td>
+          <td>Lease ending in ~3–9 months. Open by acknowledging lease-end. Options: new Audi lease, purchase current vehicle, or different model. Gather year/model/trim/lease-end. Book in-person with sales. Never treat as generic inquiry.</td>
+          <td><span class="where alt">Policy + Vehicle Sales procedure</span></td>
+        </tr>
+        <tr>
+          <td><code>KBB ICO</code> / Kelley Blue Book Instant Cash Offer</td>
+          <td>Acquisition-first. Customer wants cash offer / sell/trade. Collect vehicle details; schedule appraisal. Do <strong>not</strong> pitch selling a car unless customer brings it up. Happy to buy only.</td>
+          <td><span class="where alt">Policy + Acquisitions procedure</span></td>
+        </tr>
+        <tr>
+          <td>Standard sales inquiry</td>
+          <td>Convert online → showroom. Offer two concrete test-drive times up front.</td>
+          <td><span class="where alt">Vehicle Sales procedures</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">Instant Answers / FAQ (from Podium)</span></p>
+    <table>
+      <thead><tr><th>Topic</th><th>Approved answer intent</th></tr></thead>
+      <tbody>
+        <tr><td>Custom order</td><td>Yes — happy to order to spec.</td></tr>
+        <tr><td>Out-of-state</td><td>Yes — must be present in person to purchase.</td></tr>
+        <tr><td>Buy before pickup / in-transit pre-purchase / reserve</td><td>Yes; reserve with deposit; deposit varies.</td></tr>
+        <tr><td>Extra fees</td><td>Tax, title, licensing.</td></tr>
+        <tr><td>Delivery</td><td>Can help arrange delivery of purchased vehicle; client advisor handles details.</td></tr>
+        <tr><td>Service scope</td><td>Audi vehicles only.</td></tr>
+        <tr><td>Service non-purchased vehicles</td><td>Yes for vehicles not bought here (still within service capability rules).</td></tr>
+        <tr><td>Body shop</td><td>Yes — fully equipped body/collision center.</td></tr>
+        <tr><td>Parts / keys</td><td>Genuine parts yes; key fobs yes (key separate; cost varies).</td></tr>
+        <tr><td>Oil change</td><td>Appt recommended (not required); online or call service.</td></tr>
+        <tr><td>Overnight drop-off</td><td>Yes — secure area.</td></tr>
+        <tr><td>Shuttle / rental while in service</td><td>No shuttle currently. No rental cars from us. <em>(Note: website marketing mentions shuttle/loaner — confirm live ops truth with store before Instant Answer final.)</em></td></tr>
+        <tr><td>Lease apply / pull-ahead</td><td>Apply via site or store; pull-ahead via finance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- BHBMW -->
+<h2 id="bhbmw">3) Brian Harris BMW (BHBMW)</h2>
+<div class="card">
+  <div class="store-head">
+    <div>
+      <h3 style="margin:0">Brian Harris BMW</h3>
+      <div class="id">12336 Airline Hwy, Baton Rouge, LA 70817 · Sales (877) 391-3018 · Main/Service (225) 754-1200 · brianharrisbmw.com</div>
+    </div>
+    <span class="pill">AI name: TBD in VCA</span>
+  </div>
+
+  <div class="topic">
+    <p><span class="where">Dealer Instructions — proposed content</span></p>
+    <ul class="tight">
+      <li>Identity: Brian Harris BMW, Brian Harris / Harris Family</li>
+      <li>Tone: warm, confident premium BMW; local and professional</li>
+      <li>Hard rules: no pricing over text; no invented offers; hand off cleanly</li>
+      <li>Goal: short replies; book visit or route to correct person</li>
+      <li>Hours snapshot: Sales Mon–Sat 9–7 (Sun closed); Service/Parts Mon–Fri 7–6, Sat 8–4 (Sun closed)</li>
+    </ul>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">People directory (Instant Answers or roster tool)</span></p>
+    <table>
+      <thead><tr><th>Role</th><th>Name / reach</th></tr></thead>
+      <tbody>
+        <tr><td>New car sales managers</td><td>Darrell Franklin, Luke To — (225) 754-1200, press 0, ask receptionist</td></tr>
+        <tr><td>Used car sales managers</td><td>Jason Breaux, Carly Boos — (225) 754-1200, press 0</td></tr>
+        <tr><td>Service manager</td><td>April Bower — (225) 754-1200, press 4, ask for April</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">NCI / outbound-style openers (from Podium)</span></p>
+    <table>
+      <thead><tr><th>Trigger</th><th>Message intent</th><th>VCA home</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>BMW FS loan NCI</td>
+          <td>Loan almost paid off → great position to upgrade, sometimes similar/lower payment. Invite a look.</td>
+          <td><span class="where alt">Campaign / NCI template or lead policy</span></td>
+        </tr>
+        <tr>
+          <td>BMW FS lease NCI</td>
+          <td>Lease coming up → best time for upgrade/equity review.</td>
+          <td><span class="where alt">Campaign / NCI template or lead policy</span></td>
+        </tr>
+        <tr>
+          <td>BMW FS CPO warranty NCI</td>
+          <td>CPO warranty nearing expiration → explore options; offer visit or phone outreach.</td>
+          <td><span class="where alt">Campaign / NCI template or lead policy</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">Instant Answers / FAQ (from Podium)</span></p>
+    <table>
+      <thead><tr><th>Topic</th><th>Approved answer intent</th></tr></thead>
+      <tbody>
+        <tr><td>Custom order</td><td>Yes. Timeline: verify with manager — do not guess.</td></tr>
+        <tr><td>Out-of-state</td><td>Yes — must complete purchase in person; no remote purchase process.</td></tr>
+        <tr><td>Buy before pickup / in-transit / reserve</td><td>Yes; deposit varies.</td></tr>
+        <tr><td>Delivery</td><td>Do <strong>not</strong> offer vehicle delivery.</td></tr>
+        <tr><td>Shipping</td><td>Can help find a shipping provider.</td></tr>
+        <tr><td>Extra fees</td><td>Tax, title, licensing.</td></tr>
+        <tr><td>Service scope</td><td>Most makes/models; some cases better at manufacturer center.</td></tr>
+        <tr><td>Body shop</td><td>Yes.</td></tr>
+        <tr><td>Oil change</td><td><strong>Appointment required</strong> — call (225) 754-1200 or online scheduler.</td></tr>
+        <tr><td>Overnight drop-off</td><td>Yes — secure area.</td></tr>
+        <tr><td>Shuttle / rental</td><td>No shuttle. No rental cars from us.</td></tr>
+        <tr><td>“BMW 4” interest</td><td>Clarify M440i / 430i / i4 direction, then check inventory.</td></tr>
+        <tr><td>Parts / keys / lease</td><td>Genuine parts; key fobs yes; lease via site/store; pull-ahead via finance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- HP -->
+<h2 id="hp">4) Harris Porsche (HP) — Kayleigh</h2>
+<div class="card">
+  <div class="store-head">
+    <div>
+      <h3 style="margin:0">Harris Porsche</h3>
+      <div class="id">12326 Airline Hwy, Baton Rouge, LA 70817 · (225) 372-3825 · Service text (225) 475-3174 · harris.porsche.com</div>
+    </div>
+    <span class="pill">AI name: Kayleigh</span>
+  </div>
+
+  <div class="topic">
+    <p><span class="where">Dealer Instructions — proposed content</span></p>
+    <ul class="tight">
+      <li>Identity: Harris Porsche only (Porsche brand). Est. 1989. Brian Harris Auto Group.</li>
+      <li>Tone: restrained premium — precise, calm, confident</li>
+      <li>Hard rules: no pricing over text; no invented offers; sales-line posture</li>
+      <li>Critical channel rule (also needs strong global policy): <strong>this is a sales line — do not schedule service here</strong></li>
+      <li>Hours snapshot: Sales Mon–Fri 9–7, Sat 9–6 (Sun closed); Service/Parts Mon–Fri 7:30–5, Sat 8–12 (Sun closed)</li>
+    </ul>
+  </div>
+
+  <div class="topic">
+    <p><span class="where split">Must-have policies (Podium hard lessons)</span></p>
+    <table>
+      <thead><tr><th>Rule</th><th>Required behavior</th><th>VCA home</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>No service scheduling on sales line</td>
+          <td>If customer asks to schedule/reschedule/cancel service or sends service details: do not collect appt data. Redirect to service <strong>(225) 372-3825</strong> (text <strong>225-475-3174</strong> ok). Share service hours if useful.</td>
+          <td><span class="where alt">Global policy</span> (+ reinforce in Dealer Instructions)</td>
+        </tr>
+        <tr>
+          <td>EV vs hybrid clarification</td>
+          <td>If customer wants full-electric and stock is hybrid-only/unclear: clarify E-Hybrid is plug-in hybrid, not full EV; admit full EV may be unavailable; offer brand ambassador to find/build EV; present hybrid only if customer is open.</td>
+          <td><span class="where alt">Vehicle Sales policy + EV procedure</span></td>
+        </tr>
+        <tr>
+          <td>No body shop</td>
+          <td>Do not claim collision/body repairs in-house. Direct body work appropriately (Custom Colors relationship). Mechanical/routine service can still help after body work elsewhere.</td>
+          <td><span class="where alt">Instant Answers</span> (already corrected in Podium)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="topic">
+    <p><span class="where alt">Instant Answers / FAQ (from Podium)</span></p>
+    <table>
+      <thead><tr><th>Topic</th><th>Approved answer intent</th></tr></thead>
+      <tbody>
+        <tr><td>Brands sold</td><td>Porsche only.</td></tr>
+        <tr><td>Custom / advance / in-transit / reserve</td><td>Yes; reserve with deposit strongly recommended; deposit varies; deposits nonrefundable.</td></tr>
+        <tr><td>Out-of-state</td><td>Yes.</td></tr>
+        <tr><td>Extra fees</td><td>Tax, title, licensing.</td></tr>
+        <tr><td>Delivery / shipping</td><td>Typically no shipping; happy to help find a carrier.</td></tr>
+        <tr><td>Service scope</td><td>Most makes/models for mechanical/routine; some better at manufacturer center. Not purchased here: mechanical OK; no body work.</td></tr>
+        <tr><td>Body / collision</td><td>No in-house body shop. Work with Custom Colors in Baton Rouge.</td></tr>
+        <tr><td>Oil change</td><td>Appt recommended; online or call service 225-372-3825 / text 225-475-3174.</td></tr>
+        <tr><td>Overnight drop-off</td><td>Yes — secure area.</td></tr>
+        <tr><td>Shuttle / rental</td><td>No shuttle. No rental cars from us.</td></tr>
+        <tr><td>Parts / keys / lease</td><td>Genuine parts; key fobs yes; lease via site/store; pull-ahead via finance.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- OPEN -->
+<h2 id="open">5) Open questions for VinSolutions PM</h2>
+<div class="card">
+  <ol>
+    <li><strong>Dealer Instructions character limit / best practice:</strong> What should stay in the global dealer-instructions field vs Instant Answers vs playbooks so we don’t overload one box?</li>
+    <li><strong>Lead-string detection:</strong> Can VCA reliably branch on lead text containing <code>Afs - Off Lease</code>, <code>KBB ICO</code>, and BMW FS NCI labels the same way Podium policies did?</li>
+    <li><strong>Sales-line service block:</strong> Confirm a hard global policy can prevent service appointment collection on sales traffic (HP requirement).</li>
+    <li><strong>EV ambassador handoff:</strong> Supported pattern for “offer brand ambassador outreach” when full EV isn’t available?</li>
+    <li><strong>Two test-drive slots:</strong> Preferred way to enforce either/or scheduling language in sales procedures.</li>
+    <li><strong>Truth conflicts to resolve with store ops before go-live:</strong>
+      <ul class="tight">
+        <li>ABR shuttle/loaner: Podium Instant Answer = no shuttle / no rental; website marketing mentions shuttle/loaner / free charger promo. Which is live ops truth for AI?</li>
+        <li>ABR service scope: “Audi only” vs “can work on vehicles not purchased here” — confirm final wording.</li>
+      </ul>
+    </li>
+    <li><strong>AI display names:</strong> ABR = Chloe; HP = Kayleigh; BHBMW = ? Confirm naming + whether AI replies stop the Vin response clock and how they’re labeled vs human.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>What we want from this review</h3>
+  <ul class="tight">
+    <li>Green-light the shared hard rules and per-store identity/tone for Dealer Instructions.</li>
+    <li>Map each lead-type and FAQ row to the correct VCA configuration surface.</li>
+    <li>Call out anything Vin cannot mirror from Podium so we redesign before full cutover.</li>
+    <li>Leave Instant Answers / procedures as the home for long FAQ detail — keep Dealer Instructions concise.</li>
+  </ul>
+</div>
+
+<footer>
+  Prepared for VinSolutions PM working session · Brian Harris Auto Group · Cooperative Agency<br />
+  Sources: Podium Instant Answers exports (ABR, BHBMW, HP) + live store contact/hours pages · Sep 8, 2026
+</footer>
+
+</div>
+</body>
+</html>
