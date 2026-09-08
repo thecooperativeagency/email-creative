@@ -2,7 +2,7 @@
 **For:** VinSolutions PM review  
 **Date:** Sep 8, 2026  
 **Owner:** Lance / Cooperative  
-**Stores:** ABR (Chloe) · BHBMW · HP (Kayleigh)
+**Stores:** ABR (Chloe) · BHBMW (Heidi) · HP (Kayleigh)
 
 Live HTML: https://thecooperativeagency.github.io/email-creative/vca-settings/
 
@@ -83,7 +83,7 @@ We are **not** dumping everything into the single Dealer Instructions box. That 
 **Sales:** (877) 391-3018 · **Main/Service:** (225) 754-1200  
 **Site:** brianharrisbmw.com  
 **Hours:** Sales Mon–Sat 9–7 (Sun closed) · Service/Parts Mon–Fri 7–6, Sat 8–4 (Sun closed)  
-**AI name:** TBD in VCA
+**AI name:** Heidi
 
 ### Dealer Instructions — proposed
 - Identity: Brian Harris BMW, Brian Harris / Harris Family
@@ -166,7 +166,7 @@ We are **not** dumping everything into the single Dealer Instructions box. That 
 6. **Truth conflicts before go-live**
    - ABR shuttle/loaner: Podium = no; website marketing = yes/loaner/charger promo. Ops truth?
    - ABR service scope: “Audi only” vs “vehicles not purchased here” — final wording?
-7. **AI display names + clock-stop** — ABR Chloe; HP Kayleigh; BHBMW = ? Do AI replies stop the Vin response clock, and how are they labeled vs human?
+7. **AI display names + clock-stop** — ABR Chloe; HP Kayleigh; BHBMW = Heidi? Do AI replies stop the Vin response clock, and how are they labeled vs human?
 
 ---
 
