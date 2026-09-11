@@ -282,16 +282,27 @@ footer { text-align:center; color:#98a0ad; font-size:12px; padding:18px; }
   .stage-tabs button { padding:8px 10px; max-width:42vw; }
   .stage-tabs button .tl { font-size:11.5px; }
   .tabs-hint { font-size:11.5px; }
-  .tabs-hint::after { content:" Wide tables: swipe sideways. First column stays pinned."; }
+  .tabs-hint::after { content:" Source boards fit the page (no sideways scroll). People boards: swipe if needed; first column stays pinned."; }
   th, td { padding:8px 5px; font-size:12px; }
   .ch-cell { min-width:52px; }
   .table-scroll {
-    margin-left:-12px; margin-right:-12px; padding-left:12px; padding-right:12px;
+    margin-left:-12px; margin-right:-12px; padding-left:0; padding-right:0;
     max-width:calc(100% + 24px);
+    max-height:min(58vh, 460px);
+    border-radius:0;
+    border-left:none; border-right:none;
   }
-  .table-scroll::-webkit-scrollbar { height:6px; }
-  table.wide { min-width:580px; }
-  table.scoreboard { min-width:640px; font-size:11.5px; }
+  .table-scroll-fit { overflow-x:hidden; }
+  .table-scroll::-webkit-scrollbar { height:6px; width:6px; }
+  table.sources-board th, table.sources-board td { padding:8px 6px; font-size:12px; }
+  table.sources-board th:nth-child(1), table.sources-board td.src-name { width:32%; }
+  table.sources-board th:nth-child(2) { width:20%; }
+  table.sources-board th:nth-child(3) { width:14%; }
+  table.sources-board th:nth-child(4) { width:34%; }
+  .stack-cell .sv { font-size:13px; }
+  table.wide { min-width:0; width:100%; }
+  table.scoreboard { min-width:620px; font-size:11.5px; }
+  table.scoreboard td:first-child, table.scoreboard th:first-child { max-width:140px; min-width:100px; }
   .tab-nav-footer { flex-wrap:wrap; }
   .tab-nav-footer button { flex:1 1 auto; min-height:44px; }
   footer { padding:14px 10px 28px; }
@@ -349,25 +360,120 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
 }
 .people-dept-note strong { color:var(--ink); font-weight:700; }
 .table-scroll {
-  overflow-x:auto; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
-  margin:6px 0 10px; padding-bottom:6px; max-width:100%;
+  /* Default: vertical frame + optional sideways only for true wide boards (People) */
+  overflow:auto; -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  margin:6px 0 10px; padding-bottom:0;
+  max-width:100%;
+  max-height:min(62vh, 520px);
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--card);
   scrollbar-width:thin;
 }
+.table-scroll-fit {
+  /* Fit-width boards (Traffic sources): vertical only — no horizontal scroll */
+  overflow-x:hidden;
+  overflow-y:auto;
+}
 .table-scroll:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
-table.wide { min-width:640px; }
-table.scoreboard { font-size:12.5px; min-width:700px; }
-/* Keep first column readable while swiping wide boards */
-table.scoreboard th:first-child, table.scoreboard td:first-child,
-table.wide th:first-child, table.wide td:first-child {
+.table-scroll > table { margin:0; }
+.table-scroll thead th {
+  position:sticky; top:0; z-index:4;
+  background:var(--card);
+  box-shadow:0 1px 0 var(--line);
+}
+/* Fit-width source board — 4 columns, stacked metrics, no sideways scroll */
+table.sources-board {
+  width:100%;
+  min-width:0;
+  table-layout:fixed;
+  border-collapse:collapse;
+}
+table.sources-board th, table.sources-board td {
+  white-space:normal;
+  vertical-align:top;
+  padding:10px 8px;
+  overflow-wrap:anywhere;
+}
+table.sources-board th:nth-child(1), table.sources-board td.src-name { width:34%; }
+table.sources-board th:nth-child(2), table.sources-board td.stack-cell:nth-child(2) { width:18%; }
+table.sources-board th:nth-child(3), table.sources-board td.time-cell { width:14%; }
+table.sources-board th:nth-child(4), table.sources-board td.stack-cell:nth-child(4) { width:34%; }
+table.sources-board td.src-name { font-weight:650; }
+table.sources-board td.time-cell {
+  font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.stack-cell .sk {
+  display:block; font-size:10px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--muted); margin-top:5px; line-height:1.15;
+}
+.stack-cell .sk:first-child { margin-top:0; }
+.stack-cell .sv {
+  display:block; font-size:14px; font-weight:800; font-variant-numeric:tabular-nums;
+  color:var(--ink); line-height:1.2;
+}
+/* Multi-metric source visuals: small-multiple horizontal bars (not spider) */
+.hbar-wrap {
+  margin:8px 0 14px; padding:12px 10px 12px;
+  border:1px solid var(--line); border-radius:12px; background:#fafbfc;
+  max-width:100%;
+}
+.hbar-title {
+  font-size:14px; font-weight:800; text-align:center; margin:0 0 10px; color:var(--ink);
+}
+.hbar-grid {
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+.hbar-panel {
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 8px 6px;
+  min-width:0;
+}
+.hbar-panel-head {
+  display:flex; align-items:center; gap:6px; margin:0 0 4px; font-size:12px;
+}
+.hbar-panel-head strong { font-weight:800; color:var(--ink); }
+.hbar-peak { margin-left:auto; color:var(--muted); font-size:11px; font-weight:600; }
+.hbar-swatch {
+  width:10px; height:10px; border-radius:2px; flex:0 0 auto;
+}
+.hbar-svg { display:block; width:100%; height:auto; }
+.hbar-label { font-size:9.5px; font-weight:650; fill:#3d4654; }
+.hbar-val { font-size:9px; font-weight:700; fill:#6b7280; }
+.hbar-note {
+  text-align:center; font-size:12px; color:var(--muted); margin-top:10px; line-height:1.4;
+  max-width:44rem; margin-left:auto; margin-right:auto;
+}
+@media (max-width:860px) {
+  .hbar-grid { grid-template-columns:1fr; }
+}
+@media print {
+  .hbar-wrap { break-inside:avoid; }
+}
+/* legacy spider classes kept harmless if old HTML cached */
+.spider-wrap { display:none; }
+table.wide { min-width:0; width:100%; max-width:100%; }
+table.scoreboard { font-size:12.5px; min-width:640px; width:max-content; }
+/* Keep first column readable while swiping People boards only */
+table.scoreboard th:first-child, table.scoreboard td:first-child {
   position:sticky; left:0; z-index:2; background:var(--card);
   box-shadow:4px 0 8px -4px rgba(0,0,0,.14);
 }
-table.scoreboard thead th:first-child, table.wide thead th:first-child { z-index:3; background:var(--card); }
+table.scoreboard thead th:first-child {
+  z-index:5; background:var(--card);
+  box-shadow:4px 0 8px -4px rgba(0,0,0,.14), 0 1px 0 var(--line);
+}
 table.scoreboard tr.red td:first-child { background:#fff1f0; }
 table.scoreboard tr.green td:first-child { background:#f1fbf5; }
 table.scoreboard tr.dim td:first-child { background:var(--card); }
-table.scoreboard tfoot td:first-child, table.scoreboard tr.total-row td:first-child,
-table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { background:#eef1f5; z-index:3; }
+table.scoreboard tfoot td:first-child, table.scoreboard tr.total-row td:first-child { background:#eef1f5; z-index:3; }
+/* Only scoreboard keeps forced nowrap density */
+table.scoreboard th, table.scoreboard td { white-space:nowrap; }
+table.scoreboard td:first-child, table.scoreboard th:first-child {
+  white-space:normal; max-width:160px; min-width:110px;
+}
 
 /* Stage tabs — one stage at a time */
 .stage-tabs-wrap { position:sticky; top:0; z-index:40; background:var(--bg); padding:10px 0 8px; margin:0 0 12px; border-bottom:1px solid var(--line); }
@@ -407,14 +513,14 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Sep 07, 2026 · Generated Sep 07, 2026 7:02 AM</div>
+    <div class="meta">This page is for <strong>BMW of Jackson</strong> only · Report as of Sep 11, 2026 · Generated Sep 11, 2026 7:02 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="bmwj.html" class="on">Store</a><a href="bmwj-new.html">New</a><a href="bmwj-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="bmwj-new.html">New</a> · <a href="bmwj-used.html">Used</a>.</div>
-    <div class="period-coverage" role="note"><strong>Data coverage</strong> — Lead export has no rows in this range (export Jun 23 – Jul 23, 2026). Prior window: Lead export only covers Jun 23 – Jul 23, 2026. This window is partial (effective Jul 9–23, 2026). Closed-deal (DMS) history may still be complete.</div>
+    <div class="period-coverage" role="note"><strong>Data coverage</strong> — Lead export has no rows in this range (export Jun 23 – Jul 23, 2026). Prior window: Lead export only covers Jun 23 – Jul 23, 2026. This window is partial (effective Jul 13–23, 2026). Closed-deal (DMS) history may still be complete.</div>
     <div class="verdict">
       <div class="lbl">Last 30 days at a glance</div>
       <div class="txt">Last 30 days: 0 retail workable opportunities (0 unique after de-dupe; Bad excluded); contact/response-time fields not in this CRM export — handling speed not graded.</div>
-      <div class="when">Rolling 30: Aug 8 – Sep 6, 2026 · compared with prior 30 days Jul 9 – Aug 7, 2026</div>
+      <div class="when">Rolling 30: Aug 12 – Sep 10, 2026 · compared with prior 30 days Jul 13 – Aug 11, 2026</div>
     </div>
 
     <p class="tabs-hint">Funnel stages are tabs — click through Traffic → Inventory → Demand shape → Leads → Handling → People. Print still shows every stage.</p>
@@ -451,18 +557,20 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     </div>
     <section class="block">
       <h2>Total website traffic picture</h2>
-      <div class="when">Google Analytics · last ~30 days in cache dated 2026-09-07 · align with CRM window <strong>Aug 8 – Sep 6, 2026</strong> where possible</div>
+      <div class="when">Google Analytics · last ~30 days in cache dated 2026-09-11 · align with CRM window <strong>Aug 12 – Sep 10, 2026</strong> where possible</div>
       <div class="why"><strong>What this means</strong>
         This is the top of the sales funnel: how much store-site demand you are generating.
         Traffic alone is not leads — next is what the store has to sell (active inventory), then how demand becomes CRM opportunities
         (website forms, 3rd-party portals, then phone and walk-in).</div>
       <div class="stat-grid">
-        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">29,147</div>
+        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">29,073</div>
           <div class="s">One visit = one trip to the site</div></div>
-        <div class="stat"><div class="k">People (users)</div><div class="v">25,781</div>
+        <div class="stat"><div class="k">People (users)</div><div class="v">25,665</div>
           <div class="s">Unique visitors</div></div>
-        <div class="stat"><div class="k">Page views</div><div class="v">56,851</div>
+        <div class="stat"><div class="k">Page views</div><div class="v">56,513</div>
           <div class="s">1.9 pages per visit</div></div>
+        <div class="stat"><div class="k">Avg time on site</div><div class="v">2m 03s</div>
+          <div class="s">Average visit length (GA4 session duration)</div></div>
         <div class="stat"><div class="k">Engagement rate</div><div class="v">38.1%</div>
           <div class="s">Visits with meaningful activity</div></div>
         <div class="stat"><div class="k">Bounce rate</div><div class="v">61.9%</div>
@@ -470,14 +578,17 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <div class="stat"><div class="k">Mobile share</div><div class="v">77.0%</div>
           <div class="s">Visits from phones/tablets</div></div>
       </div>
+      
       <h3>Where site traffic came from (top sources)</h3>
       <div class="why"><strong>How to read this</strong>
         Top source/medium rows from the GA4 cache. These are mix indicators — they are <strong>not</strong> required to sum to total site sessions above (attribution overlap and cache windows differ).</div>
       <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
         <thead><tr><th>Source / medium</th><th class="num">Sessions (row)</th><th class="num">People (row)</th></tr></thead>
-        <tbody><tr><td>google / cpc</td><td class='num'>51,902</td><td class='num'>35,260</td></tr><tr><td>(direct) / (none)</td><td class='num'>14,707</td><td class='num'>11,537</td></tr><tr><td>google / organic</td><td class='num'>9,774</td><td class='num'>4,897</td></tr><tr><td>facebook / cpc</td><td class='num'>5,252</td><td class='num'>4,243</td></tr><tr><td>(not set) / (not set)</td><td class='num'>1,210</td><td class='num'>1,106</td></tr><tr><td>bing / organic</td><td class='num'>971</td><td class='num'>486</td></tr><tr><td>fb / paid</td><td class='num'>562</td><td class='num'>549</td></tr><tr><td>(data not available) / (data not available)</td><td class='num'>438</td><td class='num'>432</td></tr></tbody>
+        <tbody><tr><td>google / cpc</td><td class='num'>51,565</td><td class='num'>35,255</td></tr><tr><td>(direct) / (none)</td><td class='num'>14,886</td><td class='num'>11,872</td></tr><tr><td>google / organic</td><td class='num'>9,730</td><td class='num'>4,881</td></tr><tr><td>facebook / cpc</td><td class='num'>5,267</td><td class='num'>4,259</td></tr><tr><td>(not set) / (not set)</td><td class='num'>1,191</td><td class='num'>1,089</td></tr><tr><td>bing / organic</td><td class='num'>946</td><td class='num'>486</td></tr><tr><td>fb / paid</td><td class='num'>562</td><td class='num'>549</td></tr><tr><td>(data not available) / (data not available)</td><td class='num'>458</td><td class='num'>452</td></tr></tbody>
       </table></div>
       <p class="webline">Website traffic mix only — not the same labels as CRM lead sources. No source total row (avoids a sum that can exceed site sessions).</p>
+
+      
       
     </section>
 
@@ -496,7 +607,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     </div>
     <section class="block">
       <h2>Partial inventory export</h2>
-      <div class="when">Focus file bmwj-inventory-latest.csv · as of Jul 23, 2026 3:39 PM · lead window <strong>Aug 8 – Sep 6, 2026</strong></div>
+      <div class="when">Focus file bmwj-inventory-latest.csv · as of Jul 23, 2026 3:39 PM · lead window <strong>Aug 12 – Sep 10, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         File returned 10 units (New 10 · Used 0 · CPO 0).
         Export looks smaller than a full store lot — treat as the units in this file, not necessarily every unit in DMS.
@@ -519,7 +630,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>What cars people asked about</h2>
-      <div class="when">Workable opportunities · <strong>Aug 8 – Sep 6, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Aug 12 – Sep 10, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         Vehicle of interest on the lead when CRM has it. Helps with stocking and coaching — not a sold report.</div>
       <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
@@ -527,7 +638,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <tbody></tbody>
       </table></div>
       <div class="sub">
-        <h3>Top vehicles of interest <span class="when-inline">Aug 8 – Sep 6, 2026</span></h3>
+        <h3>Top vehicles of interest <span class="when-inline">Aug 12 – Sep 10, 2026</span></h3>
         <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
           <thead><tr><th>Year / make / model</th><th class="num">Opps</th><th class="num">Share</th></tr></thead>
           <tbody><tr><td colspan='3'>None listed</td></tr></tbody>
@@ -537,7 +648,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>Trade-ins mentioned</h2>
-      <div class="when">Workable opportunities · <strong>Aug 8 – Sep 6, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Aug 12 – Sep 10, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         — of workable opportunities included a trade vehicle.
         Higher trade rates often signal more serious shoppers.</div>
@@ -556,11 +667,11 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     <div class="funnel-stage">
       <div class="n">Stage 3 · Demand becomes leads</div>
       <div class="t">CRM opportunities from website + 3rd parties</div>
-      <div class="d">Unique sales opportunities (de-duped) created in Focus for Aug 8 – Sep 6, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in — including full source detail on this tab.</div>
+      <div class="d">Unique sales opportunities (de-duped) created in Focus for Aug 12 – Sep 10, 2026. Website and marketplace demand show up as internet forms, then also as phone and walk-in — including full source detail on this tab.</div>
     </div>
     <section class="block">
       <h2>Lead volume entering the funnel</h2>
-      <div class="when">Unique opportunities · <strong>Aug 8 – Sep 6, 2026</strong> · de-duped · retail workable = excl. Bad + excl. KBB ICO acquisition</div>
+      <div class="when">Unique opportunities · <strong>Aug 12 – Sep 10, 2026</strong> · de-duped · retail workable = excl. Bad + excl. KBB ICO acquisition</div>
       <div class="why"><strong>What this means</strong>
         CRM sales opportunities after de-dupe. Same shopper is not counted three times as internet + phone + walk-in.
         Retail workable drops Bad junk and KBB ICO (acquisition — they want a value on their car, not a retail buy).</div>
@@ -570,7 +681,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <div class="stat"><div class="k">Retail workable</div><div class="v">0</div>
           <div class="s">Excl. Bad (0) · excl. acquisition (0)</div></div>
         <div class="stat"><div class="k">Retail sold</div><div class="v">0</div>
-          <div class="s">Retail close — of 0 retail workable</div></div>
+          <div class="s">Focus retail sold · close — of 0 retail workable</div></div>
         <div class="stat"><div class="k">Delivered</div><div class="v">0</div>
           <div class="s">CRM status Delivered · of retail sold</div></div>
         <div class="stat"><div class="k">On Order</div><div class="v">0</div>
@@ -684,7 +795,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
       
     <section class="block">
       <h2>Source detail</h2>
-      <div class="when">Unique workable opportunities · <strong>Aug 8 – Sep 6, 2026</strong> · de-duped · same funnel window · Close = sold ÷ opps · Response = average adjusted minutes (over 4 hours dropped from average) · Contact blank — not in Focus export</div>
+      <div class="when">Unique workable opportunities · <strong>Aug 12 – Sep 10, 2026</strong> · de-duped · same funnel window · Close = sold ÷ opps · Response = average adjusted minutes (over 4 hours dropped from average) · Contact blank — not in Focus export</div>
       <div class="why"><strong>What this means</strong>
         Drill-down on <strong>where demand came from</strong> — owned website vs Autotrader/KBB vs other portals vs OEM/brand digital, then phone and walk-in. High volume + low close often means a <em>source quality</em> issue. Whether the team worked those leads fast belongs on the <strong>Handling</strong> tab. Dealer website includes Motive, Remora, store-domain forms/chat, and on-site quote tools. Autotrader/KBB is one 3rd party with many of their own channels.
         Response sits next to close so you can see whether slow first touch lines up with weak conversion. * on response = half or more timed values are 0 (common on phone/walk-in — weak signal).</div>
@@ -699,7 +810,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
       </table></div>
 
       <h3>2) Internet broken down</h3>
-      <div class="when" style="margin-top:-2px">Families inside internet · Aug 8 – Sep 6, 2026</div>
+      <div class="when" style="margin-top:-2px">Families inside internet · Aug 12 – Sep 10, 2026</div>
       
       
       <p class='meta'>No other internet families.</p>
@@ -722,7 +833,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>Pertinent handling numbers</h2>
-      <div class="when">Date range: <strong>Aug 8 – Sep 6, 2026</strong> (vs prior 30 days <strong>Jul 9 – Aug 7, 2026</strong>)</div>
+      <div class="when">Date range: <strong>Aug 12 – Sep 10, 2026</strong> (vs prior 30 days <strong>Jul 13 – Aug 11, 2026</strong>)</div>
       <div class="why"><strong>What this section is</strong>
         Handling grades for <strong>rolling 30</strong> on <strong>unique opportunities</strong> after de-dupe.
         Bad CRM leads are excluded. Contact and speed grades appear only when the CRM export includes attempt fields.</div>
@@ -732,7 +843,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <div class="metric-top">
           <div>
             <div class="m-label">1) Contact / response speed</div>
-            <div class="m-when">Not available in this Focus export · Aug 8 – Sep 6, 2026</div>
+            <div class="m-when">Not available in this Focus export · Aug 12 – Sep 10, 2026</div>
           </div>
           <div class="badge">—</div>
         </div>
@@ -747,17 +858,17 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <div class="metric-top">
           <div>
             <div class="m-label">2) Retail close rate</div>
-            <div class="m-when">Retail sold ÷ retail workable · wholesale separate · Aug 8 – Sep 6, 2026</div>
+            <div class="m-when">Focus retail sold ÷ retail workable · wholesale separate · Aug 12 – Sep 10, 2026</div>
           </div>
           <div class="badge">—</div>
         </div>
         <div class="m-value">—</div>
-        <div class="m-delta">vs prior 30 days: — · Prior (Jul 9 – Aug 7, 2026): 26.6%<br/>
-          Retail sold: 0 of 0 retail workable · Delivered 0 · On Order 0 · Open (retail): 0</div>
+        <div class="m-delta">vs prior 30 days: — · Prior (Jul 13 – Aug 11, 2026): 24.1%<br/>
+          Retail sold (Focus): 0 of 0 retail workable · Delivered 0 · On Order 0 · Open (retail): 0</div>
         <div class="why"><strong>What this means</strong>
-          Retail close only — KBB ICO acquisition and wholesale/auction DMS solds are on the Leads tab and excluded from this grade.
+          Headline close uses <strong>Focus lead export</strong> retail sold ÷ retail workable (Motosnap leads email). DMS deals are optional — used only when that file covers this window.
+          Retail close only — KBB ICO acquisition and wholesale/auction solds stay on the Leads tab and out of this grade.
           <strong>On Order</strong> is still a retail sold (customer has a car ordered) — counted in close, broken out from Delivered.
-          Useful for source quality; not the only measure of sales performance (inventory and desking matter too).
           Rough store-level bands used here: ≥8% good · 5–8% watch · under 5% problem.</div>
         
       </div>
@@ -766,12 +877,12 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
         <div class="metric-top">
           <div>
             <div class="m-label">3) Open pipeline</div>
-            <div class="m-when">Workable opps still Open in CRM status · as of Sep 07, 2026</div>
+            <div class="m-when">Workable opps still Open in CRM status · as of Sep 11, 2026</div>
           </div>
           <div class="badge">—</div>
         </div>
         <div class="m-value">0</div>
-        <div class="m-delta">Of 0 workable unique opportunities in Aug 8 – Sep 6, 2026</div>
+        <div class="m-delta">Of 0 workable unique opportunities in Aug 12 – Sep 10, 2026</div>
         <div class="why"><strong>What this means</strong>
           Still-open opportunities in the export window. Not the same as “untouched” — open can mean actively worked.
           Use the People scoreboard for who owns the volume.</div>
@@ -781,7 +892,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>How the team is trying to reach customers</h2>
-      <div class="when">Workable opportunities · <strong>Aug 8 – Sep 6, 2026</strong></div>
+      <div class="when">Workable opportunities · <strong>Aug 12 – Sep 10, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         Share of opportunities where phone, email, or text attempts were logged. Multi-channel = two or more methods on the same opportunity. This is handling effort mix — not demand shape.</div>
       <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
@@ -798,7 +909,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>Needs attention</h2>
-      <div class="when">Based on unique opportunities in <strong>Aug 8 – Sep 6, 2026</strong></div>
+      <div class="when">Based on unique opportunities in <strong>Aug 12 – Sep 10, 2026</strong></div>
       <div class="why"><strong>What this means</strong>
         Handling problems to bring into the next sales meeting — slow or no-attempt work, untouched leads, named coaching flags.
         Source mix and close-by-origin live on the <strong>Leads</strong> tab.</div>
@@ -820,7 +931,7 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
 
     <section class="block">
       <h2>Sales team scoreboard</h2>
-      <div class="when">Workable unique opportunities · <strong>Aug 8 – Sep 6, 2026</strong> · split by Focus team · most sold first</div>
+      <div class="when">Workable unique opportunities · <strong>Aug 12 – Sep 10, 2026</strong> · split by Focus team · most sold first</div>
       <div class="people-dept-switch" role="navigation" aria-label="People department"><span class="people-dept-label">Team view</span><a href="bmwj.html#people" class="on">Store</a><a href="bmwj-new.html#people">New</a><a href="bmwj-used.html#people">Used</a><span class="people-dept-note">Store = New + Used together</span></div>
       <p>No salespeople in window.</p>
       <div class="legend" role="note"><div class="legend-title">Scoreboard legend</div><div class="legend-items"><div class="legend-item"><span class="legend-swatch lg-green" aria-hidden="true"></span><div class="legend-copy"><strong>Green row</strong><span>Overall close rate 14% or higher</span></div></div><div class="legend-item"><span class="legend-swatch lg-red" aria-hidden="true"></span><div class="legend-copy"><strong>Red row</strong><span>Overall close rate under 14%</span></div></div><div class="legend-item"><span class="legend-swatch lg-dim" aria-hidden="true"></span><div class="legend-copy"><strong>Gray row</strong><span>Fewer than 3 workable leads, or system / unassigned</span></div></div><div class="legend-item"><span class="legend-swatch lg-sort" aria-hidden="true"></span><div class="legend-copy"><strong>Sort order</strong><span>Most units sold at the top inside each team group (New Sales first, then Used)</span></div></div><div class="legend-item"><span class="legend-swatch lg-note" aria-hidden="true"></span><div class="legend-copy"><strong>Avg response</strong><span>Internet timed leads only · average drops responses over 4 hours (overnight/slow-tail outliers) · % ≤15 still uses all timed</span></div></div></div></div>
@@ -846,14 +957,14 @@ table.wide tfoot td:first-child, table.wide tr.total-row td:first-child { backgr
     </div>
     <div class="foot">
       <strong>Date ranges on this page</strong><br/>
-      <strong>Rolling 30:</strong> Aug 8 – Sep 6, 2026.<br/>
-      <strong>Prior 30 days:</strong> Jul 9 – Aug 7, 2026.<br/>
+      <strong>Rolling 30:</strong> Aug 12 – Sep 10, 2026.<br/>
+      <strong>Prior 30 days:</strong> Jul 13 – Aug 11, 2026.<br/>
       Organized as a sales funnel: website traffic → inventory health (active lot) → demand shape (VOI / trades) → CRM opportunities (site + 3rd party → internet/phone/walk-in) → handling quality (including how the team tries to reach customers) → salesperson execution. Unique opportunities after de-dupe (VIN/stock within 7 days, or same salesperson + day + vehicle).
       Internet + phone + walk-in on the same shopper counts as one.
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses Focus live-lot units when an inventory export is present.
-      Lead data: Focus. Website traffic (GA4 cache 2026-09-07 · GA4 2026-08-08 → 2026-09-06): 29,147 visits · 25,781 people. Generated Sep 07, 2026 7:02 AM.
+      Lead data: Focus. Website traffic (GA4 cache 2026-09-11 · GA4 2026-08-12 → 2026-09-10): 29,073 visits · 25,665 people. Generated Sep 11, 2026 7:02 AM.
       This page is for BMW of Jackson only — no other stores.
     </div>
   </div>
