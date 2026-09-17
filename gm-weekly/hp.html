@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>GM Weekly — Harris Porsche</title>
 <style>
-:root { --accent:#b12a2a; --ink:#111; --muted:#5b6472; --line:#e5e7eb; --bg:#f3f4f6; --card:#fff;
+:root { --accent:#C8102E; --ink:#111; --muted:#5b6472; --line:#e5e7eb; --bg:#f3f4f6; --card:#fff;
   --good:#0f7b3a; --goodbg:#e9f8ef; --warn:#9a6700; --warnbg:#fff7e6; --bad:#b42318; --badbg:#fdeceb; }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); line-height:1.45; }
@@ -503,38 +503,39 @@ table.scoreboard td:first-child, table.scoreboard th:first-child {
   .top.has-photo::before { display:none; }
 }
 
-/* BMW / brianharrisbmw.com skin */
+/* Harris Porsche — Guards red + gold */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 :root {
-  --accent:#1C69D3;
-  --ink:#221F1F;
-  --muted:#727171;
-  --line:#EBEBEB;
-  --bg:#F6F6F6;
+  --accent:#C8102E;
+  --gold:#C5A572;
+  --ink:#1A1A1A;
+  --muted:#6B6560;
+  --line:#E8E2D9;
+  --bg:#F7F5F0;
   --card:#FFFFFF;
-  --radius:0px;
+  --radius:2px;
   --font:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 * { box-sizing:border-box; }
 body { font-family:var(--font); background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
 .top { border-bottom:4px solid var(--accent); }
-.top:not(.has-photo) { background:#fff; }
-.brand { letter-spacing:.12em; font-weight:600; font-size:10px; }
-h1 { font-weight:700; letter-spacing:-.03em; }
+.top:not(.has-photo) { background:#fff; border-bottom:4px solid var(--accent); box-shadow:inset 0 -2px 0 var(--gold); }
+.brand { letter-spacing:.14em; font-weight:650; font-size:10px; color:var(--gold); }
+h1 { font-weight:750; letter-spacing:-.03em; }
 .sub { color:var(--muted); }
-.verdict { border-radius:var(--radius); background:#221F1F; }
+.verdict { border-radius:var(--radius); background:#1A1A1A; border-top:3px solid var(--gold); }
 .block, .metric, .stat, .why, .group-block h3, .buckets .b, .col-help div {
   border-radius:var(--radius) !important;
 }
 .block { border-color:var(--line); box-shadow:none; }
-.funnel-stage { border-radius:var(--radius); background:#221F1F; }
+.funnel-stage { border-radius:var(--radius); background:#1A1A1A; border-left:4px solid var(--accent); }
 .stat { background:#fff; border-color:var(--line); }
 .stat .k { letter-spacing:.08em; color:var(--muted); }
 .stat .v { letter-spacing:-.03em; color:var(--ink); }
 .badge { border-radius:0; letter-spacing:.08em; }
 .stage-tabs-wrap {
-  background:rgba(246,246,246,.96);
-  backdrop-filter:saturate(1.1) blur(8px);
+  background:rgba(247,245,240,.97);
+  backdrop-filter:saturate(1.05) blur(8px);
   border-bottom:1px solid var(--line);
   padding:12px 0 0;
 }
@@ -560,44 +561,19 @@ h1 { font-weight:700; letter-spacing:-.03em; }
   color:var(--ink);
   border-color:var(--line);
   border-bottom:3px solid var(--accent);
-  box-shadow:none;
+  box-shadow:inset 0 -1px 0 var(--gold);
 }
 .stage-tabs button.active .tn { color:var(--accent); opacity:1; }
 .stage-tabs button.active .tl { color:var(--ink); }
+.dept-switch a.on, .people-dept-switch a.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+.dept-switch a:hover, .people-dept-switch a:hover { border-color:var(--gold); color:var(--accent); }
 .tab-nav-footer button {
-  border-radius:0; border:1px solid var(--line); background:#fff; font-weight:600; letter-spacing:.02em;
+  border-radius:var(--radius); border:1px solid var(--line); background:#fff; font-weight:600;
 }
 .tab-nav-footer button:hover { border-color:var(--accent); color:var(--accent); }
-.group-block h3 { background:#F0F2F5; border-left:4px solid var(--accent); border-radius:0; }
-th { letter-spacing:.08em; font-weight:600; }
-table.scoreboard { font-size:12px; min-width:720px; }
-.table-scroll {
-  overflow:auto; -webkit-overflow-scrolling:touch; margin:0 -2px;
-  max-height:min(62vh, 520px);
-}
-.table-scroll thead th {
-  position:sticky; top:0; z-index:4; background:var(--card);
-  box-shadow:0 1px 0 var(--line);
-}
-.th-sub { display:block; font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:2px; }
-.ch-cell { text-align:right; vertical-align:middle; min-width:64px; }
-.ch-cell .ch-n { display:block; font-weight:750; font-variant-numeric:tabular-nums; color:var(--ink); line-height:1.2; }
-.ch-cell .ch-unit { font-weight:600; font-size:10px; color:var(--muted); }
-.ch-cell .ch-s { display:block; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); margin-top:2px; }
-.ch-cell .ch-c { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:1px; }
-.ch-cell.dim-ch .ch-n, .ch-cell.dim-ch .ch-s, .ch-cell.dim-ch .ch-c { opacity:.35; }
-td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
-.avg-main { display:block; font-weight:750; font-variant-numeric:tabular-nums; }
-.avg-sub { display:block; font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; margin-top:2px; line-height:1.25; }
-tr.total-row td .ch-n { font-weight:850; }
-.dept-pill {
-  display:inline-block; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
-  padding:2px 7px; border-radius:999px; margin-right:6px; vertical-align:middle;
-}
-.dept-pill.dept-new { background:#e8f1ff; color:#0b5fff; border:1px solid #b7d0ff; }
-.dept-pill.dept-used { background:#eaf8ef; color:#0f7a3a; border:1px solid #b7e4c7; }
-.people-group h3 { position:sticky; top:52px; z-index:5; }
-footer { letter-spacing:.04em; }
+.group-block h3 { background:#F0EBE3; border-left:4px solid var(--accent); border-radius:0; }
+.metric-top .v { color:var(--ink); }
+a { color:var(--accent); }
 </style>
 </head>
 <body>
@@ -609,7 +585,7 @@ footer { letter-spacing:.04em; }
     </div>
   </div>
   <div class="wrap">
-    <div class="meta">This page is for <strong>Harris Porsche</strong> only · Report as of Sep 17, 2026 · Generated Sep 17, 2026 3:08 PM</div>
+    <div class="meta">This page is for <strong>Harris Porsche</strong> only · Report as of Sep 17, 2026 · Generated Sep 17, 2026 3:23 PM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="hp.html" class="on">Store</a><a href="hp-new.html">New</a><a href="hp-used.html">Used</a></nav>
     <div class="dept-banner muted">Store collective — all departments. Department deep-dives: <a href="hp-new.html">New</a> · <a href="hp-used.html">Used</a>.</div>
     
@@ -649,8 +625,44 @@ footer { letter-spacing:.04em; }
     <div class="funnel-stage">
       <div class="n">Stage 1 · Top of funnel</div>
       <div class="t">Website traffic</div>
-      <div class="d">GA4 cache not available in this build — inventory + lead funnel still stand on VinSolutions data for Aug 18 – Sep 16, 2026.</div>
+      <div class="d">People visiting harrisporsche.com before any CRM lead is created.</div>
     </div>
+    <section class="block">
+      <h2>Total website traffic picture</h2>
+      <div class="when">Google Analytics · last ~30 days in cache dated 2026-09-17 · align with CRM window <strong>Aug 18 – Sep 16, 2026</strong> where possible</div>
+      <div class="why"><strong>What this means</strong>
+        This is the top of the sales funnel: how much store-site demand you are generating.
+        Traffic alone is not leads — next is what the store has to sell (active inventory), then how demand becomes CRM opportunities
+        (website forms, 3rd-party portals, then phone and walk-in).</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Visits (sessions)</div><div class="v">1,152</div>
+          <div class="s">One visit = one trip to the site</div></div>
+        <div class="stat"><div class="k">People (users)</div><div class="v">997</div>
+          <div class="s">Unique visitors</div></div>
+        <div class="stat"><div class="k">Page views</div><div class="v">6,129</div>
+          <div class="s">5.3 pages per visit</div></div>
+        <div class="stat"><div class="k">Avg time on site</div><div class="v">3m 31s</div>
+          <div class="s">Average visit length (GA4 session duration)</div></div>
+        <div class="stat"><div class="k">Engagement rate</div><div class="v">74.0%</div>
+          <div class="s">Visits with meaningful activity</div></div>
+        <div class="stat"><div class="k">Bounce rate</div><div class="v">26.0%</div>
+          <div class="s">Left after one page — lower is usually better</div></div>
+        <div class="stat"><div class="k">Mobile share</div><div class="v">69.7%</div>
+          <div class="s">Visits from phones/tablets</div></div>
+      </div>
+      
+      <h3>Where site traffic came from (top sources)</h3>
+      <div class="why"><strong>How to read this</strong>
+        Top source/medium rows from the GA4 cache. These are mix indicators — they are <strong>not</strong> required to sum to total site sessions above (attribution overlap and cache windows differ).</div>
+      <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table>
+        <thead><tr><th>Source / medium</th><th class="num">Sessions (row)</th><th class="num">People (row)</th></tr></thead>
+        <tbody><tr><td>google / organic / ?</td><td class='num'>390</td><td class='num'>278</td></tr><tr><td>google / cpc / ?</td><td class='num'>304</td><td class='num'>260</td></tr><tr><td>(direct) / (none) / ?</td><td class='num'>229</td><td class='num'>135</td></tr><tr><td>(not set) / ?</td><td class='num'>82</td><td class='num'>80</td></tr><tr><td>l.facebook.com / referral / ?</td><td class='num'>51</td><td class='num'>36</td></tr><tr><td>bing / organic / ?</td><td class='num'>30</td><td class='num'>23</td></tr><tr><td>instagram.com / referral / ?</td><td class='num'>30</td><td class='num'>21</td></tr><tr><td>lm.facebook.com / referral / ?</td><td class='num'>25</td><td class='num'>21</td></tr></tbody>
+      </table></div>
+      <p class="webline">Website traffic mix only — not the same labels as CRM lead sources. No source total row (avoids a sum that can exceed site sessions).</p>
+
+      
+      
+    </section>
 
       <div class="tab-nav-footer">
         <span></span>
@@ -1151,7 +1163,7 @@ footer { letter-spacing:.04em; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions.  Generated Sep 17, 2026 3:08 PM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-09-17 · GA4 2026-08-18 → 2026-09-16): 1,152 visits · 997 people. Generated Sep 17, 2026 3:23 PM.
       This page is for Harris Porsche only — no other stores.
     </div>
   </div>
