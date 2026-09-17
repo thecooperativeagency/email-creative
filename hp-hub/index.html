@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Harris Porsche · Coop operator home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f4f2;
+      --panel: #ffffff;
+      --ink: #121212;
+      --dim: #4a4a4a;
+      --mute: #6b6b6b;
+      --line: #e4e2de;
+      --line-soft: #eeece8;
+      --accent: #b0122a;
+      --accent-soft: rgba(176, 18, 42, 0.08);
+      --accent-bd: rgba(176, 18, 42, 0.22);
+      --navy: #1a1a1a;
+      --blue: #2a4a6b;
+      --blue-soft: rgba(42, 74, 107, 0.08);
+      --blue-bd: rgba(42, 74, 107, 0.22);
+      --green: #15803d;
+      --shadow: 0 1px 2px rgba(18, 18, 18, 0.04), 0 10px 28px rgba(18, 18, 18, 0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(900px 420px at 0% -10%, rgba(176, 18, 42, 0.05), transparent 55%),
+        radial-gradient(700px 380px at 100% 0%, rgba(42, 74, 107, 0.04), transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { max-width: 880px; margin: 0 auto; padding: 1.35rem 1.1rem 3rem; }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1.15rem;
+    }
+    .brand h1 {
+      font-size: clamp(1.35rem, 3.2vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+    }
+    .brand .sub {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+    .brand .one {
+      color: var(--dim);
+      font-size: 0.92rem;
+      margin-top: 0.45rem;
+      max-width: 34rem;
+      font-weight: 500;
+    }
+    .meta {
+      text-align: right;
+      color: var(--mute);
+      font-size: 0.75rem;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+    }
+    .meta .store {
+      color: var(--ink);
+      font-weight: 700;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 720px) {
+      .modules { grid-template-columns: 1fr; }
+      .meta { text-align: left; width: 100%; }
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.15rem 1.2rem 1.2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      min-height: 100%;
+    }
+    .card.acquire { border-top: 3px solid var(--accent); }
+    .card.weekly { border-top: 3px solid var(--blue); }
+
+    .kicker {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .card.acquire .kicker { color: var(--accent); }
+    .card.weekly .kicker { color: var(--blue); }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .card .copy {
+      color: var(--dim);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 0.15rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      min-height: 42px;
+      padding: 0.6rem 0.95rem;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+    }
+    .btn:hover { border-color: #bbb; }
+    .btn-primary {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #2a2a2a;
+      border-color: #2a2a2a;
+      color: #fff;
+    }
+    .card.acquire .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .card.acquire .btn-primary:hover {
+      background: #961022;
+      border-color: #961022;
+    }
+    .card.weekly .btn-primary {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .card.weekly .btn-primary:hover {
+      background: #1f3a54;
+      border-color: #1f3a54;
+    }
+
+    .sublinks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+    }
+    .btn-sub {
+      min-height: 36px;
+      font-size: 0.8rem;
+      font-weight: 650;
+      background: var(--line-soft);
+      border-color: transparent;
+      color: var(--dim);
+    }
+    .btn-sub:hover {
+      background: #e8e6e1;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      color: var(--mute);
+      line-height: 1.4;
+    }
+    .note .pill {
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--line-soft);
+      color: var(--mute);
+    }
+    .note .pill.gate {
+      background: var(--accent-soft);
+      border-color: var(--accent-bd);
+      color: var(--accent);
+    }
+    .note .pill.pending {
+      background: #fff8e8;
+      border-color: #f0d27a;
+      color: #8a6100;
+    }
+
+    .foot {
+      margin-top: 2rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      text-align: center;
+    }
+    .foot img {
+      height: 28px;
+      width: auto;
+      display: block;
+      max-width: 200px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+    .foot .legal {
+      color: var(--mute);
+      font-size: 0.68rem;
+      line-height: 1.45;
+      max-width: 420px;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div class="brand">
+        <h1>Harris Porsche · Coop operator home</h1>
+        <div class="sub">Single store · managers</div>
+        <p class="one">Morning opportunities and lead-handling in one place — same product family as Acquire Desk and GM Weekly.</p>
+      </div>
+      <div class="meta">
+        <div class="store">Harris Porsche</div>
+        <div>Operator home</div>
+      </div>
+    </header>
+
+    <main class="modules" aria-label="Harris Porsche tools">
+      <section class="card acquire">
+        <div>
+          <div class="kicker">Module 1</div>
+          <h2>Acquire Desk</h2>
+        </div>
+        <p class="copy">Morning opportunities — who to call, why they’re warm, and who owns them. Open the Harris Porsche desk board.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://coopacquire.com/desk/hp/" rel="noopener">
+            Open Acquire Desk
+          </a>
+          <p class="note">
+            <span class="pill gate">Sign in</span>
+            <span>Gated board. Browser will ask for desk login. Vanity path <code>/hp</code> pending — use this desk link.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="card weekly">
+        <div>
+          <div class="kicker">Module 2</div>
+          <h2>GM Weekly</h2>
+        </div>
+        <p class="copy">Lead handling over the last 30 days — contact, speed, and who is working the book. Store pack plus New and Used.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://thecooperativeagency.github.io/email-creative/gm-weekly/hp.html" rel="noopener">
+            Open GM Weekly · Store
+          </a>
+          <div class="sublinks">
+            <a class="btn btn-sub" href="https://thecooperativeagency.github.io/email-creative/gm-weekly/hp-new.html" rel="noopener">New</a>
+            <a class="btn btn-sub" href="https://thecooperativeagency.github.io/email-creative/gm-weekly/hp-used.html" rel="noopener">Used</a>
+          </div>
+          <p class="note">
+            <span class="pill pending">Pending</span>
+            <span>HP GM Weekly pages not live yet. Links are wired for when the pack ships.</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <img src="assets/coop-agency-logo.png" alt="The Cooperative Agency" class="coop-mark" width="180" height="28" />
+      <p class="legal">Harris Porsche operator home · The Cooperative Agency. Acquire Desk™ and GM Weekly are Coop products. Porsche is a mark of its owner.</p>
+    </footer>
+  </div>
+</body>
+</html>
