@@ -8,6 +8,7 @@
     :root {
       --blue:#1c69d4; --ink:#111; --muted:#5b6472; --line:#dde1e8; --bg:#f4f6f9;
       --card:#fff; --good:#137333; --warn:#8a6100; --bmw:#06101d; --audi:#111;
+      --porsche:#1a0a0c;
     }
     * { box-sizing:border-box; }
     body {
@@ -70,6 +71,7 @@
     .group.bmw .group-head { background:var(--bmw); }
     .group.audi .group-head { background:var(--audi); }
     .group.jackson .group-head { background:#10233f; }
+    .group.porsche .group-head { background:var(--porsche); border-bottom:2px solid #C5A572; }
     .group-body { padding:14px; display:grid; gap:12px; }
     .row {
       border:1px solid var(--line); border-radius:12px; padding:14px; background:#fbfcfe;
@@ -108,6 +110,7 @@
       <a href="#bhbmw">Brian Harris BMW</a>
       <a href="#abr">Audi Baton Rouge</a>
       <a href="#bmwj">BMW of Jackson</a>
+      <a href="#hp">Harris Porsche</a>
       <a href="#all-links">All quick links</a>
     </div>
   </header>
@@ -224,6 +227,42 @@
     </div>
   </section>
 
+  <section class="section" id="hp">
+    <h2>Harris Porsche</h2>
+    <span>GM Weekly live · BHBMW-simple (no DMS / Partner / multi-period)</span>
+  </section>
+  <section class="group porsche">
+    <div class="group-head">
+      <h3>Harris Porsche</h3>
+      <span>VinSolutions · single-store shares only</span>
+    </div>
+    <div class="group-body">
+      <div class="row">
+        <div class="card-top">
+          <div>
+            <h4>GM Weekly</h4>
+            <p>Lead handling · Store / New / Used · rolling 30 days</p>
+          </div>
+          <div class="tags"><span class="tag tag-weekly">GM Weekly</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-open" href="gm-weekly/hp.html">Store</a>
+          <a class="btn btn-ghost" href="gm-weekly/hp-new.html">New</a>
+          <a class="btn btn-ghost" href="gm-weekly/hp-used.html">Used</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card-top">
+          <div>
+            <h4>Annual Inventory</h4>
+            <p>Not live yet — needs HP Annual Inventory feed (same pattern as BHBMW).</p>
+          </div>
+          <div class="tags"><span class="tag tag-store">Pending feed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="all-links">
     <h2>All quick links</h2>
     <span>flat list for fast open</span>
@@ -241,6 +280,7 @@
         <a class="btn btn-open" href="gm-weekly/bhbmw.html">BHBMW</a>
         <a class="btn btn-open" href="gm-weekly/abr.html">ABR</a>
         <a class="btn btn-open" href="gm-weekly/bmwj.html">BMWJ</a>
+        <a class="btn btn-open" href="gm-weekly/hp.html">HP</a>
       </div>
     </article>
     <article class="card">
@@ -271,6 +311,8 @@
         <a class="btn btn-ghost" href="gm-weekly/abr-used.html">ABR Used</a>
         <a class="btn btn-ghost" href="gm-weekly/bmwj-new.html">BMWJ New</a>
         <a class="btn btn-ghost" href="gm-weekly/bmwj-used.html">BMWJ Used</a>
+        <a class="btn btn-ghost" href="gm-weekly/hp-new.html">HP New</a>
+        <a class="btn btn-ghost" href="gm-weekly/hp-used.html">HP Used</a>
       </div>
     </article>
     <article class="card">
