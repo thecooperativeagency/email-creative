@@ -136,6 +136,8 @@
       min-height: 100%;
     }
     .card.alt { background: var(--section-alt); }
+    .card.featured { grid-column: 1 / -1; }
+    .card.review { background: var(--section-alt); }
 
     .kicker {
       font-size: 11px;
@@ -260,34 +262,20 @@
       </div>
     </header>
 
+    <!-- verify: hp-hub-ia-v2-acquire-first -->
     <section class="hero">
       <p class="eyebrow">Morning desk</p>
       <h1 class="display">Harris Porsche.</h1>
       <p class="lead">
-        Magazine, Acquire, lead handling, and the vendor brief — one Harris Porsche home.
-        Built by The Cooperative for this rooftop only.
+        Acquire first — the daily lever. Then GM Weekly and the systems brief.
+        Magazine sits last for review. Built by The Cooperative for this rooftop only.
       </p>
     </section>
 
     <main class="modules" aria-label="Harris Porsche tools">
-      <section class="card">
+      <section class="card featured">
         <div>
-          <div class="kicker">01 · Magazine</div>
-          <h2>The Driver’s Cut</h2>
-        </div>
-        <p class="copy">
-          Harris Porsche letter — live on thedriverscut.com. Homepage, Issue 1, and Issue 1.2.
-        </p>
-        <div class="actions">
-          <a class="button" href="https://thedriverscut.com/" rel="noopener">Open magazine home</a>
-          <a class="button ghost" href="https://thedriverscut.com/issues/1.2/" rel="noopener">Issue 1.2</a>
-          <a class="button ghost" href="https://thedriverscut.com/issues/01/" rel="noopener">Issue 01</a>
-        </div>
-      </section>
-
-      <section class="card">
-        <div>
-          <div class="kicker">02 · Service drive</div>
+          <div class="kicker">01 · Daily lever</div>
           <h2>Acquire Desk</h2>
         </div>
         <p class="copy">
@@ -303,9 +291,9 @@
         </div>
       </section>
 
-      <section class="card alt">
+      <section class="card">
         <div>
-          <div class="kicker">03 · Lead handling</div>
+          <div class="kicker">02 · Lead handling</div>
           <h2>GM Weekly</h2>
         </div>
         <p class="copy">
@@ -319,16 +307,33 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card alt">
         <div>
-          <div class="kicker">04 · Systems</div>
+          <div class="kicker">03 · Systems</div>
           <h2>Vendor brief</h2>
         </div>
         <p class="copy">
-          Harris Porsche contacts, systems, costs, and meeting notes — this rooftop only.
+          What’s live at Harris Porsche this month — Vin, VCA, Podium, website, and who to call.
         </p>
         <div class="actions">
           <a class="button ghost" href="https://thecooperativeagency.github.io/vendor-briefs/harris-porsche.html" rel="noopener">Open HP vendor brief</a>
+        </div>
+      </section>
+
+      <section class="card featured review">
+        <div>
+          <div class="kicker">04 · Review</div>
+          <h2>The Driver’s Cut</h2>
+        </div>
+        <p class="copy">
+          Harris Porsche letter — live on thedriverscut.com. Homepage, Issue 1, and Issue 1.2.
+        </p>
+        <div class="actions">
+          <a class="button ghost" href="https://thedriverscut.com/" rel="noopener">Open magazine home</a>
+          <div class="sublinks">
+            <a class="button sub" href="https://thedriverscut.com/issues/1.2/" rel="noopener">Issue 1.2</a>
+            <a class="button sub" href="https://thedriverscut.com/issues/01/" rel="noopener">Issue 01</a>
+          </div>
         </div>
       </section>
     </main>
