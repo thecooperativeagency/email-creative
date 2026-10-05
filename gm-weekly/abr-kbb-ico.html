@@ -3,76 +3,363 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Audi Baton Rouge · KBB ICO desk</title>
+<title>Audi Baton Rouge · KBB Instant Cash Offer</title>
 <style>
-:root { --fg:#111; --muted:#666; --accent:#bb0a30; --line:#ddd; --card:#fff; }
+:root {
+  --fg:#111;
+  --muted:#5c5c5c;
+  --faint:#8a8a8a;
+  --accent:#bb0a21;
+  --line:#e4e4e2;
+  --card:#fff;
+  --bg:#f3f3f1;
+}
 * { box-sizing:border-box; }
-body { margin:0; color:var(--fg); background:#f4f4f4; font:16px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; }
-.wrap { max-width:920px; margin:0 auto; padding:20px 16px 48px; }
-h1 { font-size:1.45rem; margin:0 0 6px; letter-spacing:-.02em; }
-h2 { font-size:1.05rem; margin:22px 0 8px; }
-.meta { color:var(--muted); font-size:.88rem; }
-.why { background:#fff; border:1px solid var(--line); padding:12px 14px; margin:12px 0; }
-.why strong { display:block; text-transform:uppercase; font-size:.72rem; letter-spacing:.06em; margin-bottom:4px; }
-.stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:12px 0; }
-@media (min-width:720px) { .stat-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
-.stat { background:#fff; border:1px solid var(--line); padding:12px; }
-.stat .k { font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
-.stat .v { font-size:1.55rem; font-weight:700; margin:4px 0 2px; }
-.stat .s { font-size:.8rem; color:var(--muted); }
-table { width:100%; border-collapse:collapse; background:#fff; font-size:.92rem; }
-th, td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
-th { font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+html, body { margin:0; }
+body {
+  color:var(--fg);
+  background:var(--bg);
+  font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.wrap { max-width:980px; margin:0 auto; padding:20px 16px 56px; }
+.badge {
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:4px 8px;
+}
+.kicker {
+  margin:14px 0 4px;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+h1 { font-size:1.15rem; margin:0 0 18px; letter-spacing:-.02em; font-weight:650; }
+.period-input {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
+.periods {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 18px;
+}
+.periods label {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--fg);
+  min-height:44px;
+  min-width:44px;
+  padding:8px 14px;
+  font:650 14px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  cursor:pointer;
+  border-radius:2px;
+}
+.panel { display:none; }
+#win-r90:checked ~ .panel-r90{display:block}#win-r90:checked ~ .periods label[for='win-r90']{background:var(--fg);color:#fff;border-color:var(--fg)}#win-r60:checked ~ .panel-r60{display:block}#win-r60:checked ~ .periods label[for='win-r60']{background:var(--fg);color:#fff;border-color:var(--fg)}#win-r30:checked ~ .panel-r30{display:block}#win-r30:checked ~ .periods label[for='win-r30']{background:var(--fg);color:#fff;border-color:var(--fg)}#win-mtd:checked ~ .panel-mtd{display:block}#win-mtd:checked ~ .periods label[for='win-mtd']{background:var(--fg);color:#fff;border-color:var(--fg)}
+.range-block { margin:0 0 8px; }
+.range {
+  font-size:clamp(1.85rem, 6vw, 2.7rem);
+  font-weight:750;
+  letter-spacing:-.035em;
+  line-height:1.05;
+  font-variant-numeric:tabular-nums;
+}
+.window-label {
+  margin:8px 0 0;
+  font-size:1.05rem;
+  font-weight:650;
+}
+.coverage { margin:6px 0 0; color:var(--muted); font-size:.92rem; }
+.verdict {
+  margin:18px 0 16px;
+  padding:14px 16px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  font-size:1.05rem;
+  font-weight:600;
+  line-height:1.35;
+}
+.hero {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin:0 0 18px;
+}
+@media (min-width:720px) {
+  .hero { grid-template-columns:1.3fr 1fr 1fr; }
+}
+.stat {
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:16px 16px 14px;
+}
+.stat .k {
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  font-weight:650;
+}
+.stat .v {
+  font-size:2.15rem;
+  font-weight:750;
+  letter-spacing:-.03em;
+  margin:6px 0 4px;
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+}
+.stat.hero-stat .v { font-size:2.7rem; }
+.stat .s { font-size:.86rem; color:var(--muted); }
+.quiet {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin:0 0 22px;
+}
+@media (min-width:720px) {
+  .quiet { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+.quiet .stat { padding:12px; }
+.quiet .v { font-size:1.35rem; }
+h2 { font-size:.95rem; margin:8px 0 8px; letter-spacing:.02em; }
+.ico-list { display:flex; flex-direction:column; gap:10px; margin:0 0 22px; }
+.ico-card {
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:14px 16px;
+}
+.ico-card .who {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:6px 12px;
+  font-weight:750;
+  font-size:1.05rem;
+  letter-spacing:-.02em;
+}
+.ico-card .stock {
+  font-weight:650;
+  font-size:.9rem;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.ico-card .line { margin-top:5px; font-size:.92rem; overflow-wrap:anywhere; }
+.ico-card .line.muted { color:var(--muted); }
+.ico-card .contact { font-variant-numeric:tabular-nums; }
+.table-scroll { overflow-x:hidden; margin:0 0 22px; }
+table { width:100%; border-collapse:collapse; background:var(--card); font-size:.92rem; }
+th, td {
+  border-bottom:1px solid var(--line);
+  padding:9px 10px;
+  text-align:left;
+  vertical-align:top;
+}
+th {
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:var(--muted);
+  font-weight:650;
+}
 td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
-.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:8px 0 16px; }
-.badge { display:inline-block; background:var(--accent); color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:3px 8px; }
+.note { color:var(--muted); font-size:.86rem; margin:0 0 18px; max-width:62ch; }
+.foot { color:var(--faint); font-size:.8rem; margin:24px 0 0; }
+.empty { padding:16px; background:var(--card); border:1px solid var(--line); color:var(--muted); margin:0 0 22px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="badge">Internal · beta</div>
+  <div class="badge">Internal</div>
+  <div class="kicker">Acquisition · VIN-confirmed take-in</div>
   <h1>Audi Baton Rouge · KBB Instant Cash Offer</h1>
-  <p class="meta">Acquisition desk · Sep 5 – Oct 4, 2026 · Generated Oct 05, 2026 2:56 PM</p>
-  <div class="why"><strong>What this is</strong>
-    Someone asked for a cash or trade value on <em>their</em> car. Not a retail shopper.
-    Marketplace = Kelley Blue Book + ATC. Dealer-website ICO is excluded from the take-in test (5 of those).
-    Took-in = that trade VIN landed in inventory on/after the ICO. Not a later retail sale.
-  </div>
-  <div class="stat-grid">
-    <div class="stat"><div class="k">All KBB ICO</div><div class="v">225</div>
-      <div class="s">Including dealer website</div></div>
-    <div class="stat"><div class="k">Marketplace ICO</div><div class="v">220</div>
-      <div class="s">KBB site + ATC</div></div>
-    <div class="stat"><div class="k">Units we took in</div><div class="v">1</div>
-      <div class="s">VIN + inventory timing</div></div>
-    <div class="stat"><div class="k">Take-in rate</div><div class="v">0.5%</div>
-      <div class="s">Units ÷ marketplace ICO</div></div>
-    <div class="stat"><div class="k">Still Active</div><div class="v">147</div>
-      <div class="s">CRM Active on ICO rows</div></div>
-    <div class="stat"><div class="k">Lost</div><div class="v">72</div>
-      <div class="s">Usually process completed</div></div>
-    <div class="stat"><div class="k">Worked</div><div class="v">99.6%</div>
-      <div class="s">Any attempt</div></div>
-    <div class="stat"><div class="k">CRM Contacted</div><div class="v">30.2%</div>
-      <div class="s">Stricter than attempt</div></div>
-  </div>
-  <h2>Marketplace cars that became inventory</h2>
-  <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
-    <thead><tr>
-      <th>ICO opened</th><th>Trade vehicle</th><th class="num">Stock</th>
-      <th>Type / status</th><th>Inv created</th><th class="num">Days after ICO</th>
-    </tr></thead>
-    <tbody><tr><td>Sep 10</td><td>2023 Nissan Rogue</td><td class='num'>PAC191</td><td>Used / Active</td><td>Sep 29, 2026</td><td class='num'>18 d</td></tr></tbody>
-  </table></div>
-  <h2>By outlet</h2>
-  <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
-    <thead><tr>
-      <th>Outlet</th><th class="num">Leads</th><th class="num">Share</th>
-      <th class="num">Active</th><th class="num">Lost</th><th class="num">Worked</th>
-    </tr></thead>
-    <tbody><tr><td>KBB ICO — KBB site</td><td class='num'>219</td><td class='num'>97.3%</td><td class='num'>142</td><td class='num'>72</td><td class='num'>99.5%</td></tr><tr><td>KBB ICO — Dealer website</td><td class='num'>5</td><td class='num'>2.2%</td><td class='num'>4</td><td class='num'>0</td><td class='num'>100.0%</td></tr><tr><td>KBB ICO — ATC</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>1</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
-  </table></div>
-  <p class="meta">Full GM Weekly (leads + handling) stays on the store pack. This desk is ICO only.</p>
+  <input class="period-input" type="radio" name="ico-win" id="win-r90" value="r90" checked/><input class="period-input" type="radio" name="ico-win" id="win-r60" value="r60"/><input class="period-input" type="radio" name="ico-win" id="win-r30" value="r30"/><input class="period-input" type="radio" name="ico-win" id="win-mtd" value="mtd"/>
+  <div class="periods" role="group" aria-label="Date range"><label class="period-lab" for="win-r90">90d</label><label class="period-lab" for="win-r60">60d</label><label class="period-lab" for="win-r30">30d</label><label class="period-lab" for="win-mtd">MTD</label></div>
+  <p class="note">Someone asked for a cash or trade value on <em>their</em> car — not a retail shopper. Match is VIN + inventory timing, not year/make/model.</p>
+  
+  <section class="panel panel-r90" aria-label="Rolling 90">
+    <div class="range-block">
+      <div class="range">Jul 7 – Oct 4, 2026</div>
+      <div class="window-label">Rolling 90</div>
+      <p class="coverage">665 of 667 marketplace rows have a trade VIN. Dealer-website ICO excluded from the take-in test (14).</p>
+    </div>
+    <div class="verdict">3 cars from 667 marketplace ICO. This is not a volume acquisition channel.</div>
+    <div class="hero">
+      <div class="stat hero-stat">
+        <div class="k">Units we took in</div>
+        <div class="v">3</div>
+        <div class="s">Trade VIN landed in inventory on/after the ICO</div>
+      </div>
+      <div class="stat">
+        <div class="k">Marketplace ICO</div>
+        <div class="v">667</div>
+        <div class="s">KBB site + ATC · dealer-site ICO excluded</div>
+      </div>
+      <div class="stat">
+        <div class="k">Take-in rate</div>
+        <div class="v">0.4%</div>
+        <div class="s">Units ÷ marketplace ICO</div>
+      </div>
+    </div>
+    <h2>Marketplace cars that became inventory</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>Jericka Lathers<span class='stock'>PAC185</span></div><div class='line'>2017 Audi A3 · Used / Inactive</div><div class='line muted'>ICO Jul 22 → inv Aug 03, 2026 · 11 d · KBB site · Lost</div><div class='line contact'>(225) 937-1307<br/>jtlathers0330@yahoo.com</div><div class='line'>Bought a car? Prior CRM sale (count 1) — not in this window</div></article><article class='ico-card'><div class='who'>Katie Vinet<span class='stock'>PAC184</span></div><div class='line'>2019 Toyota Tundra CrewMax · Used / Inactive</div><div class='line muted'>ICO Jul 26 → inv Jul 28, 2026 · 1 d · KBB site · Lost</div><div class='line contact'>(225) 610-7008<br/>katievinet20@gmail.com</div><div class='line'>Bought a car? No</div></article><article class='ico-card'><div class='who'>Kelly Petersen<span class='stock'>PAC191</span></div><div class='line'>2023 Nissan Rogue · Used / Active</div><div class='line muted'>ICO Sep 10 → inv Sep 29, 2026 · 18 d · KBB site · Lost</div><div class='line contact'>(225) 205-7127<br/>kelly@wonkyi.com</div><div class='line'>Bought a car? No</div></article></div>
+    <h2>Later bought a car from us (0)</h2>
+    <p class='note'>Same person as the marketplace ICO lead, then a <em>retail</em> sold lead on/after the ICO. Identity needs two matches (CRM ID, email, phone, name). Phone-only does not count. Prior CRM sold count with no sold lead in this file is not a conversion.</p><div class='empty'>None in this window. No marketplace ICO customer matched a later retail purchase on two identity points.</div>
+    <h2>Spot-check: 12 marketplace ICO that did not become inventory</h2>
+    <p class='note'>Seeded sample of 12 marketplace ICO in this window that are <em>not</em> on the take-in list. Reason line is the VIN-join check.</p><div class='ico-list'><article class='ico-card'><div class='who'>Chance Motichek</div><div class='line'>2015 Chevrolet Suburban · KBB site · Active</div><div class='line muted'>ICO Oct 03</div><div class='line'>Bought a car? No</div><div class='line contact'>(985) 507-8841<br/>ccmotichek05@hotmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Ronnie Blythe</div><div class='line'>2019 Ford Mustang · KBB site · Active</div><div class='line muted'>ICO Sep 27</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 324-1259<br/>rbcable@aol.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Kyle Ourso</div><div class='line'>2011 Jeep Wrangler · KBB site · Active</div><div class='line muted'>ICO Sep 20</div><div class='line'>Bought a car? No</div><div class='line contact'>(623) 688-9057<br/>crazykyle2001.ko@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Taylor Broussard</div><div class='line'>2022 Ford F150 Lightning · KBB site · Lost</div><div class='line muted'>ICO Sep 03</div><div class='line'>Bought a car? No</div><div class='line contact'>(337) 591-3810<br/>tbrou16@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>India Swift</div><div class='line'>2021 Audi Q5 · KBB site · Lost</div><div class='line muted'>ICO Aug 13</div><div class='line'>Bought a car? Likely bought this 2021 Audi Q5 from us (stock PAA503, on the lot Jan 2024, now Inactive). CRM sold count 1. Then submitted KBB ICO to value it as a trade. Sale not in this DMS extract.</div><div class='line contact'>(225) 276-1546<br/>indiaswift07@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN on file, inventory created before ICO</div></article><article class='ico-card'><div class='who'>Justin Stafford</div><div class='line'>2014 Ford F150 SuperCrew Cab · KBB site · Lost</div><div class='line muted'>ICO Aug 08</div><div class='line'>Bought a car? No</div><div class='line contact'>(337) 308-1787<br/>jtsrangers14@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Michelle Bishop</div><div class='line'>2007 Honda Civic · KBB site · Lost</div><div class='line muted'>ICO Aug 06</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 244-5167<br/>mbishop7608@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Ella Lininger</div><div class='line'>2015 Nissan Rogue · KBB site · Lost</div><div class='line muted'>ICO Jul 27</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 305-2059<br/>ellalininger5@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Michael Jr</div><div class='line'>2018 Ford Expedition · KBB site · Lost</div><div class='line muted'>ICO Jul 23</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 229-1519<br/>michaelirvin44@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Bailey Reeves</div><div class='line'>2013 Nissan Rogue · KBB site · Lost</div><div class='line muted'>ICO Jul 22</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 229-3555<br/>bapolson@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Kyle Rainey</div><div class='line'>2023 Ford Bronco · KBB site · Lost</div><div class='line muted'>ICO Jul 20</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 936-1528<br/>kyleraineyart@cox.net</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Terri Milton</div><div class='line'>2024 Subaru Outback · ATC · Lost</div><div class='line muted'>ICO Jul 10</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 205-3037<br/>ssyrtgirl@aol.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article></div>
+    <h2>CRM handling (not the take-in test)</h2>
+    <div class="quiet">
+      <div class="stat"><div class="k">All KBB ICO</div><div class="v">681</div><div class="s">Includes dealer website</div></div>
+      <div class="stat"><div class="k">Still Active</div><div class="v">153</div><div class="s">CRM Active on ICO rows</div></div>
+      <div class="stat"><div class="k">Lost</div><div class="v">518</div><div class="s">Usually process completed</div></div>
+      <div class="stat"><div class="k">CRM contacted</div><div class="v">30.4%</div><div class="s">Stricter than any-attempt “worked”</div></div>
+    </div>
+    <h2>By source</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>KBB site<span class='stock'>661 · 97.1%</span></div><div class='line muted'>Active 146 · Lost 508 · Worked 99.2%</div></article><article class='ico-card'><div class='who'>Dealer website<span class='stock'>14 · 2.1%</span></div><div class='line muted'>Active 6 · Lost 5 · Worked 85.7%</div></article><article class='ico-card'><div class='who'>ATC<span class='stock'>6 · 0.9%</span></div><div class='line muted'>Active 1 · Lost 5 · Worked 100.0%</div></article></div>
+  </section>
+
+  <section class="panel panel-r60" aria-label="Rolling 60">
+    <div class="range-block">
+      <div class="range">Aug 6 – Oct 4, 2026</div>
+      <div class="window-label">Rolling 60</div>
+      <p class="coverage">435 of 436 marketplace rows have a trade VIN. Dealer-website ICO excluded from the take-in test (8).</p>
+    </div>
+    <div class="verdict">1 car from 436 marketplace ICO. This is not a volume acquisition channel.</div>
+    <div class="hero">
+      <div class="stat hero-stat">
+        <div class="k">Units we took in</div>
+        <div class="v">1</div>
+        <div class="s">Trade VIN landed in inventory on/after the ICO</div>
+      </div>
+      <div class="stat">
+        <div class="k">Marketplace ICO</div>
+        <div class="v">436</div>
+        <div class="s">KBB site + ATC · dealer-site ICO excluded</div>
+      </div>
+      <div class="stat">
+        <div class="k">Take-in rate</div>
+        <div class="v">0.2%</div>
+        <div class="s">Units ÷ marketplace ICO</div>
+      </div>
+    </div>
+    <h2>Marketplace cars that became inventory</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>Kelly Petersen<span class='stock'>PAC191</span></div><div class='line'>2023 Nissan Rogue · Used / Active</div><div class='line muted'>ICO Sep 10 → inv Sep 29, 2026 · 18 d · KBB site · Lost</div><div class='line contact'>(225) 205-7127<br/>kelly@wonkyi.com</div><div class='line'>Bought a car? No</div></article></div>
+    <h2>Later bought a car from us (0)</h2>
+    <p class='note'>Same person as the marketplace ICO lead, then a <em>retail</em> sold lead on/after the ICO. Identity needs two matches (CRM ID, email, phone, name). Phone-only does not count. Prior CRM sold count with no sold lead in this file is not a conversion.</p><div class='empty'>None in this window. No marketplace ICO customer matched a later retail purchase on two identity points.</div>
+    <h2>Spot-check: 12 marketplace ICO that did not become inventory</h2>
+    <p class='note'>Seeded sample of 12 marketplace ICO in this window that are <em>not</em> on the take-in list. Reason line is the VIN-join check.</p><div class='ico-list'><article class='ico-card'><div class='who'>Daniela Buznego</div><div class='line'>2024 Subaru Crosstrek · KBB site · Active</div><div class='line muted'>ICO Sep 28</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 333-8514<br/>dbuznego@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Lynda Ballard</div><div class='line'>2020 Toyota Sienna · KBB site · Active</div><div class='line muted'>ICO Sep 27</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 405-9311<br/>lyndab@me.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Cameron Huot</div><div class='line'>2014 Kia Optima · KBB site · Active</div><div class='line muted'>ICO Sep 22</div><div class='line'>Bought a car? No</div><div class='line contact'>(985) 413-8466<br/>camhuot1@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Jacob Simmons</div><div class='line'>2017 Ram 2500 Crew Cab · KBB site · Active</div><div class='line muted'>ICO Sep 20</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 721-8920<br/>jac.simm@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Adam Symborski</div><div class='line'>2025 MAZDA CX-70 · KBB site · Lost</div><div class='line muted'>ICO Sep 14</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 278-6478<br/>growlycx70@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Ronnie Dark</div><div class='line'>2021 Ram 1500 Crew Cab · KBB site · Lost</div><div class='line muted'>ICO Aug 26</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 698-3261<br/>ronnie_dark@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Mark Gros</div><div class='line'>2006 Toyota Corolla · KBB site · Lost</div><div class='line muted'>ICO Aug 24</div><div class='line'>Bought a car? No</div><div class='line contact'>(985) 351-9551<br/>joey.gros@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Terwin Gibson</div><div class='line'>2018 INFINITI Q50 · KBB site · Lost</div><div class='line muted'>ICO Aug 22</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 290-1353<br/>terwingibson@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Destiny Epperson</div><div class='line'>2016 Tesla Model X · KBB site · Lost</div><div class='line muted'>ICO Aug 16</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 773-1165<br/>destinyeppersonre@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Brandon Johnson</div><div class='line'>2016 Volkswagen Tiguan · KBB site · Lost</div><div class='line muted'>ICO Aug 14</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 910-4982<br/>bwabrandon21@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Abby Shearer</div><div class='line'>2008 Mercedes-Benz CLK-Class · KBB site · Lost</div><div class='line muted'>ICO Aug 13</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 493-5459<br/>abbylea225@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Brooklyn Kauffman</div><div class='line'>2020 Hyundai Palisade · KBB site · Lost</div><div class='line muted'>ICO Aug 07</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 614-7682<br/>brookekauff@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article></div>
+    <h2>CRM handling (not the take-in test)</h2>
+    <div class="quiet">
+      <div class="stat"><div class="k">All KBB ICO</div><div class="v">444</div><div class="s">Includes dealer website</div></div>
+      <div class="stat"><div class="k">Still Active</div><div class="v">150</div><div class="s">CRM Active on ICO rows</div></div>
+      <div class="stat"><div class="k">Lost</div><div class="v">286</div><div class="s">Usually process completed</div></div>
+      <div class="stat"><div class="k">CRM contacted</div><div class="v">30.6%</div><div class="s">Stricter than any-attempt “worked”</div></div>
+    </div>
+    <h2>By source</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>KBB site<span class='stock'>433 · 97.5%</span></div><div class='line muted'>Active 144 · Lost 283 · Worked 99.3%</div></article><article class='ico-card'><div class='who'>Dealer website<span class='stock'>8 · 1.8%</span></div><div class='line muted'>Active 5 · Lost 1 · Worked 87.5%</div></article><article class='ico-card'><div class='who'>ATC<span class='stock'>3 · 0.7%</span></div><div class='line muted'>Active 1 · Lost 2 · Worked 100.0%</div></article></div>
+  </section>
+
+  <section class="panel panel-r30" aria-label="Rolling 30">
+    <div class="range-block">
+      <div class="range">Sep 5 – Oct 4, 2026</div>
+      <div class="window-label">Rolling 30</div>
+      <p class="coverage">220 of 220 marketplace rows have a trade VIN. Dealer-website ICO excluded from the take-in test (5).</p>
+    </div>
+    <div class="verdict">1 car from 220 marketplace ICO. This is not a volume acquisition channel.</div>
+    <div class="hero">
+      <div class="stat hero-stat">
+        <div class="k">Units we took in</div>
+        <div class="v">1</div>
+        <div class="s">Trade VIN landed in inventory on/after the ICO</div>
+      </div>
+      <div class="stat">
+        <div class="k">Marketplace ICO</div>
+        <div class="v">220</div>
+        <div class="s">KBB site + ATC · dealer-site ICO excluded</div>
+      </div>
+      <div class="stat">
+        <div class="k">Take-in rate</div>
+        <div class="v">0.5%</div>
+        <div class="s">Units ÷ marketplace ICO</div>
+      </div>
+    </div>
+    <h2>Marketplace cars that became inventory</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>Kelly Petersen<span class='stock'>PAC191</span></div><div class='line'>2023 Nissan Rogue · Used / Active</div><div class='line muted'>ICO Sep 10 → inv Sep 29, 2026 · 18 d · KBB site · Lost</div><div class='line contact'>(225) 205-7127<br/>kelly@wonkyi.com</div><div class='line'>Bought a car? No</div></article></div>
+    <h2>Later bought a car from us (0)</h2>
+    <p class='note'>Same person as the marketplace ICO lead, then a <em>retail</em> sold lead on/after the ICO. Identity needs two matches (CRM ID, email, phone, name). Phone-only does not count. Prior CRM sold count with no sold lead in this file is not a conversion.</p><div class='empty'>None in this window. No marketplace ICO customer matched a later retail purchase on two identity points.</div>
+    <h2>Spot-check: 12 marketplace ICO that did not become inventory</h2>
+    <p class='note'>Seeded sample of 12 marketplace ICO in this window that are <em>not</em> on the take-in list. Reason line is the VIN-join check.</p><div class='ico-list'><article class='ico-card'><div class='who'>Kayla Doyle</div><div class='line'>2023 Toyota Tacoma Double Cab · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(318) 500-1437<br/>k.jeansonne03@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Gabby Peltier</div><div class='line'>2022 Mercedes-Benz GLE · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 329-8153<br/>gabbypeltier@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Donavon Dalton</div><div class='line'>2009 Mercedes-Benz CLK-Class · KBB site · Active</div><div class='line muted'>ICO Sep 29</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 362-4390<br/>donavondalton33@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Daniela Buznego</div><div class='line'>2024 Subaru Crosstrek · KBB site · Active</div><div class='line muted'>ICO Sep 28</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 333-8514<br/>dbuznego@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Zahra Falahasl</div><div class='line'>2017 Toyota Corolla · KBB site · Active</div><div class='line muted'>ICO Sep 24</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 409-2833<br/>zahrafalah7@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Jordan Lockwood</div><div class='line'>2020 Mercedes-Benz GLC · KBB site · Lost</div><div class='line muted'>ICO Sep 14</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 610-2055<br/>lockwoods2011@outlook.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Ricky Fletcher</div><div class='line'>2024 Chevrolet Silverado EV · KBB site · Bad</div><div class='line muted'>ICO Sep 14</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 828-2000<br/>userrnflet@aol.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Jordyn Miller</div><div class='line'>2021 Mitsubishi Outlander Sport · KBB site · Lost</div><div class='line muted'>ICO Sep 13</div><div class='line'>Bought a car? No</div><div class='line contact'>(641) 691-3553<br/>jordynann626@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Brittany Bellard</div><div class='line'>2020 BMW X3 · KBB site · Lost</div><div class='line muted'>ICO Sep 09</div><div class='line'>Bought a car? No</div><div class='line contact'>(985) 519-0351<br/>brittlynnbell@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Larry Lacouture</div><div class='line'>2021 Cadillac Escalade ESV · KBB site · Lost</div><div class='line muted'>ICO Sep 08</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 337-8279<br/>lglacouture@cox.net</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Esther Nwanze</div><div class='line'>2016 Nissan Sentra · KBB site · Lost</div><div class='line muted'>ICO Sep 08</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 316-4618<br/>enwanze22@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Erick Canales</div><div class='line'>2021 GMC Sierra 2500 HD Crew Cab · KBB site · Lost</div><div class='line muted'>ICO Sep 05</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 521-7617<br/>canaleserick28@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article></div>
+    <h2>CRM handling (not the take-in test)</h2>
+    <div class="quiet">
+      <div class="stat"><div class="k">All KBB ICO</div><div class="v">225</div><div class="s">Includes dealer website</div></div>
+      <div class="stat"><div class="k">Still Active</div><div class="v">147</div><div class="s">CRM Active on ICO rows</div></div>
+      <div class="stat"><div class="k">Lost</div><div class="v">72</div><div class="s">Usually process completed</div></div>
+      <div class="stat"><div class="k">CRM contacted</div><div class="v">30.2%</div><div class="s">Stricter than any-attempt “worked”</div></div>
+    </div>
+    <h2>By source</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>KBB site<span class='stock'>219 · 97.3%</span></div><div class='line muted'>Active 142 · Lost 72 · Worked 99.5%</div></article><article class='ico-card'><div class='who'>Dealer website<span class='stock'>5 · 2.2%</span></div><div class='line muted'>Active 4 · Lost 0 · Worked 100.0%</div></article><article class='ico-card'><div class='who'>ATC<span class='stock'>1 · 0.4%</span></div><div class='line muted'>Active 1 · Lost 0 · Worked 100.0%</div></article></div>
+  </section>
+
+  <section class="panel panel-mtd" aria-label="Month to date">
+    <div class="range-block">
+      <div class="range">Oct 1–5, 2026</div>
+      <div class="window-label">Month to date</div>
+      <p class="coverage">40 of 40 marketplace rows have a trade VIN. Dealer-website ICO excluded from the take-in test (2).</p>
+    </div>
+    <div class="verdict">Zero cars taken in. Marketplace ICO did not produce inventory in this window.</div>
+    <div class="hero">
+      <div class="stat hero-stat">
+        <div class="k">Units we took in</div>
+        <div class="v">0</div>
+        <div class="s">Trade VIN landed in inventory on/after the ICO</div>
+      </div>
+      <div class="stat">
+        <div class="k">Marketplace ICO</div>
+        <div class="v">40</div>
+        <div class="s">KBB site + ATC · dealer-site ICO excluded</div>
+      </div>
+      <div class="stat">
+        <div class="k">Take-in rate</div>
+        <div class="v">0.0%</div>
+        <div class="s">Units ÷ marketplace ICO</div>
+      </div>
+    </div>
+    <h2>Marketplace cars that became inventory</h2>
+    <div class='empty'>None in this window.</div>
+    <h2>Later bought a car from us (0)</h2>
+    <p class='note'>Same person as the marketplace ICO lead, then a <em>retail</em> sold lead on/after the ICO. Identity needs two matches (CRM ID, email, phone, name). Phone-only does not count. Prior CRM sold count with no sold lead in this file is not a conversion.</p><div class='empty'>None in this window. No marketplace ICO customer matched a later retail purchase on two identity points.</div>
+    <h2>Spot-check: 12 marketplace ICO that did not become inventory</h2>
+    <p class='note'>Seeded sample of 12 marketplace ICO in this window that are <em>not</em> on the take-in list. Reason line is the VIN-join check.</p><div class='ico-list'><article class='ico-card'><div class='who'>Roscoe Harris</div><div class='line'>2024 BMW 3 Series · KBB site · Active</div><div class='line muted'>ICO Oct 05</div><div class='line'>Bought a car? Prior CRM sale (count 2) — not in this window</div><div class='line contact'>(225) 324-3364<br/>roscoeharris@hotmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Smothers Smothers</div><div class='line'>2017 INFINITI QX60 · KBB site · Active</div><div class='line muted'>ICO Oct 03</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 266-9669<br/>smotherscrew@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Kiet Tang</div><div class='line'>2003 Lexus GX · KBB site · Active</div><div class='line muted'>ICO Oct 02</div><div class='line'>Bought a car? No</div><div class='line contact'>(858) 886-6850<br/>kqt858@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Quinci Skinner</div><div class='line'>2024 Cadillac LYRIQ · KBB site · Active</div><div class='line muted'>ICO Oct 02</div><div class='line'>Bought a car? No</div><div class='line contact'>(504) 473-6667<br/>quinci@85skinner.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Donna Blackwell</div><div class='line'>2023 Dodge Challenger · KBB site · Active</div><div class='line muted'>ICO Oct 02</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 937-6952<br/>motherschoiceinc@aol.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Dennis Daigle</div><div class='line'>2025 Jeep Wrangler 4 Door · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(504) 669-4405<br/>lokifolly@att.net</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Wesley Smith</div><div class='line'>2015 Toyota Highlander · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 715-4638<br/>dswsmith666@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Raelee Clark</div><div class='line'>2023 Kia K5 · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 369-1313<br/>raebugs723@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Brittany Giffin</div><div class='line'>2018 Honda CR-V · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(832) 605-0492<br/>bthevanh@sbcglobal.net</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Kaliyah Brumfield</div><div class='line'>2009 Acura TSX · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 418-4192<br/>ktbrumfield2001@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Kayla Doyle</div><div class='line'>2023 Toyota Tacoma Double Cab · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(318) 500-1437<br/>k.jeansonne03@yahoo.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article><article class='ico-card'><div class='who'>Gabby Peltier</div><div class='line'>2022 Mercedes-Benz GLE · KBB site · Active</div><div class='line muted'>ICO Oct 01</div><div class='line'>Bought a car? No</div><div class='line contact'>(225) 329-8153<br/>gabbypeltier@gmail.com</div><div class='line'><strong>Why not inventory:</strong> VIN not in inventory</div></article></div>
+    <h2>CRM handling (not the take-in test)</h2>
+    <div class="quiet">
+      <div class="stat"><div class="k">All KBB ICO</div><div class="v">42</div><div class="s">Includes dealer website</div></div>
+      <div class="stat"><div class="k">Still Active</div><div class="v">41</div><div class="s">CRM Active on ICO rows</div></div>
+      <div class="stat"><div class="k">Lost</div><div class="v">0</div><div class="s">Usually process completed</div></div>
+      <div class="stat"><div class="k">CRM contacted</div><div class="v">33.3%</div><div class="s">Stricter than any-attempt “worked”</div></div>
+    </div>
+    <h2>By source</h2>
+    <div class='ico-list'><article class='ico-card'><div class='who'>KBB site<span class='stock'>40 · 95.2%</span></div><div class='line muted'>Active 39 · Lost 0 · Worked 95.0%</div></article><article class='ico-card'><div class='who'>Dealer website<span class='stock'>2 · 4.8%</span></div><div class='line muted'>Active 2 · Lost 0 · Worked 100.0%</div></article></div>
+  </section>
+
+  <p class="foot">Generated Oct 05, 2026 3:37 PM. Full GM Weekly (leads + handling) stays on the store pack. This desk is ICO only.</p>
 </div>
 </body>
 </html>
