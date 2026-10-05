@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Audi Baton Rouge · KBB ICO desk</title>
+<style>
+:root { --fg:#111; --muted:#666; --accent:#bb0a30; --line:#ddd; --card:#fff; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--fg); background:#f4f4f4; font:16px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif; }
+.wrap { max-width:920px; margin:0 auto; padding:20px 16px 48px; }
+h1 { font-size:1.45rem; margin:0 0 6px; letter-spacing:-.02em; }
+h2 { font-size:1.05rem; margin:22px 0 8px; }
+.meta { color:var(--muted); font-size:.88rem; }
+.why { background:#fff; border:1px solid var(--line); padding:12px 14px; margin:12px 0; }
+.why strong { display:block; text-transform:uppercase; font-size:.72rem; letter-spacing:.06em; margin-bottom:4px; }
+.stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:12px 0; }
+@media (min-width:720px) { .stat-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+.stat { background:#fff; border:1px solid var(--line); padding:12px; }
+.stat .k { font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.stat .v { font-size:1.55rem; font-weight:700; margin:4px 0 2px; }
+.stat .s { font-size:.8rem; color:var(--muted); }
+table { width:100%; border-collapse:collapse; background:#fff; font-size:.92rem; }
+th, td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+th { font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:8px 0 16px; }
+.badge { display:inline-block; background:var(--accent); color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:3px 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="badge">Internal · beta</div>
+  <h1>Audi Baton Rouge · KBB Instant Cash Offer</h1>
+  <p class="meta">Acquisition desk · Sep 5 – Oct 4, 2026 · Generated Oct 05, 2026 2:31 PM</p>
+  <div class="why"><strong>What this is</strong>
+    Someone asked for a cash or trade value on <em>their</em> car. Not a retail shopper.
+    Marketplace = Kelley Blue Book + ATC. Dealer-website ICO is excluded from the take-in test (5 of those).
+    Took-in = that trade VIN landed in inventory on/after the ICO. Not a later retail sale.
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><div class="k">All KBB ICO</div><div class="v">225</div>
+      <div class="s">Including dealer website</div></div>
+    <div class="stat"><div class="k">Marketplace ICO</div><div class="v">220</div>
+      <div class="s">KBB site + ATC</div></div>
+    <div class="stat"><div class="k">Units we took in</div><div class="v">1</div>
+      <div class="s">VIN + inventory timing</div></div>
+    <div class="stat"><div class="k">Take-in rate</div><div class="v">0.5%</div>
+      <div class="s">Units ÷ marketplace ICO</div></div>
+    <div class="stat"><div class="k">Still Active</div><div class="v">147</div>
+      <div class="s">CRM Active on ICO rows</div></div>
+    <div class="stat"><div class="k">Lost</div><div class="v">72</div>
+      <div class="s">Usually process completed</div></div>
+    <div class="stat"><div class="k">Worked</div><div class="v">99.6%</div>
+      <div class="s">Any attempt</div></div>
+    <div class="stat"><div class="k">CRM Contacted</div><div class="v">30.2%</div>
+      <div class="s">Stricter than attempt</div></div>
+  </div>
+  <h2>Marketplace cars that became inventory</h2>
+  <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
+    <thead><tr>
+      <th>ICO opened</th><th>Trade vehicle</th><th class="num">Stock</th>
+      <th>Type / status</th><th>Inv created</th><th class="num">Days after ICO</th>
+    </tr></thead>
+    <tbody><tr><td>Sep 10</td><td>2023 Nissan Rogue</td><td class='num'>PAC191</td><td>Used / Active</td><td>Sep 29, 2026</td><td class='num'>18 d</td></tr></tbody>
+  </table></div>
+  <h2>By outlet</h2>
+  <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class="wide">
+    <thead><tr>
+      <th>Outlet</th><th class="num">Leads</th><th class="num">Share</th>
+      <th class="num">Active</th><th class="num">Lost</th><th class="num">Worked</th>
+    </tr></thead>
+    <tbody><tr><td>KBB ICO — KBB site</td><td class='num'>219</td><td class='num'>97.3%</td><td class='num'>142</td><td class='num'>72</td><td class='num'>99.5%</td></tr><tr><td>KBB ICO — Dealer website</td><td class='num'>5</td><td class='num'>2.2%</td><td class='num'>4</td><td class='num'>0</td><td class='num'>100.0%</td></tr><tr><td>KBB ICO — ATC</td><td class='num'>1</td><td class='num'>0.4%</td><td class='num'>1</td><td class='num'>0</td><td class='num'>100.0%</td></tr></tbody>
+  </table></div>
+  <p class="meta">Full GM Weekly (leads + handling) stays on the store pack. This desk is ICO only.</p>
+</div>
+</body>
+</html>
