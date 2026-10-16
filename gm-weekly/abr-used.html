@@ -376,6 +376,50 @@ td.avg-cell { min-width:72px; vertical-align:middle; text-align:right; }
   overflow-x:hidden;
   overflow-y:auto;
 }
+.gray-creative-drop {
+  margin:10px 0 12px; border:1px solid var(--line); border-radius:10px;
+  background:var(--card);
+}
+.gray-creative-drop > summary {
+  cursor:pointer; padding:10px 12px; font-weight:800; font-size:13px;
+  list-style:none;
+}
+.gray-creative-drop > summary::-webkit-details-marker { display:none; }
+.gray-creative-drop > summary::after {
+  content:'Show'; float:right; font-weight:650; color:var(--muted); font-size:12px;
+}
+.gray-creative-drop[open] > summary::after { content:'Hide'; }
+.gray-thumbs {
+  display:flex; flex-wrap:wrap; gap:10px; padding:0 12px 12px; align-items:flex-end;
+}
+.gray-thumb {
+  display:flex; flex-direction:column; gap:4px; text-decoration:none; color:var(--ink);
+  max-width:140px;
+}
+.gray-thumb img {
+  width:88px; height:64px; object-fit:cover; border:1px solid var(--line);
+  border-radius:6px; background:#f3f4f6; display:block;
+}
+.gray-thumb.banner img { width:140px; height:36px; object-fit:contain; background:#eef0f3; }
+.gray-thumb span { font-size:11px; color:var(--muted); font-weight:650; }
+.gray-lb {
+  display:none; position:fixed; inset:0; z-index:80;
+  background:rgba(15,18,22,.9);
+  align-items:center; justify-content:center; padding:28px 16px;
+}
+.gray-lb:target { display:flex; }
+.gray-lb img {
+  max-width:min(92vw, 1100px); max-height:86vh; object-fit:contain;
+  border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.45);
+}
+.gray-lb-x {
+  position:fixed; top:14px; right:18px; color:#fff; font-weight:800;
+  text-decoration:none; font-size:14px;
+}
+@media print {
+  .gray-lb { display:none !important; }
+  .gray-creative-drop { break-inside:avoid; }
+}
 .table-scroll:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .table-scroll > table { margin:0; }
 .table-scroll thead th {
@@ -631,7 +675,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
     </div>
   </div>
   <div class="wrap page-main">
-    <div class="meta page-meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Oct 16, 2026 · Generated Oct 16, 2026 9:14 AM</div>
+    <div class="meta page-meta">This page is for <strong>Audi Baton Rouge · Used</strong> only · Report as of Oct 16, 2026 · Generated Oct 16, 2026 9:30 AM</div>
     <nav class="dept-switch" aria-label="Department views"><a href="abr.html">Store</a><a href="abr-new.html">New</a><a href="abr-used.html" class="on">Used</a></nav>
     <div class="dept-banner"><strong>Used department</strong> — opportunities owned by Used sales teams via VinSolutions user group. Storewide website traffic is shown for context and is not department-split. Store collective: <a href="abr.html">Audi Baton Rouge GM Weekly</a>.</div>
     <div class="period-switch" role="toolbar" aria-label="Date range"><span class="ps-label">Date range</span><button type="button" data-period="r30" data-range="Rolling 30: Sep 16 – Oct 15, 2026 · vs prior 30 days Aug 17 – Sep 15, 2026" class="active">Rolling 30</button><button type="button" data-period="r60" data-range="Rolling 60: Aug 17 – Oct 15, 2026 · vs prior 60 days Jun 18 – Aug 16, 2026" class="">Rolling 60</button><button type="button" data-period="r90" data-range="Rolling 90: Jul 18 – Oct 15, 2026 · vs prior 90 days Apr 19 – Jul 17, 2026" class="">Rolling 90</button><button type="button" data-period="mtd" data-range="Month to date: Oct 1–16, 2026 · vs same days last month Sep 1–16, 2026" class="">Month to date</button><div class="ps-range">Rolling 30: Sep 16 – Oct 15, 2026 · vs prior 30 days Aug 17 – Sep 15, 2026</div></div>
@@ -817,6 +861,43 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
         <tfoot><tr><th>Top listed</th><td class='num'>81,762</td></tr></tfoot>
       </table>
       </div>
+
+      <h4 style="margin:12px 0 6px;font-size:13px;">Site visits after ad exposure</h4>
+      <div class="why"><strong>How to read this</strong>
+        Gray pixel: visits within 30 days of seeing an ad. Page-path hits can exceed unique visits. Not the same clock as GA4 WAFB sessions. Dead URLs listed as Gray counted them.</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="k">Site visits</div><div class="v">766</div>
+          <div class="s">Within 30 days of the ad</div></div>
+        <div class="stat"><div class="k">Unique users</div><div class="v">445</div>
+          <div class="s">Gray pixel</div></div>
+        <div class="stat"><div class="k">Avg days to visit</div><div class="v">29.7</div>
+          <div class="s">Monthly figure — not a daily clock</div></div>
+      </div>
+      
+      <div class="table-scroll table-scroll-fit" role="region" aria-label="Gray site visits by page" tabindex="0">
+      <table>
+        <thead><tr><th>Where they landed</th><th class="num">Site visits</th></tr></thead>
+        <tbody><tr><td>Homepage</td><td class='num'>539</td></tr><tr><td>Inventory</td><td class='num'>510</td></tr><tr><td>Other</td><td class='num'>244</td></tr><tr><td>Specials</td><td class='num'>19</td></tr><tr><td>Service</td><td class='num'>16</td></tr></tbody>
+      </table>
+      </div>
+
+      <h4 style="margin:12px 0 6px;font-size:13px;">Dead page paths Gray still counted</h4>
+      <div class="why"><strong>How to read this</strong>
+        These URLs 404 on audibatonrouge.com. Gray still counted visits against them.</div>
+      <div class="table-scroll table-scroll-fit" role="region" aria-label="Gray dead page paths" tabindex="0">
+      <table>
+        <thead><tr><th>URL path</th><th class="num">Site visits</th><th>Live check</th></tr></thead>
+        <tbody><tr><td>/en/inventory/new</td><td class='num'>80</td><td>404</td></tr><tr><td>/en</td><td class='num'>10</td><td>404</td></tr><tr><td>/all-new-2027-q7</td><td class='num'>4</td><td>404</td></tr><tr><td>/schedule-service.htm</td><td class='num'>3</td><td>404</td></tr><tr><td>/en/service/service-scheduling</td><td class='num'>2</td><td>404</td></tr><tr><td>/en/contact-us</td><td class='num'>1</td><td>404</td></tr><tr><td>/en/inventory/used</td><td class='num'>1</td><td>404</td></tr><tr><td>/en/inventory/vehicle</td><td class='num'>1</td><td>404</td></tr></tbody>
+      </table>
+      </div>
+
+      <details class="gray-creative-drop" id="gray-ott">
+        <summary>Creative in market · 7</summary>
+        <div class="why"><strong>How to read this</strong>
+          Units Gray Media is running. Click a thumbnail to enlarge.</div>
+        <div class="gray-thumbs"><a class='gray-thumb frame' href='#gray-c1'><img src='assets/gray-creative/01-portrait.jpg' alt='Portrait'><span>Portrait</span></a><a class='gray-thumb frame' href='#gray-c2'><img src='assets/gray-creative/02-landscape.jpg' alt='Landscape'><span>Landscape</span></a><a class='gray-thumb banner' href='#gray-c3'><img src='assets/gray-creative/03-banner-four.jpg' alt='Wide banner'><span>Wide banner</span></a><a class='gray-thumb frame' href='#gray-c4'><img src='assets/gray-creative/04-landscape-sm.jpg' alt='Landscape (small)'><span>Landscape (small)</span></a><a class='gray-thumb frame' href='#gray-c5'><img src='assets/gray-creative/05-portrait-sm.jpg' alt='Portrait (small)'><span>Portrait (small)</span></a><a class='gray-thumb frame' href='#gray-c6'><img src='assets/gray-creative/06-square.jpg' alt='Square'><span>Square</span></a><a class='gray-thumb banner' href='#gray-c7'><img src='assets/gray-creative/07-banner-suv.jpg' alt='Wide banner (SUVs)'><span>Wide banner (SUVs)</span></a></div>
+      </details>
+      <div id='gray-c1' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/01-portrait.jpg' alt='Portrait'></a></div><div id='gray-c2' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/02-landscape.jpg' alt='Landscape'></a></div><div id='gray-c3' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/03-banner-four.jpg' alt='Wide banner'></a></div><div id='gray-c4' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/04-landscape-sm.jpg' alt='Landscape (small)'></a></div><div id='gray-c5' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/05-portrait-sm.jpg' alt='Portrait (small)'></a></div><div id='gray-c6' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/06-square.jpg' alt='Square'></a></div><div id='gray-c7' class='gray-lb'><a class='gray-lb-x' href='#gray-ott'>Close</a><a href='#gray-ott'><img src='assets/gray-creative/07-banner-suv.jpg' alt='Wide banner (SUVs)'></a></div>
 
     
       <h4 style="margin:12px 0 6px;font-size:13px;">Named Gray / WAFB in Google Analytics</h4>
@@ -1453,7 +1534,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-09-16 → 2026-10-15): 21,705 visits · 19,414 people. Generated Oct 16, 2026 9:14 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-09-16 → 2026-10-15): 21,705 visits · 19,414 people. Generated Oct 16, 2026 9:30 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="r60" hidden>
@@ -2172,7 +2253,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-08-17 → 2026-10-15): 41,189 visits · 36,853 people. Generated Oct 16, 2026 9:14 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-08-17 → 2026-10-15): 41,189 visits · 36,853 people. Generated Oct 16, 2026 9:30 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="r90" hidden>
@@ -2891,7 +2972,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-07-18 → 2026-10-15): 58,005 visits · 51,694 people. Generated Oct 16, 2026 9:14 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-07-18 → 2026-10-15): 58,005 visits · 51,694 people. Generated Oct 16, 2026 9:30 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div><div class="period-root" data-period="mtd" hidden>
@@ -3579,7 +3660,7 @@ footer { letter-spacing:.06em; text-transform:uppercase; font-size:11px; }
       Headline contact rate is <strong>internet leads only</strong> (workable, de-duped, any real attempt).
       Internet speed uses CRM adjusted response time on internet leads only.
       Inventory panel uses VinSolutions live-lot units when an inventory export is present.
-      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-10-01 → 2026-10-16): 11,642 visits · 10,447 people. Generated Oct 16, 2026 9:14 AM.
+      Lead data: VinSolutions. Website traffic (GA4 cache 2026-10-16 · GA4 2026-10-01 → 2026-10-16): 11,642 visits · 10,447 people. Generated Oct 16, 2026 9:30 AM.
       This page is for Audi Baton Rouge · Used only — no other stores.
     </div>
 </div>
